@@ -1,0 +1,96 @@
+name: AI Investing Pre-Market Brief
+
+on:
+  schedule:
+    - cron: "0 12 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  build-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate report
+        id: report
+        env:
+          REPORT_BASE_URL: ${{ secrets.REPORT_BASE_URL }}
+        run: python scripts/run_daily_report.py
+
+      - name: Commit generated reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports docs
+          git diff --cached --quiet || git commit -m "Add AI investing pre-market brief"
+          git push
+
+      - name: Create or update GitHub issue notification
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `AI Investing Pre-Market Brief - ${{ steps.report.outputs.date }}`;
+            const reportUrl = `${{ steps.report.outputs.report_url }}`;
+            const handoffPath = `${{ steps.report.outputs.handoff_path }}`;
+            const statusSummary = `${{ steps.report.outputs.status_summary }}`;
+            const body = [
+              `AI Investing Pre-Market Brief for ${{ steps.report.outputs.date }} is ready.`,
+              ``,
+              `HTML report: ${reportUrl}`,
+              `ChatGPT handoff: ${handoffPath}`,
+              ``,
+              `Status: ${statusSummary}`,
+              ``,
+              `Research-only disclaimer: This report is for research only. It does not contain buy/sell instructions and does not execute trades.`
+            ].join("\n");
+
+            const { owner, repo } = context.repo;
+            const existing = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: "all",
+              per_page: 100
+            });
+            const issue = existing.data.find(item => item.title === title && !item.pull_request);
+            if (issue) {
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: issue.number,
+                body,
+                state: "open"
+              });
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body
+              });
+            }
+
+      - name: Optional SMTP email notification
+        if: ${{ vars.AI_MONITOR_SEND_EMAIL == 'true' }}
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          REPORT_BASE_URL: ${{ secrets.REPORT_BASE_URL }}
+          AI_MONITOR_SEND_EMAIL: "true"
+        run: python scripts/send_email.py

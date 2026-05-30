@@ -1,0 +1,40 @@
+news_feeds:
+  - name: Yahoo Finance
+    url: https://finance.yahoo.com/news/rssindex
+    category: primary_financial_news
+    confidence: Medium
+  - name: CNBC
+    url: https://www.cnbc.com/id/100003114/device/rss/rss.html
+    category: primary_financial_news
+    confidence: High
+  - name: MarketWatch
+    url: https://feeds.marketwatch.com/marketwatch/topstories/
+    category: primary_financial_news
+    confidence: High
+  - name: Investor's Business Daily
+    url: https://www.investors.com/feed/
+    category: primary_financial_news
+    confidence: Medium
+  - name: NVIDIA Newsroom
+    url: https://nvidianews.nvidia.com/news/rss
+    category: company_official
+    confidence: High
+  - name: Microsoft Azure Blog
+    url: https://azure.microsoft.com/en-us/blog/feed/
+    category: ai_software_cloud
+    confidence: Medium
+  - name: AWS News Blog
+    url: https://aws.amazon.com/blogs/aws/feed/
+    category: ai_software_cloud
+    confidence: Medium
+  - name: Google Cloud Blog
+    url: https://cloudblog.withgoogle.com/rss/
+    category: ai_software_cloud
+    confidence: Medium
+
+source_priority:
+  - Company filings, investor relations, official press releases
+  - Reuters / Bloomberg / CNBC / WSJ / FT / MarketWatch / Barron's
+  - Industry research and semiconductor media
+  - Other financial media
+  - Social media

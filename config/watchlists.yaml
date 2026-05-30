@@ -1,0 +1,54 @@
+core_aggressive_ai_infrastructure:
+  label: Core aggressive AI infrastructure watchlist
+  core: true
+  tickers:
+    - DELL
+    - VRT
+    - CIEN
+    - COHR
+    - MRVL
+    - MPWR
+    - AAOI
+    - NVTS
+
+second_stage_ai_software_cloud_agents:
+  label: Second-stage AI software / cloud / AI agent watchlist
+  tickers:
+    - NOW
+    - ORCL
+    - SNOW
+    - PLTR
+    - MSFT
+    - GOOGL
+    - AMZN
+
+memory_storage_data_infrastructure:
+  label: Memory / storage / data infrastructure watchlist
+  tickers:
+    - MU
+    - WDC
+    - STX
+
+ai_networking_asic_infrastructure:
+  label: AI networking / ASIC / infrastructure watchlist
+  tickers:
+    - AVGO
+    - ANET
+    - CSCO
+    - ARM
+
+ai_pc_edge_device_supply_chain:
+  label: AI PC / edge AI / device supply chain watchlist
+  tickers:
+    - QCOM
+    - "ON"
+    - HPQ
+    - TXN
+
+etf_benchmark:
+  label: ETF / benchmark watchlist
+  tickers:
+    - SMH
+    - SOXX
+    - QQQ
+    - SPY

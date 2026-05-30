@@ -1,0 +1,13 @@
+report_title: AI Investing Pre-Market Brief
+timezone: America/New_York
+report_base_url_env: REPORT_BASE_URL
+recent_reports_on_index: 20
+themes:
+  - AI server
+  - Data center power / cooling
+  - Optical interconnect / CPO / 800G / 1.6T
+  - AI networking / DSP / ASIC
+  - Memory / storage / HBM
+  - AI software / agent / enterprise workflow
+  - AI PC / edge AI
+  - Semiconductor testing / equipment bottlenecks
