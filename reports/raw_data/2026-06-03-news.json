@@ -1,0 +1,908 @@
+[
+  {
+    "headline": "Global fashion retailer closing all stores after 33 years",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/economy/articles/global-fashion-retailer-closing-stores-213300239.html",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-02T21:33:00Z"
+  },
+  {
+    "headline": "Tech stocks today: Google stock falls on plans to raise $80 billion, Nvidia CEO blesses Marvell stock",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-google-stock-falls-on-plans-to-raise-80-billion-nvidia-ceo-blesses-marvell-stock-100000832.html",
+    "summary": "",
+    "tickers": [
+      "MRVL",
+      "GOOGL"
+    ],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-01T10:00:00Z"
+  },
+  {
+    "headline": "Dow Jones Futures Fall, Oil Prices Rise As Trump Sets New Hormuz Target Date; Palo Alto, Marvell Are Early Movers",
+    "source": "Yahoo Finance",
+    "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-ai-stocks-google-tests-key-support-palo-alto-jumps-earnings/?src=A00220&yptr=yahoo",
+    "summary": "",
+    "tickers": [
+      "MRVL"
+    ],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T11:54:46Z"
+  },
+  {
+    "headline": "Meta, Microsoft, Amazon, and Alphabet are about to spend a shocking amount of money to dominate the AI era",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/sectors/technology/article/meta-microsoft-amazon-and-alphabet-are-about-to-spend-a-shocking-amount-of-money-to-dominate-the-ai-era-115359575.html",
+    "summary": "",
+    "tickers": [
+      "MSFT",
+      "GOOGL",
+      "AMZN"
+    ],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T11:53:59Z"
+  },
+  {
+    "headline": "Stock market today: Dow, S&P 500, Nasdaq futures mixed as AI fervor meets US-Iran uncertainty",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/economy/live/stock-market-today-dow-sp-500-nasdaq-futures-mixed-as-ai-fervor-meets-us-iran-uncertainty-224803638.html",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-02T22:48:03Z"
+  },
+  {
+    "headline": "Jim Cramer admits he was wrong about Amazon \u2014 now calls its AI chips a real threat to Nvidia",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/sectors/technology/articles/jim-cramer-admits-wrong-amazon-113000239.html",
+    "summary": "",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T11:30:00Z"
+  },
+  {
+    "headline": "Generac Joins Data Center Fracas; Soars On Generator Deal With AI Hyperscaler",
+    "source": "Yahoo Finance",
+    "link": "https://www.investors.com/news/data-center-generac-ai-hyperscaler-generator-tech-ciena-dycom-modine-sterling/?src=A00220&yptr=yahoo",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T11:01:47Z"
+  },
+  {
+    "headline": "New Fed Chair Kevin Warsh faces 'doom loop' of debt and inflation. What's going on in the bond market?",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/economy/policy/articles/fed-chair-kevin-warsh-faces-105500303.html",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T10:55:00Z"
+  },
+  {
+    "headline": "He paid off his sister's $24K debt. Now his dad wants him to hand over his $100K inheritance too",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/paid-off-sisters-24k-debt-104500772.html",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T10:45:00Z"
+  },
+  {
+    "headline": "Russia's Sberbank offers AI model to Global South states keen to bridge digital divide",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/sectors/technology/articles/russias-sberbank-offers-ai-model-103301266.html",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T10:33:01Z"
+  },
+  {
+    "headline": "A Jersey City man worked into his 90s for $18 an hour because a clerical error prevented him from claiming a pension",
+    "source": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/economy/policy/articles/jersey-city-man-worked-90s-103000144.html",
+    "summary": "",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "Medium",
+    "published": "2026-06-03T10:30:00Z"
+  },
+  {
+    "headline": "Macy's posts strongest Q1 growth in four years, raises guidance despite consumer worries",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/macys-m-earnings-q1-2026.html",
+    "summary": "Macy's has been in the midst of a turnaround under CEO Tony Spring, who has worked to close underperforming stores and reinvest in ones worth keeping open.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 11:50:12 GMT"
+  },
+  {
+    "headline": "Eli Lilly's top dealmaker says don't be surprised to see more M&A that pushes Lilly into new areas",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/eli-lilly-to-use-glp-1-windfall-to-fund-ma-and-diversify-pipeline.html",
+    "summary": "Eli Lilly's new top dealmaker explains how the company changed its approach to M&amp;A now that it's the most valuable pharmaceutical company in the world.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 11:06:28 GMT"
+  },
+  {
+    "headline": "France's Macron invites Sam Altman to attend G7, OpenAI tells CNBC",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/openai-sam-altman-g7-macron-france-big-tech.html",
+    "summary": "French President Emmanuel Macron has looked to win over tech bosses amid hopes to boost AI capability.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 11:16:25 GMT"
+  },
+  {
+    "headline": "Fed Chair Warsh makes first hires at central bank, including \u2018Project 2025\u2019 author",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/02/fed-chair-warsh-makes-first-hires-at-central-bank-including-project-2025-author.html",
+    "summary": "The new Fed chair has made his first hires. One wrote the Fed chapter in conservative policy blueprint \"Project 2025.\"",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 10:26:32 GMT"
+  },
+  {
+    "headline": "Palo Alto Networks tops earnings as AI fuels cybersecurity urgency",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/02/palo-alto-networks-panw-q3-earnings-2026.html",
+    "summary": "The beat comes on lowered expectations, after the company gave disappointing guidance in February that fell short of analyst estimates.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Tue, 02 Jun 2026 21:53:59 GMT"
+  },
+  {
+    "headline": "SpaceX is worth less than half of its $1.75 trillion IPO target, Morningstar says",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/morningstar-spacex-ipo-target-price-nasdaq.html",
+    "summary": "The analysts see a wide range of possibilities around xAI and find its \"economic moat indeterminate.\"",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 09:19:45 GMT"
+  },
+  {
+    "headline": "Perplexity CEO tells CNBC one metric will determine who wins the AI race",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/perplexity-ceo-ai-valuations-computer-agentic.html",
+    "summary": "Perplexity CEO Aravind Srinivas said that whichever company can provide the \"most taken value per watt per user\" will be the AI winners in the future.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 08:45:54 GMT"
+  },
+  {
+    "headline": "CBS fires veteran correspondent Scott Pelley amid turmoil over direction of '60 Minutes'",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/cbs-fires-scott-pelley-amid-turmoil-over-direction-of-60-minutes.html",
+    "summary": "CBS News has fired high-profile \"60 Minutes\" correspondent Scott Pelley amid debate about the direction of the show, a mainstay of the network.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 05:39:53 GMT"
+  },
+  {
+    "headline": "We're upping our Palo Alto price target after strong earnings vanquish AI disruption fears",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/02/were-upping-our-palo-alto-price-target-after-strong-earnings-vanquish-ai-disruption-fears-.html",
+    "summary": "The business momentum is clear here, validating the stock's dramatic comeback to fresh highs.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Tue, 02 Jun 2026 23:28:55 GMT"
+  },
+  {
+    "headline": "Ulta shares pop as beauty retailer beats Wall Street expectations and hikes earnings outlook",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/02/ulta-beauty-ulta-q1-earnings-2026.html",
+    "summary": "Ulta Beauty beat on the top and bottom lines for its fiscal first quarter on Tuesday as CEO Kecia Steelman praised the company's strategy.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Tue, 02 Jun 2026 21:31:18 GMT"
+  },
+  {
+    "headline": "UK assets face underestimated risk event, analysts warn as PM hopeful swerves call to calm investor nerves",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/andy-burnham-keir-starmer-gilts-bond-market-pound-gbp.html",
+    "summary": "One analyst said markets would reprice U.K. fiscal risk \"accordingly and quickly\" if Burnham's political ambitions come to light.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 10:35:47 GMT"
+  },
+  {
+    "headline": "Supreme Court allows Alabama to use congressional map that dilutes Black vote",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/supreme-court-alabama-congress-map-redistricting-black.html",
+    "summary": "The ruling is a victory for Republicans, who have sought to retain their slim majority in the House of Representatives by redistricting in various states.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 02:40:12 GMT"
+  },
+  {
+    "headline": "Investors bet humanoid robots will transform industry and homes over the next decade",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/humanoid-robots-trillion-dollar-ai-market.html",
+    "summary": "\u201cBe ready for it,\u201d said one fund manager who sees enormous opportunities in the space.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 05:00:01 GMT"
+  },
+  {
+    "headline": "Alphabet's $80 billion stock sale leaves Wall Street in 'unprecedented territory,' says Goldman's Gutman",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/alphabet-stock-sale-goldman-international-gutman.html",
+    "summary": "Goldman Sachs is acting as a joint book-running manager for Alphabet's underwritten offerings.",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 07:56:59 GMT"
+  },
+  {
+    "headline": "Big Tech's AI ambitions pose a major power test for Europe",
+    "source": "CNBC",
+    "link": "https://www.cnbc.com/2026/06/03/big-techs-ai-power-test-europe-softbank-france.html",
+    "summary": "Japan's SoftBank on Saturday announced plans to build 3.1 GW of AI data centers in the northern Hauts-de-France region by 2031.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 05:03:01 GMT"
+  },
+  {
+    "headline": "Oil prices climb for a third straight day as peace-deal hopes teeter",
+    "source": "MarketWatch",
+    "link": "https://www.marketwatch.com/story/oil-prices-rally-for-a-third-straight-day-as-peace-deal-hopes-teeter-6a0b1635?mod=mw_rss_topstories",
+    "summary": "WTI crude futures have risen nearly 10% in three days as hopes for a quick peace deal fade.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 12:05:00 GMT"
+  },
+  {
+    "headline": "The hottest stock market in the world has doubled this year. Now Goldman Sachs sees another 40% gain from here.",
+    "source": "MarketWatch",
+    "link": "https://www.marketwatch.com/story/the-hottest-stock-market-in-the-world-has-doubled-this-year-now-goldman-sachs-sees-another-40-gain-from-here-bb6c49c7?mod=mw_rss_topstories",
+    "summary": "Earnings are the principal driver behind the breathtaking rallies  achieved by Korean and Taiwanese benchmark indices in 2026, and Goldman Sachs thinks the market is still underestimating the longevity of the chip cycle.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 10:56:00 GMT"
+  },
+  {
+    "headline": "\u2018No one seems to wear their bling\u2019: Is it safe to show off your expensive jewelry?",
+    "source": "MarketWatch",
+    "link": "https://www.marketwatch.com/story/no-one-seems-to-wear-their-bling-is-it-safe-to-show-off-your-expensive-jewelry-a807bc55?mod=mw_rss_topstories",
+    "summary": "\u201cI\u2019ve been to many shows, operas, big parties and fundraisers.\u201d",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 10:15:00 GMT"
+  },
+  {
+    "headline": "Spanish billionaire moves to 10th place globally as Inditex sales jump",
+    "source": "MarketWatch",
+    "link": "https://www.marketwatch.com/story/billionaire-moves-into-10th-place-globally-as-inditex-sales-jump-6d248eba?mod=mw_rss_topstories",
+    "summary": "Amancio Ortega moved into 10th place on the Forbes real-time billionaires list after the retailer he co-founded, Inditex, reported accelerating sales in the current quarter.",
+    "tickers": [],
+    "category": "primary_financial_news",
+    "confidence": "High",
+    "published": "Wed, 03 Jun 2026 09:09:00 GMT"
+  },
+  {
+    "headline": "Claude Opus 4.8 is now available in Microsoft Foundry",
+    "source": "Microsoft Azure Blog",
+    "link": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/claude-opus-4-8-is-now-available-in-microsoft-foundry/4523367",
+    "summary": "Claude Opus 4.8 is now available in Microsoft Foundry, giving developers and enterprises access to Anthropic\u2019s most capable Opus model for coding, agentic tasks, and professional work.\nThe post Claude Opus 4.8 is now available in Microsoft ",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 14:46:32 +0000"
+  },
+  {
+    "headline": "Powering multi-cluster workloads with seamless cross\u2011cluster networking for Azure Kubernetes Fleet Manager",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/powering-multi-cluster-workloads-with-seamless-cross-cluster-networking-for-azure-kubernetes-fleet-manager/",
+    "summary": "With Cilium-based cross-cluster networking, we are delivering a managed, high-performance network that can span your entire fleet.\nThe post Powering multi-cluster workloads with seamless cross\u2011cluster networking for Azure Kubernetes Fleet M",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 22 May 2026 17:00:00 +0000"
+  },
+  {
+    "headline": "Azure NetApp Files for EDA workloads: From revolution to breakthrough at scale",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/azure-netapp-files-for-eda-workloads-from-revolution-to-breakthrough-at-scale/",
+    "summary": "Azure NetApp Files is redefining what\u2019s possible for EDA in the cloud\u2014delivering scalable, high-performance storage that supports massive concurrency, low latency, and consistent production performance. With independent benchmark validation",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 22 May 2026 15:00:00 +0000"
+  },
+  {
+    "headline": "Azure IaaS: Deploy high-performance workloads with a system-level approach",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/azure-iaas-deploy-high-performance-workloads-with-a-system-level-approach/",
+    "summary": "Performance in the cloud is no longer defined by individual resources\u2014it\u2019s shaped by how compute, storage, and networking work together. Azure IaaS takes a system-level approach to help organizations achieve consistent, scalable performance",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Wed, 20 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Azure Files Entra-Only identities: Advancing cloud-native identity and security",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/azure-files-entra-only-identities-advancing-cloud-native-identity-and-security/",
+    "summary": "We are excited to announce the general availability (GA) of Entra-Only identities for Azure Files SMB. With native Microsoft Entra ID authentication, organizations can now grant secure, identity-based access to SMB file shares using cloud-n",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 19 May 2026 19:00:00 +0000"
+  },
+  {
+    "headline": "From\u00a0commit\u00a0to\u00a0cloud: Powering\u00a0what\u2019s\u00a0next for PostgreSQL",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/from-commit-to-cloud-powering-whats-next-for-postgresql/",
+    "summary": "PostgreSQL has become foundational to how modern applications are built. It powers everything from early\u2011stage startups to some of the most demanding production systems in the world. Its longevity isn\u2019t accidental, it\u2019s the result of decade",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Wed, 13 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Advancing enterprise AI: New SAP on Azure announcements from SAP Sapphire 2026",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/advancing-enterprise-ai-new-sap-on-azure-announcements-from-sap-sapphire-2026/",
+    "summary": "Together, Microsoft and SAP are helping enterprises transform operations, decision-making, and innovation at scale on Azure.\nThe post Advancing enterprise AI: New SAP on Azure announcements from SAP Sapphire 2026 appeared first on Microsoft",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 12 May 2026 18:00:00 +0000"
+  },
+  {
+    "headline": "Red Hat Summit 2026: Platform modernization and AI on Microsoft Azure Red Hat OpenShift",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/red-hat-summit-2026-platform-modernization-and-ai-on-azure-microsoft-red-hat-openshift/",
+    "summary": "Microsoft and Red Hat show how Azure Red Hat OpenShift powers modernization and production AI with secure, scalable enterprise governance.\nThe post Red Hat Summit 2026: Platform modernization and AI on Microsoft Azure Red Hat OpenShift appe",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 11 May 2026 19:00:00 +0000"
+  },
+  {
+    "headline": "Build AI apps with Azure Cosmos DB: Key trends from Cosmos Conf 2026",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/build-ai-apps-with-azure-cosmos-db-key-trends-from-cosmos-conf-2026/",
+    "summary": "AI is reshaping application development. Explore key trends from Cosmos DB Conf 2026 and how teams are building scalable, AI-native applications with Azure Cosmos DB.\nThe post Build AI apps with Azure Cosmos DB: Key trends from Cosmos Conf ",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 11 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Scaling cloud and AI: Microsoft Azure\u2019s commitment to Europe\u2019s digital future",
+    "source": "Microsoft Azure Blog",
+    "link": "https://azure.microsoft.com/en-us/blog/scaling-cloud-and-ai-microsoft-azures-commitment-to-europes-digital-future/",
+    "summary": "As demand for cloud and AI grows, Microsoft is expanding Azure across Europe to deliver scalable, resilient infrastructure that supports innovation, compliance, and performance.\nThe post Scaling cloud and AI: Microsoft Azure&#8217;s commitm",
+    "tickers": [
+      "MSFT"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Wed, 06 May 2026 14:00:00 +0000"
+  },
+  {
+    "headline": "Get started with OpenAI GPT-5.5, GPT-5.4 models, and Codex on Amazon Bedrock",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/get-started-with-openai-gpt-5-5-gpt-5-4-models-and-codex-on-amazon-bedrock/",
+    "summary": "OpenAI frontier models GPT-5.5 and GPT-5.4, and Codex, the OpenAI coding agent, are now generally available on Amazon Bedrock. Deploy frontier models on Bedrock's high performance inference engine with built-in security, governance, and pay",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 21:33:28 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: Claude Opus 4.8 on AWS, Aurora MySQL with Kiro Powers, and more (June 1, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-opus-4-8-on-aws-aurora-mysql-with-kiro-powers-and-more-june-1-2026/",
+    "summary": "In my last Week in Review post, I shared what I\u2019d been hearing from customers in the AI-Driven Development Lifecycle (AI-DLC) workshops I\u2019ve been delivering. Last week I was back at it, this time in Denver for a two-day AI-DLC workshop, whe",
+    "tickers": [],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 14:25:33 +0000"
+  },
+  {
+    "headline": "Introducing the next generation of AWS Resilience Hub for generative AI-based SRE resilience journey",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/introducing-the-next-generation-of-aws-resilience-hub-for-generative-ai-based-sre-resilience-journey/",
+    "summary": "AWS launches the next generation of AWS Resilience Hub with a significantly expanded experience that brings together a new application model, dependency discovery assessment, generative AI-powered failure mode analysis, modular resilience p",
+    "tickers": [],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 19:29:55 +0000"
+  },
+  {
+    "headline": "Introducing the next generation of Amazon OpenSearch Serverless for building your agentic AI applications",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/introducing-the-next-generation-of-amazon-opensearch-serverless-for-building-your-agentic-ai-applications/",
+    "summary": "AWS rebuilt Amazon OpenSearch Serverless from the ground up for agentic AI and dynamic workloads. Get instant autoscaling and up to 60% cost savings.",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 18:26:16 +0000"
+  },
+  {
+    "headline": "Meet Our Newest AWS Heroes \u2013 May 2026",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/meet-our-newest-aws-heroes-may-2026/",
+    "summary": "We\u2019re excited to welcome four outstanding community leaders as our newest AWS Heroes. These individuals embody the spirit of collaboration and knowledge sharing that makes the AWS community thrive. From building AI-powered tools that help f",
+    "tickers": [],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Wed, 27 May 2026 16:15:05 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: AWS Local Zones in Istanbul, open-source ExtendDB, Kiro Web, and more (May 25, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-aws-local-zones-in-istanbul-open-source-extenddb-kiro-web-and-more-may-25-2026/",
+    "summary": "There\u2019s something genuinely energizing about working with startups \u2014 something I\u2019ve been doing intensely for more than two years now. Startups operate at a different frequency: the urgency is real, the constraints are tight, and the stakes ",
+    "tickers": [],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 25 May 2026 20:11:10 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: AWS Transform at 1 year, Claude Platform on AWS, EC2 M3 Ultra Mac instances, and more (May 18, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-aws-transform-at-1-year-claude-platform-on-aws-ec2-m3-ultra-mac-instances-and-more-may-18-2026/",
+    "summary": "Just a year ago, we launched AWS Transform for .NET, Mainframe and VMware workloads, the first agentic AI service purpose-built for modernizing enterprise applications at scale. At re:Invent 2025, we introduced AWS Transform custom, which e",
+    "tickers": [],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 18 May 2026 19:13:20 +0000"
+  },
+  {
+    "headline": "Amazon Bedrock introduces new advanced prompt optimization and migration tool",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/amazon-bedrock-introduces-new-advanced-prompt-optimization-and-migration-tool/",
+    "summary": "Amazon Bedrock Advanced Prompt Optimization enables customers to optimize their prompts for their current model or migrate prompts to new models faster than before with built-in evaluation feedback loops. Optimize your prompts and compare r",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 14 May 2026 22:03:39 +0000"
+  },
+  {
+    "headline": "Amazon Redshift introduces AWS Graviton-based RG instances with an integrated data lake query engine",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/amazon-redshift-introduces-aws-graviton-based-rg-instances-with-an-integrated-data-lake-query-engine/",
+    "summary": "Amazon Redshift RG instances, powered by AWS Graviton, run data warehouse and data lake workloads up to 2.4x as fast as RA3 instances at 30% lower price per vCPU. Its integrated data lake query engine supports open table formats such as Apa",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 12 May 2026 16:05:12 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: Amazon Bedrock AgentCore payments, Agent Toolkit for AWS, and more (May 11, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-amazon-bedrock-agentcore-payments-agent-toolkit-for-aws-and-more-may-11-2026/",
+    "summary": "My most exciting news of last week: Amazon Bedrock AgentCore previewed the first managed payment capabilities enabling AI agents to autonomously access and pay for APIs, MCP servers, web content, and other agents. Built in partnership with ",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 11 May 2026 16:08:26 +0000"
+  },
+  {
+    "headline": "The AWS MCP Server is now generally available",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available/",
+    "summary": "AWS announces the general availability of the AWS MCP Server, a managed remote Model Context Protocol (MCP) server that gives AI agents and coding assistants secure, authenticated access to all AWS services. The AWS MCP Server is part of th",
+    "tickers": [],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Wed, 06 May 2026 15:36:44 +0000"
+  },
+  {
+    "headline": "Modernize your workflows: Amazon WorkSpaces now gives AI agents their own desktop (preview)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/modernize-your-workflows-amazon-workspaces-now-gives-ai-agents-their-own-desktop-preview/",
+    "summary": "Amazon WorkSpaces now lets AI agents securely operate legacy desktop applications\u2014without APIs or modernization\u2014using IAM authentication, MCP support, and computer vision within existing security frameworks.",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 05 May 2026 17:23:40 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: What\u2019s Next with AWS 2026, Amazon Quick, OpenAI partnership, and more (May 4, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-whats-next-with-aws-2026-amazon-quick-openai-partnership-and-more-may-4-2026/",
+    "summary": "Last week, I took some time off in York, England, often described as the most haunted city in the country. I wandered through the ruins of abbeys that have stood for nearly a thousand years, walked along medieval walls, and spent an evening",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 04 May 2026 17:05:41 +0000"
+  },
+  {
+    "headline": "Top announcements of the What\u2019s Next with AWS, 2026",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/top-announcements-of-the-whats-next-with-aws-2026/",
+    "summary": "At the \"What's Next with AWS\" 2026 event, AWS launched Amazon Quick\u2014an AI assistant for work with a desktop app and expanded integrations\u2014and expanded Amazon Connect into four agentic AI solutions for supply chain, hiring, customer experien",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 28 Apr 2026 18:11:39 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: Anthropic & Meta partnership, AWS Lambda S3 Files, Amazon Bedrock AgentCore CLI, and more (April 27, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-anthropic-meta-partnership-aws-lambda-s3-files-amazon-bedrock-agentcore-cli-and-more-april-27-2026/",
+    "summary": "Late March took me to Seattle for the Specialist Tech Conference, one of the most energizing gatherings of AWS specialists from around the world. It was an incredible opportunity to connect with peers, exchange experiences, and go deep on t",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 27 Apr 2026 15:01:28 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: Claude Opus 4.7 in Amazon Bedrock, AWS Interconnect GA, and more (April 20, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-opus-4-7-in-amazon-bedrock-aws-interconnect-ga-and-more-april-20-2026/",
+    "summary": "Claude Opus 4.7 arrives in Amazon Bedrock with improved agentic coding and a 1M token context window. AWS Interconnect reaches general availability with multicloud private connectivity and a new last-mile option. Plus, post-quantum TLS for ",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 20 Apr 2026 15:53:21 +0000"
+  },
+  {
+    "headline": "Introducing Anthropic\u2019s Claude Opus 4.7 model in Amazon Bedrock",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/introducing-anthropics-claude-opus-4-7-model-in-amazon-bedrock/",
+    "summary": "AWS launches Claude Opus 4.7 in Amazon Bedrock, Anthropic's most intelligent Opus model for advancing performance across coding, long-running agents, and professional work. Claude Opus 4.7 is powered by Amazon Bedrock's next generation infe",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 16 Apr 2026 14:49:33 +0000"
+  },
+  {
+    "headline": "AWS Interconnect is now generally available, with a new option to simplify last-mile connectivity",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-interconnect-is-now-generally-available-with-a-new-option-to-simplify-last-mile-connectivity/",
+    "summary": "Today, we\u2019re announcing the general availability of AWS Interconnect \u2013 multicloud, a managed private connectivity service that connects your Amazon Virtual Private Cloud (Amazon VPC) directly to VPCs on other cloud providers. We\u2019re also int",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 14 Apr 2026 23:54:47 +0000"
+  },
+  {
+    "headline": "AWS Weekly Roundup: Claude Mythos Preview in Amazon Bedrock, AWS Agent Registry, and more (April 13, 2026)",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-mythos-preview-in-amazon-bedrock-aws-agent-registry-and-more-april-13-2026/",
+    "summary": "In my last Week in Review post, I mentioned how much time I\u2019ve been spending on AI-Driven Development Lifecycle (AI-DLC) workshops with customers this year. A common theme in those sessions is the need for better cost visibility. Teams are ",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 13 Apr 2026 16:16:20 +0000"
+  },
+  {
+    "headline": "Launching S3 Files, making S3 buckets accessible as file systems",
+    "source": "AWS News Blog",
+    "link": "https://aws.amazon.com/blogs/aws/launching-s3-files-making-s3-buckets-accessible-as-file-systems/",
+    "summary": "Amazon S3 Files makes S3 buckets accessible as high-performance file systems on AWS compute resources, eliminating the tradeoff between object storage benefits and interactive file capabilities while enabling seamless data sharing with ~1ms",
+    "tickers": [
+      "AMZN"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 07 Apr 2026 19:18:32 +0000"
+  },
+  {
+    "headline": "Connecting AI agents with unstructured data using Google Cloud Storage MCP Servers",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/",
+    "summary": "Google Cloud Storage (GCS) is a foundational component of the modern agentic tech stack and the preferred home for unstructured data at scale. As enterprises deploy agents in production, the critical focus has shifted to turning data into c",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 02 Jun 2026 17:00:00 +0000"
+  },
+  {
+    "headline": "Announcing Spanner Graph algorithms: Google-grade intelligence for connected data",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/databases/introducing-spanner-graph-algorithms/",
+    "summary": "At Google Cloud Next, we announced the preview of graph algorithms with Spanner Graph, bringing Google Research\u2019s state-of-the-art graph mining capabilities natively to your database. These graph intelligence capabilities can help you deriv",
+    "tickers": [
+      "DELL",
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 02 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Accelerating data lakes: Optimizing Apache Iceberg and Spark with gcs-analytics-core",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/data-analytics/optimize-iceberg-and-spark-workloads-with-gcs-analytics-core/",
+    "summary": "Many data engineers spend significant time managing compatibility and getting best performance across multiple analytics engines. To help solve this pain point, we are excited to announce gcs-analytics-core, a new open-source Java library d",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 02 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Experimenting with TPUs, GKE Managed DRANET, and Multi-cluster Inference Gateway",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/developers-practitioners/experimenting-with-tpus-gke-managed-dranet-and-multi-cluster-inference-gateway/",
+    "summary": "What happens when your workload fails in one region but you need access to service? This is a common case for availability and uptime. With recent enhancement to the Kubernetes ecosystem and capabilities like Dynamic Resource Allocation (DR",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Tue, 02 Jun 2026 07:00:00 +0000"
+  },
+  {
+    "headline": "How Trustpilot built a real-time architecture for data enrichment using Gemma",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/customers/how-trustpilot-built-a-real-time-architecture-for-data-enrichment-using-gemma/",
+    "summary": "Processing millions of user reviews in real-time, under strict latency and cost constraints, is no easy task. Trustpilot has been doing exactly that with custom machine learning since long before large language models (LLMs) were cool. Now,",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "The fully-managed Remote MCP Server for AlloyDB is now Generally Available",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/data-analytics/alloydb-remote-mcp-server-ga-secure-ai-agent-access-to-your-data/",
+    "summary": "AI agents possess incredible reasoning capabilities and can perform increasingly complex actions. But the reliability of agentic outcomes depends entirely on the quality of the context they can access \u2014 context that is frequently locked awa",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Modeling a digital twin of a food supply chain using BigQuery Graph",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/data-analytics/modeling-a-digital-twin-using-bigquery-graph/",
+    "summary": "The example of a growing restaurant\nImagine you are running a restaurant chain. You just can't physically feel and touch things to know how your business operates. You need tools and a digital replica of your business to sense the health of",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "What Google Cloud announced in AI this month",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month/",
+    "summary": "Editor\u2019s note: Want to keep up with the latest from Google Cloud? Check back here for a monthly recap of our latest updates, announcements, resources, events, learning opportunities, and more.\nWe\u2019ve had a busy month! Between announcing Gemi",
+    "tickers": [
+      "NOW",
+      "MSFT",
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Introducing the GKE standby buffer: Improve node startup times without blowing your budget",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/containers-kubernetes/gke-standby-buffers-speed-up-autoscaling-for-less-spend/",
+    "summary": "Application owners and platform engineers have long faced a difficult choice: spend excessively by over-provisioning to guarantee quick startups, or minimize costs but endure slow cold starts.\nWe are excited to announce a solution to this c",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "What\u2019s new with Google Cloud",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/inside-google-cloud/whats-new-google-cloud/",
+    "summary": "Want to know the latest from Google Cloud? Find it here in one handy location. Check back regularly for our newest updates, announcements, resources, events, learning opportunities, and more.\u00a0Tip:\u00a0Not sure where to find what you\u2019re looking ",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Cool stuff Google Cloud customers built, May edition: Agentic algorithms for supply chains; virtual try-on APIs; robotic camera operators & more",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up/",
+    "summary": "AI and cloud technology are reshaping every corner of every industry around the world. Without our customers, who are building the future on our platform, there would be no Google\u00a0\nCloud. In this regular round-up, we dive into some of the e",
+    "tickers": [
+      "ORCL",
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "From petabytes to predictions: Easy BigQuery insights in Google Sheets",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/data-analytics/using-connected-sheets-to-analyze-bigquery-data/",
+    "summary": "Many organizations\u2019 single source of truth is data that resides in BigQuery, Google\u2019s governed, secure and petabyte-scale data platform. However, the \"last mile\" of ad-hoc analysis, modeling, and reporting often happens where business users",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Developer's guide to Gemini Enterprise and A2UI integration",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/developers-practitioners/guide-to-gemini-enterprise-and-a2ui-integration/",
+    "summary": "If you've built a chatbot, you know this conversation:\nUser: \"Book a table for two tomorrow at 7pm.\" Agent: \"Okay, for what day?\" User: \"Tomorrow.\" Agent: \"What time?\"\nA date picker would have ended this in one tap. But until recently, agen",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "AlloyDB Hot Standby: Faster failovers, consistent performance",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/databases/alloydb-hot-standby-faster-failovers-and-consistent-performance/",
+    "summary": "AlloyDB for PostgreSQL is a fully managed, PostgreSQL-compatible database service designed for the most demanding enterprise workloads. It combines the best of PostgreSQL with the power of Google, delivering exceptional performance, scalabi",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Cloud CISO Perspectives: How to build an AI-ready security program for the public sector",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-to-build-an-ai-ready-security-program-for-the-public-sector/",
+    "summary": "Welcome to the second Cloud CISO Perspectives for May 2026. Today, Usman Chaudhary, Field CISO, Google Public Sector, offers a guide for CISOs protecting government agencies and critical infrastructure on how to get started \u2014 and get the mo",
+    "tickers": [
+      "ORCL",
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "How the University of Central Oklahoma is using AI to streamline analysis of complex criminal cases",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/topics/public-sector/how-the-university-of-central-oklahoma-is-using-ai-to-streamline-analysis-of-complex-criminal-cases/",
+    "summary": "In the high-stakes world of forensic science, time is the enemy of justice. The University of Central Oklahoma (UCO) Forensic Science Institute (FSI) was looking for an innovative AI solution that could help reduce the time required to anal",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 19:00:00 +0000"
+  },
+  {
+    "headline": "Evolving Dataflow to process massive datasets for machine learning",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/data-analytics/ai-focused-innovations-in-dataflow/",
+    "summary": "Google created MapReduce more than 20 years ago to solve the scaling problems in data processing that the then young company was running into. The AI era that we are in now demands efficient, large-scale data processing for everything from ",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Nano Banana 2 and Nano Banana Pro are generally available, and already powering creative workflows",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/ai-machine-learning/nano-banana-2-and-nano-banana-pro-are-generally-available/",
+    "summary": "Organizations are unlocking entirely new ways to use image generation and editing across their industries. To drive next-generation experiences, businesses are embedding AI directly into creative, agentic workflows. But next-gen workflows r",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "AI in SRE: Where and how Google is deploying agentic AI to improve operations",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/devops-sre/how-google-sre-is-using-agentic-ai-to-improve-operations/",
+    "summary": "Since its inception over 20 years ago, Google has used Site Reliability Engineering (SRE) to keep services like Search, Gmail, Maps, YouTube and Google Cloud reliable and highly available, adhering to the principles and practices of the rel",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 16:00:00 +0000"
+  },
+  {
+    "headline": "Go from resource-level to business-level maintenance in Google Cloud",
+    "source": "Google Cloud Blog",
+    "link": "https://cloud.google.com/blog/products/application-development/app-centric-maintenance-visibility-in-unified-maintenance/",
+    "summary": "Managing planned maintenance is a critical part of running a reliable business. But as your cloud footprint grows into hundreds or even thousands of projects, keeping track of every individual update can feel like a full-time job. For many ",
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "confidence": "Medium",
+    "published": "Thu, 28 May 2026 16:00:00 +0000"
+  }
+]
