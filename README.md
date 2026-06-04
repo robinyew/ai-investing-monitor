@@ -108,8 +108,10 @@ The workflow is in `.github/workflows/daily-report.yml`.
 
 It supports both:
 
-- Scheduled pre-market runs at `12:15 UTC` Monday through Friday, targeting roughly 7:00-8:00 AM Eastern depending on daylight saving time
+- Cloudflare Worker scheduled runs that call GitHub Actions `workflow_dispatch`
 - Manual runs through `workflow_dispatch` from the GitHub Actions tab
+
+GitHub Actions does not use its own cron schedule in this version. Cloudflare Worker is the external scheduler/trigger.
 
 The workflow uses `GITHUB_TOKEN` to create or update one GitHub Issue titled:
 
@@ -192,7 +194,7 @@ Some feeds may be unavailable, delayed, paywalled, or incomplete. The workflow i
 - No paid market data feed is included.
 - News matching is headline/feed based and may miss important stories.
 - Earnings dates depend on data provider availability.
-- GitHub Actions schedules are UTC-based and may run slightly later than the target time.
+- Scheduled triggering is handled by Cloudflare Worker. GitHub Actions only runs when `workflow_dispatch` is called.
 - The report is a research aid only and requires human review.
 
 ## Disclaimer

@@ -1,8 +1,6 @@
 name: AI Investing Pre-Market Brief
 
 on:
-  schedule:
-    - cron: '15 12 * * 1-5'
   workflow_dispatch:
 
 permissions:
