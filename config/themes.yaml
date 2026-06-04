@@ -1,0 +1,119 @@
+themes:
+  光互连 / 网络:
+    canonical: optical interconnect / networking
+    keywords:
+      - 800G
+      - 1.6T
+      - 3.2T
+      - optical transceiver
+      - LPO
+      - CPO
+      - NPO
+      - AOC
+      - AEC
+      - DAC
+      - SerDes
+      - optical DSP
+      - coherent optics
+      - silicon photonics
+      - InP laser
+      - ELS
+      - co-packaged optics
+      - data center interconnect
+    related_tickers:
+      - AAOI
+      - COHR
+      - CIEN
+      - MRVL
+      - AVGO
+      - ANET
+      - LITE
+      - NOK
+      - CRDO
+      - ALAB
+
+  电力 / 液冷:
+    canonical: power / liquid cooling / data center infrastructure
+    keywords:
+      - AI data center power
+      - 800V HVDC
+      - liquid cooling
+      - UPS
+      - PDU
+      - switchgear
+      - transformer
+      - grid interconnect
+      - data center power bottleneck
+      - cooling
+      - thermal management
+    related_tickers:
+      - VRT
+      - ETN
+      - GEV
+      - PWR
+      - FIX
+      - TT
+      - CARR
+      - MPWR
+      - NVTS
+
+  AI server:
+    canonical: AI server / rack-scale systems
+    keywords:
+      - AI server
+      - GB200
+      - GB300
+      - NVL72
+      - rack-scale
+      - hyperscaler server order
+      - ODM
+      - EMS
+      - liquid-cooled rack
+    related_tickers:
+      - DELL
+      - SMCI
+      - HPE
+      - CLS
+      - JBL
+      - FLEX
+
+  Memory / HBM:
+    canonical: memory / HBM
+    keywords:
+      - HBM3E
+      - HBM4
+      - DRAM
+      - NAND
+      - memory pricing
+      - AI memory
+      - CoWoS
+      - advanced packaging
+    related_tickers:
+      - MU
+      - TSM
+      - ASML
+      - AMAT
+      - LRCX
+      - KLAC
+
+  云平台 capex:
+    canonical: cloud platform / AI capex
+    keywords:
+      - AI capex
+      - hyperscaler capex
+      - cloud AI infrastructure
+      - Azure AI
+      - Google TPU
+      - AWS Trainium
+      - Meta AI infra
+      - Oracle cloud
+      - neocloud
+    related_tickers:
+      - MSFT
+      - GOOGL
+      - AMZN
+      - META
+      - ORCL
+      - NBIS
+      - IREN
+      - CORZ

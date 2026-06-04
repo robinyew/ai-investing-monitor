@@ -1,52 +1,78 @@
-core_aggressive_ai_infrastructure:
-  label: Core aggressive AI infrastructure watchlist
-  core: true
+core_holdings_planned:
+  label: 核心持仓/计划买入组
+  priority: 1
+  daily_focus: true
   tickers:
     - DELL
     - VRT
-    - CIEN
-    - COHR
-    - MRVL
-    - MPWR
     - AAOI
     - NVTS
-
-second_stage_ai_software_cloud_agents:
-  label: Second-stage AI software / cloud / AI agent watchlist
-  tickers:
-    - NOW
-    - ORCL
-    - SNOW
-    - PLTR
+    - MPWR
+    - MRVL
+    - ANET
+    - AVGO
+    - ETN
     - MSFT
     - GOOGL
-    - AMZN
 
-memory_storage_data_infrastructure:
-  label: Memory / storage / data infrastructure watchlist
+key_observation:
+  label: 关键观察组
+  priority: 2
+  daily_focus: false
+  categories:
+    光网络 / 光器件 / InP / DCI / AI data center optics:
+      - CIEN
+      - COHR
+      - LITE
+      - NOK
+    HBM / DRAM / AI memory:
+      - MU
+    AI connectivity / PCIe / CXL / AEC / SerDes:
+      - ALAB
+      - CRDO
+    AI server / EMS / ODM:
+      - CLS
+      - JBL
+      - SMCI
+      - HPE
+    电力基础设施 / 电网 / 数据中心建设:
+      - GEV
+      - PWR
+      - FIX
+    AI CPU / architecture:
+      - ARM
   tickers:
+    - CIEN
+    - COHR
     - MU
-    - WDC
-    - STX
-
-ai_networking_asic_infrastructure:
-  label: AI networking / ASIC / infrastructure watchlist
-  tickers:
-    - AVGO
-    - ANET
-    - CSCO
+    - NOK
+    - LITE
+    - ALAB
+    - CRDO
+    - CLS
+    - JBL
+    - SMCI
+    - HPE
     - ARM
+    - GEV
+    - PWR
+    - FIX
 
-ai_pc_edge_device_supply_chain:
-  label: AI PC / edge AI / device supply chain watchlist
+high_risk_concepts:
+  label: 高风险概念观察
+  priority: 3
+  daily_focus: false
+  include_only_on_major_news: true
   tickers:
-    - QCOM
-    - "ON"
-    - HPQ
-    - TXN
+    - POET
+    - LWLG
+    - SIVE
+    - FOCI
 
-etf_benchmark:
-  label: ETF / benchmark watchlist
+benchmarks:
+  label: ETF / benchmark
+  priority: 4
+  daily_focus: false
   tickers:
     - SMH
     - SOXX

@@ -56,28 +56,28 @@ def build_html() -> dict:
     handoff_text = Path(result["handoff"]).read_text(encoding="utf-8")
     html = markdown.markdown(md_text, extensions=["tables", "toc"])
     handoff_html = markdown.markdown(handoff_text, extensions=["tables"])
-    alerts = "<p>No major automated risk flags.</p>"
-    if "Needs ChatGPT review: Yes" in md_text:
-        alerts = "<p>Automated flags were detected. Review the handoff and risk flags before drawing conclusions.</p>"
+    alerts = "<p>未发现需要自动升级处理的重大风险提示。</p>"
+    if "风险上升" in md_text or "是否需要关注: 是" in md_text:
+        alerts = "<p>报告包含需要关注或风险上升信号，请先阅读风险预警和 ChatGPT 摘要。</p>"
     body = f"""
 <header>
-  <h1>AI Investing Pre-Market Brief - {date}</h1>
-  <p>Research only. No brokerage connection, no trade execution, no buy/sell instructions.</p>
+  <h1>AI 投资新闻日报 - {date}</h1>
+  <p>仅用于研究和信息整理，不连接券商账户，不执行交易，不提供买卖建议。</p>
 </header>
-<section class="panel alert">
-  <h2>Important Alerts</h2>
-  {alerts}
-</section>
-<section class="panel">
-  <h2>ChatGPT Handoff Summary</h2>
-  {handoff_html}
-</section>
 <section class="panel">
   {html}
 </section>
+<section class="panel alert">
+  <h2>重要提示</h2>
+  {alerts}
+</section>
+<section class="panel">
+  <h2>给 ChatGPT 的分析摘要</h2>
+  {handoff_html}
+</section>
 """
     report_path = ROOT / f"docs/reports/{date}.html"
-    report_path.write_text(_page(f"AI Investing Pre-Market Brief - {date}", body), encoding="utf-8")
+    report_path.write_text(_page(f"AI 投资新闻日报 - {date}", body), encoding="utf-8")
     update_index()
     return {**result, "html": str(report_path)}
 
@@ -90,7 +90,7 @@ def update_index() -> None:
     body = f"""
 <header>
   <h1>AI Investing Monitor</h1>
-  <p>Pre-market AI investing research briefs for human review only.</p>
+  <p>AI 大基建投资新闻日报，仅供人工研究复核。</p>
 </header>
 <section class="panel">
   <h2>Recent Reports</h2>

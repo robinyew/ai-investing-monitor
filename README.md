@@ -108,7 +108,7 @@ The workflow is in `.github/workflows/daily-report.yml`.
 
 It supports both:
 
-- Scheduled pre-market runs at `12:00 UTC` Monday through Friday, targeting roughly 7:00-8:00 AM Eastern depending on daylight saving time
+- Scheduled pre-market runs at `12:15 UTC` Monday through Friday, targeting roughly 7:00-8:00 AM Eastern depending on daylight saving time
 - Manual runs through `workflow_dispatch` from the GitHub Actions tab
 
 The workflow uses `GITHUB_TOKEN` to create or update one GitHub Issue titled:
@@ -136,10 +136,11 @@ If no report files changed, `git diff --cached --quiet` succeeds and the commit 
 3. Open GitHub repo Settings -> Pages.
 4. Set the source to deploy from the `docs/` folder on the default branch.
 
-Example report URL:
+Expected GitHub Pages URLs:
 
 ```text
-https://YOUR_GITHUB_USERNAME.github.io/ai-investing-monitor/reports/YYYY-MM-DD.html
+https://robinyew.github.io/ai-investing-monitor/
+https://robinyew.github.io/ai-investing-monitor/reports/YYYY-MM-DD.html
 ```
 
 Optional secret:
@@ -149,7 +150,7 @@ Optional secret:
 Example:
 
 ```text
-https://YOUR_GITHUB_USERNAME.github.io/ai-investing-monitor/reports
+https://robinyew.github.io/ai-investing-monitor/reports
 ```
 
 If `REPORT_BASE_URL` is missing in GitHub Actions, the script falls back to the standard GitHub Pages URL format based on `GITHUB_REPOSITORY`.
