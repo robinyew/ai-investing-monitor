@@ -146,6 +146,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--x-md")
     parser.add_argument("--x-posts-dir")
     parser.add_argument("--export-html", action="store_true")
+    parser.add_argument("--skip-migration-log", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
@@ -1067,6 +1068,8 @@ def command_string(args: argparse.Namespace) -> str:
         parts += ["--x-posts-dir", args.x_posts_dir]
     if args.export_html:
         parts += ["--export-html"]
+    if args.skip_migration_log:
+        parts += ["--skip-migration-log"]
     if args.dry_run:
         parts += ["--dry-run"]
     return " ".join(parts)
@@ -1132,7 +1135,8 @@ def run(args: argparse.Namespace) -> dict:
         else:
             checks.append("HTML export publish-safe validation passed.")
         outputs["validation"].write_text(validation_markdown(args.date, command, selected, missing_optional, output_rel, counts, checks), encoding="utf-8")
-    append_migration_log(command, selected, missing_optional, output_rel, checks, counts)
+    if not args.skip_migration_log:
+        append_migration_log(command, selected, missing_optional, output_rel, checks, counts)
     return {**counts, "outputs": output_rel, "missing_optional_inputs": missing_optional}
 
 
