@@ -8,3 +8,13 @@ node_modules/
 .dev.vars
 cloudflare-workers/investment-report-dispatcher/.dev.vars
 cloudflare-workers/investment-report-dispatcher/.wrangler/
+
+# Cloudflare Worker local secrets/state
+cloudflare-workers/investment-report-dispatcher/.dev.vars
+cloudflare-workers/investment-report-dispatcher/.wrangler/
+
+# Cloudflare Worker local secrets/state
+**/.dev.vars
+**/.wrangler/
+cloudflare-workers/investment-report-dispatcher/.dev.vars
+cloudflare-workers/investment-report-dispatcher/.wrangler/
