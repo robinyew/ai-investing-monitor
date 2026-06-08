@@ -6,3 +6,4 @@ __pycache__/
 venv/
 node_modules/
 .dev.vars
+cloudflare-workers/investment-report-dispatcher/.dev.vars

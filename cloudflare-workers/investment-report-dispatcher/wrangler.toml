@@ -1,0 +1,18 @@
+name = "investment-report-dispatcher"
+main = "src/index.js"
+compatibility_date = "2026-06-07"
+
+[vars]
+GITHUB_OWNER = "robinyew"
+GITHUB_REPO = "ai-investing-monitor"
+GITHUB_REF = "main"
+DAILY_WORKFLOW_ID = "daily-report.yml"
+HUB_WORKFLOW_ID = "publish-hub-intelligence.yml"
+
+[triggers]
+crons = [
+  "15 12 * * 1-5",
+  "15 13 * * 1-5",
+  "30 12 * * 1-5",
+  "30 13 * * 1-5"
+]

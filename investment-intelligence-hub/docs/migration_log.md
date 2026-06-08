@@ -647,6 +647,75 @@ Boundary confirmation:
 - No trading automation was created.
 - No trade instructions were generated.
 
+## 2026-06-07 - Phase 7C Cloudflare Worker Dispatcher
+
+Timestamp: 2026-06-07T23:46:00-0400
+
+Files created:
+
+- `cloudflare-workers/investment-report-dispatcher/src/index.js`
+- `cloudflare-workers/investment-report-dispatcher/wrangler.toml`
+- `cloudflare-workers/investment-report-dispatcher/README.md`
+
+Worker purpose:
+
+- Dispatch existing GitHub Actions workflows for the AI Investing report system.
+- The Worker does not generate reports, modify investment data, commit, push, or run investing logic.
+
+Cron design:
+
+- `08:15 America/Toronto`: dispatch `daily-report.yml`.
+- `08:30 America/Toronto`: dispatch `publish-hub-intelligence.yml` with `date`, `mode=parallel`, and `publish=true`.
+- Registered weekday UTC cron expressions:
+  - `15 12 * * 1-5`
+  - `15 13 * * 1-5`
+  - `30 12 * * 1-5`
+  - `30 13 * * 1-5`
+
+DST handling:
+
+- The Worker computes `America/Toronto` local date/time with `Intl.DateTimeFormat`.
+- It dispatches only when local time exactly matches `08:15` or `08:30`.
+- It skips Saturday and Sunday in Toronto local time.
+
+GitHub workflow input matching:
+
+- `daily-report.yml` was inspected and currently has no `workflow_dispatch` inputs, so daily dispatch uses an empty `inputs` object.
+- `publish-hub-intelligence.yml` receives `date`, `mode=parallel`, and `publish=true`.
+
+Secrets required:
+
+- `GITHUB_WORKFLOW_TOKEN`
+- `DISPATCH_SECRET`
+
+Non-secret vars configured:
+
+- `GITHUB_OWNER=robinyew`
+- `GITHUB_REPO=ai-investing-monitor`
+- `GITHUB_REF=main`
+- `DAILY_WORKFLOW_ID=daily-report.yml`
+- `HUB_WORKFLOW_ID=publish-hub-intelligence.yml`
+
+Validation run:
+
+- Created Worker files were listed.
+- `node --check cloudflare-workers/investment-report-dispatcher/src/index.js` passed.
+- Secret pattern checks for `ghp_` and `github_pat_` returned no committed tokens.
+- Git status was inspected.
+
+Boundary confirmation:
+
+- No production report-generation scripts were modified.
+- `watchlists.yaml` and `themes.yaml` were not changed.
+- Root `docs/index.html` was not changed.
+- GitHub schedule was not added.
+- Worker only dispatches GitHub workflows.
+- No Cloudflare Worker deploy was performed.
+- No Worker secrets were set.
+- No real GitHub dispatch was run.
+- No trading automation was created.
+- No trade instructions were generated.
+
 ## 2026-06-07 - Phase 7B-2 Publish Workflow Cleanup Fix
 
 Timestamp: 2026-06-07T23:27:21-0400
@@ -676,6 +745,51 @@ Files removed by workflow cleanup for each publish date:
 - `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_validation.md`
 - `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_html_notes.md`
 - `investment-intelligence-hub/reports/daily_intelligence/html/YYYY-MM-DD.html`
+
+Boundary confirmation:
+
+- No production report-generation scripts were modified.
+- `watchlists.yaml` and `themes.yaml` were not changed.
+- Root `docs/index.html` was not updated.
+- GitHub schedule was not added.
+- Cloudflare Worker Cron was not implemented.
+- No API integrations were added.
+- No trading automation was created.
+- No trade instructions were generated.
+
+## 2026-06-07 - Phase 7B-2 Robust Cleanup and Migration Log Guard
+
+Timestamp: 2026-06-07T23:34:59-0400
+
+Failure reason:
+
+- The publish workflow still failed at `Verify allowed git diff` after cleanup because internal Hub generated artifacts and `investment-intelligence-hub/docs/migration_log.md` appeared in `git status`.
+- `run_hub_pipeline.py` was updating `migration_log.md` during the workflow run.
+
+Fix applied:
+
+- Added `--skip-migration-log` to `run_hub_pipeline.py`.
+- Updated `publish-hub-intelligence.yml` to run the Hub pipeline with `--skip-migration-log`.
+- Replaced file-by-file cleanup with a robust cleanup step:
+  - copy `YYYY-MM-DD_publish_notes.md` to `/tmp/hub_publish_notes.md`
+  - restore `investment-intelligence-hub/processed` and `investment-intelligence-hub/reports/daily_intelligence` from HEAD
+  - clean untracked files under those internal output directories
+  - recreate `YYYY-MM-DD_publish_notes.md`
+  - print `git status --short`
+
+Publish workflow writes allowed:
+
+- `docs/intelligence/YYYY-MM-DD.html`
+- `docs/intelligence/index.html`
+- `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_publish_notes.md`
+
+Publish workflow writes disallowed:
+
+- `investment-intelligence-hub/docs/migration_log.md`
+- `investment-intelligence-hub/processed/**/*.jsonl`
+- internal daily intelligence Markdown reports
+- internal Hub HTML export
+- HTML notes and validation files
 
 Boundary confirmation:
 
