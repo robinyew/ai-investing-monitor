@@ -64,7 +64,8 @@ jobs:
           python3 investment-intelligence-hub/scripts/run_hub_pipeline.py \
             --date "${{ inputs.date }}" \
             --mode "${{ inputs.mode }}" \
-            --export-html
+            --export-html \
+            --skip-migration-log
 
       - name: Publish helper dry run
         run: |
@@ -82,15 +83,19 @@ jobs:
       - name: Clean generated Hub internals before diff check
         if: ${{ inputs.publish == 'true' }}
         run: |
-          rm -f "investment-intelligence-hub/processed/sources/${{ inputs.date }}.jsonl"
-          rm -f "investment-intelligence-hub/processed/signals/${{ inputs.date }}.jsonl"
-          rm -f "investment-intelligence-hub/processed/ticker_impacts/${{ inputs.date }}.jsonl"
-          rm -f "investment-intelligence-hub/processed/thesis_impacts/${{ inputs.date }}.jsonl"
-          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}.md"
-          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_notes.md"
-          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_validation.md"
-          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_html_notes.md"
-          rm -f "investment-intelligence-hub/reports/daily_intelligence/html/${{ inputs.date }}.html"
+          publish_notes="investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_publish_notes.md"
+          if [ -f "$publish_notes" ]; then
+            cp "$publish_notes" /tmp/hub_publish_notes.md
+          fi
+
+          git restore --worktree --staged investment-intelligence-hub/processed investment-intelligence-hub/reports/daily_intelligence || true
+          git clean -fd -- investment-intelligence-hub/processed investment-intelligence-hub/reports/daily_intelligence
+
+          if [ -f /tmp/hub_publish_notes.md ]; then
+            mkdir -p investment-intelligence-hub/reports/daily_intelligence
+            cp /tmp/hub_publish_notes.md "$publish_notes"
+          fi
+
           git status --short
 
       - name: Verify allowed git diff
