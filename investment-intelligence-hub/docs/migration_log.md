@@ -647,6 +647,47 @@ Boundary confirmation:
 - No trading automation was created.
 - No trade instructions were generated.
 
+## 2026-06-07 - Phase 7B-2 Publish Workflow Cleanup Fix
+
+Timestamp: 2026-06-07T23:27:21-0400
+
+Failure reason:
+
+- A `publish=true` workflow run failed at `Verify allowed git diff` because `run_hub_pipeline.py` generated internal Hub artifacts during the workflow.
+- Those generated artifacts are required temporarily for HTML export and publish validation, but they should not be committed by the publish workflow.
+
+Cleanup behavior added:
+
+- Added a cleanup step after `Publish Hub HTML locally` and before `Verify allowed git diff`.
+- The cleanup step removes dated internal processed JSONL outputs for the input date.
+- The cleanup step removes dated internal daily intelligence Markdown, notes, validation, HTML notes, and local Hub HTML export for the input date.
+- The cleanup step preserves `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_publish_notes.md`.
+- The cleanup step preserves `.gitkeep` files, source code, docs, workflow files, and memory files.
+- The cleanup step prints `git status --short` before the strict allowed diff check.
+
+Files removed by workflow cleanup for each publish date:
+
+- `investment-intelligence-hub/processed/sources/YYYY-MM-DD.jsonl`
+- `investment-intelligence-hub/processed/signals/YYYY-MM-DD.jsonl`
+- `investment-intelligence-hub/processed/ticker_impacts/YYYY-MM-DD.jsonl`
+- `investment-intelligence-hub/processed/thesis_impacts/YYYY-MM-DD.jsonl`
+- `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD.md`
+- `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_notes.md`
+- `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_validation.md`
+- `investment-intelligence-hub/reports/daily_intelligence/YYYY-MM-DD_html_notes.md`
+- `investment-intelligence-hub/reports/daily_intelligence/html/YYYY-MM-DD.html`
+
+Boundary confirmation:
+
+- No production report-generation scripts were modified.
+- `watchlists.yaml` and `themes.yaml` were not changed.
+- Root `docs/index.html` was not updated.
+- GitHub schedule was not added.
+- Cloudflare Worker Cron was not implemented.
+- No API integrations were added.
+- No trading automation was created.
+- No trade instructions were generated.
+
 ## 2026-06-07 - Phase 7A Source Policy and Local HTML Export
 
 Timestamp: 2026-06-07T18:20:03-0400

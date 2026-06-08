@@ -79,6 +79,20 @@ jobs:
             --date "${{ inputs.date }}" \
             --publish true
 
+      - name: Clean generated Hub internals before diff check
+        if: ${{ inputs.publish == 'true' }}
+        run: |
+          rm -f "investment-intelligence-hub/processed/sources/${{ inputs.date }}.jsonl"
+          rm -f "investment-intelligence-hub/processed/signals/${{ inputs.date }}.jsonl"
+          rm -f "investment-intelligence-hub/processed/ticker_impacts/${{ inputs.date }}.jsonl"
+          rm -f "investment-intelligence-hub/processed/thesis_impacts/${{ inputs.date }}.jsonl"
+          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}.md"
+          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_notes.md"
+          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_validation.md"
+          rm -f "investment-intelligence-hub/reports/daily_intelligence/${{ inputs.date }}_html_notes.md"
+          rm -f "investment-intelligence-hub/reports/daily_intelligence/html/${{ inputs.date }}.html"
+          git status --short
+
       - name: Verify allowed git diff
         if: ${{ inputs.publish == 'true' }}
         run: |
