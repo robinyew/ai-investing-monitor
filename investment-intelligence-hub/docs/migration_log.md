@@ -716,6 +716,50 @@ Boundary confirmation:
 - No trading automation was created.
 - No trade instructions were generated.
 
+## 2026-06-08 - Phase 7C Cron Reliability Fix
+
+Timestamp: 2026-06-08T11:52:49-0400
+
+08:30 no-run observation:
+
+- The Worker deployed successfully and manual dispatch worked, but the automatic `08:30 America/Toronto` Hub dispatch did not appear in GitHub Actions.
+
+Root cause hypothesis:
+
+- The scheduled handler used wall-clock `new Date()` for routing and required an exact local minute match.
+- If Cloudflare executed the cron event slightly late, for example at `08:31 America/Toronto`, `chooseScheduledTarget` returned `null`.
+
+Fix applied:
+
+- Scheduled routing now uses `event.scheduledTime` when available.
+- The Worker derives Toronto local date/time from the nominal scheduled event time, not from wall-clock execution time.
+- `chooseScheduledTarget` now checks both:
+  - cron expression family (`15 12/13` for daily, `30 12/13` for Hub)
+  - scheduled Toronto local time (`08:15` for daily, `08:30` for Hub)
+- Added logging for actual execution UTC time, scheduled event UTC time, Toronto scheduled local time, cron expression, chosen target, and skip reason.
+- Added unauthenticated `/debug-time` endpoint that exposes no secrets.
+
+Validation run:
+
+- `node --check cloudflare-workers/investment-report-dispatcher/src/index.js` passed.
+- Local `/health` endpoint was tested.
+- Local `/debug-time` endpoint was tested.
+- Local dry-run manual dispatch was tested.
+
+Boundary confirmation:
+
+- No GitHub Actions workflows were modified.
+- No production report-generation scripts were modified.
+- `watchlists.yaml` and `themes.yaml` were not changed.
+- Root `docs/index.html` was not updated.
+- GitHub schedule was not added.
+- Cloudflare Worker Cron configuration was not changed.
+- GitHub token and secrets were not changed.
+- No real GitHub dispatch was run.
+- No Cloudflare deploy was run.
+- No trading automation was created.
+- No trade instructions were generated.
+
 ## 2026-06-07 - Phase 7B-2 Publish Workflow Cleanup Fix
 
 Timestamp: 2026-06-07T23:27:21-0400

@@ -9,7 +9,7 @@ The Worker only triggers GitHub workflows. It does not generate reports, modify 
 - 08:15 America/Toronto: dispatch `daily-report.yml`
 - 08:30 America/Toronto: dispatch `publish-hub-intelligence.yml` with `publish=true`
 
-Cloudflare cron expressions are UTC-based. Toronto shifts between EST and EDT, so this Worker registers both possible UTC times and checks the actual local Toronto time before dispatching.
+Cloudflare cron expressions are UTC-based. Toronto shifts between EST and EDT, so this Worker registers both possible UTC times and checks the scheduled event's Toronto local time before dispatching.
 
 Configured weekday cron triggers:
 
@@ -20,7 +20,7 @@ Configured weekday cron triggers:
 30 13 * * 1-5
 ```
 
-The Worker computes `America/Toronto` local date and time with `Intl.DateTimeFormat`. If the local day is Saturday or Sunday, scheduled dispatch is skipped.
+The Worker computes `America/Toronto` local date and time with `Intl.DateTimeFormat`. Scheduled routing uses Cloudflare's `event.scheduledTime`, not wall-clock execution time, so a slightly late Worker execution does not miss the `08:15` or `08:30` target minute. If the scheduled Toronto local day is Saturday or Sunday, scheduled dispatch is skipped.
 
 ## Required Secrets
 
@@ -59,6 +59,12 @@ Health endpoint:
 curl http://127.0.0.1:8787/health
 ```
 
+Debug time endpoint:
+
+```bash
+curl http://127.0.0.1:8787/debug-time
+```
+
 Dry-run manual dispatch:
 
 ```bash
@@ -94,9 +100,18 @@ npx wrangler deploy
 }
 ```
 
+## Scheduled Routing
+
+Scheduled dispatch checks both the cron expression and the Toronto local time derived from `event.scheduledTime`:
+
+- `15 12 * * 1-5` or `15 13 * * 1-5` can dispatch only if scheduled Toronto time is `08:15`.
+- `30 12 * * 1-5` or `30 13 * * 1-5` can dispatch only if scheduled Toronto time is `08:30`.
+
+This preserves DST protection while avoiding missed dispatch if Cloudflare executes the scheduled event slightly late.
+
 ## Idempotency Note
 
-The current protection is time-gating: the Worker only dispatches when the computed Toronto local time exactly matches `08:15` or `08:30`. A future enhancement can add Cloudflare KV to record dispatched `(target, date)` keys and prevent duplicate dispatches across retries or redeploys.
+The current protection is scheduled-time-gating: the Worker only dispatches when the cron expression and the scheduled Toronto local time match the intended target. A future enhancement can add Cloudflare KV to record dispatched `(target, date)` keys and prevent duplicate dispatches across retries or redeploys.
 
 ## Boundaries
 

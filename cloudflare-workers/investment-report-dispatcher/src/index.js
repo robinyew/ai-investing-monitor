@@ -12,14 +12,21 @@ export default {
 };
 
 async function handleScheduled(event, env) {
-  const toronto = getTorontoParts(new Date());
-  const target = chooseScheduledTarget(event.cron, toronto);
+  const executionDate = new Date();
+  const scheduledDate = event.scheduledTime
+    ? new Date(event.scheduledTime)
+    : executionDate;
+  const toronto = getTorontoParts(scheduledDate);
+  const routing = chooseScheduledTarget(event.cron, toronto);
   console.log(JSON.stringify({
     service: SERVICE,
     type: "scheduled",
     cron: event.cron,
+    executionTimeUtc: executionDate.toISOString(),
+    scheduledTimeUtc: scheduledDate.toISOString(),
     toronto,
-    target,
+    target: routing.target,
+    skipReason: routing.skipReason,
   }));
 
   if (!toronto.isWeekday) {
@@ -27,17 +34,17 @@ async function handleScheduled(event, env) {
     return;
   }
 
-  if (!target) {
-    console.log("Skipped scheduled dispatch because local Toronto time does not match a target time.");
+  if (!routing.target) {
+    console.log(`Skipped scheduled dispatch: ${routing.skipReason}`);
     return;
   }
 
-  const workflowId = target === "daily" ? env.DAILY_WORKFLOW_ID : env.HUB_WORKFLOW_ID;
-  const payload = buildWorkflowPayload(target, toronto.date, env);
+  const workflowId = routing.target === "daily" ? env.DAILY_WORKFLOW_ID : env.HUB_WORKFLOW_ID;
+  const payload = buildWorkflowPayload(routing.target, toronto.date, env);
   const result = await dispatchWorkflow(env, workflowId, payload.inputs);
   console.log(JSON.stringify({
     service: SERVICE,
-    target,
+    target: routing.target,
     date: toronto.date,
     workflowId,
     githubStatus: result.status,
@@ -55,6 +62,20 @@ async function handleRequest(request, env) {
 
   if (url.pathname === "/health") {
     return jsonResponse({ ok: true, service: SERVICE });
+  }
+
+  if (url.pathname === "/debug-time") {
+    return jsonResponse({
+      ok: true,
+      service: SERVICE,
+      now_utc: new Date().toISOString(),
+      toronto_now: getTorontoParts(new Date()),
+      expected_crons: {
+        daily: ["15 12 * * 1-5", "15 13 * * 1-5"],
+        hub: ["30 12 * * 1-5", "30 13 * * 1-5"],
+      },
+      note: "Scheduled dispatch routing uses event.scheduledTime, not wall-clock execution time.",
+    });
   }
 
   if (url.pathname === "/dispatch") {
@@ -133,15 +154,30 @@ function getTorontoParts(date) {
 
 function chooseScheduledTarget(cron, torontoParts) {
   if (!torontoParts.isWeekday) {
-    return null;
+    return { target: null, skipReason: "toronto_weekend" };
   }
-  if (torontoParts.time === "08:15") {
-    return "daily";
+
+  if (cron === "15 12 * * 1-5" || cron === "15 13 * * 1-5") {
+    if (torontoParts.time === "08:15") {
+      return { target: "daily", skipReason: null };
+    }
+    return {
+      target: null,
+      skipReason: `daily cron fired, but scheduled Toronto time was ${torontoParts.time}, not 08:15`,
+    };
   }
-  if (torontoParts.time === "08:30") {
-    return "hub";
+
+  if (cron === "30 12 * * 1-5" || cron === "30 13 * * 1-5") {
+    if (torontoParts.time === "08:30") {
+      return { target: "hub", skipReason: null };
+    }
+    return {
+      target: null,
+      skipReason: `hub cron fired, but scheduled Toronto time was ${torontoParts.time}, not 08:30`,
+    };
   }
-  return null;
+
+  return { target: null, skipReason: `unrecognized cron expression: ${cron}` };
 }
 
 function buildWorkflowPayload(target, date, env) {
