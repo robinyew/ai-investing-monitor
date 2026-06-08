@@ -1,0 +1,100 @@
+name: Publish Hub Intelligence Brief
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        required: true
+        description: Report date in YYYY-MM-DD format
+      publish:
+        required: true
+        default: "false"
+        description: Must be true to copy HTML, update index, commit, and push
+      mode:
+        required: false
+        default: parallel
+        description: Hub pipeline mode
+
+permissions:
+  contents: write
+
+jobs:
+  publish-hub-intelligence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify current paths
+        run: |
+          test -f investment-intelligence-hub/scripts/run_hub_pipeline.py
+          test -f investment-intelligence-hub/scripts/publish_hub_html.py
+          test -d docs
+
+      - name: Wait for required daily report
+        run: |
+          report_path="reports/daily/${{ inputs.date }}.md"
+          attempts=5
+          delay_seconds=120
+
+          for attempt in $(seq 1 "$attempts"); do
+            if [ -f "$report_path" ]; then
+              echo "Daily report found: $report_path"
+              exit 0
+            fi
+
+            if [ "$attempt" -lt "$attempts" ]; then
+              echo "Daily report not found: $report_path"
+              echo "Retry $attempt/$attempts failed; waiting ${delay_seconds}s before next check."
+              sleep "$delay_seconds"
+            fi
+          done
+
+          echo "ERROR: Required daily report was not found after $attempts attempts: $report_path"
+          echo "Hub pipeline, publish, commit, and push will not run."
+          exit 1
+
+      - name: Run Hub pipeline with HTML export
+        run: |
+          python3 investment-intelligence-hub/scripts/run_hub_pipeline.py \
+            --date "${{ inputs.date }}" \
+            --mode "${{ inputs.mode }}" \
+            --export-html
+
+      - name: Publish helper dry run
+        run: |
+          python3 investment-intelligence-hub/scripts/publish_hub_html.py \
+            --date "${{ inputs.date }}" \
+            --dry-run
+
+      - name: Publish Hub HTML locally
+        if: ${{ inputs.publish == 'true' }}
+        run: |
+          python3 investment-intelligence-hub/scripts/publish_hub_html.py \
+            --date "${{ inputs.date }}" \
+            --publish true
+
+      - name: Verify allowed git diff
+        if: ${{ inputs.publish == 'true' }}
+        run: |
+          bad_paths="$(git status --short | awk '{print $2}' | grep -Ev '^(docs/intelligence/|investment-intelligence-hub/reports/daily_intelligence/.*_publish_notes\.md$)' || true)"
+          if [ -n "$bad_paths" ]; then
+            echo "Disallowed changed paths:"
+            echo "$bad_paths"
+            exit 1
+          fi
+
+      - name: Commit and push published brief
+        if: ${{ inputs.publish == 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/intelligence/
+          git add investment-intelligence-hub/reports/daily_intelligence/*_publish_notes.md
+          git commit -m "Publish intelligence brief ${{ inputs.date }}" || echo "No changes to commit"
+          git push
