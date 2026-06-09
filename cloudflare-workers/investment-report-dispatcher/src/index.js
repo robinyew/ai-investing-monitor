@@ -157,27 +157,15 @@ function chooseScheduledTarget(cron, torontoParts) {
     return { target: null, skipReason: "toronto_weekend" };
   }
 
-  if (cron === "15 12 * * 1-5" || cron === "15 13 * * 1-5") {
-    if (torontoParts.time === "08:15") {
-      return { target: "daily", skipReason: null };
-    }
-    return {
-      target: null,
-      skipReason: `daily cron fired, but scheduled Toronto time was ${torontoParts.time}, not 08:15`,
-    };
+  if (torontoParts.time === "08:15") {
+    return { target: "daily", skipReason: null };
   }
 
-  if (cron === "30 12 * * 1-5" || cron === "30 13 * * 1-5") {
-    if (torontoParts.time === "08:30") {
-      return { target: "hub", skipReason: null };
-    }
-    return {
-      target: null,
-      skipReason: `hub cron fired, but scheduled Toronto time was ${torontoParts.time}, not 08:30`,
-    };
+  if (torontoParts.time === "08:30") {
+    return { target: "hub", skipReason: null };
   }
 
-  return { target: null, skipReason: `unrecognized cron expression: ${cron}` };
+  return { target: null, skipReason: `no target for toronto time ${torontoParts.time} (cron: ${cron})` };
 }
 
 function buildWorkflowPayload(target, date, env) {
