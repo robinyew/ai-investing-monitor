@@ -1,0 +1,65 @@
+[
+  {
+    "ticker": "GOOGL",
+    "headline": "Cool stuff Google Cloud customers built, May edition: Agentic algorithms for supply chains; virtual try-on APIs; robotic camera operators & more",
+    "source": "Google Cloud Blog",
+    "source_type": "\u535a\u5ba2 / \u4e8c\u7ea7\u6765\u6e90",
+    "link": "https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up/",
+    "url": "https://cloud.google.com/blog/topics/customers/cool-stuff-google-cloud-customers-built-monthly-round-up/",
+    "summary": "Summary based on headline/metadata only.",
+    "original_summary": "Summary based on headline/metadata only.",
+    "why_it_matters": "GOOGL \u51fa\u73b0\u6f5c\u5728\u8d1f\u9762\u7ebf\u7d22\uff0c\u9700\u9a8c\u8bc1\u662f\u5426\u5f71\u54cd \u4e91\u5e73\u53f0 capex \u4e3b\u9898\u3002",
+    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
+    "confidence": "Medium",
+    "strategy_impact": "\u98ce\u9669\u4e0a\u5347",
+    "direction": "\u8d1f\u9762",
+    "needs_attention": true,
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "published": "Fri, 29 May 2026 16:00:00 +0000"
+  },
+  {
+    "ticker": "GOOGL",
+    "headline": "Apple partnering with Google and Nvidia for most advanced AI model",
+    "source": "CNBC",
+    "source_type": "\u4e3b\u6d41\u8d22\u7ecf\u65b0\u95fb",
+    "link": "https://www.cnbc.com/2026/06/08/apple-google-nvidia-ai-chips.html",
+    "url": "https://www.cnbc.com/2026/06/08/apple-google-nvidia-ai-chips.html",
+    "summary": "Summary based on headline/metadata only.",
+    "original_summary": "Summary based on headline/metadata only.",
+    "why_it_matters": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
+    "confidence": "High",
+    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
+    "direction": "\u4e2d\u6027",
+    "needs_attention": true,
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "primary_financial_news",
+    "published": "Mon, 08 Jun 2026 21:12:45 GMT"
+  },
+  {
+    "ticker": "GOOGL",
+    "headline": "Modeling a digital twin of a food supply chain using BigQuery Graph",
+    "source": "Google Cloud Blog",
+    "source_type": "\u535a\u5ba2 / \u4e8c\u7ea7\u6765\u6e90",
+    "link": "https://cloud.google.com/blog/products/data-analytics/modeling-a-digital-twin-using-bigquery-graph/",
+    "url": "https://cloud.google.com/blog/products/data-analytics/modeling-a-digital-twin-using-bigquery-graph/",
+    "summary": "Summary based on headline/metadata only.",
+    "original_summary": "Summary based on headline/metadata only.",
+    "why_it_matters": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
+    "confidence": "Medium",
+    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
+    "direction": "\u8d1f\u9762",
+    "needs_attention": true,
+    "tickers": [
+      "GOOGL"
+    ],
+    "category": "ai_software_cloud",
+    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+  }
+]
