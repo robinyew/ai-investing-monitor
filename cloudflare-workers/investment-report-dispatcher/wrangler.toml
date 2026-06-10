@@ -16,3 +16,6 @@ crons = [
   "30 12 * * 1-5",
   "30 13 * * 1-5"
 ]
+
+[observability]
+enabled = true
