@@ -39,12 +39,12 @@ CHOKEPOINTS = {
     "Power / Cooling": {
         "themes": ["电力 / 液冷"],
         "tickers": ["VRT", "ETN", "GEV", "PWR", "FIX", "MPWR", "NVTS"],
-        "keywords": ["power", "cooling", "liquid cooling", "ups", "pdu", "switchgear", "transformer", "grid"],
+        "keywords": ["data center power", "power infrastructure", "power bottleneck", "cooling", "liquid cooling", "ups", "pdu", "switchgear", "transformer", "grid"],
     },
     "Power / Electrical Equipment": {
         "themes": ["电力 / 液冷"],
         "tickers": ["VRT", "ETN", "GEV", "PWR", "FIX", "MPWR", "NVTS"],
-        "keywords": ["power", "electrical", "800v", "hvdc", "ups", "pdu", "switchgear", "transformer", "grid"],
+        "keywords": ["data center power", "power infrastructure", "power bottleneck", "electrical", "800v", "hvdc", "ups", "pdu", "switchgear", "transformer", "grid"],
     },
     "Cooling / Thermal": {
         "themes": ["电力 / 液冷", "AI server"],
@@ -144,6 +144,59 @@ SCOREBOARD_TICKERS = [
     "MSFT",
     "GOOGL",
 ]
+EVIDENCE_DASHBOARD_TICKERS = [
+    "NVDA",
+    "AVGO",
+    "MRVL",
+    "ANET",
+    "MU",
+    "DELL",
+    "VRT",
+    "ETN",
+    "MPWR",
+    "CIEN",
+    "COHR",
+    "AAOI",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+]
+HYPERSCALERS = {
+    "Microsoft": "MSFT",
+    "Google": "GOOGL",
+    "Amazon": "AMZN",
+    "Meta": "META",
+}
+THESIS_CONFIG = {
+    "AI Data Center Expansion": {
+        "tickers": ["NVDA", "AVGO", "MRVL", "ANET", "DELL", "ETN", "VRT"],
+        "keywords": ["ai data center", "data center expansion", "hyperscaler capex", "gpu procurement", "rack-scale", "nvl72", "gb200", "gb300"],
+    },
+    "Optical Interconnect": {
+        "tickers": ["AAOI", "CIEN", "COHR"],
+        "keywords": ["optical", "interconnect", "800g", "1.6t", "transceiver", "coherent", "silicon photonics"],
+    },
+    "Memory / HBM": {
+        "tickers": ["MU"],
+        "keywords": ["hbm", "dram", "memory", "nand", "pricing"],
+    },
+    "Power & Cooling": {
+        "tickers": ["ETN", "VRT", "MPWR", "NVTS"],
+        "keywords": ["data center power", "power infrastructure", "power bottleneck", "cooling", "thermal", "ups", "switchgear", "liquid cooling"],
+    },
+    "Cloud / AI Platform": {
+        "tickers": ["MSFT", "GOOGL", "AMZN"],
+        "keywords": ["cloud", "azure", "google cloud", "aws", "agent", "platform", "model", "ai infrastructure"],
+    },
+}
+HYPERSCALER_CHOKEPOINT_MAP = [
+    ("Compute", ["gpu", "accelerator", "trainium", "tpu", "inference", "training"]),
+    ("Networking", ["networking", "ethernet", "switch", "interconnect"]),
+    ("Optical", ["optical", "transceiver", "coherent", "silicon photonics"]),
+    ("Power", ["data center power", "power infrastructure", "power bottleneck", "grid", "switchgear", "ups", "pdu"]),
+    ("Cooling", ["cooling", "thermal", "liquid cooling"]),
+    ("Memory", ["hbm", "dram", "memory", "storage"]),
+]
 THESIS_FIT_BASE = {
     "AVGO": 92,
     "ANET": 90,
@@ -212,14 +265,371 @@ POSITIVE_CATALYST_TERMS = [
     "record revenue",
     "guidance raised",
 ]
+PRIMARY_SOURCE_TYPES = {
+    "Investor Relations press release",
+    "SEC filing",
+    "Earnings release",
+    "Earnings call transcript",
+    "Investor presentation",
+    "Official company blog / product announcement",
+    "Official customer case study",
+    "Official partnership / launch / guidance / capex update",
+}
+PUBLIC_SOURCE_TYPES = {
+    "主流财经新闻",
+    "分析师报告",
+    "X 推文",
+    "博客 / 二级来源",
+}
+EVIDENCE_TYPE_ORDER = [
+    "Earnings",
+    "Guidance",
+    "Customer Win",
+    "Capacity Expansion",
+    "CapEx Increase",
+    "Product Launch",
+    "Partnership",
+    "Supply Chain",
+    "Media Only",
+]
+HIGH_VALUE_EVIDENCE_TYPES = {"Earnings", "Guidance", "Customer Win", "Capacity Expansion", "CapEx Increase", "Supply Chain"}
+MEDIUM_VALUE_EVIDENCE_TYPES = {"Product Launch", "Partnership"}
+LOW_VALUE_EVIDENCE_TYPES = {"Media Only"}
+EVIDENCE_QUESTION_FIELDS = [
+    ("is_evidence", "这是新闻还是证据？"),
+    ("has_order", "是否涉及订单？"),
+    ("has_customer", "是否涉及客户？"),
+    ("has_capacity", "是否涉及产能？"),
+    ("has_capex", "是否涉及 CapEx？"),
+    ("has_supply_chain", "是否涉及供应链？"),
+    ("changes_thesis", "是否会改变 AI Infrastructure Thesis？"),
+]
+
+
+def _is_primary_source_item(item: dict | None) -> bool:
+    return bool(item and item.get("source_type") in PRIMARY_SOURCE_TYPES)
+
+
+def _source_priority(item: dict) -> tuple[int, int, int, str]:
+    confidence_rank = {"High": 0, "Medium": 1, "Low": 2}.get(item.get("confidence"), 3)
+    attention_rank = 0 if item.get("needs_attention") else 1
+    public_rank = 0 if _is_primary_source_item(item) else 1
+    return (public_rank, confidence_rank, attention_rank, item.get("headline", ""))
 
 
 def _items_for_ticker(news: list[dict], ticker: str) -> list[dict]:
-    return [item for item in news if ticker in item.get("tickers", [])]
+    return sorted([item for item in news if ticker in item.get("tickers", [])], key=_source_priority)
 
 
 def _primary_item(items: list[dict]) -> dict | None:
     return items[0] if items else None
+
+
+def _authoritative_items(items: list[dict]) -> list[dict]:
+    primary = [item for item in items if _is_primary_source_item(item)]
+    return primary or items
+
+
+def _item_text(item: dict | None) -> str:
+    if not item:
+        return ""
+    return f"{item.get('headline', '')} {item.get('summary', '')}".lower()
+
+
+def _evidence_type(item: dict | None) -> str:
+    if not item:
+        return "Media Only"
+    text = _item_text(item)
+    source_type = item.get("source_type", "")
+    if source_type in {"Earnings release", "Earnings call transcript"} or "earnings" in text or "quarterly results" in text:
+        return "Earnings"
+    if any(
+        term in text
+        for term in [
+            "guidance raise",
+            "guidance raised",
+            "raises guidance",
+            "guidance cut",
+            "cuts guidance",
+            "revenue guidance",
+            "financial guidance",
+            "raises outlook",
+            "cuts outlook",
+            "lower outlook",
+            "weak outlook",
+        ]
+    ):
+        return "Guidance"
+    if any(term in text for term in ["customer win", "new customer", "hyperscaler customer", "customer announcement", "case study"]):
+        return "Customer Win"
+    if any(term in text for term in ["capacity expansion", "expands capacity", "new fab", "new plant", "manufacturing expansion"]):
+        return "Capacity Expansion"
+    if any(term in text for term in ["capex increase", "capital expenditure", "ai capex", "data center expansion", "infrastructure investment"]):
+        return "CapEx Increase"
+    if source_type in {"Official partnership / launch / guidance / capex update", "Official company blog / product announcement"} and any(
+        term in text for term in ["launch", "announcing", "general availability", "now available", "preview", "introduced"]
+    ):
+        return "Product Launch"
+    if "partnership" in text or "partner" in text:
+        return "Partnership"
+    if any(
+        term in text
+        for term in [
+            "supply chain delay",
+            "supply chain risk",
+            "supply constraint",
+            "supply constraints",
+            "component shortage",
+            "shipment delay",
+            "supplier bottleneck",
+            "backlog growth",
+        ]
+    ):
+        return "Supply Chain"
+    return "Media Only"
+
+
+def _evidence_value_tier(item: dict | None) -> str:
+    if not item:
+        return "Low Value Evidence"
+    evidence_type = _evidence_type(item)
+    if evidence_type in HIGH_VALUE_EVIDENCE_TYPES and _is_primary_source_item(item):
+        return "High Value Evidence"
+    if evidence_type in MEDIUM_VALUE_EVIDENCE_TYPES and _is_primary_source_item(item):
+        return "Medium Value Evidence"
+    if _is_primary_source_item(item):
+        return "Low Value Evidence"
+    return "Media Only"
+
+
+def _evidence_strength_for_item(item: dict | None) -> str:
+    if not item:
+        return "Low"
+    tier = _evidence_value_tier(item)
+    if tier == "High Value Evidence":
+        return "High"
+    if tier == "Medium Value Evidence":
+        return "Medium"
+    if item.get("confidence") == "High" and _is_primary_source_item(item):
+        return "Medium"
+    return "Low"
+
+
+def _evidence_score_for_item(item: dict | None) -> int:
+    if not item:
+        return 10
+    base = {
+        "High Value Evidence": 85,
+        "Medium Value Evidence": 65,
+        "Low Value Evidence": 42,
+        "Media Only": 25,
+    }.get(_evidence_value_tier(item), 25)
+    if item.get("body_status") == "Headline-only":
+        base -= 12
+    if item.get("ticker_mapping_confidence") == "Low":
+        base -= 8
+    if item.get("confidence") == "High":
+        base += 5
+    if _is_negative_catalyst(item):
+        base += 8
+    return max(0, min(100, base))
+
+
+def _evidence_sort_key(item: dict) -> tuple[int, int, int, str]:
+    tier_rank = {
+        "High Value Evidence": 0,
+        "Medium Value Evidence": 1,
+        "Low Value Evidence": 2,
+        "Media Only": 3,
+    }.get(_evidence_value_tier(item), 4)
+    type_rank = EVIDENCE_TYPE_ORDER.index(_evidence_type(item)) if _evidence_type(item) in EVIDENCE_TYPE_ORDER else len(EVIDENCE_TYPE_ORDER)
+    return (tier_rank, type_rank, -_evidence_score_for_item(item), item.get("headline", ""))
+
+
+def _evidence_flags(item: dict | None) -> dict:
+    text = _item_text(item)
+    evidence_type = _evidence_type(item)
+    is_evidence = "Evidence" if item and _is_primary_source_item(item) else "News signal"
+    return {
+        "is_evidence": is_evidence,
+        "has_order": "Yes" if any(term in text for term in ["order", "booking", "backlog", "contract"]) else "No",
+        "has_customer": "Yes" if any(term in text for term in ["customer", "case study", "hyperscaler", "deployed"]) else "No",
+        "has_capacity": "Yes" if any(term in text for term in ["capacity", "expansion", "fab", "manufacturing", "production"]) else "No",
+        "has_capex": "Yes" if any(term in text for term in ["capex", "capital expenditure", "data center expansion", "infrastructure investment"]) else "No",
+        "has_supply_chain": "Yes" if any(term in text for term in ["supply chain", "supplier", "shipment", "shortage", "constraint"]) else "No",
+        "changes_thesis": "Yes" if evidence_type in HIGH_VALUE_EVIDENCE_TYPES or _is_negative_catalyst(item) else "Watch",
+    }
+
+
+def _is_strong_evidence(item: dict | None) -> bool:
+    if not item or not _is_primary_source_item(item):
+        return False
+    return _evidence_type(item) in HIGH_VALUE_EVIDENCE_TYPES
+
+
+def _is_narrative_only(item: dict | None) -> bool:
+    if not item:
+        return False
+    if item.get("source_type") in {"X 推文", "博客 / 二级来源"}:
+        return True
+    if not _is_primary_source_item(item):
+        return True
+    if _evidence_value_tier(item) == "Low Value Evidence":
+        return True
+    if item.get("body_status") == "Headline-only":
+        return True
+    return False
+
+
+def _chokepoint_evidence_strength(items: list[dict]) -> str:
+    meaningful_primary_count = sum(
+        1
+        for item in items
+        if _is_primary_source_item(item)
+        and item.get("body_status") != "Headline-only"
+        and _evidence_value_tier(item) in {"High Value Evidence", "Medium Value Evidence"}
+    )
+    primary_earnings_count = sum(
+        1
+        for item in items
+        if _is_primary_source_item(item) and _evidence_type(item) in {"Earnings", "Guidance"}
+    )
+    if meaningful_primary_count >= 2 or primary_earnings_count >= 1:
+        return "High"
+    if any(
+        _is_primary_source_item(item)
+        and item.get("body_status") != "Headline-only"
+        and _evidence_value_tier(item) in {"High Value Evidence", "Medium Value Evidence"}
+        for item in items
+    ):
+        return "Medium"
+    return "Low"
+
+
+def _thesis_items(news: list[dict], thesis: dict) -> list[dict]:
+    tickers = set(thesis["tickers"])
+    keywords = [keyword.lower() for keyword in thesis["keywords"]]
+    items = []
+    for item in news:
+        text = _item_text(item)
+        if set(item.get("tickers", [])) & tickers or any(keyword in text for keyword in keywords):
+            items.append(item)
+    return sorted(items, key=_evidence_sort_key)
+
+
+def _thesis_status(items: list[dict]) -> str:
+    strong_negative = [item for item in items if _is_negative_catalyst(item) and _evidence_score_for_item(item) >= 55]
+    strong_positive = [item for item in items if _evidence_score_for_item(item) >= 55 and not _is_negative_catalyst(item)]
+    if strong_negative:
+        return "Weakened"
+    if strong_positive:
+        return "Reinforced"
+    return "Neutral"
+
+
+def _thesis_confidence(items: list[dict], status: str) -> str:
+    if status == "Neutral":
+        return "Low"
+    if any(_is_strong_evidence(item) for item in items):
+        return "High"
+    if any(_evidence_score_for_item(item) >= 55 for item in items):
+        return "Medium"
+    return "Low"
+
+
+def _thesis_tracker_rows(news: list[dict]) -> list[dict]:
+    rows = []
+    for name, config in THESIS_CONFIG.items():
+        items = _thesis_items(news, config)
+        status = _thesis_status(items)
+        confidence = _thesis_confidence(items, status)
+        evidence_items = [item for item in items if _evidence_score_for_item(item) >= 55]
+        if not evidence_items:
+            evidence_items = [item for item in items if not _is_narrative_only(item)][:1]
+        evidence = "; ".join(_short_text(item.get("headline", ""), 100) for item in evidence_items[:3]) or "No material evidence found today."
+        if status == "Reinforced":
+            reason = "Evidence supports continued thesis validation, but does not imply any trade action."
+        elif status == "Weakened":
+            reason = "Negative evidence needs review before treating the thesis as intact."
+        else:
+            reason = "No material change in thesis today."
+        rows.append(
+            {
+                "thesis": name,
+                "status": status,
+                "evidence": evidence,
+                "confidence": confidence,
+                "reason": reason,
+                "items": items,
+            }
+        )
+    return rows
+
+
+def _render_what_changed_today(thesis_rows: list[dict]) -> str:
+    grouped = {
+        "Strengthened": [row for row in thesis_rows if row["status"] == "Reinforced"],
+        "Weakened": [row for row in thesis_rows if row["status"] == "Weakened"],
+        "Unchanged": [row for row in thesis_rows if row["status"] == "Neutral"],
+    }
+    lines = ["# What Changed Today?", "", "## Strengthened"]
+    if grouped["Strengthened"]:
+        lines.extend([f"- {row['thesis']}: {row['reason']} Evidence: {row['evidence']}" for row in grouped["Strengthened"]])
+    else:
+        lines.append("- No material change in thesis today.")
+    lines.extend(["", "## Weakened"])
+    if grouped["Weakened"]:
+        lines.extend([f"- {row['thesis']}: {row['reason']} Evidence: {row['evidence']}" for row in grouped["Weakened"]])
+    else:
+        lines.append("- No material change in thesis today.")
+    lines.extend(["", "## Unchanged"])
+    if grouped["Unchanged"]:
+        lines.extend([f"- {row['thesis']}: {row['reason']}" for row in grouped["Unchanged"]])
+    else:
+        lines.append("- No material change in thesis today.")
+    return "\n".join(lines)
+
+
+def _render_thesis_tracker(thesis_rows: list[dict]) -> str:
+    lines = [
+        "# Thesis Reinforcement Tracker",
+        "",
+        "| Thesis | Related Stocks | Status | Evidence | Confidence | Reason |",
+        "|---|---|---|---|---|---|",
+    ]
+    for row in thesis_rows:
+        stocks = ", ".join(THESIS_CONFIG[row["thesis"]]["tickers"])
+        lines.append(
+            f"| {_escape_table(row['thesis'])} | {_escape_table(stocks)} | {row['status']} | "
+            f"{_escape_table(row['evidence'])} | {row['confidence']} | {_escape_table(row['reason'])} |"
+        )
+    return "\n".join(lines)
+
+
+def _render_evidence_vs_narrative(news: list[dict], limit: int = 8) -> str:
+    strong = sorted([item for item in news if _is_strong_evidence(item)], key=_evidence_sort_key)[:limit]
+    narrative = sorted([item for item in news if _is_narrative_only(item)], key=_evidence_sort_key)[:limit]
+    lines = ["# Evidence vs Narrative", "", "## Strong Evidence"]
+    if strong:
+        lines.extend(
+            [
+                f"- {item.get('ticker', 'General')}: {_evidence_type(item)} / {item.get('headline', '')} ({item.get('source_type')})"
+                for item in strong
+            ]
+        )
+    else:
+        lines.append("- No strong evidence found today.")
+    lines.extend(["", "## Narrative Only"])
+    if narrative:
+        lines.extend(
+            [
+                f"- {item.get('ticker', 'General')}: {_evidence_type(item)} / {item.get('headline', '')} ({item.get('source_type')})"
+                for item in narrative
+            ]
+        )
+    else:
+        lines.append("- No narrative-only items found today.")
+    return "\n".join(lines)
 
 
 def _news_line(item: dict | None) -> str:
@@ -443,6 +853,7 @@ def _chokepoint_ranking_rows(news: list[dict], prices: list[dict]) -> list[dict]
                 "chokepoint": name,
                 "score": importance,
                 "importance": round(importance * 10),
+                "evidence_strength": _chokepoint_evidence_strength(items),
                 "sentiment_score": sentiment_score,
                 "sentiment": sentiment,
                 "trend": trend,
@@ -466,6 +877,10 @@ def _ticker_chokepoint(ticker: str) -> str:
 def _is_negative_catalyst(item: dict | None) -> bool:
     if not item:
         return False
+    if _is_primary_source_item(item) and item.get("primary_source_sentiment") != "Negative":
+        return False
+    if _is_primary_source_item(item) and item.get("body_status") == "Headline-only":
+        return False
     text = f"{item.get('headline', '')} {item.get('summary', '')}".lower()
     return any(term in text for term in NEGATIVE_CATALYST_TERMS) or item.get("direction") == "负面" or item.get("strategy_impact") == "风险上升"
 
@@ -473,6 +888,13 @@ def _is_negative_catalyst(item: dict | None) -> bool:
 def _is_positive_catalyst(item: dict | None) -> bool:
     if not item or _is_negative_catalyst(item):
         return False
+    if _is_primary_source_item(item) and item.get("primary_source_sentiment") in {
+        "Positive signal",
+        "Product momentum",
+        "Customer adoption signal",
+        "Platform capability update",
+    }:
+        return True
     text = f"{item.get('headline', '')} {item.get('summary', '')}".lower()
     return any(term in text for term in POSITIVE_CATALYST_TERMS) or item.get("direction") == "正面"
 
@@ -508,7 +930,8 @@ def _financial_evidence_score(items: list[dict]) -> float:
         1
         for item in items
         if item.get("confidence") == "High"
-        or item.get("source_type") in {"公司公告 / IR", "SEC filing", "财报电话会", "分析师报告", "主流财经新闻"}
+        or item.get("source_type") in PRIMARY_SOURCE_TYPES
+        or item.get("source_type") in {"分析师报告", "主流财经新闻"}
     )
     term_bonus = sum(1 for term in evidence_terms if term in text)
     risk_count = sum(1 for item in items if item.get("strategy_impact") == "风险上升" or item.get("direction") == "负面")
@@ -552,7 +975,7 @@ def _stock_confidence_rows(news: list[dict], prices: list[dict], ranking_rows: l
     choke_scores = {row["chokepoint"]: row["score"] for row in ranking_rows}
     rows = []
     for ticker in STOCK_CONFIDENCE_TICKERS:
-        items = _items_for_ticker(news, ticker)
+        items = _authoritative_items(_items_for_ticker(news, ticker))
         row = _price_row(prices, ticker)
         chokepoint = _ticker_chokepoint(ticker)
         choke_score = choke_scores.get(chokepoint, 5.0)
@@ -601,11 +1024,13 @@ def _stock_confidence_rows(news: list[dict], prices: list[dict], ranking_rows: l
 
 
 def _has_company_confirmation(items: list[dict]) -> bool:
-    strong_sources = {"公司公告 / IR", "SEC filing", "财报电话会", "分析师报告", "主流财经新闻"}
+    strong_sources = PRIMARY_SOURCE_TYPES | {"分析师报告", "主流财经新闻"}
     return any(item.get("confidence") == "High" or item.get("source_type") in strong_sources for item in items)
 
 
 def _catalyst_strength(items: list[dict]) -> str:
+    if items and all(_is_primary_source_item(item) and item.get("body_status") == "Headline-only" for item in items):
+        return "Weak"
     catalyst = _catalyst_type(items)
     if catalyst == "Risk catalyst":
         return "Risk"
@@ -748,11 +1173,14 @@ def _compute_dashboard_data(news: list[dict], prices: list[dict]) -> dict:
     scoreboard_rows = []
     for ticker in SCOREBOARD_TICKERS:
         row = _price_row(prices, ticker)
-        items = _items_for_ticker(news, ticker)
+        all_items = _items_for_ticker(news, ticker)
+        items = _authoritative_items(all_items)
         if not row and not items:
             continue
         chokepoint_score = _scoreboard_chokepoint_score(ticker, ranking_rows)
         confidence = _scoreboard_confidence_score(ticker, row, items, chokepoint_score)
+        if any(_is_primary_source_item(item) and not _is_negative_catalyst(item) for item in items):
+            confidence = min(100, confidence + 3)
         catalyst = _catalyst_strength(items)
         catalyst_type = _catalyst_type(items)
         risk = _risk_level(ticker, row, items)
@@ -823,12 +1251,12 @@ def _render_confidence_dashboard(data: dict) -> str:
         "",
         "## 1. Chokepoint Ranking",
         "",
-        "| Rank | Chokepoint | Chokepoint Importance | Near-term Sentiment | Trend | Key Evidence | Related Stocks |",
-        "|---|---|---:|---|---|---|---|",
+        "| Rank | Chokepoint | Chokepoint Importance | Evidence Strength | Near-term Sentiment | Trend | Key Evidence | Related Stocks |",
+        "|---|---|---:|---|---|---|---|---|",
     ]
     for rank, row in enumerate(ranking_rows, start=1):
         lines.append(
-            f"| {rank} | {_escape_table(row['chokepoint'])} | {row['importance']} | {row['sentiment']} | {row['trend']} | "
+            f"| {rank} | {_escape_table(row['chokepoint'])} | {row['importance']} | {row['evidence_strength']} | {row['sentiment']} | {row['trend']} | "
             f"{_escape_table(row['evidence'])} | {_escape_table(row['stocks'])} |"
         )
     lines.extend(
@@ -880,11 +1308,14 @@ def _render_handoff_dashboard_snapshot(data: dict) -> str:
         "## AI Infrastructure Dashboard Snapshot",
         "",
         "### 1. Chokepoint Ranking",
-        "| Rank | Chokepoint | Importance | Sentiment | Evidence |",
-        "|---|---|---:|---|---|",
+        "| Rank | Chokepoint | Importance | Evidence Strength | Sentiment | Evidence |",
+        "|---|---|---:|---|---|---|",
     ]
     for rank, row in enumerate(data["chokepoint_ranking"][:4], start=1):
-        lines.append(f"| {rank} | {_escape_table(row['chokepoint'])} | {row['importance']} | {row['sentiment']} | {_escape_table(row['evidence'])} |")
+        lines.append(
+            f"| {rank} | {_escape_table(row['chokepoint'])} | {row['importance']} | {row['evidence_strength']} | "
+            f"{row['sentiment']} | {_escape_table(row['evidence'])} |"
+        )
     lines.extend(["", "### 2. Stock Scoreboard"])
     lines.append("| Ticker | Theme | Confidence | Chokepoint | Catalyst | Risk | Action Bias |")
     lines.append("|---|---|---:|---:|---|---|---|")
@@ -908,12 +1339,12 @@ def _render_handoff_chokepoint_radar(data: dict) -> str:
     lines = [
         "## Chokepoint Radar",
         "",
-        "| Chokepoint | Importance | Sentiment | Evidence |",
-        "|---|---:|---|---|",
+        "| Chokepoint | Importance | Evidence Strength | Sentiment | Evidence |",
+        "|---|---:|---|---|---|",
     ]
     for row in data["chokepoint_ranking"]:
         lines.append(
-            f"| {_escape_table(row['chokepoint'])} | {row['importance']} | {row['sentiment']} | {_escape_table(row['evidence'])} |"
+            f"| {_escape_table(row['chokepoint'])} | {row['importance']} | {row['evidence_strength']} | {row['sentiment']} | {_escape_table(row['evidence'])} |"
         )
     avoid = ", ".join(row["ticker"] for row in data["avoid_chase"]) or "无"
     leaders = ", ".join(row["ticker"] for row in data["scoreboard"][:3]) or "无"
@@ -982,10 +1413,12 @@ def _chokepoint_radar(news: list[dict], prices: list[dict], watchlists: dict, da
         hype = _concept_hype_label(items)
         importance = ranking.get("importance", 0)
         sentiment = ranking.get("sentiment", "Neutral")
+        evidence_strength = ranking.get("evidence_strength", "Low")
         lines.extend(
             [
                 f"### {name}",
                 f"- Chokepoint Importance: {_importance_label(importance)} ({importance})",
+                f"- Evidence Strength: {evidence_strength}",
                 f"- Near-term Sentiment: {sentiment}",
                 f"- Evidence: {event}",
                 f"- 相关股票: {related}",
@@ -1041,12 +1474,241 @@ def _high_risk_section(news: list[dict], watchlists: dict) -> str:
     )
 
 
-def _top_conclusions(news: list[dict], prices: list[dict]) -> str:
+def _evidence_strength(item: dict) -> str:
+    source_type = item.get("source_type")
+    if source_type in {"SEC filing", "Earnings release", "Earnings call transcript", "Investor Relations press release"}:
+        return "High"
+    if source_type in {
+        "Investor presentation",
+        "Official company blog / product announcement",
+        "Official customer case study",
+        "Official partnership / launch / guidance / capex update",
+    }:
+        return "Medium"
+    if item.get("confidence") == "High":
+        return "High"
+    return "Low"
+
+
+def _primary_source_results(news: list[dict]) -> list[dict]:
+    results = []
+    for item in sorted([entry for entry in news if _is_primary_source_item(entry)], key=_source_priority):
+        takeaway = item.get("summary") or "Body unavailable / headline-only."
+        relevance = item.get("why_it_matters") or f"与 {item.get('related_ai_theme', 'general market')} 主题相关，需人工复核。"
+        results.append(
+            {
+                "ticker": item.get("ticker", "General"),
+                "source_type": item.get("source_type", "Unknown"),
+                "title": item.get("headline", ""),
+                "date": item.get("published", "") or "N/A",
+                "url": item.get("url") or item.get("link", ""),
+                "key_takeaway": takeaway,
+                "evidence_strength": _evidence_strength(item),
+                "thesis_relevance": relevance,
+                "sentiment": item.get("primary_source_sentiment") or "Neutral",
+                "body_status": item.get("body_status", "Headline-only"),
+                "ticker_mapping_confidence": item.get("ticker_mapping_confidence", "Low"),
+                "item": item,
+            }
+        )
+    return results
+
+
+def _public_news_results(news: list[dict]) -> list[dict]:
+    return [item for item in news if not _is_primary_source_item(item)]
+
+
+def _render_primary_source_scan(primary_source_results: list[dict], limit: int | None = None) -> str:
+    records = primary_source_results[:limit] if limit else primary_source_results
+    if not records:
+        return "No new primary-source updates found for monitored tickers today."
+    lines = [
+        "| Ticker | Source Type | Title | Date | Sentiment | Body Status | Ticker Mapping Confidence | Evidence Strength | Key Takeaway | Thesis Relevance | URL |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
+    ]
+    for record in records:
+        lines.append(
+            f"| {_escape_table(record['ticker'])} | {_escape_table(record['source_type'])} | {_escape_table(record['title'])} | "
+            f"{_escape_table(record['date'])} | {_escape_table(record['sentiment'])} | {_escape_table(record['body_status'])} | "
+            f"{_escape_table(record['ticker_mapping_confidence'])} | {record['evidence_strength']} | {_escape_table(record['key_takeaway'])} | "
+            f"{_escape_table(record['thesis_relevance'])} | {record['url']} |"
+        )
+    return "\n".join(lines)
+
+
+def _render_public_news_scan(public_news_results: list[dict], limit: int = 10) -> str:
+    records = public_news_results[:limit]
+    if not records:
+        return "- No public-news updates found for monitored tickers today."
+    lines = [
+        "| Ticker | Headline | Source | Source Type | Confidence | Strategy Impact | URL |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for item in records:
+        lines.append(
+            f"| {_escape_table(item.get('ticker', 'General'))} | {_escape_table(item.get('headline', ''))} | "
+            f"{_escape_table(item.get('source', 'Unknown'))} | {_escape_table(item.get('source_type', '来源未知'))} | "
+            f"{item.get('confidence', 'Low')} | {_escape_table(item.get('strategy_impact', '仅作背景'))} | {item.get('url') or item.get('link', '')} |"
+        )
+    return "\n".join(lines)
+
+
+def _evidence_dashboard_rows(news: list[dict]) -> list[dict]:
+    rows = []
+    for ticker in EVIDENCE_DASHBOARD_TICKERS:
+        items = _items_for_ticker(news, ticker)
+        best = sorted(items, key=_evidence_sort_key)[0] if items else None
+        rows.append(
+            {
+                "ticker": ticker,
+                "score": _evidence_score_for_item(best),
+                "type": _evidence_type(best),
+                "strength": _evidence_strength_for_item(best),
+                "why": _short_text(best.get("why_it_matters") or best.get("headline", "") if best else "No company-specific evidence found today.", 150),
+                "item": best,
+            }
+        )
+    return sorted(rows, key=lambda row: row["score"], reverse=True)
+
+
+def _render_evidence_dashboard(evidence_rows: list[dict]) -> str:
+    lines = [
+        "## Evidence Dashboard",
+        "",
+        "| Ticker | Evidence Score | Evidence Type | Strength | Why It Matters |",
+        "|---|---:|---|---|---|",
+    ]
+    for row in evidence_rows:
+        lines.append(
+            f"| {row['ticker']} | {row['score']} | {_escape_table(row['type'])} | {row['strength']} | {_escape_table(row['why'])} |"
+        )
+    lines.extend(
+        [
+            "",
+            "_Evidence Score prioritizes primary-source evidence. Media-only items are treated as signals, not proof._",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def _render_primary_source_ranking(primary_source_results: list[dict], limit_per_group: int = 6) -> str:
+    grouped = {
+        "High Value Evidence": [],
+        "Medium Value Evidence": [],
+        "Low Value Evidence": [],
+    }
+    for record in primary_source_results:
+        item = record.get("item", {})
+        grouped.setdefault(_evidence_value_tier(item), []).append(record)
+
+    lines = ["## Primary Source Ranking"]
+    for label in ["High Value Evidence", "Medium Value Evidence", "Low Value Evidence"]:
+        records = sorted(grouped.get(label, []), key=lambda record: _evidence_sort_key(record.get("item", {})))[:limit_per_group]
+        lines.extend(["", f"### {label}"])
+        if not records:
+            lines.append("- None found today.")
+            continue
+        lines.append("| Ticker | Evidence Type | Title | Strength | Body Status | Why It Matters |")
+        lines.append("|---|---|---|---|---|---|")
+        for record in records:
+            item = record.get("item", {})
+            lines.append(
+                f"| {_escape_table(record['ticker'])} | {_evidence_type(item)} | {_escape_table(record['title'])} | "
+                f"{_evidence_strength_for_item(item)} | {_escape_table(record['body_status'])} | {_escape_table(record['thesis_relevance'])} |"
+            )
+    return "\n".join(lines)
+
+
+def _hyperscaler_status(item: dict | None) -> str:
+    if not item:
+        return "Neutral"
+    text = _item_text(item)
+    if _is_negative_catalyst(item) or any(term in text for term in ["capex reduction", "guidance cut", "demand weakness"]):
+        return "Bearish"
+    if any(term in text for term in ["capex", "data center", "infrastructure", "gpu", "networking", "trainium", "tpu", "bedrock", "azure ai"]):
+        return "Bullish"
+    if _is_primary_source_item(item):
+        return "Neutral"
+    return "Neutral"
+
+
+def _signal_from_terms(item: dict | None, terms: list[str]) -> str:
+    text = _item_text(item)
+    return "Yes" if any(term in text for term in terms) else "No"
+
+
+def _reinforced_chokepoints_for_item(item: dict | None) -> str:
+    text = _item_text(item)
+    reinforced = [name for name, terms in HYPERSCALER_CHOKEPOINT_MAP if any(term in text for term in terms)]
+    return ", ".join(reinforced) if reinforced else "None"
+
+
+def _render_hyperscaler_tracker(news: list[dict]) -> str:
+    lines = [
+        "## Hyperscaler CapEx Tracker",
+        "",
+        "_Framework: Hyperscaler = AI Super City Developer. The tracker checks whether the AI super-city builders are adding CapEx, data centers, GPU capacity, networking, or power investment._",
+        "",
+        "| Hyperscaler | Ticker | Status | CapEx | Data Center | GPU | Networking | Power | Reinforced Chokepoints | Basis |",
+        "|---|---|---|---|---|---|---|---|---|---|",
+    ]
+    for name, ticker in HYPERSCALERS.items():
+        items = _items_for_ticker(news, ticker)
+        capex_items = [
+            item
+            for item in items
+            if any(term in _item_text(item) for term in ["capex", "capital expenditure", "data center", "infrastructure", "gpu", "networking", "trainium", "tpu"])
+        ]
+        item = sorted(capex_items or items, key=_evidence_sort_key)[0] if (capex_items or items) else None
+        capex = _signal_from_terms(item, ["capex", "capital expenditure", "infrastructure investment"])
+        data_center = _signal_from_terms(item, ["data center", "datacenter", "capacity expansion"])
+        gpu = _signal_from_terms(item, ["gpu", "accelerator", "trainium", "tpu", "inference", "training"])
+        networking = _signal_from_terms(item, ["networking", "ethernet", "switch", "interconnect"])
+        power = _signal_from_terms(item, ["data center power", "power infrastructure", "power bottleneck", "grid", "switchgear", "ups", "pdu"])
+        reinforced = _reinforced_chokepoints_for_item(item)
+        basis = item.get("headline", "No direct primary-source or media signal found today.") if item else "No direct primary-source or media signal found today."
+        lines.append(
+            f"| {name} | {ticker} | {_hyperscaler_status(item)} | {capex} | {data_center} | {gpu} | {networking} | {power} | "
+            f"{_escape_table(reinforced)} | {_escape_table(_short_text(basis, 140))} |"
+        )
+    return "\n".join(lines)
+
+
+def _render_investment_relevance_review(news: list[dict], limit: int = 10) -> str:
+    important = sorted([item for item in news if item.get("needs_attention") or _is_primary_source_item(item)], key=_evidence_sort_key)[:limit]
+    lines = [
+        "## Investment Relevance Review",
+        "",
+        "| Ticker | Item | News or Evidence | Order | Customer | Capacity | CapEx | Supply Chain | Thesis Impact |",
+        "|---|---|---|---|---|---|---|---|---|",
+    ]
+    if not important:
+        lines.append("| N/A | No important items found today. | News signal | No | No | No | No | No | Watch |")
+        return "\n".join(lines)
+    for item in important:
+        flags = _evidence_flags(item)
+        lines.append(
+            f"| {_escape_table(item.get('ticker', 'General'))} | {_escape_table(_short_text(item.get('headline', ''), 120))} | "
+            f"{flags['is_evidence']} | {flags['has_order']} | {flags['has_customer']} | {flags['has_capacity']} | "
+            f"{flags['has_capex']} | {flags['has_supply_chain']} | {flags['changes_thesis']} |"
+        )
+    return "\n".join(lines)
+
+
+def _top_conclusions(news: list[dict], prices: list[dict], primary_source_results: list[dict], evidence_rows: list[dict] | None = None) -> str:
     lines = []
     risk_items = [item for item in news if item.get("strategy_impact") == "风险上升"]
     core_items = [item for item in news if item.get("strategy_impact") == "需要关注"]
     theme_items = [item for item in news if item.get("strategy_impact") == "与当前主题相关"]
     movers = biggest_movers(prices)
+    if evidence_rows:
+        leader = evidence_rows[0]
+        lines.append(f"- 最高证据分：{leader['ticker']} {leader['score']} / {leader['type']} / {leader['strength']}")
+    if primary_source_results:
+        source = primary_source_results[0]
+        lines.append(
+            f"- Primary Source 优先信号：{source['ticker']} - {source['title']}（Evidence Strength: {source['evidence_strength']}）"
+        )
     if core_items:
         lines.append(f"- 核心组需要关注：{core_items[0].get('ticker')} - {core_items[0].get('headline')}")
     if risk_items:
@@ -1060,20 +1722,31 @@ def _top_conclusions(news: list[dict], prices: list[dict]) -> str:
     return "\n".join(lines[:5]) if lines else "- 今日未发现需要立即升级处理的重大信号。"
 
 
-def _chatgpt_summary(news: list[dict], prices: list[dict], watchlists: dict) -> str:
+def _chatgpt_summary(news: list[dict], prices: list[dict], watchlists: dict, primary_source_results: list[dict] | None = None) -> str:
     core_tickers = watchlists.get(CORE_GROUP, {}).get("tickers", [])
     core_news = [item for item in news if set(item.get("tickers", [])) & set(core_tickers)]
     risk_news = [item for item in news if item.get("strategy_impact") == "风险上升"]
     theme_news = [item for item in news if item.get("related_ai_theme") in THEME_ORDER]
+    primary_source_results = primary_source_results or []
     movers = biggest_movers(prices)
     gainers = ", ".join(f"{row['ticker']} {pct(row.get('daily_change_pct'))}" for row in movers.get("gainers", [])[:3]) or "无"
     decliners = ", ".join(f"{row['ticker']} {pct(row.get('daily_change_pct'))}" for row in movers.get("decliners", [])[:3]) or "无"
     core_line = "；".join([f"{item.get('ticker')}: {item.get('headline')}" for item in core_news[:4]]) or "核心组未发现重大新闻。"
     risk_line = "；".join([f"{item.get('ticker')}: {item.get('headline')}" for item in risk_news[:3]]) or "暂未发现明确融资/稀释、insider selling、指引下调或供应链延迟等重大风险信号。"
     theme_line = "；".join([f"{item.get('related_ai_theme')}: {item.get('headline')}" for item in theme_news[:5]]) or "主题关键词未抓到强信号。"
+    primary_line = (
+        "；".join(
+            [
+                f"{record['ticker']}: {record['source_type']} - {record['title']}（{record['evidence_strength']}）"
+                for record in primary_source_results[:3]
+            ]
+        )
+        or "今日未发现 monitored tickers 的新增公司官方/SEC 一手来源。"
+    )
     return (
         f"今日 AI 大基建监控重点围绕核心持仓/计划买入组展开：{', '.join(core_tickers)}。"
         f"前一交易日主要涨幅标的为 {gainers}；主要跌幅标的为 {decliners}。"
+        f"Primary Source Scan 方面，{primary_line}。若一手来源与媒体新闻冲突，应优先以公司官方披露或 SEC/IR 文件为准。"
         f"核心新闻方面，{core_line}。"
         f"主题层面，系统按光互连/网络、电力/液冷、AI server、Memory/HBM、云平台 capex 分类，当前抓到的重点线索包括：{theme_line}。"
         f"风险方面，{risk_line}。"
@@ -1087,14 +1760,22 @@ def build_reports() -> dict:
     report_date = today_est()
     prices = fetch_all()
     news = fetch_news()
+    primary_source_results = _primary_source_results(news)
+    public_news_results = _public_news_results(news)
     write_json(ROOT / f"reports/raw_data/{report_date}-prices.json", prices)
     write_json(ROOT / f"reports/raw_data/{report_date}-news.json", news)
+    write_json(
+        ROOT / f"reports/raw_data/{report_date}-primary-sources.json",
+        [{key: value for key, value in record.items() if key != "item"} for record in primary_source_results],
+    )
 
     watchlists = load_yaml("config/watchlists.yaml")
     themes = load_yaml("config/themes.yaml").get("themes", {})
     base_url = report_base_url()
     report_url = f"{base_url.rstrip('/')}/{report_date}.html" if base_url else f"docs/reports/{report_date}.html"
     dashboard_data = _compute_dashboard_data(news, prices)
+    evidence_rows = _evidence_dashboard_rows(news)
+    thesis_rows = _thesis_tracker_rows(news)
 
     md = [
         f"# {REPORT_TITLE}",
@@ -1104,12 +1785,32 @@ def build_reports() -> dict:
         f"- HTML report: {report_url}",
         f"- 免责声明: {DISCLAIMER}",
         "",
+        _render_what_changed_today(thesis_rows),
+        "",
+        _render_thesis_tracker(thesis_rows),
+        "",
+        _render_evidence_vs_narrative(news),
+        "",
         _render_confidence_dashboard(dashboard_data),
+        "",
+        _render_evidence_dashboard(evidence_rows),
         "",
         _render_scoreboard(dashboard_data),
         "",
         "## 1. 今日最重要结论",
-        _top_conclusions(news, prices),
+        _top_conclusions(news, prices, primary_source_results, evidence_rows),
+        "",
+        _render_hyperscaler_tracker(news),
+        "",
+        _render_primary_source_ranking(primary_source_results),
+        "",
+        _render_investment_relevance_review(news),
+        "",
+        "## Primary Source Scan",
+        _render_primary_source_scan(primary_source_results, limit=12),
+        "",
+        "## Public News Scan",
+        _render_public_news_scan(public_news_results),
         "",
         "## Chokepoint Radar",
         _chokepoint_radar(news, prices, watchlists, dashboard_data),
@@ -1130,7 +1831,7 @@ def build_reports() -> dict:
         _high_risk_section(news, watchlists),
         "",
         "## 7. 给 ChatGPT 的分析摘要",
-        _chatgpt_summary(news, prices, watchlists),
+        _chatgpt_summary(news, prices, watchlists, primary_source_results),
         "",
         "## 研究边界",
         "- 不连接任何券商账户。",
@@ -1146,8 +1847,28 @@ def build_reports() -> dict:
             "",
             _render_handoff_dashboard_snapshot(dashboard_data),
             "",
+            _render_what_changed_today(thesis_rows),
+            "",
+            _render_thesis_tracker(thesis_rows),
+            "",
+            _render_evidence_vs_narrative(news, limit=5),
+            "",
+            _render_evidence_dashboard(evidence_rows[:10]),
+            "",
+            _render_hyperscaler_tracker(news),
+            "",
+            _render_primary_source_ranking(primary_source_results, limit_per_group=3),
+            "",
+            _render_investment_relevance_review(news, limit=8),
+            "",
+            "## Primary Source Scan",
+            _render_primary_source_scan(primary_source_results, limit=5),
+            "",
+            "## Public News Scan",
+            _render_public_news_scan(public_news_results, limit=6),
+            "",
             "## 给 ChatGPT 的分析摘要",
-            _chatgpt_summary(news, prices, watchlists),
+            _chatgpt_summary(news, prices, watchlists, primary_source_results),
             "",
             _render_handoff_chokepoint_radar(dashboard_data),
             "",
@@ -1174,12 +1895,15 @@ def _news_section_for_handoff(news: list[dict]) -> str:
         return "- 未发现需要 ChatGPT 深入分析的高优先级新闻。"
     lines = []
     for item in items:
+        summary = item.get("summary") or "Body unavailable / headline-only."
+        if summary == "Summary based on headline/metadata only.":
+            summary = "Body unavailable / headline-only."
         lines.extend(
             [
                 f"- Ticker: {item.get('ticker', 'General')}",
                 f"  Headline: {item.get('headline', '')}",
                 f"  Source: {item.get('source', 'Unknown')}（{item.get('source_type', '来源未知')}）",
-                f"  Summary: {item.get('summary', 'Summary based on headline/metadata only.')}",
+                f"  Summary: {summary}",
                 f"  Why it matters: {item.get('why_it_matters', '')}",
                 f"  Related theme: {item.get('related_ai_theme', 'general market')}",
                 f"  Confidence: {item.get('confidence', 'Low')}",

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import re
 from datetime import datetime
+from html.parser import HTMLParser
+from urllib.request import Request, urlopen
 
 import feedparser
 
@@ -71,15 +73,94 @@ POSITIVE_TERMS = [
 ]
 
 SOURCE_TYPE_RULES = [
-    ("公司公告 / IR", ["investor relations", "press release", "newsroom", "nvidia newsroom"]),
-    ("财报电话会", ["earnings call", "transcript"]),
+    ("Investor Relations press release", ["investor relations", "press release", "newsroom", "nvidia newsroom"]),
+    ("Earnings call transcript", ["earnings call", "transcript"]),
+    ("Official company blog / product announcement", ["azure.microsoft.com", "aws.amazon.com/blogs/aws", "cloudblog.withgoogle.com", "google cloud blog", "aws news blog", "microsoft azure blog"]),
     ("主流财经新闻", ["reuters", "cnbc", "bloomberg", "marketwatch", "wall street journal", "wsj", "financial times", "barron's"]),
     ("X 推文", ["x.com", "twitter"]),
     ("博客 / 二级来源", ["blog", "yahoo finance", "investors.com", "seeking alpha", "motley fool"]),
 ]
 
-HIGH_CONFIDENCE_SOURCE_TYPES = {"公司公告 / IR", "SEC filing", "财报电话会", "主流财经新闻"}
+HIGH_CONFIDENCE_SOURCE_TYPES = {
+    "Investor Relations press release",
+    "SEC filing",
+    "Earnings release",
+    "Earnings call transcript",
+    "Investor presentation",
+    "Official customer case study",
+    "Official partnership / launch / guidance / capex update",
+    "主流财经新闻",
+}
+PRIMARY_SOURCE_TYPES = {
+    "Investor Relations press release",
+    "Official company blog / product announcement",
+    "Official customer case study",
+    "Official partnership / launch / guidance / capex update",
+    "SEC filing",
+    "Earnings release",
+    "Earnings call transcript",
+    "Investor presentation",
+}
 MEDIUM_CONFIDENCE_SOURCES = ["the elec", "digitimes", "trendforce", "lightcounting", "servethehome", "tom's hardware"]
+SOURCE_OWNER_TICKERS = {
+    "NVIDIA Newsroom": ["NVDA"],
+    "Microsoft Azure Blog": ["MSFT"],
+    "AWS News Blog": ["AMZN"],
+    "Google Cloud Blog": ["GOOGL"],
+}
+PRIMARY_NEGATIVE_TERMS = [
+    "guidance cut",
+    "demand weakness",
+    "margin pressure",
+    "supply constraint",
+    "supply constraints",
+    "customer loss",
+    "regulatory issue",
+    "launch delay",
+    "shipment delay",
+    "production delay",
+    "delayed launch",
+    "delayed shipment",
+    "delayed production",
+    "cancellation",
+    "cancelled",
+    "canceled",
+    "capex reduction",
+    "negative financial disclosure",
+]
+PRIMARY_POSITIVE_TERMS = [
+    "customer",
+    "case study",
+    "launch",
+    "general availability",
+    "generally available",
+    "performance improvement",
+    "partnership",
+    "new capability",
+    "agent",
+    "ai",
+]
+
+
+class _TextExtractor(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self._skip = False
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in {"script", "style", "noscript", "svg"}:
+            self._skip = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"script", "style", "noscript", "svg"}:
+            self._skip = False
+
+    def handle_data(self, data: str) -> None:
+        if not self._skip:
+            text = data.strip()
+            if text:
+                self.parts.append(text)
 
 
 COMPANY_ALIASES = {
@@ -134,6 +215,48 @@ def _clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", re.sub("<[^>]+>", "", value or "")).strip()
 
 
+def _html_to_text(html: str) -> str:
+    parser = _TextExtractor()
+    parser.feed(html or "")
+    text = _clean_text(" ".join(parser.parts))
+    boilerplate_terms = ["cookie", "privacy policy", "subscribe", "sign up"]
+    if sum(1 for term in boilerplate_terms if term in text.lower()) >= 3 and len(text) < 1200:
+        return ""
+    return text
+
+
+def _entry_body_text(entry: dict, url: str, source_type: str) -> tuple[str, str]:
+    pieces = []
+    for content in entry.get("content", []) or []:
+        pieces.append(_clean_text(content.get("value", "")))
+    body = _clean_text(" ".join(pieces))
+    if len(body) >= 280:
+        return body, "Full"
+
+    summary_detail = entry.get("summary_detail", {}) or {}
+    summary_value = summary_detail.get("value", "") or entry.get("summary", "")
+    summary_text = _clean_text(summary_value)
+    if len(summary_text) >= 180:
+        return summary_text, "Partial"
+
+    if source_type in PRIMARY_SOURCE_TYPES and url:
+        try:
+            request = Request(url, headers={"User-Agent": "ai-investing-monitor/1.0"})
+            with urlopen(request, timeout=8) as response:
+                html = response.read(600_000).decode("utf-8", errors="ignore")
+            fetched = _html_to_text(html)
+            if len(fetched) >= 800:
+                return fetched, "Full"
+            if len(fetched) >= 220:
+                return fetched, "Partial"
+        except Exception:
+            pass
+
+    if summary_text:
+        return summary_text, "Headline-only"
+    return "", "Headline-only"
+
+
 def _watchlist_context() -> dict:
     watchlists = load_yaml("config/watchlists.yaml")
     core = set(watchlists.get("core_holdings_planned", {}).get("tickers", []))
@@ -160,11 +283,25 @@ def _mentions(text: str, ticker: str) -> bool:
         return True
     if ticker not in {"ON"} and re.search(rf"\b{re.escape(ticker)}\b", text):
         return True
-    return any(alias.lower() in text.lower() for alias in aliases)
+    return any(re.search(rf"\b{re.escape(alias)}\b", text, flags=re.IGNORECASE) for alias in aliases)
 
 
 def _mentioned_tickers(text: str, tickers: list[str]) -> list[str]:
     return [ticker for ticker in tickers if _mentions(text, ticker)]
+
+
+def _mapped_tickers(source_name: str, text: str, tickers: list[str], source_type: str, explicit_text: str = "") -> tuple[list[str], str]:
+    mentioned = _mentioned_tickers(text, tickers)
+    owner = SOURCE_OWNER_TICKERS.get(source_name, [])
+    if source_type in PRIMARY_SOURCE_TYPES and owner:
+        explicit_mentions = _mentioned_tickers(explicit_text, tickers)
+        extras = [ticker for ticker in explicit_mentions if ticker not in owner]
+        if extras:
+            return sorted(set(owner + extras)), "Medium"
+        return owner, "High"
+    if mentioned:
+        return mentioned, "High"
+    return [], "Low"
 
 
 def _contains_keyword(text: str, keyword: str) -> bool:
@@ -189,6 +326,16 @@ def _source_type(source: str, url: str, headline: str) -> str:
     text = f"{source} {url} {headline}".lower()
     if "sec.gov" in text or re.search(r"\b(10-k|10-q|8-k|s-1|13f)\b", text):
         return "SEC filing"
+    if re.search(r"\b(earnings release|quarterly results|financial results)\b", text):
+        return "Earnings release"
+    if re.search(r"\b(investor presentation|presentation)\b", text):
+        return "Investor presentation"
+    if re.search(r"\b(customer case study|case study|customer story)\b", text):
+        return "Official customer case study"
+    if re.search(r"\b(partnership|launch|guidance|capex update)\b", text) and any(
+        official in text for official in ["newsroom", "investor relations", "press release", "azure.microsoft.com", "aws.amazon.com", "cloudblog.withgoogle.com"]
+    ):
+        return "Official partnership / launch / guidance / capex update"
     if re.search(r"\b(analyst|rating|upgrade|downgrade|price target)\b", text):
         return "分析师报告"
     for label, terms in SOURCE_TYPE_RULES:
@@ -201,6 +348,8 @@ def _confidence(source: str, source_type: str) -> str:
     lowered = source.lower()
     if source_type in HIGH_CONFIDENCE_SOURCE_TYPES:
         return "High"
+    if source_type == "Official company blog / product announcement":
+        return "Medium"
     if any(name in lowered for name in MEDIUM_CONFIDENCE_SOURCES):
         return "Medium"
     if source_type == "X 推文":
@@ -221,8 +370,43 @@ def _direction(text: str) -> str:
     return "中性"
 
 
-def _strategy_impact(text: str, tickers: list[str], core: set[str], high_risk: set[str], theme: str) -> str:
+def _primary_source_sentiment(text: str, body_status: str) -> str:
     lowered = text.lower()
+    if any(term in lowered for term in PRIMARY_NEGATIVE_TERMS):
+        return "Negative"
+    if body_status == "Headline-only":
+        return "Watch"
+    if any(term in lowered for term in ["customer", "case study", "adoption", "built with", "deployed"]):
+        return "Customer adoption signal"
+    if any(term in lowered for term in ["launch", "announcing", "general availability", "generally available", "now available"]):
+        return "Product momentum"
+    if any(term in lowered for term in ["performance", "capability", "platform", "feature", "agent", "model"]):
+        return "Platform capability update"
+    if any(term in lowered for term in PRIMARY_POSITIVE_TERMS):
+        return "Positive signal"
+    return "Neutral"
+
+
+def _primary_direction(sentiment: str) -> str:
+    if sentiment == "Negative":
+        return "负面"
+    if sentiment in {"Positive signal", "Product momentum", "Customer adoption signal", "Platform capability update"}:
+        return "正面"
+    return "中性"
+
+
+def _strategy_impact(text: str, tickers: list[str], core: set[str], high_risk: set[str], theme: str, source_type: str = "", primary_sentiment: str = "") -> str:
+    lowered = text.lower()
+    if source_type in PRIMARY_SOURCE_TYPES:
+        if primary_sentiment == "Negative":
+            return "风险上升"
+        if any(ticker in high_risk for ticker in tickers):
+            return "高风险概念观察"
+        if any(ticker in core for ticker in tickers):
+            return "需要关注"
+        if primary_sentiment in {"Positive signal", "Product momentum", "Customer adoption signal", "Platform capability update"}:
+            return "与当前主题相关"
+        return "仅作背景"
     if any(ticker in high_risk for ticker in tickers):
         return "高风险概念观察"
     if any(term in lowered for term in ["dilution", "offering", "stock sales", "share sale", "share issuance", "insider selling", "downgrade", "guidance cut", "delay", "shortage"]):
@@ -232,6 +416,26 @@ def _strategy_impact(text: str, tickers: list[str], core: set[str], high_risk: s
     if theme != "general market":
         return "与当前主题相关"
     return "仅作背景"
+
+
+def _summary_from_body(headline: str, body_text: str, body_status: str) -> str:
+    if body_status == "Headline-only" or not body_text:
+        return "Body unavailable / headline-only."
+    sentences = re.split(r"(?<=[.!?])\s+", body_text)
+    selected = []
+    for sentence in sentences:
+        clean = _clean_text(sentence)
+        if len(clean) < 45:
+            continue
+        selected.append(clean)
+        if len(selected) >= 2:
+            break
+    if not selected:
+        return _clean_text(body_text[:320])
+    summary = " ".join(selected)
+    if len(summary) > 520:
+        summary = summary[:519].rstrip() + "."
+    return summary
 
 
 def _why_it_matters(tickers: list[str], theme: str, impact: str, direction: str) -> str:
@@ -286,9 +490,9 @@ def _is_relevant(item: dict, context: dict) -> bool:
     if item.get("source_type") == "博客 / 二级来源" and not _is_theme_or_event_text(text):
         return False
     if tickers & context["core"]:
-        return _is_theme_or_event_text(text) or item.get("source_type") in {"主流财经新闻", "公司公告 / IR", "SEC filing", "财报电话会", "分析师报告"}
+        return _is_theme_or_event_text(text) or item.get("source_type") in (PRIMARY_SOURCE_TYPES | {"主流财经新闻", "分析师报告"})
     if tickers & context["observation"]:
-        return _is_theme_or_event_text(text) or item.get("source_type") in {"主流财经新闻", "公司公告 / IR", "SEC filing", "财报电话会", "分析师报告"}
+        return _is_theme_or_event_text(text) or item.get("source_type") in (PRIMARY_SOURCE_TYPES | {"主流财经新闻", "分析师报告"})
     if tickers & context["high_risk"]:
         return _is_major_event(text)
     if item.get("related_ai_theme") != "general market" and _is_major_event(text):
@@ -333,15 +537,18 @@ def _build_item(source: dict, entry: dict, context: dict, themes: dict) -> dict:
     headline = _clean_text(entry.get("title", ""))
     metadata = _clean_text(entry.get("summary", ""))
     url = entry.get("link", "").strip()
-    text = f"{headline} {metadata}"
-    tickers = _mentioned_tickers(text, context["all"])
-    theme = _related_theme(text, tickers, themes)
     source_name = source.get("name", "Unknown")
     source_type = _source_type(source_name, url, headline)
+    body_text, body_status = _entry_body_text(entry, url, source_type)
+    explicit_mapping_text = f"{headline} {metadata}"
+    analysis_text = f"{headline} {metadata} {body_text}"
+    tickers, mapping_confidence = _mapped_tickers(source_name, analysis_text, context["all"], source_type, explicit_mapping_text)
+    theme = _related_theme(analysis_text, tickers, themes)
     confidence = _confidence(source_name, source_type)
-    direction = _direction(text)
-    impact = _strategy_impact(text, tickers, context["core"], context["high_risk"], theme)
-    summary = _summary(source_type)
+    primary_sentiment = _primary_source_sentiment(analysis_text, body_status) if source_type in PRIMARY_SOURCE_TYPES else ""
+    direction = _primary_direction(primary_sentiment) if source_type in PRIMARY_SOURCE_TYPES else _direction(analysis_text)
+    impact = _strategy_impact(analysis_text, tickers, context["core"], context["high_risk"], theme, source_type, primary_sentiment)
+    summary = _summary_from_body(headline, body_text, body_status) if source_type in PRIMARY_SOURCE_TYPES else _summary(source_type)
     return {
         "ticker": ", ".join(tickers) if tickers else "General",
         "headline": headline,
@@ -354,6 +561,9 @@ def _build_item(source: dict, entry: dict, context: dict, themes: dict) -> dict:
         "why_it_matters": _why_it_matters(tickers, theme, impact, direction),
         "related_ai_theme": theme,
         "confidence": confidence,
+        "primary_source_sentiment": primary_sentiment,
+        "body_status": body_status if source_type in PRIMARY_SOURCE_TYPES else "Metadata",
+        "ticker_mapping_confidence": mapping_confidence,
         "strategy_impact": impact,
         "direction": direction,
         "needs_attention": impact in {"需要关注", "风险上升", "与当前主题相关", "高风险概念观察"},
