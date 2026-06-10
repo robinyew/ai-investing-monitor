@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "SMCI",
+    "headline": "Super Micro stock tumbles on $7 billion financing plans as company touts AI server orders",
+    "source": "CNBC",
+    "source_type": "\u4e3b\u6d41\u8d22\u7ecf\u65b0\u95fb",
+    "link": "https://www.cnbc.com/2026/06/09/super-micro-stock-tumbles-on-7-billion-financing-plans.html",
+    "url": "https://www.cnbc.com/2026/06/09/super-micro-stock-tumbles-on-7-billion-financing-plans.html",
+    "summary": "Summary based on headline/metadata only.",
+    "original_summary": "Summary based on headline/metadata only.",
+    "why_it_matters": "\u8be5\u4fe1\u606f\u4e0e AI server \u4e3b\u9898\u76f8\u5173\uff0c\u53ef\u4f5c\u4e3a\u9700\u6c42\u3001\u8ba2\u5355\u3001capex \u6216\u4f9b\u5e94\u94fe\u53d8\u5316\u7ebf\u7d22\u3002",
+    "related_ai_theme": "AI server",
+    "confidence": "High",
+    "strategy_impact": "\u4e0e\u5f53\u524d\u4e3b\u9898\u76f8\u5173",
+    "direction": "\u6b63\u9762",
+    "needs_attention": true,
+    "tickers": [
+      "SMCI"
+    ],
+    "category": "primary_financial_news",
+    "published": "Tue, 09 Jun 2026 22:29:25 GMT"
+  },
+  {
+    "ticker": "SMCI",
+    "headline": "Supermicro to raise $7bn for AI server order fulfilment",
+    "source": "Yahoo Finance",
+    "source_type": "\u535a\u5ba2 / \u4e8c\u7ea7\u6765\u6e90",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/supermicro-raise-7bn-ai-server-115945058.html",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/supermicro-raise-7bn-ai-server-115945058.html",
+    "summary": "Summary based on headline/metadata only.",
+    "original_summary": "Summary based on headline/metadata only.",
+    "why_it_matters": "\u8be5\u4fe1\u606f\u4e0e AI server \u4e3b\u9898\u76f8\u5173\uff0c\u53ef\u4f5c\u4e3a\u9700\u6c42\u3001\u8ba2\u5355\u3001capex \u6216\u4f9b\u5e94\u94fe\u53d8\u5316\u7ebf\u7d22\u3002",
+    "related_ai_theme": "AI server",
+    "confidence": "Low",
+    "strategy_impact": "\u4e0e\u5f53\u524d\u4e3b\u9898\u76f8\u5173",
+    "direction": "\u6b63\u9762",
+    "needs_attention": true,
+    "tickers": [
+      "SMCI"
+    ],
+    "category": "primary_financial_news",
+    "published": "2026-06-10T11:59:45Z"
+  }
+]
