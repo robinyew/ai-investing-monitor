@@ -129,7 +129,7 @@ def send_news_scan_email(report_date: str | None = None) -> bool:
         print(f"Email skipped: missing env vars: {', '.join(missing)}")
         return False
 
-    report_path = ROOT / "news" / f"{report_date}_ai_infrastructure_news.md"
+    report_path = ROOT / "investment-intelligence-hub" / "inbox" / "news" / f"{report_date}_ai_infrastructure_news.md"
     if not report_path.exists():
         print(f"Email skipped: report not found at {report_path}")
         return False

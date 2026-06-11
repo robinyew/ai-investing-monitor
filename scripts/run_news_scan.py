@@ -383,7 +383,7 @@ def main() -> None:
     # Inject share link into report header
     share_url = (
         f"https://github.com/robinyew/ai-investing-monitor/blob/main/"
-        f"news/{today}_ai_infrastructure_news.md"
+        f"investment-intelligence-hub/inbox/news/{today}_ai_infrastructure_news.md"
     )
     share_line = f"**Share:** [{share_url}]({share_url})"
     report = report.replace(
@@ -392,7 +392,7 @@ def main() -> None:
         1,
     )
 
-    output_dir = ROOT / "news"
+    output_dir = ROOT / "investment-intelligence-hub" / "inbox" / "news"
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / f"{today}_ai_infrastructure_news.md"
     output_path.write_text(report, encoding="utf-8")

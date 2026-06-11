@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news/
+          git add investment-intelligence-hub/inbox/news/
           git diff --cached --quiet || git commit -m "Add AI infrastructure news scan ${{ steps.scan.outputs.report_date }}"
           git push
 
