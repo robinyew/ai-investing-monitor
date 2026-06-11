@@ -1,0 +1,13 @@
+# Investment Intelligence Hub watchlist placeholder.
+# This file is not canonical yet.
+# Do not replace or override ai-investing-monitor/config/watchlists.yaml.
+# During Phase 1, the existing ai-investing-monitor watchlist remains the active source for daily report generation.
+# Future migration to this file requires explicit approval and verification.
+
+status: placeholder_only
+canonical: false
+current_active_watchlist: ../ai-investing-monitor/config/watchlists.yaml
+notes:
+  - "No tickers are defined here yet."
+  - "Do not infer holdings from this placeholder."
+

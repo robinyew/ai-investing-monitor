@@ -1,0 +1,87 @@
+NVDA:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/NVDA/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: investment_thesis_candidate
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+AVGO:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/AVGO/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: investment_thesis_candidate
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+MRVL:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/MRVL/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: speculation_thesis
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+ANET:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/ANET/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: investment_thesis_candidate
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+VRT:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/VRT/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: watch_only
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+MU:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/MU/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: speculation_thesis
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+COHR:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/COHR/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: watch_only
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+CIEN:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/CIEN/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: watch_only
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+DELL:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/DELL/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: speculation_thesis
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+ETN:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/ETN/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: watch_only
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1
+
+MPWR:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/MPWR/2026-06-07.md
+  last_run: 2026-06-07
+  thesis_type: watch_only
+  status: needs_primary_source_verification
+  next_review: 2026-09-07
+  report_count: 1

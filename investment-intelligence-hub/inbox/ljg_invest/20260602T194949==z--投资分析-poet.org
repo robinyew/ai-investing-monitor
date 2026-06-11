@@ -1,0 +1,257 @@
+#+title: 投资分析 POET
+#+date: 2026-06-02
+#+filetags: :投资分析:POET:硅光:AI数据中心:光互联:
+
+* 一、这是什么
+
+| 维度 | 内容 |
+|------+------|
+| 项目名称 | POET Technologies Inc. / POET |
+| 赛道定义 | 把 AI 数据中心光互联里最难规模化的光子集成、封装和测试，压缩成一套可量产的光引擎中介层 |
+| 阶段 | 技术验证进入商业订单期；仍未证明规模收入、毛利率和量产良率 |
+| 融资情况 | 上市公司；NASDAQ/TSXV: POET。2026 年 5-6 月市值约 18-25 亿美元区间，波动很大；2026-05 完成约 4 亿美元 registered direct offering。 |
+| 数据快照 | Q1 2026 收入 50.3 万美元；经营现金流流出 880 万美元；2026-03-31 现金及短投 3050 万美元；Q1 后完成 4 亿美元融资；Lumilens 初始 5000 万美元 800G/1.6T optical engine 采购订单，并称潜在 5 年关系可达 5 亿美元；公司称 1.6T optical engine 平台开发继续推进。 |
+
+POET 不是普通光模块公司。它真正押的是一个更窄、更底层的位置：AI 数据中心需要更高带宽、更低功耗、更低成本的光互联，而传统光模块封装和光电集成越来越难靠人工对准、离散器件和复杂封装继续扩展。POET 的 Optical Interposer / optical engine 试图把这些复杂度模块化。
+
+如果这件事跑通，POET 控制的不是“卖一个光模块”，而是光模块、co-packaged optics、AI 集群互联中可复制的封装/集成层。它像一块把硅、光子器件、激光器、调制器、探测器和电子芯片连接起来的“秩序板”。
+
+但今天它还不是成熟机器。它更像一台已经拿到大客户试车票、刚刚获得燃料、但还没跑完量产赛道的机器。
+
+* 二、秩序创造机器判定
+
+** 飞轮在不在转？
+
+POET 的飞轮开始转，但仍处在外力启动阶段。
+
+潜在飞轮是：
+
+AI 集群带宽需求上升 -> 800G/1.6T/3.2T 光引擎需求增加 -> 传统光模块封装成本和功耗压力上升 -> POET optical interposer 降低集成/封装复杂度 -> 客户采用 optical engine -> 订单带来量产数据和供应链信任 -> 更多模块商/云客户采用 -> 规模降低成本 -> 平台标准化。
+
+这个飞轮在 2026 年第一次出现商业化证据。Q1 2026，公司披露 Lumilens 给出 5000 万美元初始采购订单，采购 800G 和 1.6T optical engines，并表示潜在 5 年关系可达 5 亿美元。公司还和 LITEON 扩大合作，推动 800G / 1.6T optical engines 和 pluggable transceivers；与 Lessengers 合作把 POET optical engines 和 Lessengers polymer optical waveguide interposer 结合，用于可拆卸 800G/1.6T pluggable optics，并面向未来 co-packaged optics。
+
+这些不是纯论文或实验室演示。它们说明 POET 的位置已经进入客户产品路线图。
+
+但飞轮还没闭环。Q1 2026 收入只有 50.3 万美元，经营现金流流出 880 万美元，2026-03-31 现金和短投 3050 万美元。若没有 Q1 后 4 亿美元融资，公司的商业化窗口会更紧。今天的订单还没变成大规模收入，收入还没变成毛利，毛利还没变成现金流。
+
+所以结论是：POET 的“订单飞轮”刚启动，“经营飞轮”还没启动。
+
+** 冲击后变强还是变弱？
+
+*** AI 数据中心带宽继续爆发
+
+POET 变强。
+
+AI 集群从 400G 迁移到 800G、1.6T，再走向 3.2T，光互联的功耗、热、封装、测试和良率压力都会变大。越往高带宽走，越需要集成式方案。POET 的 optical interposer 就是吃这个复杂度上升。
+
+它不是直接和 Nvidia/Broadcom/Marvell 抢主芯片利润，而是站在光互联的封装与引擎层。如果 AI 数据中心持续扩张，POET 的技术位置会更重要。
+
+*** 光模块价格快速下降
+
+这既是机会也是压力。
+
+光模块价格下降会逼供应链寻找更低成本、更高自动化、更少人工对准的方案。POET 若能证明低成本量产，就会受益。但如果客户把价格压力直接传导给 POET，而 POET 良率和规模还没起来，就会被压毛利。
+
+*** 大厂自研或替代封装路线
+
+这是最大技术风险。
+
+光互联不是只有 POET 一条路。Broadcom、Marvell、Coherent、Lumentum、Intel、Cisco、Nvidia、TSMC、Ayar Labs、Lightmatter、Celestial AI、DustPhotonics、Ranovus、各类硅光/薄膜铌酸锂/共封装光学方案，都在抢 AI 光互联的下一代控制点。
+
+如果行业标准转向另一种封装/互联架构，或者客户更愿意选择有规模和资产负债表的大厂，POET 会变弱。它需要证明自己的 interposer 不是“好技术”，而是“客户愿意押量产路线的好技术”。
+
+*** 资本市场情绪逆转
+
+POET 会明显变弱。
+
+公司目前仍是小收入、高研发、高融资依赖资产。2026 年 5 月完成 4 亿美元融资是重大利好，给商业化提供时间。但这也说明它还没有靠经营现金流养活自己。若股价下跌、客户交付延迟、收入确认慢，市场会重新按“前收入硬科技”折价。
+
+** 资源是主动聚集，还是靠销售推动？
+
+资源开始主动聚集，但更多是“产业问题推来”，不是“POET 平台自然吸引”。
+
+Lumilens 为什么下 5000 万美元初始订单？因为 AI 光模块需要向 800G/1.6T 升级，传统方案在功耗、成本、封装和上市速度上压力大。LITEON 为什么合作？因为大型光模块厂需要下一代 optical engine 方案。Lessengers 为什么合作？因为 POET optical engine 和 polymer waveguide interposer 可以共同瞄准 pluggable optics 和 co-packaged optics。
+
+这些资源不是 POET 靠销售硬推出来的，而是 AI 数据中心光互联瓶颈把客户推到新方案面前。
+
+但 POET 还没有“非来不可”的平台引力。今天客户在验证、合作、下初始订单，但还不是全行业围绕 POET 标准重构。主动聚集的对象是“更低成本、更高带宽光引擎”，POET 是候选核心之一，不是已经默认标准。
+
+** 综合判定
+
+POET 是“有潜力的秩序创造机器”，但还不是秩序创造机器。
+
+它的方向很像新秩序：把 AI 光互联从复杂、昂贵、难量产的离散封装，变成可平台化、可复制、可扩展的 optical engine/interposer。若成功，它控制的是 AI 数据中心数据流动的物理接口层。
+
+但今天证据还在早期。订单、合作、融资是真实信号；收入、毛利、量产、客户复购、供应链地位还没验证。POET 不是“便宜买现金流”，而是买一个可能成为 AI 光互联关键层的高波动期权。
+
+* 三、创生公式
+
+POET = AI 带宽需求爆发 -> 光模块封装和功耗成为瓶颈 -> Optical Interposer 把光电集成复杂度模块化 -> 客户用 POET optical engine 加速 800G/1.6T/3.2T 产品 -> 订单带来量产数据 -> 平台标准化 -> POET 从技术供应商升级为光互联基础层。
+
+这个公式已经验证到“客户订单与合作层”，未验证到“规模收入和毛利层”。
+
+已验证部分：
+
+1. 技术方向验证：POET 持续推进 800G/1.6T optical engines，目标是 AI 网络和数据中心互联。
+2. 客户订单验证：Lumilens 5000 万美元初始 PO，潜在 5 年 5 亿美元关系。
+3. 生态合作验证：LITEON、Lessengers、MultiLane、三菱电机相关演示等合作和展示。
+4. 资本验证：Q1 后 4 亿美元融资，让公司有能力支撑商业化。
+
+未验证部分：
+
+1. Lumilens 订单何时确认收入、毛利率多少、是否按计划放量。
+2. LITEON / Lessengers 合作是否转成大规模采购。
+3. POET 是否能稳定交付 1.6T 以上产品，良率和成本是否优于替代方案。
+4. 是否有 hyperscaler 或头部模块厂以更大规模采用。
+5. 4 亿美元融资是否足以支撑到现金流拐点。
+
+* 四、市场看见的 vs 我们看见的
+
+** 它在 S 曲线哪里？
+
+POET 所在的 AI 光互联产业在加速期；POET 自己在商业化拐点前后。
+
+AI 光互联的 S 曲线已经很清楚：GPU 集群扩大，节点间通信成为瓶颈，800G 正在成为新基线，1.6T 开始导入，3.2T 被规划。光模块、硅光、CPO、LPO、光 I/O 都在快速推进。
+
+POET 自己的 S 曲线还没进入加速期。它刚从技术验证、样品、合作，进入初始大订单和融资后的商业化阶段。真正拐点不是发布合作，而是收入曲线从几十万美元变成几千万美元，再变成上亿美元，并且毛利率不崩。
+
+下一阶段拐点由五个条件触发：
+
+1. Lumilens 5000 万美元订单开始按季度确认收入。
+2. 1.6T optical engine 平台完成客户认证并进入量产。
+3. LITEON 或其他头部模块商给出更明确量产订单。
+4. 公司披露毛利率、良率、产能和交付节奏，让市场能从故事转为模型。
+5. 出现 hyperscaler / AI 网络设备商更直接的采用信号。
+
+** 市场是否用旧眼睛看它，还是已经预支未来？
+
+市场曾经用旧眼睛看 POET：小型加拿大硬科技、长期无收入、技术好但商业化难、不断融资。
+
+这个旧眼睛遮住了一个变化：AI 数据中心让 optical engine/interposer 这种过去偏 niche 的技术，变成可能的基础设施瓶颈。若 1.6T/3.2T 光互联需要大幅降低封装复杂度，POET 的技术位置会从边缘走到中心。
+
+但 2026 年市场已经开始预支这个未来。POET 的市值在 2026 年 5-6 月大幅升到约 18-25 亿美元区间，而 Q1 2026 收入只有 50.3 万美元。这个估值不是在买当前业务，而是在买未来几年订单兑现和平台化成功。
+
+所以 POET 不是典型低估资产。它是“技术认知差部分存在，但资本市场已经提前付钱”的资产。继续上涨必须靠订单收入化，而不是靠更多演示。
+
+** 它控制了什么别人拿不走的东西？
+
+*** Optical Interposer 平台
+
+这是 POET 的核心。它试图把无源 waveguides、激光器、调制器、探测器、电子芯片连接等复杂集成做成平台。若其工艺、专利、设计库和量产 know-how 被客户采用，切换成本会提高。
+
+*** 光引擎设计能力
+
+POET 不只卖材料或设备，而是卖 optical engines。800G、1.6T、未来 3.2T 产品路线如果连续成立，会形成产品代际能力。
+
+*** 客户路线图嵌入
+
+Lumilens 初始订单和 LITEON 合作的价值在于进入客户路线图。光模块不是一次性采购，进入后会跟随客户产品代际迭代。但今天嵌入深度还需要收入验证。
+
+*** 资本窗口
+
+4 亿美元融资是 POET 当前别人短期拿不走的资源。小型硬科技最怕死在商业化前夜，现金让它至少有机会跨过量产门槛。
+
+*** 它没有控制什么？
+
+POET 不控制 hyperscaler 采购标准，不控制光模块终端品牌，不控制交换芯片，不控制激光器/晶圆大规模供应链，不控制行业标准。它的权力在集成平台和光引擎设计，不在终端需求。
+
+* 五、它在搭哪趟便车？
+
+POET 搭的是“AI 数据流成本坍缩”的便车。
+
+AI 的计算能力不是只由 GPU 决定，还由 GPU 之间能多快、多便宜、多低功耗地交换数据决定。训练和推理集群越大，数据移动成本越成为系统瓶颈。光互联就是在把数据移动成本压下去。
+
+POET 捕获的是其中最底层的一环：封装和集成成本。如果 optical interposer 让 800G/1.6T/3.2T 光引擎更容易量产，POET 就在降低 AI 集群内部和数据中心之间的协作成本。
+
+它还搭两趟次要便车：
+
+1. 光模块从离散组装走向平台化集成。
+2. CPO / LPO / silicon photonics / optical I/O 等新架构让传统光模块供应链重新洗牌。
+
+* 六、换不换
+
+** 交换建议
+
+建议观察或极小仓卫星，不建议核心仓。
+
+POET 的赔率很高，但它不是确定性投资。它的核心问题不是“技术有没有意思”，而是：技术能否转成规模收入、毛利和客户锁定。
+
+如果投资，应该把它当 AI 光互联基础层期权，而不是当成熟光模块公司。仓位必须小，因为任何一个关键节点延误，估值都可能被重新打回前收入硬科技。
+
+** 仓位定义
+
+- 核心仓：不适合。收入太小，商业化未完成，客户集中和技术替代风险高。
+- 卫星仓：只适合极高风险偏好。组合中 0.5%-1.5% 更合理，不建议超过 2%。
+- 观察仓：适合大多数人。等待 Lumilens 订单确认、LITEON 放量、1.6T 认证和毛利数据。
+
+** 如果投资，怎么加仓
+
+1. 第一层：极小仓位，买 optical interposer 成为 AI 光互联控制点的期权。
+2. 第二层：看到 Lumilens 订单开始确认收入，且没有明显延期。
+3. 第三层：LITEON 或其他头部客户给出量产订单。
+4. 第四层：季度收入超过千万美元级别，毛利率和现金消耗可控。
+5. 第五层：hyperscaler 或大型网络设备商公开采用，平台化地位被验证。
+
+* 七、核心假设、退出信号和未解问题
+
+** 核心假设 1：AI 数据中心光互联会持续从 800G 走向 1.6T/3.2T，并迫使封装平台升级。
+
+证据：POET 客户订单和合作集中在 800G/1.6T；行业正在向更高速光模块和 CPO/LPO 迁移。
+
+退出信号：800G/1.6T 需求放缓，客户推迟产品导入，或替代方案以更低成本满足需求。
+
+** 核心假设 2：POET Optical Interposer 能在成本、功耗、良率和尺寸上形成可采购优势。
+
+证据：Lumilens 订单、LITEON 合作、Lessengers 合作和多次行业展示。
+
+退出信号：客户认证延期；良率/成本不披露或不达预期；订单转收入明显慢于公司表述。
+
+** 核心假设 3：客户订单会从初始 PO 变成持续平台关系。
+
+证据：Lumilens 潜在 5 年 5 亿美元关系；LITEON 扩大合作。
+
+退出信号：5000 万美元 PO 未按期转收入；没有后续订单；客户转向自研或其他供应商。
+
+** 核心假设 4：4 亿美元融资给 POET 足够商业化跑道。
+
+证据：融资规模远高于 Q1 期末现金 3050 万美元，能支撑研发、产能、供应链和客户交付。
+
+退出信号：现金消耗显著超预期；继续频繁融资；资本开支或预付款压力超过融资缓冲。
+
+** 核心假设 5：市场愿意继续给 AI 光互联关键层高估值。
+
+证据：POET 市值已按未来商业化重估，AI 光互联仍是热门基础设施主题。
+
+退出信号：光模块/硅光板块估值压缩；客户订单未兑现时股价仍靠融资和展示支撑。
+
+** 未解问题
+
+1. Lumilens 5000 万美元 PO 的交付时间、取消条款、毛利率和预付款结构是什么？
+
+2. Lumilens 自身客户是谁？最终需求来自 hyperscaler、模块商、网络设备商，还是库存建设？
+
+3. POET 的 1.6T optical engine 良率、单位成本和产能爬坡计划如何？
+
+4. LITEON 合作会不会转成明确采购订单？LITEON 在终端客户里会把 POET 放在多大比例？
+
+5. POET 是否有能力管理供应链和量产，还是需要把大部分价值让给模块厂/代工伙伴？
+
+6. Broadcom、Marvell、Coherent、Lumentum、Ayar Labs、Lightmatter、Celestial AI 等替代路线中，谁最可能压缩 POET 的空间？
+
+7. 4 亿美元融资后，股本稀释、现金使用计划和达到盈亏平衡所需收入规模是多少？
+
+* 最后一句
+
+POET 的本质是一台尚未完成量产验证的 AI 光互联秩序机器：它可能控制未来高速光引擎的关键集成层，但现在买的是商业化兑现期权，不是已经自转的现金流机器。
+
+* 主要资料来源
+
+- POET Q1 2026 financial results: https://www.poet-technologies.com/news/poet-technologies-reports-first-quarter-2026-financial-results
+- POET Q1 2026 Form 6-K / financial statements: https://www.sec.gov/Archives/edgar/data/1437424/000121390026050427/ea0242367-6k_poettech.htm
+- POET 2025 annual report / Form 20-F: https://www.sec.gov/Archives/edgar/data/1437424/000121390026018244/ea0230468-20f_poet.htm
+- POET 2026 $400M registered direct offering announcement: https://www.poet-technologies.com/news/poet-technologies-announces-us400-million-registered-direct-offering
+- POET closes $400M registered direct offering: https://www.poet-technologies.com/news/poet-technologies-closes-us400-million-registered-direct-offering
+- POET Lumilens purchase order announcement: https://www.poet-technologies.com/news/poet-technologies-receives-us50-million-purchase-order-for-800g-and-1-6t-optical-engines
+- POET / LITEON collaboration update: https://www.poet-technologies.com/news/poet-technologies-and-liteon-expand-collaboration-for-800g-1-6t-optical-engines-and-pluggable-transceivers
+- POET / Lessengers collaboration: https://www.poet-technologies.com/news/poet-technologies-and-lessengers-collaborate-on-800g-and-1-6t-optical-engines-for-ai-networks
+- StockAnalysis POET overview and market data: https://stockanalysis.com/stocks/poet/

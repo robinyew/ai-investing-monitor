@@ -1,0 +1,283 @@
+#+title: 投资分析 BB
+#+date: 2026-06-02
+#+filetags: :投资分析:BB:BlackBerry:QNX:PhysicalAI:安全关键系统:
+
+* 一、这是什么
+
+| 维度 | 内容 |
+|------+------|
+| 项目名称 | BlackBerry Limited / BB |
+| 赛道定义 | 把安全、确定性、实时操作系统和关键通信，变成 physical AI 时代机器可被信任地运行的底层秩序 |
+| 阶段 | 旧品牌剥离期结束，QNX 重新成为核心；AI/physical AI 叙事刚被市场发现，但收入规模仍小 |
+| 融资情况 | 上市公司；NYSE/TSX: BB。2026-06-01 TSX 市值约 72.4 亿加元；NYSE 口径 2026-05-22 市值约 39.1 亿美元，随后股价继续大幅波动。 |
+| 数据快照 | FY2026 收入 5.491 亿美元，同比增长 3%；Q4 FY2026 收入 1.56 亿美元，同比增长 10%；QNX Q4 收入 7870 万美元，同比增长 20%，FY2026 QNX 收入 2.68 亿美元，同比增长 14%；QNX royalty backlog 约 9.50 亿美元；FY2027 指引收入 5.86-6.16 亿美元，QNX segment adjusted EBITDA 6900-8100 万美元。 |
+
+BlackBerry 的旧名字太重：手机、键盘、企业邮件、Cylance 失败、meme stock。这些旧影子会挡住今天真正要看的东西。
+
+今天 BB 的核心不是“老手机品牌复活”，也不是“又一个 AI 安全公司”。它的新故事在 QNX：安全认证、实时、确定性、嵌入式操作系统，运行在汽车、机器人、医疗、工业、轨道交通、航空航天和国防设备里。
+
+AI 大基建的第一阶段是算力中心：GPU、数据中心、电力、光互联。下一阶段是 physical AI：AI 从网页和云端走向车、机器人、工厂、医疗设备、无人系统、边缘控制器。这个世界最怕的不是“模型不聪明”，而是“机器不可预测”。QNX 的机会在这里：让 AI 控制真实机器时，有一个可认证、可隔离、可实时调度、可安全降级的操作系统底座。
+
+* 二、秩序创造机器判定
+
+** 飞轮在不在转？
+
+QNX 的飞轮已经在转，但 BlackBerry 整体飞轮还没有彻底重构完成。
+
+第一层飞轮：汽车/工业设备软件复杂度上升 -> OEM 需要安全实时 OS 和 hypervisor -> QNX 进入平台设计 -> 车型或设备量产后产生 royalty -> backlog 提升 -> 客户在下一代平台继续采用 -> QNX 嵌入更深。
+
+FY2026 QNX 收入 2.68 亿美元，同比增长 14%；Q4 QNX 收入 7870 万美元，同比增长 20%；QNX royalty backlog 增至约 9.50 亿美元。公司称 QNX 在 Q4 和 FY2026 都达到 Rule of 40。这个飞轮不是幻觉，已经有收入、backlog 和利润信号。
+
+第二层飞轮：NVIDIA / Qualcomm / BMW / Vector 等生态合作 -> QNX 成为 SDV 和 edge AI 开发默认安全层之一 -> 更多开发者和 OEM 在 QNX 上构建 -> 平台工具链增强 -> 更高 switching cost。
+
+2026 年几个节点很关键。QNX 技术被 BMW 新一代 Neue Klasse 采用，支持 safety-critical systems；QNX 和 NVIDIA 在 2026-04-20 扩大合作，把 QNX OS for Safety 8.0 与 NVIDIA IGX Thor 平台结合，用于 robotics、medical、industrial systems 等 safety-critical edge AI；QNX 还推出 Hypervisor 8.0 for Safety，面向 physical AI 的确定性、安全认证虚拟化。
+
+第三层飞轮：Cylance 出售 -> 成本和管理复杂度下降 -> 公司重新聚焦 QNX + Secure Communications -> 盈利和现金流改善 -> 市场重新评价 BB。
+
+Cylance 出售是一个很丑但必要的动作。BlackBerry 2018 年以 14 亿美元买 Cylance，2025 年以 1.6 亿美元现金加约 550 万股 Arctic Wolf 普通股出售相关资产。经济上是失败收购，但战略上把拖累卖掉，让公司回到真正有权力的位置：QNX 和 Secure Communications。
+
+但整体飞轮仍不够强。FY2026 总收入只有 5.491 亿美元，FY2027 指引 5.86-6.16 亿美元，增速不高。QNX 好，但基数小；Secure Communications 稳，但不是高速增长机器。市场现在抢的是“QNX = physical AI 底层”的未来，而不是当前收入。
+
+** 冲击后变强还是变弱？
+
+*** AI 从云端走向真实机器
+
+BlackBerry 变强。
+
+Physical AI 的关键不是会不会生成文字，而是能不能在现实世界安全执行动作。车、机器人、医疗设备、工厂机械、无人系统，都需要确定性、实时性、功能安全、隔离和认证。QNX 的历史优势正好是这些。
+
+如果 AI 真进入机器人、工业、汽车和医疗，QNX 不是“AI 模型公司”，但可能成为 AI 控制真实世界时的安全运行层。
+
+*** 汽车行业放缓
+
+BlackBerry 会受伤。QNX 最大收入来源仍与汽车和软件定义汽车有关。若汽车销量、EV 投资、SDV 平台开发放缓，QNX royalty 和 design win 转收入会放慢。
+
+不过 QNX 的新故事在于横向扩展：robotics、medical、industrial、aerospace and defense。若这些行业开始采用 QNX 安全 AI 平台，汽车周期风险会被部分稀释。
+
+*** 操作系统开源化和自研
+
+这是长期风险。大型 OEM、芯片厂、云厂可能使用 Linux、AUTOSAR、ROS 2、Zephyr、自研 RTOS 或其他 safety stack。QNX 的护城河不在“没人能写操作系统”，而在认证、稳定性、历史可靠性、工具链、长期支持和客户嵌入。
+
+如果 physical AI 行业为了速度牺牲安全认证，QNX 会被边缘化；如果监管和真实事故推动安全要求上升，QNX 会变强。
+
+*** 安全通信需求上升
+
+BlackBerry Secure Communications 会变强。政府、国防、关键基础设施在 AI 时代会更重视加密通信、应急通知、设备管理、SecuSUITE、AtHoc 等。这部分不性感，但稳定、毛利高、客户粘性强。
+
+*** Meme stock / 主题资金退潮
+
+股票会变弱。BB 过去有 meme stock 历史，2026 年 5-6 月又出现大幅波动和期权交易活跃。若股价上涨主要来自“市场重新讲故事”，而收入和 QNX 订单没有同步加速，估值会回撤。
+
+** 资源是主动聚集，还是靠销售推动？
+
+QNX 侧开始出现主动聚集；Secure Communications 侧是长期关系型销售。
+
+QNX 为什么被选择？
+
+第一，安全认证和确定性很难补课。一个机器人或汽车平台上了量产路线，操作系统和 hypervisor 不是轻易替换的部件。
+
+第二，physical AI 需要边缘实时控制。NVIDIA 可以提供算力和 AI stack，但真实设备需要安全实时 OS、hypervisor 和认证系统。QNX 与 NVIDIA IGX Thor / DRIVE AGX Thor 的合作说明 QNX 正在成为这层安全底座候选。
+
+第三，汽车平台生命周期长。一旦进入 BMW Neue Klasse 或其他 OEM 新平台，收入不是一次性，而是跟随车型生命周期和后续平台迭代。
+
+第四，政府和关键通信客户不追逐时髦。他们买的是可信、加密、可审计、可部署在高安全环境里的系统。BlackBerry 的老名声在这里反而是资产。
+
+但还不能说“资源自己涌入”。QNX 仍需要一个一个平台打入，一个一个行业认证，一个一个生态合作。它不是像 CUDA 那样拥有开发者自然引力，也不是像 Android/iOS 那样拥有终端生态。它的资源聚集来自高安全场景的信任需求，不是消费级网络效应。
+
+** 综合判定
+
+BlackBerry 是“局部秩序创造机器”：QNX 是，整体公司正在重新变成。
+
+QNX 这台机器转得起来。它控制的是安全关键系统里的确定性运行秩序。AI 大基建从数据中心走向真实机器后，这个位置会更重要。
+
+但 BlackBerry 整体还不是一台强大秩序机器。它刚卖掉 Cylance 这个失败包袱，FY2027 总收入指引仍只有中个位数到低双位数增长，市场在提前买 QNX 的 physical AI 期权。新故事是真的，但兑现还早。
+
+* 三、创生公式
+
+BlackBerry / QNX = 安全实时 OS 和 hypervisor -> 嵌入汽车/工业/机器人/医疗平台 -> 平台量产产生长期 royalty -> backlog 累积 -> 与 NVIDIA/芯片厂/OEM 形成生态接口 -> physical AI 需要安全确定性运行层 -> QNX 从汽车软件供应商升级为真实世界 AI 的信任底座。
+
+这个公式已经验证到“汽车和 QNX backlog 层”，正在验证“physical AI 横向扩展层”。
+
+已验证部分：
+
+1. QNX FY2026 收入 2.68 亿美元，同比增长 14%。
+2. QNX Q4 FY2026 收入 7870 万美元，同比增长 20%。
+3. QNX royalty backlog 约 9.50 亿美元。
+4. BMW Neue Klasse 采用 QNX 技术支持安全关键系统。
+5. QNX 与 NVIDIA 扩大合作，进入 IGX Thor safety-critical edge AI 场景。
+
+未验证部分：
+
+1. QNX 能否从汽车扩展到机器人、医疗、工业和国防，形成第二增长曲线。
+2. NVIDIA 合作是否转化为可见收入，而不是只带来市场叙事。
+3. Secure Communications 是否能在 AI 安全和国防现代化里重新增长。
+4. FY2027 以后总公司收入能否从 6 亿美元级别进入 8-10 亿美元级别。
+5. QNX 的利润率能否撑起当前市值。
+
+* 四、市场看见的 vs 我们看见的
+
+** 它在 S 曲线哪里？
+
+BlackBerry 有三条 S 曲线。
+
+第一条：旧手机/旧企业通信。已经结束。
+
+第二条：QNX 在软件定义汽车。处于加速早段到中段。SDV、central compute、automotive safety OS、hypervisor 都在增长，QNX backlog 提供多年可见度。
+
+第三条：Physical AI 安全运行层。刚进入积累期。机器人、工业 AI、医疗设备、无人系统、AI 边缘控制，这些还没有大规模商业收入，但方向开始被 NVIDIA 合作和行业展示验证。
+
+真正拐点由五件事触发：
+
+1. QNX FY2027 收入增长超过公司指引中位数，且 backlog 继续上升。
+2. NVIDIA / IGX Thor / DRIVE Thor 合作出现具体客户项目或收入贡献。
+3. QNX 在机器人、医疗、工业设备中拿到非汽车设计胜利。
+4. Secure Communications 在政府/国防/关键基础设施中恢复增长。
+5. 公司持续 GAAP 或 non-GAAP 盈利，并用现金流回购或投资 QNX。
+
+** 市场是否仍用旧眼睛看它？
+
+部分市场还用旧眼睛：BlackBerry = 失败手机公司、meme stock、Cylance 失败、安全软件落伍。
+
+这个旧眼睛遮住了 QNX。QNX 的价值不是手机，也不是传统安全软件，而是安全关键嵌入式系统。AI 进入物理世界后，确定性和安全认证会变得更重要。
+
+但另一个市场已经开始用新眼睛，甚至可能过度预支。StockAnalysis 显示 BB 2026-05-22 收盘 7.91 美元，单日上涨 18.95%，市值约 39.1 亿美元；TSX 2026-06-01 市值约 72.4 亿加元。相比 FY2026 收入 5.491 亿美元，估值已经不是便宜残值。分析师均价目标仍明显低于当时股价，说明市场短期已跑在模型前面。
+
+所以 BB 现在不是“没人看见新故事”。更准确地说：旧眼睛还在，但新故事已经被资金快速发现。后面要靠 QNX 兑现，不是靠改名式重估。
+
+** 它控制了什么别人拿不走的东西？
+
+*** QNX 安全实时操作系统
+
+这是核心资产。QNX 的护城河是几十年安全关键系统部署、认证、稳定性、确定性、长期支持和客户信任。它不是最新潮的 OS，但真实机器世界要的经常不是最新潮，而是不会失控。
+
+*** QNX Hypervisor / SDP / Safety 8.0
+
+软件定义汽车和 physical AI 需要把多个域、安全等级和计算任务隔离在同一硬件上。Hypervisor 和 safety-certified platform 是 QNX 从 RTOS 走向平台控制层的关键。
+
+*** Royalty backlog
+
+约 9.50 亿美元 QNX royalty backlog 代表已赢得平台未来收入。这不是普通 SaaS ARR，但它给了多年可见度。
+
+*** Secure Communications
+
+SecuSUITE、AtHoc、UEM 等资产在政府、国防、关键通信中仍有位置。它们不创造高增长叙事，但提供可信安全通信底盘。
+
+*** Arctic Wolf 股权和 Cylance reseller 权利
+
+Cylance 出售后，BlackBerry 保留 Arctic Wolf 股权和部分商业关系。这不是核心护城河，但比继续烧钱经营 Cylance 更好。
+
+*** 它没有控制什么？
+
+BlackBerry 不控制 AI 模型，不控制 GPU，不控制机器人硬件，不控制汽车品牌，不控制开发者生态。它控制的是安全运行层，而不是 AI 价值链最高利润层。这个位置重要，但货币化不会像 Nvidia 那样爆炸。
+
+* 五、它在搭哪趟便车？
+
+BlackBerry 搭的是“AI 从数字世界进入物理世界”的便车。
+
+第一阶段 AI 大基建是数据中心：GPU、电力、光模块、网络。
+
+第二阶段是物理执行：车、机器人、工业设备、医疗设备、无人机、国防系统要把 AI 决策变成动作。动作一旦出错，会伤人、停产、撞车、泄密、失控。所以 physical AI 需要一个安全、确定、认证、可审计的底层软件层。
+
+QNX 就搭这趟车。
+
+它还搭三趟次要便车：
+
+1. 软件定义汽车。
+   汽车从 ECU 分散架构转向 central compute，QNX 和 hypervisor 的价值上升。
+
+2. 国防和关键通信现代化。
+   AI 增加攻击面，政府更需要加密通信和应急通知。
+
+3. 安全合规上升。
+   AI 进入医疗、工业和机器人后，监管会更看重 safety certification。越受监管，QNX 越有机会。
+
+* 六、换不换
+
+** 交换建议
+
+建议观察或小仓卫星，不建议当前价格重仓追。
+
+BB 的新故事成立，但还没被收入完全证明。QNX 是好资产，Cylance 出售让公司变干净，FY2026 盈利改善明显，NVIDIA physical AI 合作给了市场重新想象空间。
+
+但当前股价已经反映了很多重估。以 2026-05-22 NYSE 口径 7.91 美元、约 39 亿美元市值看，BB 对 FY2026 5.49 亿美元收入已不便宜；若按 2026-06-01 TSX 口径市值约 72 亿加元，市场已经在买 QNX 的 physical AI 期权。
+
+更合理的定位：小仓买“QNX 成为 physical AI 安全底座”的期权，而不是买“传统软件公司低估值反转”。
+
+** 仓位定义
+
+- 核心仓：不适合。收入规模小，增长还不够快，估值已因 AI/physical AI 叙事重估。
+- 卫星仓：适合。风险偏好较高可 1%-2%，等待 QNX 第二曲线验证。
+- 观察仓：适合大多数人。等 FY2027 Q1/Q2 数据确认 QNX 增长和 NVIDIA 合作进展。
+
+** 如果投资，怎么加仓
+
+1. 第一层：小仓位，买 QNX physical AI 期权。
+2. 第二层：FY2027 Q1/Q2 QNX 收入继续双位数增长，backlog 增长。
+3. 第三层：NVIDIA/QNX 合作出现具体客户项目。
+4. 第四层：非汽车行业 design wins 明显增加。
+5. 第五层：公司整体收入和 FCF 开始明显加速，而不只是成本削减。
+
+* 七、核心假设、退出信号和未解问题
+
+** 核心假设 1：Physical AI 需要安全、确定性、实时操作系统作为基础层。
+
+证据：QNX 与 NVIDIA IGX Thor 合作，面向 robotics、medical、industrial safety-critical edge AI；QNX Hypervisor 8.0 for Safety 发布。
+
+退出信号：physical AI 开发者主要使用 Linux/ROS/open-source stack，安全认证没有成为采购关键；QNX 只停留在演示。
+
+** 核心假设 2：QNX 在汽车软件定义平台中的地位继续增强。
+
+证据：QNX royalty backlog 约 9.50 亿美元；BMW Neue Klasse 采用 QNX 技术；Q4 FY2026 QNX 收入同比增长 20%。
+
+退出信号：QNX backlog 停滞或下降；汽车 OEM 转向自研或替代 OS；royalty 转收入低于预期。
+
+** 核心假设 3：Cylance 出售让公司重新聚焦高质量资产。
+
+证据：FY2026 profitability 改善，Cylance 不再拖累；公司保留 Secure Communications 和 QNX。
+
+退出信号：卖掉 Cylance 后收入增长仍不足，成本削减带来的盈利改善无法持续。
+
+** 核心假设 4：Secure Communications 能在 AI/国防/关键基础设施时代保持稳定价值。
+
+证据：政府和关键通信客户对加密、应急通知、安全设备管理有持续需求。
+
+退出信号：Secure Communications 收入下滑，政府合同减少，竞争产品替代。
+
+** 核心假设 5：当前估值能被 QNX 增长消化。
+
+证据：QNX Rule of 40，backlog 9.50 亿美元，FY2027 QNX adjusted EBITDA 指引 6900-8100 万美元。
+
+退出信号：股价继续靠期权和社交情绪上涨，但 FY2027 指引不再上修；P/S 和 P/E 扩张主要来自叙事。
+
+** 未解问题
+
+1. QNX 的 9.50 亿美元 royalty backlog 转收入节奏是什么？几年确认、平均毛利率多少？
+
+2. NVIDIA/QNX 在 IGX Thor 和 DRIVE Thor 上的合作，BlackBerry 如何收费？license、royalty、support、tooling，还是项目服务？
+
+3. QNX 在 robotics、medical、industrial 中的 pipeline 有多大？是否能真正形成汽车之外的第二收入曲线？
+
+4. Secure Communications FY2027 增长来自哪里？政府预算、国防通信、应急通知，还是 UEM 维护？
+
+5. BlackBerry 是否会拆分 QNX、出售 Secure Communications，或者被更大平台收购？
+
+6. QNX 的竞争格局如何？Linux Foundation、Wind River、Green Hills、Elektrobit、自研 RTOS、AUTOSAR 生态谁会压缩其空间？
+
+7. 当前市场是否把 QNX 估成 physical AI 平台，但它最终只是汽车 safety OS？这是最大估值风险。
+
+* 最后一句
+
+BlackBerry 的旧名字下面确实有 new story：QNX 可能成为 physical AI 时代真实机器的安全确定性运行层；但 BB 现在买的是 QNX 第二曲线期权，不是已经高速自转的 AI 基建机器。
+
+* 主要资料来源
+
+- BlackBerry FY2026 Q4 and full-year results: https://www.sec.gov/Archives/edgar/data/1070235/000107023526000029/q4fy26ex-991.htm
+- BlackBerry investor relations overview: https://investors.blackberry.com/
+- BlackBerry FY2026 Form 10-K: https://www.sec.gov/Archives/edgar/data/1070235/000107023526000029/bb-20260228.htm
+- BlackBerry / Arctic Wolf Cylance sale announcement: https://www.blackberry.com/us/en/company/newsroom/press-releases/2024/arctic-wolf-and-blackberry-announce-acquisition-agreement-for-cylance
+- BlackBerry completes Cylance sale: https://www.blackberry.com/en/secure-communications/insights/blog/blackberry-milestone-road-ahead
+- QNX and NVIDIA expanded collaboration, April 2026: https://www.nasdaq.com/press-release/qnx-and-nvidia-deepen-collaboration-advance-safety-critical-edge-ai-across-robotics
+- QNX technology in BMW Neue Klasse: https://www.nasdaq.com/press-release/qnx-technology-help-drive-bmw-groups-next-generation-software-defined-vehicles-2026
+- QNX Robotics Summit / physical AI announcement: https://www.stocktitan.net/news/BB/qnx-to-showcase-safe-deterministic-foundations-for-physical-ai-at-aj6zyksc2vyr.html
+- StockAnalysis BB overview and market data: https://stockanalysis.com/stocks/bb/
+- StockAnalysis TSX:BB market cap: https://stockanalysis.com/quote/tsx/BB/market-cap/

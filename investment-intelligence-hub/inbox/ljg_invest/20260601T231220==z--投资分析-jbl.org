@@ -1,0 +1,251 @@
+#+title: 投资分析 JBL
+#+date: 2026-06-02
+#+filetags: :投资分析:JBL:Jabil:EMS:AI基础设施:制造:
+
+* 一、这是什么
+
+| 维度 | 内容 |
+|------+------|
+| 项目名称 | Jabil Inc. / JBL |
+| 赛道定义 | 把全球品牌越来越难自己管理的复杂硬件、供应链、工程验证和区域化制造，变成一套可外包的生产秩序 |
+| 阶段 | 成熟制造平台进入 AI 数据中心再加速期；现金流和回购已验证，市场正在从传统 EMS 估值切到 AI 基础设施制造商估值 |
+| 融资情况 | 上市公司；NYSE: JBL。2026-06-01 附近股价约 360 美元，市值约 380 亿美元。 |
+| 数据快照 | Q2 FY2026 收入 82.82 亿美元，同比增长 23.1%；GAAP operating income 3.74 亿美元；core EPS 2.69 美元；FY2026 指引收入 340 亿美元、core operating margin 5.7%、core EPS 12.25 美元、adjusted FCF 13 亿美元以上。FY2025 收入 298 亿美元，全球 25+ 国家、100+ sites、14 万+ 员工、400+ 客户。 |
+
+Jabil 不是普通“代工厂”。更准确的定义是：它是复杂硬件世界的后台操作系统。
+
+品牌方、云厂商、医疗设备公司、汽车公司、数据中心设备商、机器人公司、半导体设备公司，都越来越不想自己承受完整制造秩序：工程验证、供应链采购、区域化产能、质量管理、测试、维修、库存、关税和地缘风险。Jabil 做的是把这些混乱压缩成一套可交付系统。
+
+JBL 的投资问题不是“收入能不能增长”。真正问题是：它能不能从低毛利 EMS 被重新理解为 AI 数据中心、医疗、自动化、国防/航空、半导体设备这些复杂硬件的控制层。如果能，估值体系会变；如果不能，它仍然只是一个周期性制造服务商。
+
+* 二、秩序创造机器判定
+
+** 飞轮在不在转？
+
+Jabil 的飞轮在转，而且是成熟飞轮被 AI 基础设施重新加速。
+
+第一层飞轮：客户复杂度上升 -> 外包制造/工程需求上升 -> Jabil 更早介入设计和供应链 -> 更深客户嵌入 -> 更多项目和更高 switching cost -> 更强采购规模和全球产能 -> 进一步降低客户复杂度。
+
+Jabil 官网披露，它在 25+ 国家拥有 100+ sites、35M+ square feet 制造空间、400+ 客户、约 25B 美元年度采购支出和 38,000+ suppliers。这不是单点工厂能力，而是全球供应链控制网络。
+
+第二层飞轮：AI 数据中心架构快速变化 -> hyperscaler / OEM 需要机柜、电源、热管理、光学、网络和服务器级集成 -> Jabil 承接更复杂的 rack-level / data center infrastructure 工作 -> Intelligent Infrastructure 增长 -> 更强工程能力和资本投入 -> 更多 AI 客户。
+
+Q2 FY2026 公司明确说，强于预期的表现由 Intelligent Infrastructure 带动，需求覆盖 cloud and data center infrastructure、networking and communications、capital equipment。FY2026 指引被上调到 340 亿美元收入和 12.25 美元 core EPS。这说明 AI 不是边缘主题，而是正在改变 Jabil 的增长曲线。
+
+第三层飞轮：现金流 -> 回购 -> EPS 增长 -> 资本市场信任 -> 并购和能力补齐 -> 更高毛利业务占比。
+
+Jabil Q2 FY2026 上半年经营现金流 7.34 亿美元，adjusted FCF 6.32 亿美元；FY2026 指引 adjusted FCF 13 亿美元以上。公司同时继续大规模回购，上半年回购 6 亿美元。Jabil 的资本配置不是讲故事，而是用现金流缩股，把低毛利制造业务转化成 EPS 复利。
+
+但飞轮的弱点也明显：EMS 本质上仍是客户项目制业务，客户需求可以很快上升，也可以很快下修。Jabil 五大客户集中度较高，FY2026 Q1 前五大客户约占 38% 收入；FY2025 年报披露一个客户占 16%。它不是 SaaS 式自我扩张机器，而是深度嵌入客户硬件路线图的供应链机器。
+
+** 冲击后变强还是变弱？
+
+*** AI 数据中心 capex 波动
+
+如果 AI capex 上修，Jabil 变强；如果 AI capex 下修，它会受伤，但不一定碎。
+
+Jabil 的优势在于，它不是只押 GPU，也不是只押数据中心地产。它吃的是 AI 机房落地中一堆不性感但很难的环节：rack-level integration、电源管理、热管理、光学、服务器平台、网络通信、资本设备。AI 架构越快变，客户越需要工程和供应链外包。
+
+风险是：市场已经把它当 AI 基础设施赢家重估。若 hyperscaler 资本开支停顿，Jabil 的估值会先被压，而收入和库存调整随后体现。
+
+*** 关税和地缘供应链
+
+Jabil 反而可能变强。全球制造从“中国集中”走向“区域化、客户定制、多地冗余”，正是 Jabil 的秩序。它有 100+ sites，能帮客户在美洲、欧洲、亚洲之间重新布置供应链。对单一地区代工厂，关税是冲击；对 Jabil 这种全球网络，关税是客户迁移需求。
+
+但地缘风险不是纯利好。组件供应短缺、出口管制、客户指定供应商、能源成本、当地劳工和合规都可能压缩毛利。
+
+*** 硬件周期下行
+
+Jabil 会变弱，但比传统消费电子代工更能扛。原因是它已经把业务分散到三大段：Regulated Industries、Intelligent Infrastructure、Connected Living and Digital Commerce。医疗、汽车、包装、半导体设备、数据中心、机器人和零售自动化之间周期不同。
+
+FY2025 Intelligent Infrastructure 增长明显，但 Connected Living and Digital Commerce 受消费/自动化周期影响更弱。多元化不是装饰，而是它抗周期的核心。
+
+*** 客户内制
+
+Jabil 面对的长期风险是大客户自建制造或转向更便宜 EMS。我的判断是，越复杂的产品越不会简单内制。AI 数据中心、医疗设备、自动化和国防航空的复杂度在上升，客户需要的是更深工程协作，而不只是便宜工厂。Jabil 的护城河来自复杂度，不来自低价。
+
+** 资源是主动聚集，还是靠销售推动？
+
+资源在主动聚集，但不是品牌式主动聚集，而是复杂度把资源推向 Jabil。
+
+客户为什么来？
+
+第一，产品迭代太快。AI 数据中心硬件不是稳定消费电子；功率、热、光互联、rack architecture、液冷、电源和供应链都在变。客户需要一个能快速工程化和规模化的伙伴。
+
+第二，供应链风险太重。Jabil 的 $25B 年度采购支出和 38,000+ 供应商网络，本质是替客户分担采购和风险管理。
+
+第三，区域化制造成为硬约束。关税、地缘、国防合规、医疗监管、客户交付时效，都要求多地生产。Jabil 的全球 footprint 让客户不必自己重建生产网络。
+
+第四，资本效率。客户把制造资产外包给 Jabil，自己把资本投向设计、软件、渠道、云服务或芯片。这不是 Jabil 一单一单推出来的需求，而是硬件产业结构变化自然推过来的。
+
+** 综合判定
+
+Jabil 是秩序创造机器，但不是高毛利垄断型机器，而是“低毛利高复杂度秩序机器”。
+
+它创造的新秩序是：把全球硬件生产从单一代工和线性供应链，变成工程、采购、制造、测试、区域化和生命周期服务的一体化网络。AI 数据中心只是最新、最强的催化剂。
+
+但股票当前已经不便宜。约 380 亿美元市值、FY2026 12.25 美元 core EPS 指引，对应约 29 倍 FY2026 core EPS；对一家 core operating margin 5.7% 的制造服务商，这是市场在押“Jabil 不再只是 EMS”。这个押注有道理，但已经不再是冷门。
+
+* 三、创生公式
+
+Jabil = 客户硬件复杂度上升 -> 工程/供应链/制造外包 -> Jabil 嵌入产品路线图 -> 全球采购和产能网络放大规模 -> 现金流和回购提升 EPS -> 并购补齐高价值能力 -> 更深嵌入下一轮复杂硬件。
+
+这个公式已经验证过多年，现在被 AI 基础设施重新加速。
+
+已验证部分：
+
+1. 规模验证：FY2025 收入 298 亿美元，FY2026 指引 340 亿美元。
+2. 利润验证：Q2 FY2026 core operating income 4.36 亿美元，core EPS 2.69 美元；FY2026 指引 core EPS 12.25 美元。
+3. 现金流验证：FY2026 adjusted FCF 指引 13 亿美元以上。
+4. 资本配置验证：持续回购，上半年回购 6 亿美元。
+5. 结构验证：FY2025 Intelligent Infrastructure 增长 34%，主要来自 cloud/data center infrastructure 和 capital equipment。
+
+最新的关键补强是 Hanley Energy。Jabil 2026-01-05 以约 7.25 亿美元现金加最高 5800 万美元或有对价收购 Hanley Energy Group。Hanley 做数据中心 power and energy management，从 power grid 到 rack 的设计、供应、安装、commissioning 和服务。这笔并购的意义不是规模，而是把 Jabil 往 AI 数据中心的电力控制层推进。AI 数据中心最大难题之一就是电源和热，Hanley 正好补这个缺口。
+
+未完全验证部分：
+
+1. AI 数据中心是否能长期维持高增长，而不是 2025-2026 的集中拉货。
+2. Hanley 是否能真正提高 Jabil 在 rack-level / power management 的内容价值。
+3. Core operating margin 能否从 5.7% 继续向 6%+ 走，而不是被客户压价和组件成本抵消。
+4. 大客户集中度是否会带来单一客户下修风险。
+
+* 四、市场看见的 vs 我们看见的
+
+** 它在 S 曲线哪里？
+
+Jabil 公司整体在成熟期；Jabil 的 AI 数据中心制造秩序在加速期。
+
+这两句话必须同时成立。把 Jabil 当纯 AI 新贵是错的；把它当老 EMS 也错。
+
+第一条 S 曲线：传统 EMS / diversified manufacturing，已经成熟。低毛利、高周转、客户集中、周期波动，这是旧秩序。
+
+第二条 S 曲线：AI 数据中心、功率管理、热管理、光学、机柜级集成、区域化复杂制造，正在加速。Jabil 在这条曲线上不是卖芯片，而是把芯片、板卡、电源、线缆、散热、机柜、供应链和测试变成可交付系统。
+
+下一阶段拐点由四件事触发：
+
+1. Q3 FY2026 是否兑现 81-89 亿美元收入和 2.83-3.23 美元 core EPS 指引。
+2. FY2026 adjusted FCF 是否达到 13 亿美元以上，而不是被库存和 capex 吃掉。
+3. Intelligent Infrastructure 增长是否继续强于其他业务，且 margin 不被稀释。
+4. Hanley Energy 整合是否带来数据中心 power management 新订单和更高内容价值。
+
+** 市场是否用旧眼睛看它？
+
+市场过去用旧眼睛看 Jabil：低毛利 EMS、客户项目制、周期性代工、估值不该太高。
+
+这个旧眼睛遮住了三件事：
+
+1. Jabil 的价值不是“制造便宜”，而是“制造复杂”。
+2. AI 数据中心的瓶颈不只是 GPU，而是电力、热、机柜、光学、网络和供应链工程。
+3. 区域化制造会让全球 footprint 成为稀缺能力。
+
+但到 2026 年 6 月，市场已经开始用新眼睛看它。股价约 360 美元、市值约 380 亿美元，过去一年大幅重估。StockAnalysis 显示分析师目标价低于最新价格附近，这说明短期市场可能已经把 AI 基础设施叙事打满。
+
+所以 JBL 不是典型认知折价，而是“认知升级正在发生，但价格已经跟上不少”。继续上涨需要业绩继续上修，而不是单靠重新贴标签。
+
+** 它控制了什么别人拿不走的东西？
+
+*** 全球制造网络
+
+25+ 国家、100+ sites、35M+ square feet，不是短期可复制资产。它的价值在于客户可以把复杂生产跨区域迁移，而不必自己建厂。
+
+*** 供应链采购系统
+
+$25B 年度采购支出、38,000+ suppliers，是 Jabil 替客户消化不确定性的核心。AI、医疗、汽车、半导体设备都需要可靠组件供应。
+
+*** 工程和工艺 know-how
+
+Jabil 不是只按图生产。它做 design engineering、manufacturing process engineering、testing、prototyping、post-production。越复杂的硬件，越需要这种早期介入。
+
+*** 数据中心 power / thermal / rack-level 能力
+
+Hanley Energy 把从 grid 到 rack 的 power management 能力带入 Jabil。再叠加 Jabil 原有 data center infrastructure、photonics、thermal management，形成 AI 数据中心基础设施的组合能力。
+
+*** 客户嵌入
+
+Jabil 的产品按客户规格制造，项目一旦进入量产，切换成本来自认证、质量、供应链、测试和区域交付，不只是价格。客户集中是风险，也是嵌入深度的证据。
+
+*** 它没有控制什么？
+
+它不控制终端需求，不控制 GPU/ASIC 标准，不控制 AI 云平台，不控制品牌渠道。Jabil 的权力是执行权、工程权、供应链权，不是标准制定权。这决定它难以获得 Nvidia / Broadcom 那种高毛利，但也让它成为多个赢家背后的共同卖铲者。
+
+* 五、它在搭哪趟便车？
+
+Jabil 搭的是“复杂硬件外包化”和“AI 基础设施物理化”两趟便车。
+
+1. AI 数据中心物理化：AI 从模型能力走向真实部署，瓶颈转到电力、热、机柜、光学、网络和交付。Jabil 正在吃这部分。
+
+2. 供应链区域化：关税、地缘、国防合规和客户韧性要求，让全球多点制造成为标配。
+
+3. 医疗设备和监管硬件复杂度：Regulated Industries 提供较稳定、较高质量要求的收入底盘。
+
+4. 机器人和仓储自动化：Connected Living and Digital Commerce 的长线机会来自 physical AI、warehouse automation 和 retail automation，但这条线波动更大。
+
+5. 半导体资本设备周期：capital equipment 是 Intelligent Infrastructure 的一部分，AI 芯片制造和先进封装扩张会带来制造设备链条需求。
+
+Jabil 不搭“理解成本坍缩”的车，它搭的是“行动成本坍缩之后，物理世界必须被重新制造”的车。AI 让更多数字行动变便宜，但每一次数字行动都要落在服务器、机柜、电源、散热、网络和供应链上。Jabil 就在这里收费。
+
+* 六、换不换
+
+** 交换建议
+
+建议观察或小仓卫星，已有仓位可持有，不建议当前价格重仓追。
+
+Jabil 是好机器，但不是低估值买点。当前估值已经从传统 EMS 抬升到 AI 基础设施受益者。若 Q3/FY2026 继续上修，它可以继续走；若只是符合指引，短期赔率不算干净。
+
+更合理的买法是等两个条件之一：
+
+1. 股价回撤到市场重新担心 EMS 周期，而 Q3/Q4 数据仍证明 Intelligent Infrastructure 强。
+2. 公司继续上调 FY2026/FY2027 outlook，并证明 margin 和 FCF 同时上行。
+
+** 仓位定义
+
+- 核心仓：勉强可进入候选，但当前价格不适合直接核心。Jabil 现金流和回购强，但客户集中和低毛利决定它不能按高护城河软件/芯片核心仓处理。
+- 卫星仓：适合。作为 AI 基础设施制造层、供应链区域化和复杂硬件外包化敞口，1%-3% 合理。
+- 观察仓：适合。等待 2026-06-16 左右 Q3 FY2026 财报验证。
+
+** 核心假设与退出信号
+
+1. 假设：Jabil 正从传统 EMS 升级为 AI 数据中心基础设施制造和工程平台。
+   退出信号：Intelligent Infrastructure 增长放缓，云/数据中心客户订单下修，Hanley 整合没有带来新能力。
+
+2. 假设：AI 数据中心需求会持续拉动 rack-level、电源、热管理、光学和网络集成。
+   退出信号：hyperscaler capex 放缓，客户库存累积，data center infrastructure 指引下调。
+
+3. 假设：Jabil 能在高增长中扩 margin。
+   退出信号：core operating margin 停在 5.5% 以下或下滑，收入增长但 FCF 不增长。
+
+4. 假设：全球供应链区域化会提高 Jabil 的战略价值。
+   退出信号：客户将项目转向低价竞争对手，或关税/地缘成本无法向客户转嫁。
+
+5. 假设：资本配置继续增强 EPS。
+   退出信号：回购减少但并购回报不清晰；债务上升而 FCF 指引不兑现。
+
+** 未解问题
+
+1. Intelligent Infrastructure 中 AI/data center 的具体收入和毛利占比是多少？公司披露仍不够细。
+
+2. Hanley Energy 并购后，Jabil 能否从制造商升级为数据中心电力系统方案商？客户是否愿意为此给更高毛利？
+
+3. FY2026 13 亿美元以上 adjusted FCF 是否可持续，还是受 working capital 周期影响？
+
+4. 最大客户占比 16% 的风险是否会上升？AI 数据中心增长是否带来更高客户集中？
+
+5. Jabil 和 Foxconn、Flex、Celestica、Sanmina、Quanta 等相比，在 AI rack-level / data center infrastructure 上到底谁控制更多内容价值？
+
+6. 如果 AI 数据中心架构转向更多垂直整合，Jabil 是受益于外包复杂度，还是被 hyperscaler / ODM 压价？
+
+7. Core operating margin 能否长期突破 6%，还是制造服务商业模式决定天花板？
+
+* 最后一句
+
+Jabil 的本质是一台把复杂硬件生产秩序外包化的成熟机器；它正在被 AI 数据中心重新点燃，但股票已经从“旧 EMS”改按“AI 基建制造平台”提前收费。
+
+* 主要资料来源
+
+- Jabil Q2 FY2026 results, SEC 8-K Exhibit 99.1: https://www.sec.gov/Archives/edgar/data/898293/000162828026019043/jbl-20260318ex991.htm
+- Jabil Q1 FY2026 results, SEC 8-K Exhibit 99.1: https://www.sec.gov/Archives/edgar/data/898293/000162828025057488/jbl-20251217ex991.htm
+- Jabil FY2025 Form 10-K / segment description: https://fintel.io/doc/sec-jabil-inc-898293-10k-2025-october-17-20378-9203
+- Jabil company overview and capabilities: https://www.jabil.com/
+- Jabil Hanley Energy acquisition announcement: https://investors.jabil.com/news/news-details/2026/Jabil-Acquires-Hanley-Energy-Group-to-Support-AI-Data-Center-Power-Management/default.aspx
+- StockAnalysis JBL overview and market data: https://stockanalysis.com/stocks/jbl/
+- StockAnalysis JBL valuation/statistics: https://stockanalysis.com/stocks/jbl/statistics/

@@ -1,0 +1,258 @@
+#+title: 投资分析 RKLB
+#+date: 2026-06-02
+#+filetags: :投资分析:RKLB:RocketLab:太空基础设施:国防:
+
+* 一、这是什么
+
+| 维度 | 内容 |
+|------+------|
+| 项目名称 | Rocket Lab Corporation / RKLB |
+| 赛道定义 | 把太空任务从“找火箭发射”改造成“采购一整套可交付、可运营、可国防化的轨道基础设施” |
+| 阶段 | 从小型发射龙头进入太空系统平台扩张期；Neutron 仍未首飞，Space Systems 已成为收入主体 |
+| 融资情况 | 上市公司；NASDAQ: RKLB。2026-05-27 收盘价 150.23 美元，市值约 869.6 亿美元，企业价值约 856.0 亿美元。 |
+| 数据快照 | Q1 2026 收入 2.003 亿美元，同比增长 63.5%；GAAP gross margin 38.2%；Adjusted EBITDA 亏损 1175 万美元；backlog 超过 22 亿美元；FY2025 收入 6.018 亿美元，其中 Space Systems 4.028 亿美元、Launch Services 1.990 亿美元。 |
+
+Rocket Lab 的本质不是“火箭公司”，也不只是“国防承包商”。它正在变成一台中小型太空任务的垂直基础设施机器：能发射，能造卫星，能造卫星组件，能做任务运营，能接 NASA 科学任务，也能接美国国防体系里的导弹预警、太空域感知、低轨网络、hypersonic test、未来中型运力任务。
+
+火箭是入口，不是终局。发射给它带来客户、节奏、任务理解和品牌可信度；Space Systems 才是更大的商业秩序：客户不只是买一次上天，而是把轨道资产的设计、制造、通信、姿控、太阳能、电推进、载荷集成、运营和防务认证交给它。
+
+* 二、秩序创造机器判定
+
+** 飞轮在不在转？
+
+Rocket Lab 的飞轮已经开始转，而且比市场早期理解的“小火箭飞轮”更复杂。
+
+第一层飞轮：Electron / HASTE 发射可靠性 -> 客户信任 -> 更多任务 -> 更高发射节奏 -> 更低单位固定成本 -> 更高可靠性数据 -> 更多政府和商业任务。
+
+FY2025 Rocket Lab 完成 21 次 Electron/HASTE 任务，全年 100% mission success。Q1 2026 公司又签下 31 个 Electron 和 HASTE 合同，并新增 5 个 Neutron dedicated launches；公司披露总 launch manifest 已超过 70 个 contracted missions。这说明 Electron 虽然面对 SpaceX rideshare 的价格压力，仍然有客户愿意为 dedicated orbit、schedule control、mission assurance、national-security handling 支付溢价。
+
+第二层飞轮：发射客户 -> 任务设计介入 -> 卫星平台和组件销售 -> 系统级合同 -> 更深客户嵌入 -> 反过来带动发射和组件。
+
+这个飞轮更重要。FY2025 Space Systems 收入 4.028 亿美元，是 Launch Services 1.990 亿美元的约 2 倍；Space Systems gross profit 1.259 亿美元，也高于 Launch Services 8127 万美元。2025 年 Rocket Lab 拿到 SDA 8.16 亿美元 prime contract，为 Tracking Layer Tranche 3 设计和制造 18 颗导弹预警、跟踪和防御卫星；这类合同不是“卖零件”，而是把 Rocket Lab 推进新型国防 prime 的位置。
+
+第三层飞轮：现金和股价资源 -> 并购关键瓶颈组件 -> 垂直整合 -> 交付确定性提高 -> 更大合同资格 -> 更高资本市场资源。
+
+Q1 2026 Rocket Lab 完成 Mynaric 收购，补激光光通信终端，建立欧洲 footprint；同时签署收购 Motiv Space Systems 协议，补 space robotics、motion control、solar array drive assemblies 等供应受限组件。公司 Q1 完成 ATM 融资后拥有超过 20 亿美元 liquidity。这个飞轮是真实的，但也有危险：如果股价和融资能力成为扩张的主要燃料，估值回撤会削弱并购和研发速度。
+
+综合看，Rocket Lab 的飞轮已经转起来；但 Neutron 还没首飞，Space Systems 的大项目还没全部转化为高毛利、按期交付的可重复现金流，所以还不是完全自驱机器。
+
+** 冲击后变强还是变弱？
+
+*** SpaceX Starship
+
+Starship 是价格秩序冲击，不是全维度毁灭。
+
+如果 Starship 大规模、可靠、低成本运营，它会把大质量入轨价格继续压低，所有不具备差异化的发射商都会被挤压。对 Rocket Lab 的纯发射价格逻辑，这是负面冲击，尤其是 Neutron 如果只被理解为“便宜一点的 Falcon 9 替代品”，会很危险。
+
+但 Rocket Lab 不应该用“和 Starship 比每公斤价格”来活。它的生存位置是：专用轨道、短周期响应、国防可信、任务集成、卫星平台、组件供应、运营服务。Starship 越把大规模入轨变便宜，越会释放更多卫星、更多轨道任务、更多国防低轨网络需求。Rocket Lab 如果只卖火箭，会被压；如果卖“快速、可信、可交付的完整太空任务”，反而吃到 Starship 打开的总需求。
+
+所以 Starship 对 Rocket Lab 是双刃剑：压低发射毛利，扩大太空基础设施需求。冲击后是否变强，取决于 Neutron 是否成功，以及 Space Systems 是否继续成为收入和客户嵌入主体。
+
+*** 国防预算变化
+
+国防预算上行，Rocket Lab 变强；预算收缩，它会受伤，但不一定碎。
+
+Rocket Lab 当前最强的需求牵引来自美国国防现代化：SDA Proliferated Warfighter Space Architecture、missile warning/tracking、Golden Dome、MACH-TB、HASTE hypersonic test、NSSL Lane 1。Q1 2026 公司称已被选中支持 Department of War 的 Space Based Interceptor program under Golden Dome，并在 MACH-TB 下扩大 hypersonic test launch 角色。
+
+风险在于政府合同集中度。FY2025 年报显示一个 Government Customer 占总收入 28%；美国客户占收入 79%。这不是问题本身，但说明它越来越像国防基础设施公司，预算周期、政策优先级、合同抗议、固定价项目成本超支都会影响利润。
+
+我的判断：国防预算变化会影响节奏，但不改变结构。美国正在把空间从通信和侦察层变成导弹防御、战术感知、PNT、hypersonic tracking 的基础设施层。这个方向不是一年预算主题，而是长期军事秩序重组。
+
+*** 卫星发射价格下降
+
+发射价格下降会杀死没有二阶能力的小火箭公司，但会强化 Rocket Lab 转向系统平台的必要性。
+
+SpaceX Transporter rideshare 已经把普通小卫星入轨价格压到 dedicated small launch 无法正面竞争的水平。Rocket Lab Electron 的价值不是最低价，而是精准轨道、时间确定性、客户保密、任务控制和政府/安全需求。这个市场不会无限大，但会长期存在。
+
+更重要的是，发射价格下降让更多卫星项目变得经济可行，进而推高卫星平台、组件、激光通信、姿控、电推进、任务软件和运营服务需求。Rocket Lab 如果能在这些环节吃到更多内容价值，发射降价反而是总需求催化剂。
+
+** 资源是主动聚集，还是靠销售推动？
+
+两者都有，但主动聚集迹象越来越强。
+
+NASA 选择 Rocket Lab，不是因为它最便宜，而是因为它能用较短周期交付小型深空科学任务。ESCAPADE 是关键证明：Rocket Lab 设计、制造、集成和测试两颗前往 Mars 的 spacecraft，NASA 和 UC Berkeley 用低成本方式做 interplanetary science。这个案例证明 Rocket Lab 不只是 LEO 小卫星供应商，而能承担复杂科学任务。
+
+美国国防部选择 Rocket Lab，是因为它提供了 legacy prime 之外的快节奏、低成本、可垂直整合替代方案。SDA 8.16 亿美元 Tracking Layer Tranche 3 prime contract，是对它从供应商到 prime 的认可。HASTE 和 MACH-TB 则说明 Rocket Lab 的发射能力被用于 hypersonic test 这种国防急需场景。
+
+商业卫星客户选择 Rocket Lab，是因为发射不是唯一问题。商业客户需要可靠 schedule、专用轨道、组件供应、卫星平台、星座部署节奏和后续运营。Q1 2026 五个 Neutron dedicated launches 和 31 个 Electron/HASTE 合同说明客户不是被销售硬推过来，而是在 SpaceX 之外寻找第二个高可靠太空供应链。
+
+但资本市场资源明显过热。2026-05-27 约 870 亿美元市值，对 TTM 收入约 6.8 亿美元，已经不是传统产业估值。资源主动聚集在公司周围，但其中一部分来自“公开市场需要一个可买的 SpaceX 替代品”这一情绪。这会放大公司战略能力，也会放大股价风险。
+
+** 综合判定
+
+Rocket Lab 是秩序创造机器，但股票当前不是便宜机器。
+
+公司层面，它正在创造的不是 SpaceX 已经创造的“低成本发射秩序”，而是另一种秩序：把中小型轨道任务、国防低轨网络、快速科学任务和卫星组件供应链，打包成一个非 SpaceX 的可信太空基础设施平台。
+
+股票层面，市场已经开始意识到这一点。它不再只是被低估的小型 SpaceX；2026 年 5 月的市值已经把 Neutron 成功、Space Systems 高增长、国防订单放大、M&A 整合顺利这些假设提前放进价格里。
+
+* 三、创生公式
+
+Rocket Lab = 高频可靠小型发射 -> 任务信任和客户入口 -> 卫星平台/组件/运营承接 -> 国防和 NASA 系统级合同 -> 垂直整合关键瓶颈 -> 更完整的太空任务交付能力 -> 更大 backlog 和更高客户锁定。
+
+这个公式已经验证过三次：
+
+1. Electron 验证：从小型专用发射切入，建立发射节奏和可靠性。FY2025 21 次 Electron/HASTE mission，全年 100% success。
+
+2. Space Systems 验证：Space Systems 收入从 FY2023 的 1.727 亿美元到 FY2025 的 4.028 亿美元，两年增长超过 130%；FY2025 已占总收入约 67%。
+
+3. Prime contractor 验证：SDA 8.16 亿美元 Tracking Layer Tranche 3 合同和此前 5.15 亿美元 SDA Transport Layer-Beta Tranche 2 合同，把 Rocket Lab 推向国防 prime 位置。
+
+尚未验证的是 Neutron。Neutron 是下一阶段的关键放大器：如果成功，它让 Rocket Lab 从 small launch + systems company 变成 medium-lift + systems + defense platform；如果失败或严重延期，当前估值里的很多“平台完整性”会被打折。
+
+别人也在跑相似公式。SpaceX 是“发射成本坍缩 -> Starlink 自有需求 -> 发射高频复用 -> 通信现金流 -> Mars/Starship 继续扩张”。传统军工是“政府预算 -> 系统集成 -> 长周期合同”。Planet/BlackSky/AST 等是“空间数据或连接服务”。Rocket Lab 的差异是，它不一定拥有终端网络，但它可能成为很多终端网络背后的工程和供应链平台。
+
+* 四、市场看见的 vs 我们看见的
+
+** 它在 S 曲线哪里？
+
+Rocket Lab 处在第二条 S 曲线的拐点前后。
+
+第一条 S 曲线是 Electron 小型发射，这条曲线已经进入成熟期。Electron 是好业务，但不是 870 亿美元市值的主要答案。
+
+第二条 S 曲线是 Space Systems + defense prime + Neutron。这条曲线正在拐点处。Q1 2026 backlog 超过 22 亿美元，FY2025 backlog 18.5 亿美元，同比增长 73%；Q1 2026 新签发射合同数量超过 FY2025 全年。Space Systems 已经是收入主体，国防订单正在从组件和发射进入系统级 prime。
+
+下一阶段拐点由四个触发：
+
+1. Neutron 首飞成功，并证明不是一次性演示，而是可重复发射。
+2. SDA 8.16 亿美元等大型 Space Systems 合同按成本、按进度交付，毛利不塌。
+3. Space Systems backlog 持续转收入，同时新增订单不依赖单一政府客户。
+4. Rocket Lab 能把 Mynaric、Motiv、GEOST 等资产整合成更高内容价值，而不是并购摊子。
+
+如果这四个发生，Rocket Lab 会从“成长型太空公司”进入“新型太空 prime + 基础设施平台”阶段。如果 Neutron 延误、固定价国防合同亏损、并购整合失控，则会回到“好公司、贵股票”的位置。
+
+** 市场是否还把它当小型 SpaceX？
+
+早期市场确实用“小型 SpaceX”看它，这低估了 Space Systems。
+
+真正被低估过的是：Rocket Lab 的价值不是复制 SpaceX，而是在 SpaceX 之外提供第二套可信太空供应链。政府、NASA、商业客户都不希望全部轨道基础设施依赖一个供应商，尤其当空间变成战争、通信、导弹防御和经济基础设施层之后。
+
+但截至 2026 年 5 月，市场已经不完全低估。约 870 亿美元市值说明投资者已经开始给它“太空基础设施平台”估值，而不是“小火箭公司”估值。现在的误区不是低估，而是可能把所有未来秩序一次性预支。
+
+** 它控制了什么别人拿不走的东西？
+
+*** 发射
+
+Electron 的不可拿走资产是可靠性、节奏、专用轨道、New Zealand + U.S. launch infrastructure、国防客户信任和 HASTE hypersonic test 适配。
+
+但发射不是绝对护城河。SpaceX、Firefly、Stoke、Relativity、Blue Origin 都会挤压不同区间。Electron 的独立价值在 small dedicated 和 responsive launch，Neutron 的价值要等首飞和复用验证。
+
+*** 卫星平台
+
+这里的护城河更强。Photon、ESCAPADE、SDA satellites、spacecraft buses、mission integration，把 Rocket Lab 从“送东西上去”变成“把东西造出来并让它工作”。卫星平台的客户锁定高于发射，因为设计、组件、软件、接口、任务运营会深度嵌入。
+
+*** 太空系统和组件
+
+这是最像基础设施的部分。太阳能、star trackers、reaction wheels、separation systems、radios、flight software、电推进、laser optical communications、robotics 和 precision mechanisms，是大量卫星都要用的“轨道供应链”。Mynaric 和 Motiv 的战略价值就在这里：把供应受限、高价值组件纳入体内。
+
+*** 国防订单
+
+Rocket Lab 控制的不是国防预算本身，而是“新型防务太空 prime 的可信身份”。SDA 8.16 亿美元 prime contract 是一个位置变化：它和 Northrop Grumman 这类传统 prime 同场拿 Tracking Layer 合同。这个位置一旦通过交付验证，会带来更多任务。
+
+*** 软件系统
+
+软件不是 Rocket Lab 今天最强的独立护城河，但它是系统集成护城河的一部分。真正的软件价值在 mission design、constellation management、flight software、on-orbit operations、payload integration 和任务数据链路。它不是 SaaS 式外售软件，而是太空任务交付的控制平面。
+
+* 五、它在搭哪趟便车？
+
+Rocket Lab 同时搭五趟便车，但权重不同。
+
+1. 国防现代化：这是当前最强便车。导弹防御、低轨跟踪层、hypersonic test、responsive launch、空间域感知，把 Rocket Lab 拉进长期预算。
+
+2. 低轨卫星网络：通信、地球观测、PNT、气象、战术感知都在向 proliferated LEO 架构迁移。卫星数量越多，组件、平台、发射、运营需求越大。
+
+3. 太空供应链去单点化：政府和商业客户都需要 SpaceX 之外的第二供应商，也需要传统军工之外更快的供应商。Rocket Lab 正吃这条“可信替代链”。
+
+4. 太空任务成本坍缩：NASA ESCAPADE 证明小型、低成本、快周期深空任务可以交给商业公司。若科学任务从十年一艘大船变成更频繁的小任务，Rocket Lab 会受益。
+
+5. 资本市场寻找 SpaceX proxy：这是短期股价便车。SpaceX 若 IPO 或继续抬高太空资产估值，RKLB 会被当作公开市场替代品重估。但这趟车最危险，因为它不是经营飞轮本身。
+
+最重要的不是“太空经济”这个大词，而是“轨道基础设施军事化和商品化同时发生”。Rocket Lab 正站在这两股力量交叉点。
+
+* 六、如果未来十年太空成为新的基础设施层，Rocket Lab 可能占哪里？
+
+Rocket Lab 最可能的位置不是 SpaceX 第二，也不是传统军工第一，而是“非 SpaceX 轨道基础设施 prime + 组件平台”。
+
+更具体：
+
+1. 中小型任务的默认工程平台。客户需要快速把 payload 变成 spacecraft，再送到指定轨道并运营，Rocket Lab 可以吃完整链条。
+
+2. 国防低轨网络的新型 prime。SDA、Golden Dome、missile warning/tracking、hypersonic test 等项目如果扩张，Rocket Lab 可能成为 Lockheed/Northrop/Raytheon 之外的高节奏太空 prime。
+
+3. 卫星组件供应链平台。随着星座数量增加，组件市场可能比发射更稳定。Rocket Lab 若把电源、姿控、光通信、运动机构、推进、软件打成组合，会像“太空版关键零部件供应商”。
+
+4. Medium-lift 的可信第二选择。Neutron 若成功，它不一定打败 Falcon 9，但可以成为客户不想完全依赖 SpaceX 时的第二供应商。国防客户尤其需要这种 redundancy。
+
+它不太可能成为 SpaceX 式终端网络巨头，除非未来自建通信、观测或数据服务网络。今天看，Rocket Lab 更像太空基础设施的“建造者和供应链控制者”，不是终端应用拥有者。
+
+* 七、换不换
+
+** 交换建议
+
+公司建议看多，股票建议观察或小仓卫星，不建议当前价格重仓追。
+
+理由很直接：Rocket Lab 是秩序创造机器，但市值已经把相当多新秩序兑现进去了。2026-05-27 市值约 869.6 亿美元，TTM 收入约 6.80 亿美元，企业价值约 856 亿美元。这不是“传统估值便宜”的资产。买入需要相信未来十年它能从 10 亿美元级收入走向数十亿美元甚至百亿美元级收入，并且毛利和现金流结构明显改善。
+
+如果组合里没有太空基础设施敞口，可以小仓位持有；如果已经在低位持有，可以继续持有但要用验证节点管理仓位；如果是新资金，不应该因为“它是公开市场 SpaceX”而重仓追高。
+
+** 仓位定义
+
+- 核心仓：暂不适合。Neutron 未首飞，大型国防合同交付毛利未证明，估值太高。
+- 卫星仓：适合。高风险偏好组合可 1%-3%，把它当未来太空基础设施层的权益期权。
+- 观察仓：适合大多数人。等待 Neutron 首飞、SDA 交付、Q2/Q3 revenue 和 backlog 变化。
+
+** 核心假设与退出信号
+
+1. 假设：Rocket Lab 会从发射公司升级为太空基础设施平台。
+   退出信号：Space Systems 增长放缓，收入重新依赖发射；多产品/系统级合同减少。
+
+2. 假设：Neutron 成功补齐 medium-lift，让 Rocket Lab 获得更大任务资格。
+   退出信号：Neutron 首飞继续大幅延期，或首飞后可靠性/成本/复用路径无法支撑商业合同。
+
+3. 假设：国防低轨网络和导弹防御会形成长期预算秩序。
+   退出信号：SDA/Golden Dome/MACH-TB 预算被削，或 Rocket Lab 在后续 tranche 中份额下降。
+
+4. 假设：大型固定价合同不会吞掉利润。
+   退出信号：Space Systems gross margin 明显下降，合同成本重估导致收入下调或亏损扩大。
+
+5. 假设：并购能提高垂直整合，而不是制造复杂度。
+   退出信号：Mynaric/Motiv/GEOST 等资产整合后没有带来交付改善，反而增加 SG&A、库存和执行风险。
+
+6. 假设：市场愿意长期给太空基础设施平台高估值。
+   退出信号：SpaceX IPO 或 Starship 成功后，市场重新按 launch price compression 给 RKLB 定价，估值倍数大幅压缩。
+
+** 未解问题
+
+1. Q1 2026 的 22 亿美元 backlog 中，Launch 和 Space Systems 各占多少？政府客户和商业客户各占多少？
+
+2. SDA 8.16 亿美元 Tracking Layer Tranche 3 合同的毛利率、里程碑付款节奏和成本超支风险如何？
+
+3. Neutron 首飞后的商业节奏是什么？2027 年能飞几次，是否能进入稳定生产？
+
+4. Rocket Lab 的 Space Systems 能否从项目型收入变成更标准化、可复用、可扩毛利的平台收入？
+
+5. Mynaric 的激光通信终端和 Motiv 的 robotics/motion control 能否进入 Rocket Lab 自有卫星和外部客户双通道？
+
+6. 如果 SpaceX Starship 把入轨成本继续打穿，Rocket Lab 的 Neutron 价值是被压缩，还是因“第二供应商 + 系统交付”而更重要？
+
+7. Rocket Lab 是否会最终自建某种轨道服务网络？如果不拥有终端网络，它的上限是否低于 SpaceX？
+
+* 最后一句
+
+Rocket Lab 的本质不是小型 SpaceX，而是一台正在成型的非 SpaceX 太空基础设施秩序机器；它创造新秩序，但当前股票已经按新秩序提前收费。
+
+* 主要资料来源
+
+- Rocket Lab Q1 2026 financial results: https://investors.rocketlabcorp.com/node/12416/pdf
+- Rocket Lab FY2025 Q4 and full-year results: https://investors.rocketlabcorp.com/node/12026/pdf
+- Rocket Lab FY2025 Form 10-K: https://investors.rocketlabcorp.com/static-files/57a8d0da-27ff-499c-8d85-18907743b7a8
+- Rocket Lab NSSL Lane 1 announcement: https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-labs-neutron-rocket-ramped-us-space-forces-56b-national
+- Rocket Lab SDA Tracking Layer Tranche 3 contract: https://investors.rocketlabcorp.com/node/11801/pdf
+- NASA ESCAPADE mission page: https://science.nasa.gov/mission/escapade/
+- NASA ESCAPADE deployment update: https://science.nasa.gov/blogs/escapade/2025/11/13/nasas-twin-escapade-spacecraft-have-deployed/
+- Rocket Lab ESCAPADE mission page: https://rocketlabcorp.com/missions/escapade/
+- Space.com on 2025 Rocket Lab launch cadence: https://www.space.com/space-exploration/launches-spacecraft/rocket-lab-launches-final-mission-of-2025-sends-japanese-earth-observing-satellite-to-orbit-video
+- Space.com on Neutron tank test setback: https://www.space.com/space-exploration/rocket-labs-new-neutron-rocket-suffers-fuel-tank-rupture-during-test
+- Space.com / AP on Starship Flight 12 mishap investigation: https://www.space.com/space-exploration/launches-spacecraft/faa-grounds-spacexs-starship-v3-megarocket-after-flight-12-mishap
+- NASA Small Spacecraft launch state of the art: https://www.nasa.gov/smallsat-institute/sst-soa/integration-launch-and-deployment/
+- StockAnalysis RKLB quote and statistics: https://stockanalysis.com/stocks/rklb/
