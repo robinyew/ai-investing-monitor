@@ -61,7 +61,7 @@ def build_html() -> dict:
         alerts = "<p>报告包含需要关注或风险上升信号，请先阅读风险预警和 ChatGPT 摘要。</p>"
     body = f"""
 <header>
-  <h1>AI 投资新闻日报 - {date}</h1>
+  <h1>AI Pre-Market Brief - {date}</h1>
   <p>仅用于研究和信息整理，不连接券商账户，不执行交易，不提供买卖建议。</p>
 </header>
 <section class="panel">
@@ -72,12 +72,14 @@ def build_html() -> dict:
   {alerts}
 </section>
 <section class="panel">
-  <h2>给 ChatGPT 的分析摘要</h2>
-  {handoff_html}
+  <details>
+    <summary>给 ChatGPT 的分析摘要</summary>
+    {handoff_html}
+  </details>
 </section>
 """
     report_path = ROOT / f"docs/reports/{date}.html"
-    report_path.write_text(_page(f"AI 投资新闻日报 - {date}", body), encoding="utf-8")
+    report_path.write_text(_page(f"AI Pre-Market Brief - {date}", body), encoding="utf-8")
     update_index()
     return {**result, "html": str(report_path)}
 

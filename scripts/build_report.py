@@ -9,7 +9,7 @@ from fetch_prices import fetch_all
 from utils import ROOT, ensure_dirs, fetch_timestamp, load_yaml, pct, report_base_url, today_est, write_json
 
 
-REPORT_TITLE = "AI 投资新闻日报"
+REPORT_TITLE = "AI Pre-Market Brief"
 DISCLAIMER = "本报告仅用于研究和信息整理，不提供具体交易动作或价格预测，也不执行任何交易。"
 CORE_GROUP = "core_holdings_planned"
 OBSERVATION_GROUP = "key_observation"
@@ -304,6 +304,19 @@ EVIDENCE_QUESTION_FIELDS = [
     ("has_supply_chain", "是否涉及供应链？"),
     ("changes_thesis", "是否会改变 AI Infrastructure Thesis？"),
 ]
+BRIEF_CHOKEPOINT_LABELS = {
+    "Compute / GPU": "ASIC / Custom Silicon",
+    "ASIC / Custom Silicon": "ASIC / Custom Silicon",
+    "Networking": "AI Networking",
+    "Optical Interconnect": "Optical Interconnect",
+    "Power / Electrical Equipment": "Grid / Electrical Equipment",
+    "Cooling / Thermal": "Power / Cooling",
+    "Power / Cooling": "Power / Cooling",
+    "Memory / HBM": "Memory / HBM",
+    "Server / ODM": "AI Server",
+    "Cloud / AI Platform": "Data Center Construction",
+}
+FUNDAMENTAL_CHANGE_TYPES = {"CapEx", "Earnings / Guidance", "Backlog / Margin", "Supply Chain"}
 
 
 def _is_primary_source_item(item: dict | None) -> bool:
@@ -1755,6 +1768,323 @@ def _chatgpt_summary(news: list[dict], prices: list[dict], watchlists: dict, pri
     )
 
 
+def _score_label(score: int, bands: list[tuple[int, str]]) -> str:
+    for cutoff, label in bands:
+        if score >= cutoff:
+            return label
+    return bands[-1][1]
+
+
+def _score_from_market_row(row: dict) -> float:
+    if not row:
+        return 50.0
+    score = 50.0
+    for key, divisor in [("daily_change_pct", 0.35), ("premarket_change_pct", 0.25), ("performance_5d", 0.8), ("performance_20d", 2.0)]:
+        value = row.get(key)
+        if value is not None:
+            score += value / divisor
+    return max(0.0, min(100.0, score))
+
+
+def _market_regime_score(prices: list[dict], news: list[dict]) -> int:
+    market_rows = [_price_row(prices, ticker) for ticker in ["QQQ", "SPY"]]
+    semi_rows = [_price_row(prices, ticker) for ticker in ["SMH", "SOXX"]]
+    market_score = sum(_score_from_market_row(row) for row in market_rows) / len(market_rows)
+    semi_score = sum(_score_from_market_row(row) for row in semi_rows) / len(semi_rows)
+    score = (market_score * 0.65) + (semi_score * 0.35)
+    macro_text = " ".join(_item_text(item) for item in news if item.get("related_ai_theme") == "general market")
+    if any(term in macro_text for term in ["vix spike", "yields rise", "10-year yield", "strong dollar", "hawkish fed", "tariff"]):
+        score -= 8
+    if any(term in macro_text for term in ["soft inflation", "dovish fed", "yields fall", "rate cut"]):
+        score += 6
+    return round(max(0, min(100, score)))
+
+
+def _material_change_type(item: dict) -> str:
+    evidence_type = _evidence_type(item)
+    text = _item_text(item)
+    if evidence_type in {"Earnings", "Guidance"}:
+        return "Earnings / Guidance"
+    if any(term in text for term in ["backlog", "margin"]):
+        return "Backlog / Margin"
+    if any(term in text for term in ["capex", "capital expenditure", "data center expansion"]):
+        return "CapEx"
+    if evidence_type == "Supply Chain":
+        return "Supply Chain"
+    if any(term in text for term in ["tariff", "policy", "fed", "rate cut", "rate hike", "inflation"]):
+        return "Policy / Macro"
+    return "None"
+
+
+def _is_material_signal_item(item: dict) -> bool:
+    change_type = _material_change_type(item)
+    if change_type == "None":
+        return False
+    if item.get("source_type") in {"X 推文", "博客 / 二级来源"} and item.get("confidence") != "High":
+        return False
+    if _is_primary_source_item(item):
+        return item.get("body_status") != "Headline-only" or change_type in {"Earnings / Guidance", "Supply Chain"}
+    return item.get("confidence") == "High" or _is_negative_catalyst(item)
+
+
+def _material_changes(news: list[dict], prices: list[dict], dashboard_data: dict, limit: int = 6) -> list[dict]:
+    changes = []
+    seen = set()
+    for item in sorted(news, key=_evidence_sort_key):
+        change_type = _material_change_type(item)
+        if not _is_material_signal_item(item):
+            continue
+        key = (change_type, item.get("headline", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        changes.append(
+            {
+                "type": change_type,
+                "change": _short_text(item.get("headline", ""), 120),
+                "impact": _short_text(item.get("why_it_matters") or item.get("strategy_impact") or "Needs review.", 110),
+                "tickers": ", ".join(item.get("tickers") or [item.get("ticker", "General")]),
+            }
+        )
+
+    watched = {row["ticker"] for row in dashboard_data["scoreboard"]}
+    for row in prices:
+        ticker = row.get("ticker")
+        daily = row.get("daily_change_pct")
+        if ticker not in watched or daily is None or abs(daily) <= 5:
+            continue
+        direction = "up" if daily > 0 else "down"
+        changes.append(
+            {
+                "type": "Major Price Move",
+                "change": f"{ticker} moved {direction} {pct(daily)} in the previous session.",
+                "impact": "price-discipline alert, not thesis upgrade",
+                "tickers": ticker,
+            }
+        )
+    return changes[:limit]
+
+
+def _has_fundamental_material_signal(changes: list[dict]) -> bool:
+    return any(change["type"] in FUNDAMENTAL_CHANGE_TYPES for change in changes)
+
+
+def _ai_infrastructure_score(dashboard_data: dict, changes: list[dict]) -> int:
+    top_chokepoints = dashboard_data["chokepoint_ranking"][:5]
+    base = round(sum(row["importance"] for row in top_chokepoints) / len(top_chokepoints)) if top_chokepoints else 50
+    material_strength = sum(1 for change in changes if change["type"] in FUNDAMENTAL_CHANGE_TYPES)
+    risk_signals = sum(1 for row in dashboard_data["chokepoint_ranking"] if row["sentiment"] == "Negative")
+    score = base + min(10, material_strength * 4) - min(15, risk_signals * 5)
+    if not _has_fundamental_material_signal(changes):
+        score = min(score, 79)
+    return round(max(0, min(100, score)))
+
+
+def _portfolio_alerts(dashboard_data: dict, prices: list[dict], limit: int = 6) -> list[dict]:
+    rows_by_ticker = {row["ticker"]: row for row in dashboard_data["scoreboard"]}
+    selected = []
+    for row in dashboard_data["risk_review"]:
+        if row["catalyst_type"] == "Risk catalyst" and row["ticker"] not in selected:
+            selected.append(row["ticker"])
+    for row in prices:
+        ticker = row.get("ticker")
+        if ticker in rows_by_ticker and row.get("daily_change_pct") is not None and abs(row["daily_change_pct"]) > 5 and ticker not in selected:
+            selected.append(ticker)
+
+    alerts = []
+    for ticker in selected:
+        row = rows_by_ticker.get(ticker)
+        price_row = _price_row(prices, ticker)
+        if not row:
+            continue
+        daily = price_row.get("daily_change_pct") if price_row else None
+        if row["catalyst_type"] == "Risk catalyst" or (daily is not None and daily <= -5):
+            action = "Risk Control"
+        elif daily is not None and daily > 5 and (ticker in HIGH_BETA_TICKERS or row["action"] == "Avoid chase"):
+            action = "Avoid Chasing"
+        elif row["risk"] == "High":
+            action = "Watch"
+        else:
+            action = "Do Nothing"
+        alert = row["reason"]
+        if daily is not None and abs(daily) >= 7:
+            alert = f"Major price move: {pct(daily)}; {alert}"
+        alerts.append({"ticker": ticker, "alert": _short_text(alert, 120), "action": action})
+    return alerts[:limit]
+
+
+def _portfolio_action_score(dashboard_data: dict, prices: list[dict], changes: list[dict], alerts: list[dict]) -> int:
+    material_count = len(changes)
+    strong_count = sum(1 for change in changes if change["type"] in FUNDAMENTAL_CHANGE_TYPES)
+    major_moves = sum(
+        1
+        for row in prices
+        if row.get("ticker") in {score_row["ticker"] for score_row in dashboard_data["scoreboard"]}
+        and row.get("daily_change_pct") is not None
+        and abs(row["daily_change_pct"]) > 5
+    )
+    chase_count = sum(1 for alert in alerts if alert["action"] == "Avoid Chasing")
+    risk_count = sum(1 for alert in alerts if alert["action"] == "Risk Control")
+    score = 25 + material_count * 8 + strong_count * 10 + major_moves * 4 - chase_count * 8 - risk_count * 18
+    if material_count == 0:
+        score = min(score, 39)
+    return round(max(0, min(100, score)))
+
+
+def _brief_scores(prices: list[dict], news: list[dict], dashboard_data: dict, changes: list[dict], alerts: list[dict]) -> dict:
+    market_score = _market_regime_score(prices, news)
+    ai_score = _ai_infrastructure_score(dashboard_data, changes)
+    portfolio_score = _portfolio_action_score(dashboard_data, prices, changes, alerts)
+    return {
+        "market": market_score,
+        "market_label": _score_label(market_score, [(80, "risk-on"), (60, "constructive"), (40, "neutral"), (30, "cautious"), (0, "risk-off")]),
+        "ai_infrastructure": ai_score,
+        "ai_infrastructure_label": _score_label(ai_score, [(80, "thesis strengthening"), (60, "thesis intact"), (40, "neutral / mixed"), (20, "thesis weakening"), (0, "thesis materially damaged")]),
+        "portfolio_action": portfolio_score,
+        "portfolio_action_label": _score_label(portfolio_score, [(80, "action allowed"), (60, "small buy possible"), (40, "watch only"), (20, "do nothing"), (0, "risk control / avoid")]),
+    }
+
+
+def _brief_verdict(scores: dict, changes: list[dict], alerts: list[dict]) -> str:
+    if not changes:
+        return "AI infrastructure thesis remains intact, with no fresh signal strong enough to require action this morning."
+    if any(alert["action"] in {"Risk Control", "Avoid Chasing"} for alert in alerts):
+        return "AI infrastructure thesis remains intact, but portfolio discipline matters because today’s strongest signals are risk or chase-control alerts."
+    if _has_fundamental_material_signal(changes):
+        return "AI infrastructure thesis has fresh evidence to monitor, but the brief still avoids turning a single signal into a trade instruction."
+    return "AI infrastructure thesis remains intact, but there is no fresh signal strong enough to justify chasing high-beta names today."
+
+
+def _render_material_changes(changes: list[dict]) -> str:
+    if not changes:
+        return "No material change in the last 24 hours."
+    lines = ["| Type | Change | Impact | Related Tickers |", "|---|---|---|---|"]
+    for change in changes:
+        lines.append(f"| {change['type']} | {_escape_table(change['change'])} | {_escape_table(change['impact'])} | {_escape_table(change['tickers'])} |")
+    return "\n".join(lines)
+
+
+def _brief_chokepoint_change(row: dict) -> str:
+    if not any(_is_material_signal_item(item) for item in row.get("items", [])):
+        return "unchanged"
+    if row["sentiment"] == "Negative":
+        return "weakened"
+    if row["sentiment"] == "Positive" and row["evidence_strength"] in {"High", "Medium"}:
+        return "improved"
+    return "watch" if row["sentiment"] != "Neutral" else "unchanged"
+
+
+def _render_chokepoint_snapshot(dashboard_data: dict, has_material_change: bool) -> str:
+    rows = []
+    used = set()
+    for row in dashboard_data["chokepoint_ranking"]:
+        label = BRIEF_CHOKEPOINT_LABELS.get(row["chokepoint"], row["chokepoint"])
+        if label in used:
+            continue
+        used.add(label)
+        change = _brief_chokepoint_change(row) if has_material_change else "unchanged"
+        rows.append({**row, "label": label, "change": change})
+        if len(rows) == 5:
+            break
+    lines = ["| Rank | Chokepoint | Score | Change | Key Tickers |", "|---|---|---:|---|---|"]
+    for rank, row in enumerate(rows, start=1):
+        lines.append(f"| {rank} | {_escape_table(row['label'])} | {row['importance']} | {row['change']} | {_escape_table(row['stocks'])} |")
+    reasons = [f"- {row['label']}: {_short_text(row['evidence'], 120)}" for row in rows if row["change"] != "unchanged" and "今日未发现足以改变判断" not in row["evidence"]]
+    if reasons:
+        lines.extend(["", *reasons[:3]])
+    return "\n".join(lines)
+
+
+def _render_portfolio_alerts(alerts: list[dict]) -> str:
+    if not alerts:
+        return "No portfolio-level alert today."
+    lines = ["| Ticker | Alert | Action |", "|---|---|---|"]
+    for alert in alerts:
+        lines.append(f"| {alert['ticker']} | {_escape_table(alert['alert'])} | {alert['action']} |")
+    return "\n".join(lines)
+
+
+def _action_from_portfolio_score(score: int) -> str:
+    if score <= 19:
+        return "Risk Control"
+    if score <= 39:
+        return "Do Nothing"
+    if score <= 59:
+        return "Watch"
+    if score <= 79:
+        return "Small Buy Candidate"
+    return "Action Allowed"
+
+
+def _today_action(changes: list[dict], alerts: list[dict], scores: dict) -> tuple[str, list[str]]:
+    action = _action_from_portfolio_score(scores["portfolio_action"])
+    reasons = []
+    if not changes:
+        reasons.append("No material change in the last 24 hours.")
+    elif not _has_fundamental_material_signal(changes):
+        reasons.append("Material signal is price-related only, not a thesis upgrade.")
+    else:
+        reasons.append("There is a fundamental material signal that may deserve review.")
+    if any(alert["action"] == "Avoid Chasing" for alert in alerts):
+        reasons.append("At least one ticker needs watch/avoid-chasing discipline, but the overall action follows the score.")
+    elif any(alert["action"] == "Risk Control" for alert in alerts):
+        reasons.append("At least one ticker needs risk review, but the overall action follows the score.")
+    else:
+        reasons.append("No portfolio-level alert overrides the score.")
+    return action, reasons[:3]
+
+
+def _render_today_action(action: str, reasons: list[str]) -> str:
+    return "\n".join([action, "", *[f"- {reason}" for reason in reasons]])
+
+
+def _render_brief(report_date: str, report_url: str, prices: list[dict], news: list[dict], dashboard_data: dict, changes: list[dict], alerts: list[dict]) -> str:
+    scores = _brief_scores(prices, news, dashboard_data, changes, alerts)
+    action, action_reasons = _today_action(changes, alerts, scores)
+    sections = [
+        f"# AI Pre-Market Brief — {report_date}",
+        "",
+        f"- Generated: {fetch_timestamp()}",
+        f"- HTML report: {report_url}",
+        f"- Research-only: no brokerage connection, no orders, no trade execution, no price prediction.",
+        "",
+        "## 1. Today’s Verdict",
+        f"- Market Regime Score: {scores['market']} / 100 ({scores['market_label']})",
+        f"- AI Infrastructure Score: {scores['ai_infrastructure']} / 100 ({scores['ai_infrastructure_label']})",
+        f"- Portfolio Action Score: {scores['portfolio_action']} / 100 ({scores['portfolio_action_label']})",
+        "",
+        _brief_verdict(scores, changes, alerts),
+        "",
+        "## 2. Material Changes Only",
+        _render_material_changes(changes),
+        "",
+        "## 3. Chokepoint Snapshot",
+        _render_chokepoint_snapshot(dashboard_data, bool(changes)),
+        "",
+        "## 4. Portfolio Alerts",
+        _render_portfolio_alerts(alerts),
+        "",
+        "## 5. Today’s Action",
+        _render_today_action(action, action_reasons),
+        "",
+        "_This brief is for research review only. It does not provide buy/sell instructions and does not execute trades._",
+    ]
+    return "\n".join(sections)
+
+
+def _render_handoff_brief(report_date: str, report_url: str, prices: list[dict], news: list[dict], dashboard_data: dict, changes: list[dict], alerts: list[dict]) -> str:
+    return "\n".join(
+        [
+            _render_brief(report_date, report_url, prices, news, dashboard_data, changes, alerts),
+            "",
+            "## Hand-off Focus",
+            "- Use the Material Changes table as the only source of new-change review.",
+            "- Treat Portfolio Alerts as watch/risk labels, not trading instructions.",
+            "- If no material change is listed, do not invent a thesis change.",
+        ]
+    )
+
+
 def build_reports() -> dict:
     ensure_dirs()
     report_date = today_est()
@@ -1769,122 +2099,17 @@ def build_reports() -> dict:
         [{key: value for key, value in record.items() if key != "item"} for record in primary_source_results],
     )
 
-    watchlists = load_yaml("config/watchlists.yaml")
-    themes = load_yaml("config/themes.yaml").get("themes", {})
     base_url = report_base_url()
     report_url = f"{base_url.rstrip('/')}/{report_date}.html" if base_url else f"docs/reports/{report_date}.html"
     dashboard_data = _compute_dashboard_data(news, prices)
-    evidence_rows = _evidence_dashboard_rows(news)
-    thesis_rows = _thesis_tracker_rows(news)
-
-    md = [
-        f"# {REPORT_TITLE}",
-        "",
-        f"- 日期: {report_date}",
-        f"- 数据抓取时间: {fetch_timestamp()}",
-        f"- HTML report: {report_url}",
-        f"- 免责声明: {DISCLAIMER}",
-        "",
-        _render_what_changed_today(thesis_rows),
-        "",
-        _render_thesis_tracker(thesis_rows),
-        "",
-        _render_evidence_vs_narrative(news),
-        "",
-        _render_confidence_dashboard(dashboard_data),
-        "",
-        _render_evidence_dashboard(evidence_rows),
-        "",
-        _render_scoreboard(dashboard_data),
-        "",
-        "## 1. 今日最重要结论",
-        _top_conclusions(news, prices, primary_source_results, evidence_rows),
-        "",
-        _render_hyperscaler_tracker(news),
-        "",
-        _render_primary_source_ranking(primary_source_results),
-        "",
-        _render_investment_relevance_review(news),
-        "",
-        "## Primary Source Scan",
-        _render_primary_source_scan(primary_source_results, limit=12),
-        "",
-        "## Public News Scan",
-        _render_public_news_scan(public_news_results),
-        "",
-        "## Chokepoint Radar",
-        _chokepoint_radar(news, prices, watchlists, dashboard_data),
-        "",
-        "## 2. 核心持仓/计划买入标的",
-        _core_section(prices, news, watchlists),
-        "",
-        "## 3. AI 大基建主题动态",
-        _theme_section(news, themes),
-        "",
-        "## 4. 风险预警",
-        _risk_section(news, prices),
-        "",
-        "## 5. 新增观察信号",
-        _new_signals(news),
-        "",
-        "## 6. 高风险概念股观察",
-        _high_risk_section(news, watchlists),
-        "",
-        "## 7. 给 ChatGPT 的分析摘要",
-        _chatgpt_summary(news, prices, watchlists, primary_source_results),
-        "",
-        "## 研究边界",
-        "- 不连接任何券商账户。",
-        "- 不生成买卖订单。",
-        "- 不执行交易。",
-        "- 不输出具体交易动作或价格预测。",
-        "- X 推文必须标注“未验证，仅作为线索”。",
-    ]
-
-    handoff = "\n".join(
-        [
-            f"# ChatGPT 分析摘要 - {report_date}",
-            "",
-            _render_handoff_dashboard_snapshot(dashboard_data),
-            "",
-            _render_what_changed_today(thesis_rows),
-            "",
-            _render_thesis_tracker(thesis_rows),
-            "",
-            _render_evidence_vs_narrative(news, limit=5),
-            "",
-            _render_evidence_dashboard(evidence_rows[:10]),
-            "",
-            _render_hyperscaler_tracker(news),
-            "",
-            _render_primary_source_ranking(primary_source_results, limit_per_group=3),
-            "",
-            _render_investment_relevance_review(news, limit=8),
-            "",
-            "## Primary Source Scan",
-            _render_primary_source_scan(primary_source_results, limit=5),
-            "",
-            "## Public News Scan",
-            _render_public_news_scan(public_news_results, limit=6),
-            "",
-            "## 给 ChatGPT 的分析摘要",
-            _chatgpt_summary(news, prices, watchlists, primary_source_results),
-            "",
-            _render_handoff_chokepoint_radar(dashboard_data),
-            "",
-            "## 今日重点新闻结构化摘录",
-            _news_section_for_handoff(news),
-            "",
-            "## 禁止事项",
-            "- 不要输出具体交易动作或价格预测。",
-            "- 不要把 X 推文当作事实。",
-            "- 只做信息分类、风险提示和需要验证的问题。"
-        ]
-    )
+    changes = _material_changes(news, prices, dashboard_data)
+    alerts = _portfolio_alerts(dashboard_data, prices)
+    md = _render_brief(report_date, report_url, prices, news, dashboard_data, changes, alerts)
+    handoff = _render_handoff_brief(report_date, report_url, prices, news, dashboard_data, changes, alerts)
 
     daily_path = ROOT / f"reports/daily/{report_date}.md"
     handoff_path = ROOT / f"reports/chatgpt_handoff/{report_date}.md"
-    daily_path.write_text("\n".join(md), encoding="utf-8")
+    daily_path.write_text(md, encoding="utf-8")
     handoff_path.write_text(handoff, encoding="utf-8")
     return {"date": report_date, "title": f"{REPORT_TITLE} - {report_date}", "markdown": str(daily_path), "handoff": str(handoff_path)}
 
