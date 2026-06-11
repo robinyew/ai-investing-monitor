@@ -1,31 +1,5 @@
 [
   {
-    "ticker": "MSFT, NOK, SMCI",
-    "headline": "Lakeland Industries, Inc. Q1 2027 Earnings Call Summary",
-    "source": "Yahoo Finance",
-    "source_type": "Earnings call transcript",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/lakeland-industries-inc-q1-2027-001305715.html",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/lakeland-industries-inc-q1-2027-001305715.html",
-    "summary": "Q1 2027 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "original_summary": "Q1 2027 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "why_it_matters": "MSFT, NOK, SMCI \u51fa\u73b0\u6f5c\u5728\u8d1f\u9762\u7ebf\u7d22\uff0c\u9700\u9a8c\u8bc1\u662f\u5426\u5f71\u54cd \u5149\u4e92\u8fde / \u7f51\u7edc \u4e3b\u9898\u3002",
-    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
-    "confidence": "High",
-    "primary_source_sentiment": "Negative",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u98ce\u9669\u4e0a\u5347",
-    "direction": "\u8d1f\u9762",
-    "needs_attention": true,
-    "tickers": [
-      "MSFT",
-      "NOK",
-      "SMCI"
-    ],
-    "category": "primary_financial_news",
-    "published": "2026-06-10T00:13:05Z"
-  },
-  {
     "ticker": "MSFT",
     "headline": "A Developer\u2019s Guide to Managing Models, Cost and Quality in Microsoft Foundry",
     "source": "Microsoft Azure Blog",
@@ -146,30 +120,6 @@
     "published": "Tue, 02 Jun 2026 16:00:00 +0000"
   },
   {
-    "ticker": "GOOGL",
-    "headline": "As OpenAI leans into enterprise business, Apple and Google set sights on the masses",
-    "source": "CNBC",
-    "source_type": "\u4e3b\u6d41\u8d22\u7ecf\u65b0\u95fb",
-    "link": "https://www.cnbc.com/2026/06/11/as-openai-leans-into-enterprise-apple-and-google-target-consumer-ai.html",
-    "url": "https://www.cnbc.com/2026/06/11/as-openai-leans-into-enterprise-apple-and-google-target-consumer-ai.html",
-    "summary": "Summary based on headline/metadata only.",
-    "original_summary": "Summary based on headline/metadata only.",
-    "why_it_matters": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
-    "confidence": "High",
-    "primary_source_sentiment": "",
-    "body_status": "Metadata",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u4e2d\u6027",
-    "needs_attention": true,
-    "tickers": [
-      "GOOGL"
-    ],
-    "category": "primary_financial_news",
-    "published": "Thu, 11 Jun 2026 12:00:02 GMT"
-  },
-  {
     "ticker": "MSFT",
     "headline": "Azure IaaS: Deploy high-performance workloads with a system-level approach",
     "source": "Microsoft Azure Blog",
@@ -216,32 +166,6 @@
     ],
     "category": "ai_software_cloud",
     "published": "Fri, 22 May 2026 15:00:00 +0000"
-  },
-  {
-    "ticker": "MSFT, NOK, SMCI",
-    "headline": "BARK, Inc. Q4 2026 Earnings Call Summary",
-    "source": "Yahoo Finance",
-    "source_type": "Earnings call transcript",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/bark-inc-q4-2026-earnings-001608133.html",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bark-inc-q4-2026-earnings-001608133.html",
-    "summary": "Q4 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "original_summary": "Q4 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "why_it_matters": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
-    "confidence": "High",
-    "primary_source_sentiment": "Customer adoption signal",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u6b63\u9762",
-    "needs_attention": true,
-    "tickers": [
-      "MSFT",
-      "NOK",
-      "SMCI"
-    ],
-    "category": "primary_financial_news",
-    "published": "2026-06-10T00:16:08Z"
   },
   {
     "ticker": "GOOGL",
@@ -484,57 +408,6 @@
     "published": "Tue, 09 Jun 2026 16:00:00 +0000"
   },
   {
-    "ticker": "MSFT, NOK, SMCI",
-    "headline": "Limoneira Company Q2 2026 Earnings Call Summary",
-    "source": "Yahoo Finance",
-    "source_type": "Earnings call transcript",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/limoneira-company-q2-2026-earnings-001747076.html",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/limoneira-company-q2-2026-earnings-001747076.html",
-    "summary": "Limoneira Company Q2 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets R.",
-    "original_summary": "Limoneira Company Q2 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets R.",
-    "why_it_matters": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
-    "confidence": "High",
-    "primary_source_sentiment": "Platform capability update",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u6b63\u9762",
-    "needs_attention": true,
-    "tickers": [
-      "MSFT",
-      "NOK",
-      "SMCI"
-    ],
-    "category": "primary_financial_news",
-    "published": "2026-06-10T00:17:47Z"
-  },
-  {
-    "ticker": "MRVL, MU",
-    "headline": "Micron, Marvell drag the tech sector into a new bearish phase. Will the correction last this time?",
-    "source": "MarketWatch",
-    "source_type": "\u4e3b\u6d41\u8d22\u7ecf\u65b0\u95fb",
-    "link": "https://www.marketwatch.com/story/micron-intel-drag-the-tech-sector-into-a-new-bearish-phase-will-the-correction-last-this-time-9ba4f3f5?mod=mw_rss_topstories",
-    "url": "https://www.marketwatch.com/story/micron-intel-drag-the-tech-sector-into-a-new-bearish-phase-will-the-correction-last-this-time-9ba4f3f5?mod=mw_rss_topstories",
-    "summary": "Summary based on headline/metadata only.",
-    "original_summary": "Summary based on headline/metadata only.",
-    "why_it_matters": "MRVL, MU \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
-    "confidence": "High",
-    "primary_source_sentiment": "",
-    "body_status": "Metadata",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u4e2d\u6027",
-    "needs_attention": true,
-    "tickers": [
-      "MRVL",
-      "MU"
-    ],
-    "category": "primary_financial_news",
-    "published": "Thu, 11 Jun 2026 10:41:00 GMT"
-  },
-  {
     "ticker": "MSFT",
     "headline": "Microsoft Build 2026: Building agentic apps with Microsoft Fabric and Microsoft Databases",
     "source": "Microsoft Azure Blog",
@@ -656,32 +529,6 @@
     "published": "Tue, 09 Jun 2026 16:00:00 +0000"
   },
   {
-    "ticker": "MSFT, NOK, SMCI",
-    "headline": "SailPoint, Inc. Q1 2027 Earnings Call Summary",
-    "source": "Yahoo Finance",
-    "source_type": "Earnings call transcript",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/sailpoint-inc-q1-2027-earnings-001520082.html",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sailpoint-inc-q1-2027-earnings-001520082.html",
-    "summary": "Q1 2027 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "original_summary": "Q1 2027 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "why_it_matters": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
-    "confidence": "High",
-    "primary_source_sentiment": "Customer adoption signal",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u6b63\u9762",
-    "needs_attention": true,
-    "tickers": [
-      "MSFT",
-      "NOK",
-      "SMCI"
-    ],
-    "category": "primary_financial_news",
-    "published": "2026-06-10T00:15:20Z"
-  },
-  {
     "ticker": "GOOGL",
     "headline": "Scaling AI Agents: A Step-by-Step Guide to Deploying ADK on GKE Autopilot",
     "source": "Google Cloud Blog",
@@ -755,55 +602,28 @@
     "published": "Tue, 09 Jun 2026 16:00:00 +0000"
   },
   {
-    "ticker": "MSFT, NOK, SMCI",
-    "headline": "United Natural Foods, Inc. Q3 2026 Earnings Call Summary",
-    "source": "Yahoo Finance",
-    "source_type": "Earnings call transcript",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/united-natural-foods-inc-q3-001312313.html",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/united-natural-foods-inc-q3-001312313.html",
-    "summary": "Q3 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "original_summary": "Q3 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "why_it_matters": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
-    "confidence": "High",
-    "primary_source_sentiment": "Customer adoption signal",
-    "body_status": "Full",
+    "ticker": "GOOGL",
+    "headline": "Transform dashboards into interactive data experiences with Looker agents",
+    "source": "Google Cloud Blog",
+    "source_type": "Official company blog / product announcement",
+    "link": "https://cloud.google.com/blog/products/business-intelligence/dashboard-agents-in-looker/",
+    "url": "https://cloud.google.com/blog/products/business-intelligence/dashboard-agents-in-looker/",
+    "summary": "Dashboards have long served as a primary way for organizations to extract insights from data, but they can fall short in agile environments: Dashboards aren\u2019t interactive and don\u2019t allow you to ask follow-up questions. This forces users to step outside their workflows or turn to data analysts to get the answers they need.",
+    "original_summary": "Dashboards have long served as a primary way for organizations to extract insights from data, but they can fall short in agile environments: Dashboards aren\u2019t interactive and don\u2019t allow you to ask follow-up questions. This forces users to step outside their workflows or turn to data analysts to get the answers they need.",
+    "why_it_matters": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
+    "confidence": "Medium",
+    "primary_source_sentiment": "Platform capability update",
+    "body_status": "Partial",
     "ticker_mapping_confidence": "High",
     "strategy_impact": "\u9700\u8981\u5173\u6ce8",
     "direction": "\u6b63\u9762",
     "needs_attention": true,
     "tickers": [
-      "MSFT",
-      "NOK",
-      "SMCI"
-    ],
-    "category": "primary_financial_news",
-    "published": "2026-06-10T00:13:12Z"
-  },
-  {
-    "ticker": "GOOGL, MSFT",
-    "headline": "What Google Cloud announced in AI this month",
-    "source": "Google Cloud Blog",
-    "source_type": "Official company blog / product announcement",
-    "link": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month/",
-    "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month/",
-    "summary": "Editor\u2019s note: Want to keep up with the latest from Google Cloud? Check back here for a monthly recap of our latest updates, announcements, resources, events, learning opportunities, and more.",
-    "original_summary": "Editor\u2019s note: Want to keep up with the latest from Google Cloud? Check back here for a monthly recap of our latest updates, announcements, resources, events, learning opportunities, and more.",
-    "why_it_matters": "GOOGL, MSFT \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
-    "confidence": "Medium",
-    "primary_source_sentiment": "Customer adoption signal",
-    "body_status": "Partial",
-    "ticker_mapping_confidence": "Medium",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u6b63\u9762",
-    "needs_attention": true,
-    "tickers": [
-      "GOOGL",
-      "MSFT"
+      "GOOGL"
     ],
     "category": "ai_software_cloud",
-    "published": "Mon, 01 Jun 2026 16:00:00 +0000"
+    "published": "Thu, 11 Jun 2026 16:00:00 +0000"
   },
   {
     "ticker": "GOOGL",

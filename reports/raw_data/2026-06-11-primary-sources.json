@@ -13,71 +13,6 @@
     "ticker_mapping_confidence": "High"
   },
   {
-    "ticker": "MSFT, NOK, SMCI",
-    "source_type": "Earnings call transcript",
-    "title": "BARK, Inc. Q4 2026 Earnings Call Summary",
-    "date": "2026-06-10T00:16:08Z",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/bark-inc-q4-2026-earnings-001608133.html",
-    "key_takeaway": "Q4 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "evidence_strength": "High",
-    "thesis_relevance": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "sentiment": "Customer adoption signal",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High"
-  },
-  {
-    "ticker": "MSFT, NOK, SMCI",
-    "source_type": "Earnings call transcript",
-    "title": "Lakeland Industries, Inc. Q1 2027 Earnings Call Summary",
-    "date": "2026-06-10T00:13:05Z",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/lakeland-industries-inc-q1-2027-001305715.html",
-    "key_takeaway": "Q1 2027 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "evidence_strength": "High",
-    "thesis_relevance": "MSFT, NOK, SMCI \u51fa\u73b0\u6f5c\u5728\u8d1f\u9762\u7ebf\u7d22\uff0c\u9700\u9a8c\u8bc1\u662f\u5426\u5f71\u54cd \u5149\u4e92\u8fde / \u7f51\u7edc \u4e3b\u9898\u3002",
-    "sentiment": "Negative",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High"
-  },
-  {
-    "ticker": "MSFT, NOK, SMCI",
-    "source_type": "Earnings call transcript",
-    "title": "Limoneira Company Q2 2026 Earnings Call Summary",
-    "date": "2026-06-10T00:17:47Z",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/limoneira-company-q2-2026-earnings-001747076.html",
-    "key_takeaway": "Limoneira Company Q2 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets R.",
-    "evidence_strength": "High",
-    "thesis_relevance": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "sentiment": "Platform capability update",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High"
-  },
-  {
-    "ticker": "MSFT, NOK, SMCI",
-    "source_type": "Earnings call transcript",
-    "title": "SailPoint, Inc. Q1 2027 Earnings Call Summary",
-    "date": "2026-06-10T00:15:20Z",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/sailpoint-inc-q1-2027-earnings-001520082.html",
-    "key_takeaway": "Q1 2027 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "evidence_strength": "High",
-    "thesis_relevance": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "sentiment": "Customer adoption signal",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High"
-  },
-  {
-    "ticker": "MSFT, NOK, SMCI",
-    "source_type": "Earnings call transcript",
-    "title": "United Natural Foods, Inc. Q3 2026 Earnings Call Summary",
-    "date": "2026-06-10T00:13:12Z",
-    "url": "https://finance.yahoo.com/markets/stocks/articles/united-natural-foods-inc-q3-001312313.html",
-    "key_takeaway": "Q3 2026 Earnings Call Summary Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research Community.",
-    "evidence_strength": "High",
-    "thesis_relevance": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "sentiment": "Customer adoption signal",
-    "body_status": "Full",
-    "ticker_mapping_confidence": "High"
-  },
-  {
     "ticker": "MSFT",
     "source_type": "Official company blog / product announcement",
     "title": "A Developer\u2019s Guide to Managing Models, Cost and Quality in Microsoft Foundry",
@@ -546,17 +481,17 @@
     "ticker_mapping_confidence": "High"
   },
   {
-    "ticker": "GOOGL, MSFT",
+    "ticker": "GOOGL",
     "source_type": "Official company blog / product announcement",
-    "title": "What Google Cloud announced in AI this month",
-    "date": "Mon, 01 Jun 2026 16:00:00 +0000",
-    "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month/",
-    "key_takeaway": "Editor\u2019s note: Want to keep up with the latest from Google Cloud? Check back here for a monthly recap of our latest updates, announcements, resources, events, learning opportunities, and more.",
+    "title": "Transform dashboards into interactive data experiences with Looker agents",
+    "date": "Thu, 11 Jun 2026 16:00:00 +0000",
+    "url": "https://cloud.google.com/blog/products/business-intelligence/dashboard-agents-in-looker/",
+    "key_takeaway": "Dashboards have long served as a primary way for organizations to extract insights from data, but they can fall short in agile environments: Dashboards aren\u2019t interactive and don\u2019t allow you to ask follow-up questions. This forces users to step outside their workflows or turn to data analysts to get the answers they need.",
     "evidence_strength": "Medium",
-    "thesis_relevance": "GOOGL, MSFT \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "sentiment": "Customer adoption signal",
+    "thesis_relevance": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "sentiment": "Platform capability update",
     "body_status": "Partial",
-    "ticker_mapping_confidence": "Medium"
+    "ticker_mapping_confidence": "High"
   },
   {
     "ticker": "GOOGL",
