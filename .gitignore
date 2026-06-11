@@ -19,3 +19,7 @@ cloudflare-workers/investment-report-dispatcher/.wrangler/
 cloudflare-workers/investment-report-dispatcher/.dev.vars
 cloudflare-workers/investment-report-dispatcher/.wrangler/
 .claude/settings.local.json
+
+# Tokens / secrets
+.github_pat
+*.pat
