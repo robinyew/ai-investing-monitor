@@ -25,7 +25,7 @@ async function handleScheduled(event, env) {
     executionTimeUtc: executionDate.toISOString(),
     scheduledTimeUtc: scheduledDate.toISOString(),
     toronto,
-    target: routing.target,
+    targets: routing.targets,
     skipReason: routing.skipReason,
   }));
 
@@ -34,23 +34,29 @@ async function handleScheduled(event, env) {
     return;
   }
 
-  if (!routing.target) {
+  if (!routing.targets || routing.targets.length === 0) {
     console.log(`Skipped scheduled dispatch: ${routing.skipReason}`);
     return;
   }
 
-  const workflowId = routing.target === "daily" ? env.DAILY_WORKFLOW_ID : env.HUB_WORKFLOW_ID;
-  const payload = buildWorkflowPayload(routing.target, toronto.date, env);
-  const result = await dispatchWorkflow(env, workflowId, payload.inputs);
-  console.log(JSON.stringify({
-    service: SERVICE,
-    target: routing.target,
-    date: toronto.date,
-    workflowId,
-    githubStatus: result.status,
-    ok: result.ok,
-    body: result.body,
-  }));
+  for (const target of routing.targets) {
+    const workflowId = workflowIdForTarget(target, env);
+    if (!workflowId) {
+      console.log(`No workflow ID configured for target: ${target}`);
+      continue;
+    }
+    const payload = buildWorkflowPayload(target, toronto.date, env);
+    const result = await dispatchWorkflow(env, workflowId, payload.inputs);
+    console.log(JSON.stringify({
+      service: SERVICE,
+      target,
+      date: toronto.date,
+      workflowId,
+      githubStatus: result.status,
+      ok: result.ok,
+      body: result.body,
+    }));
+  }
 }
 
 async function handleRequest(request, env) {
@@ -90,15 +96,15 @@ async function handleManualDispatch(request, url, env) {
   const date = url.searchParams.get("date") || getTorontoParts(new Date()).date;
   const dryRun = url.searchParams.get("dry_run") === "true";
 
-  if (!["daily", "hub"].includes(target)) {
-    return jsonResponse({ ok: false, error: "invalid_target", allowed: ["daily", "hub"] }, 400);
+  if (!["daily", "hub", "news-scan"].includes(target)) {
+    return jsonResponse({ ok: false, error: "invalid_target", allowed: ["daily", "hub", "news-scan"] }, 400);
   }
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     return jsonResponse({ ok: false, error: "invalid_date", expected: "YYYY-MM-DD" }, 400);
   }
 
-  const workflowId = target === "daily" ? env.DAILY_WORKFLOW_ID : env.HUB_WORKFLOW_ID;
+  const workflowId = workflowIdForTarget(target, env);
   const payload = buildWorkflowPayload(target, date, env);
 
   if (dryRun) {
@@ -154,18 +160,25 @@ function getTorontoParts(date) {
 
 function chooseScheduledTarget(cron, torontoParts) {
   if (!torontoParts.isWeekday) {
-    return { target: null, skipReason: "toronto_weekend" };
+    return { targets: [], skipReason: "toronto_weekend" };
   }
 
   if (torontoParts.time === "08:15") {
-    return { target: "daily", skipReason: null };
+    return { targets: ["daily", "news-scan"], skipReason: null };
   }
 
   if (torontoParts.time === "08:30") {
-    return { target: "hub", skipReason: null };
+    return { targets: ["hub"], skipReason: null };
   }
 
-  return { target: null, skipReason: `no target for toronto time ${torontoParts.time} (cron: ${cron})` };
+  return { targets: [], skipReason: `no target for toronto time ${torontoParts.time} (cron: ${cron})` };
+}
+
+function workflowIdForTarget(target, env) {
+  if (target === "daily") return env.DAILY_WORKFLOW_ID;
+  if (target === "hub") return env.HUB_WORKFLOW_ID;
+  if (target === "news-scan") return env.NEWS_SCAN_WORKFLOW_ID;
+  return null;
 }
 
 function buildWorkflowPayload(target, date, env) {

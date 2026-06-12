@@ -8,6 +8,7 @@ GITHUB_REPO = "ai-investing-monitor"
 GITHUB_REF = "main"
 DAILY_WORKFLOW_ID = "daily-report.yml"
 HUB_WORKFLOW_ID = "publish-hub-intelligence.yml"
+NEWS_SCAN_WORKFLOW_ID = "ai-news-scan.yml"
 
 [triggers]
 crons = [
