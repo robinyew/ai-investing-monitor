@@ -80,8 +80,7 @@ jobs:
               });
             }
 
-      - name: Optional SMTP email notification
-        if: ${{ vars.AI_MONITOR_SEND_EMAIL == 'true' }}
+      - name: Send SMTP email notification
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
@@ -90,5 +89,4 @@ jobs:
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           REPORT_BASE_URL: ${{ secrets.REPORT_BASE_URL }}
-          AI_MONITOR_SEND_EMAIL: "true"
         run: python scripts/send_email.py
