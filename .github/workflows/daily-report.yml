@@ -28,6 +28,44 @@ jobs:
           REPORT_BASE_URL: ${{ secrets.REPORT_BASE_URL }}
         run: python scripts/run_daily_report.py
 
+      - name: Update Pre-Market Brief index
+        run: |
+          python3 - <<'EOF'
+          from pathlib import Path
+          reports = sorted(
+              [f.stem for f in Path("docs/reports").glob("*.html") if f.stem != "index"],
+              reverse=True
+          )
+          items = "\n".join(f'<li><a href="{d}.html">{d}</a></li>' for d in reports)
+          html = f"""<!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>AI Investing Pre-Market Brief</title>
+          <style>
+          body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;max-width:860px;margin:0 auto;padding:32px 20px;color:#1f2933}}
+          h1{{font-size:1.6rem;margin-bottom:6px}}
+          p.sub{{color:#5b6472;margin:0 0 24px;font-size:.95rem}}
+          ul{{list-style:none;padding:0;margin:0}}
+          li{{border-bottom:1px solid #e8ecf0;padding:10px 0}}
+          li:last-child{{border-bottom:none}}
+          a{{color:#0055cc;text-decoration:none;font-weight:500}}
+          a:hover{{text-decoration:underline}}
+          </style>
+          </head>
+          <body>
+          <h1>AI Investing Pre-Market Brief</h1>
+          <p class="sub">Research-only. No buy/sell instructions. No trading automation.</p>
+          <ul>
+          {items}
+          </ul>
+          </body>
+          </html>"""
+          Path("docs/reports/index.html").write_text(html, encoding="utf-8")
+          print(f"Index updated with {len(reports)} reports.")
+          EOF
+
       - name: Commit generated reports
         run: |
           git config user.name "github-actions[bot]"
