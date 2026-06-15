@@ -1,5 +1,18 @@
 [
   {
+    "ticker": "MSFT, NOK, SMCI",
+    "source_type": "Earnings call transcript",
+    "title": "PowerFleet Q4 Earnings Call Highlights",
+    "date": "2026-06-15T14:03:17Z",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/powerfleet-q4-earnings-call-highlights-140317788.html",
+    "key_takeaway": "PowerFleet Q4 Earnings Call Highlights Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research C.",
+    "evidence_strength": "High",
+    "thesis_relevance": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "sentiment": "Customer adoption signal",
+    "body_status": "Full",
+    "ticker_mapping_confidence": "High"
+  },
+  {
     "ticker": "FIX, GOOGL",
     "source_type": "Official company blog / product announcement",
     "title": "10 Indispensable Prompts Our Team Refuses to Build Without",

@@ -265,30 +265,6 @@
     "published": "Tue, 09 Jun 2026 16:00:00 +0000"
   },
   {
-    "ticker": "GOOGL",
-    "headline": "Elon Musk drifted from Larry Page over a decade ago, but their companies are closer than ever",
-    "source": "CNBC",
-    "source_type": "\u4e3b\u6d41\u8d22\u7ecf\u65b0\u95fb",
-    "link": "https://www.cnbc.com/2026/06/14/elon-musk-drifted-from-larry-page-but-spacex-google-closer-than-ever.html",
-    "url": "https://www.cnbc.com/2026/06/14/elon-musk-drifted-from-larry-page-but-spacex-google-closer-than-ever.html",
-    "summary": "Summary based on headline/metadata only.",
-    "original_summary": "Summary based on headline/metadata only.",
-    "why_it_matters": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "related_ai_theme": "\u4e91\u5e73\u53f0 capex",
-    "confidence": "High",
-    "primary_source_sentiment": "",
-    "body_status": "Metadata",
-    "ticker_mapping_confidence": "High",
-    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
-    "direction": "\u4e2d\u6027",
-    "needs_attention": true,
-    "tickers": [
-      "GOOGL"
-    ],
-    "category": "primary_financial_news",
-    "published": "Sun, 14 Jun 2026 11:30:01 GMT"
-  },
-  {
     "ticker": "MSFT",
     "headline": "Foundry IQ: Build smarter agents faster with unified knowledge and serverless retrieval",
     "source": "Microsoft Azure Blog",
@@ -456,6 +432,32 @@
     ],
     "category": "ai_software_cloud",
     "published": "Tue, 02 Jun 2026 16:30:09 +0000"
+  },
+  {
+    "ticker": "MSFT, NOK, SMCI",
+    "headline": "PowerFleet Q4 Earnings Call Highlights",
+    "source": "Yahoo Finance",
+    "source_type": "Earnings call transcript",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/powerfleet-q4-earnings-call-highlights-140317788.html",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/powerfleet-q4-earnings-call-highlights-140317788.html",
+    "summary": "PowerFleet Q4 Earnings Call Highlights Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research C.",
+    "original_summary": "PowerFleet Q4 Earnings Call Highlights Oops, something went wrong Skip to navigation Skip to main content Skip to right column Yahoo Finance News Finance Sports More News Today's news US Politics World Weather Climate change Health Science Originals Newsletters Games Life Health Parenting Horoscopes Shopping Food Travel Autos Gift ideas Buying guides Amazon Prime Day deals Amazon Prime Day tech deals Entertainment Celebrity TV Movies Music How to Watch Interviews Videos Finance My portfolio News Markets Research C.",
+    "why_it_matters": "MSFT, NOK, SMCI \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "related_ai_theme": "\u5149\u4e92\u8fde / \u7f51\u7edc",
+    "confidence": "High",
+    "primary_source_sentiment": "Customer adoption signal",
+    "body_status": "Full",
+    "ticker_mapping_confidence": "High",
+    "strategy_impact": "\u9700\u8981\u5173\u6ce8",
+    "direction": "\u6b63\u9762",
+    "needs_attention": true,
+    "tickers": [
+      "MSFT",
+      "NOK",
+      "SMCI"
+    ],
+    "category": "primary_financial_news",
+    "published": "2026-06-15T14:03:17Z"
   },
   {
     "ticker": "MSFT",
