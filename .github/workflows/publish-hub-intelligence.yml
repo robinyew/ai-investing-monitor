@@ -117,3 +117,14 @@ jobs:
           git add investment-intelligence-hub/reports/daily_intelligence/*_publish_notes.md
           git commit -m "Publish intelligence brief ${{ inputs.date }}" || echo "No changes to commit"
           git push
+
+      - name: Send Hub Intelligence email notification
+        if: ${{ inputs.publish == 'true' }}
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python scripts/send_hub_email.py ${{ inputs.date }}
