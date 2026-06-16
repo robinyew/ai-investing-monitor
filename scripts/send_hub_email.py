@@ -12,14 +12,23 @@ Required env vars:
 
 from __future__ import annotations
 
+import os
 import smtplib
 import sys
 from email.message import EmailMessage
 
-from utils import env, today_est
-
 REQUIRED = ["SMTP_HOST", "SMTP_PORT", "SMTP_USERNAME", "SMTP_PASSWORD", "EMAIL_FROM", "EMAIL_TO"]
 HUB_BASE_URL = "https://robinyew.github.io/ai-investing-monitor/intelligence"
+
+
+def env(name: str, default: str = "") -> str:
+    return os.environ.get(name, default).strip()
+
+
+def today_est() -> str:
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    return datetime.now(ZoneInfo("America/Toronto")).date().isoformat()
 
 
 def send_hub_email(report_date: str | None = None) -> bool:
