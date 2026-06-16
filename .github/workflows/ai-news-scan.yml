@@ -28,11 +28,108 @@ jobs:
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
         run: python scripts/run_news_scan.py
 
+      - name: Publish News Scan HTML page
+        env:
+          REPORT_DATE: ${{ steps.scan.outputs.report_date }}
+        run: |
+          python3 - <<'EOF'
+          import os, sys
+          from pathlib import Path
+          import markdown as md_lib
+
+          date = os.environ.get("REPORT_DATE", "")
+          if not date:
+              print("REPORT_DATE not set, skipping HTML publish.")
+              sys.exit(0)
+
+          ROOT = Path(".")
+          md_path = ROOT / "investment-intelligence-hub" / "inbox" / "news" / f"{date}_ai_infrastructure_news.md"
+          if not md_path.exists():
+              print(f"Markdown report not found: {md_path}")
+              sys.exit(0)
+
+          md_text = md_path.read_text(encoding="utf-8")
+          body = md_lib.markdown(md_text, extensions=["tables", "fenced_code", "nl2br"])
+
+          css = (
+              "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"
+              "max-width:860px;margin:0 auto;padding:24px 20px;color:#1a1a1a;background:#fff}"
+              "h1{color:#111;font-size:1.5em;border-bottom:2px solid #0055cc;padding-bottom:8px;margin-bottom:20px}"
+              "h2{color:#222;font-size:1.15em;border-bottom:1px solid #e0e0e0;padding-bottom:4px;margin-top:32px}"
+              "h3{color:#333;font-size:1em;margin-top:20px;margin-bottom:6px}"
+              "p{line-height:1.65;margin:8px 0}"
+              "ul,ol{padding-left:20px;margin:8px 0}"
+              "li{line-height:1.65;margin-bottom:4px}"
+              "table{border-collapse:collapse;width:100%;margin:12px 0 20px;font-size:.92em}"
+              "th{background:#f0f4f8;color:#333;padding:7px 12px;text-align:left;border:1px solid #d0d8e4;font-weight:600}"
+              "td{padding:7px 12px;border:1px solid #d0d8e4;vertical-align:top}"
+              "tr:nth-child(even) td{background:#f8fafc}"
+              "a{color:#0055cc;text-decoration:none}"
+              "a:hover{text-decoration:underline}"
+              "hr{border:none;border-top:1px solid #e8e8e8;margin:28px 0}"
+              "code{background:#f4f4f4;border-radius:3px;padding:2px 5px;font-size:.88em;"
+              "font-family:'SF Mono','Fira Mono',monospace}"
+              "strong{color:#111}em{color:#555}"
+          )
+
+          html = (
+              "<!doctype html>\n<html lang=\"en\">\n<head>\n"
+              "<meta charset=\"utf-8\">\n"
+              "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+              f"<title>AI Infrastructure News Scan — {date}</title>\n"
+              f"<style>{css}</style>\n"
+              "</head>\n<body>\n"
+              f"{body}\n"
+              "</body>\n</html>"
+          )
+
+          out_dir = ROOT / "docs" / "news"
+          out_dir.mkdir(parents=True, exist_ok=True)
+          out_path = out_dir / f"{date}.html"
+          out_path.write_text(html, encoding="utf-8")
+          print(f"Published HTML: {out_path}")
+          EOF
+
+      - name: Update News Scan index
+        run: |
+          python3 - <<'EOF'
+          from pathlib import Path
+          reports = sorted(
+              [f.stem for f in Path("docs/news").glob("*.html") if f.stem != "index"],
+              reverse=True
+          )
+          items = "\n".join(f'<li><a href="{d}.html">{d}</a></li>' for d in reports)
+          html = (
+              "<!doctype html>\n<html lang=\"en\">\n<head>\n"
+              "<meta charset=\"utf-8\">\n"
+              "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+              "<title>AI Infrastructure News Scan</title>\n"
+              "<style>\n"
+              "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"
+              "line-height:1.6;max-width:860px;margin:0 auto;padding:32px 20px;color:#1f2933}\n"
+              "h1{font-size:1.6rem;margin-bottom:6px}\n"
+              "p.sub{color:#5b6472;margin:0 0 24px;font-size:.95rem}\n"
+              "ul{list-style:none;padding:0;margin:0}\n"
+              "li{border-bottom:1px solid #e8ecf0;padding:10px 0}\n"
+              "li:last-child{border-bottom:none}\n"
+              "a{color:#0055cc;text-decoration:none;font-weight:500}\n"
+              "a:hover{text-decoration:underline}\n"
+              "</style>\n</head>\n<body>\n"
+              "<h1>AI Infrastructure News Scan</h1>\n"
+              "<p class=\"sub\">Research-only. No buy/sell instructions. No trading automation.</p>\n"
+              "<ul>\n"
+              f"{items}\n"
+              "</ul>\n</body>\n</html>"
+          )
+          Path("docs/news/index.html").write_text(html, encoding="utf-8")
+          print(f"Index updated with {len(reports)} reports.")
+          EOF
+
       - name: Commit news scan report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add investment-intelligence-hub/inbox/news/
+          git add investment-intelligence-hub/inbox/news/ docs/news/
           git diff --cached --quiet || git commit -m "Add AI infrastructure news scan ${{ steps.scan.outputs.report_date }}"
           git pull --rebase origin main
           git push
