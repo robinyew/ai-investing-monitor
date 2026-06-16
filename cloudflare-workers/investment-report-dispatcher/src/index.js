@@ -182,7 +182,7 @@ function workflowIdForTarget(target, env) {
 }
 
 function buildWorkflowPayload(target, date, env) {
-  if (target === "daily") {
+  if (target === "daily" || target === "news-scan") {
     return {
       ref: env.GITHUB_REF || "main",
       inputs: {},
