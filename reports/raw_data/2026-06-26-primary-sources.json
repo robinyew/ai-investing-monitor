@@ -288,6 +288,19 @@
   {
     "ticker": "GOOGL",
     "source_type": "Official company blog / product announcement",
+    "title": "From query to action: Introducing SQL alerting in Cloud Monitoring Observability Analytics",
+    "date": "Fri, 26 Jun 2026 16:30:00 +0000",
+    "url": "https://cloud.google.com/blog/products/management-tools/alert-with-sql-in-cloud-monitoring-observability-analytics/",
+    "key_takeaway": "Traditional alerting systems often force a compromise: you can either alert immediately on simple, noisy log events, or monitor rigid, pre-configured metrics that fail when faced with data with many unique answers like user sessions or IP addresses. But the most critical system issues \u2014 like a 20% spike in error rates for a specific customer or a latency anomaly correlated with database timeouts \u2014 are hidden in the aggregates and relationships between these signals.",
+    "evidence_strength": "Medium",
+    "thesis_relevance": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
+    "sentiment": "Customer adoption signal",
+    "body_status": "Partial",
+    "ticker_mapping_confidence": "High"
+  },
+  {
+    "ticker": "GOOGL",
+    "source_type": "Official company blog / product announcement",
     "title": "Google named a Leader in IDC MarketScape SIEM 2026 Vendor Assessment",
     "date": "Tue, 16 Jun 2026 17:30:00 +0000",
     "url": "https://cloud.google.com/blog/products/identity-security/google-named-a-leader-in-idc-marketscape-siem-2026-vendor-assessment/",
@@ -321,19 +334,6 @@
     "evidence_strength": "Medium",
     "thesis_relevance": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
     "sentiment": "Customer adoption signal",
-    "body_status": "Partial",
-    "ticker_mapping_confidence": "High"
-  },
-  {
-    "ticker": "GOOGL",
-    "source_type": "Official company blog / product announcement",
-    "title": "Introducing new Explores and Merge Queries in Looker",
-    "date": "Tue, 16 Jun 2026 16:00:00 +0000",
-    "url": "https://cloud.google.com/blog/products/business-intelligence/looker-explore-ai-and-interface-updates/",
-    "key_takeaway": "A key goal for many enterprises in the AI era is to empower their employees to uncover actionable data insights on their own. To help, we are evolving Looker Explore with a streamlined interface and integrated AI, so every usey can confidently turn data into a clear path to action.",
-    "evidence_strength": "Medium",
-    "thesis_relevance": "GOOGL \u5c5e\u4e8e\u6838\u5fc3\u6301\u4ed3/\u8ba1\u5212\u4e70\u5165\u7ec4\uff0c\u76f8\u5173\u65b0\u95fb\u9700\u8981\u8fdb\u5165\u6bcf\u65e5\u91cd\u70b9\u76d1\u63a7\u3002",
-    "sentiment": "Platform capability update",
     "body_status": "Partial",
     "ticker_mapping_confidence": "High"
   },
