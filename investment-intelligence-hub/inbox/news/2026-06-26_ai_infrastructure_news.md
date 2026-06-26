@@ -11,11 +11,11 @@
 
 | Chokepoint | Developments | Avg Importance | Avg Confidence |
 |---|---|---|---|
-| Hyperscaler Capex | 2 | 4.0 | 84 |
-| Memory | 3 | 4.0 | 80 |
-| Semiconductor Manufacturing | 2 | 4.0 | 78 |
-| ASIC / Custom Silicon | 2 | 3.5 | 78 |
-| Networking | 1 | 3.0 | 80 |
+| Hyperscaler Capex | 3 | 4.0 | 81 |
+| Memory | 2 | 4.0 | 80 |
+| Semiconductor Manufacturing | 2 | 3.5 | 80 |
+| ASIC / Custom Silicon | 1 | 3.0 | 78 |
+| Networking | 1 | 3.0 | 78 |
 
 ---
 
@@ -25,27 +25,51 @@
 
 | Field | Value |
 |---|---|
-| **Source** | CNBC / TechCrunch |
+| **Source** | CNBC |
 | **Date** | 2026-06-25 |
 | **Link** | https://cnbc.com/2026/06/25/amazon-investment-billion-ai-india.html |
-| **Tickers** | AMZN |
+| **Tickers** | AMZN, MSFT, GOOGL |
 | **Chokepoint** | Hyperscaler Capex |
 | **Importance** | 4/5 |
-| **Confidence** | 85/100 |
+| **Confidence** | 82/100 |
 
-**Why it matters:** A fresh $13B tranche taking Amazon's India AI/cloud commitment to $48B confirms hyperscaler capex is still expanding geographically, not just at hyperscale US clusters.
+**Why it matters:** A fresh $13B Amazon commitment (lifting total India AI/cloud spend to $48B) confirms continued hyperscaler capex expansion into new geographies, signaling sustained demand for compute, networking, power, and data center buildout.
 
-**First-order effect:** Direct demand for data center capacity, networking gear, power infrastructure, and accelerators in a new region; reinforces AWS's global buildout pace.
+**First-order effect:** Direct order pipeline for data center construction, servers, and networking gear in India; reinforces AWS capacity expansion narrative.
 
-**Second-order effect:** Pulls in server/rack integrators, networking (ANET, CSCO), and power/cooling suppliers; combined with MSFT and GOOGL, ~$57B in India infrastructure spend creates a regional demand wave.
+**Second-order effect:** Pull-through demand for GPU/ASIC accelerators, optical interconnect, memory, and rack integration vendors supplying hyperscaler regions.
 
-**Bullish implication:** Networking, optical, and data center component suppliers with global exposure; broad accelerator and memory demand.
+**Bullish implication:** Benefits NVDA, AVGO, ANET, DELL, SMCI and broader infrastructure supply chain tied to AWS buildout.
 
-**Bearish risk:** Multi-year disbursement timelines mean near-term order impact is modest; geographic spend can dilute concentrated US cluster narratives.
+**Bearish risk:** India spend may be spread over many years and partly localized; nearer-term US capex digestion concerns (see Microsoft) could overshadow incremental regional announcements.
 
 ---
 
-### Apple Confirms AI-Driven Memory/Storage Shortages Behind Mac and iPad Price Hikes
+### AI Data Centers Will Consume 70% of All Memory Chips in 2026 / Micron $100B Contract Shift
+
+| Field | Value |
+|---|---|
+| **Source** | The Motley Fool / Benzinga |
+| **Date** | 2026-06-25 |
+| **Link** | https://fool.com/investing/2026/06/25/ai-data-centers-will-consume-70-of-all-memory-chip |
+| **Tickers** | MU, SMCI |
+| **Chokepoint** | Memory |
+| **Importance** | 4/5 |
+| **Confidence** | 80/100 |
+
+**Why it matters:** Reports of a ~$100B contract shift at Micron plus a claim that AI data centers absorb 70% of 2026 memory output point to a structural HBM/DRAM demand cycle, not a typical cyclical bounce.
+
+**First-order effect:** Tightening memory supply, rising ASPs, and long-dated contracted volume for Micron and SK Hynix.
+
+**Second-order effect:** Memory cost inflation flows into server BOMs and chipmaking inputs (TSMC raising prices citing memory costs), pressuring downstream device margins (Apple Mac/iPad price hikes).
+
+**Bullish implication:** Benefits MU and HBM supply chain; reinforces demand visibility for accelerator platforms requiring high HBM stacks (NVDA, AMD, AVGO).
+
+**Bearish risk:** Memory remains historically cyclical; demand concentration in a few hyperscalers creates reversal risk if capex digestion slows.
+
+---
+
+### Apple Confirms AI-Driven Memory Shortages Behind Mac/iPad Price Hikes
 
 | Field | Value |
 |---|---|
@@ -55,89 +79,41 @@
 | **Tickers** | AAPL, MU |
 | **Chokepoint** | Memory |
 | **Importance** | 4/5 |
-| **Confidence** | 78/100 |
+| **Confidence** | 79/100 |
 
-**Why it matters:** A major OEM publicly attributing consumer product price hikes to AI-driven memory shortages validates the structural tightness Micron has flagged and signals memory pricing power bleeding into adjacent markets.
+**Why it matters:** A major consumer OEM publicly attributing price increases to AI-driven memory/storage shortages corroborates the memory tightness thesis from a non-data-center vantage point.
 
-**First-order effect:** Confirms DRAM/NAND allocation is being absorbed by AI demand, squeezing consumer device supply and raising end-product prices.
+**First-order effect:** Confirms supply constraints are real enough to force end-product repricing, validating Micron/SK Hynix pricing power.
 
-**Second-order effect:** Tightens pricing across the memory oligopoly (MU, SK Hynix, Samsung); raises BOM costs across the entire device and server ecosystem; supports sustained HBM premiums.
+**Second-order effect:** Memory allocation prioritized to AI/data center buyers squeezes consumer electronics supply, broadening inflation across the device chain.
 
-**Bullish implication:** MU and memory makers gain pricing leverage; the cycle looks structurally driven rather than purely cyclical.
+**Bullish implication:** Strengthens memory supplier pricing narrative (MU); supports HBM/DRAM ASP momentum.
 
-**Bearish risk:** If consumer demand softens due to higher prices, memory makers may face volume/elasticity pushback; secondary-source confidence.
+**Bearish risk:** Apple commentary may partly justify pricing strategy; single-vendor anecdote is corroborative rather than primary.
 
 ---
 
-### Micron Post-Earnings: $100B in Contracts Reframes the Memory Cycle
+### Microsoft Headed for Worst Month Since 2000 Amid $190B AI Capex Plan
 
 | Field | Value |
 |---|---|
-| **Source** | Benzinga |
+| **Source** | Benzinga / Crypto Briefing |
 | **Date** | 2026-06-25 |
-| **Link** | https://www.benzinga.com/markets/earnings/26/06/60091960/is-micron-still-cheap-post-earnings-how-100-billion-in-contracts-is-making-cyclical-skeptics-offsides |
-| **Tickers** | MU |
-| **Chokepoint** | Memory |
+| **Link** | https://www.benzinga.com/news/26/06/60101481/microsoft-stock-worst-month-since-2000-capex-problem-ai-data-center |
+| **Tickers** | MSFT |
+| **Chokepoint** | Hyperscaler Capex |
 | **Importance** | 4/5 |
-| **Confidence** | 80/100 |
+| **Confidence** | 77/100 |
 
-**Why it matters:** A reported ~$100B contracted backlog and blockbuster AI earnings growth challenge the "memory is cyclical" thesis and point to multi-year visibility tied to HBM and AI demand.
+**Why it matters:** A reported ~$190B Microsoft AI capex plan with investor pushback signals the first meaningful market scrutiny of hyperscaler ROI — a potential inflection in the capex cycle narrative.
 
-**First-order effect:** Locks in revenue visibility for Micron and supports continued HBM capacity expansion and pricing discipline.
+**First-order effect:** Confirms enormous absolute spend supporting infrastructure demand, but introduces investor sensitivity to capex monetization.
 
-**Second-order effect:** Reinforces the memory oligopoly's pricing control over AI compute economics; raises HBM cost component for GPU/accelerator makers (NVDA, AMD).
+**Second-order effect:** If hyperscalers face pressure to show returns, future capex pacing could shift, affecting GPU, networking, and data center supplier order cadence.
 
-**Bullish implication:** MU and HBM suppliers; structural demand reduces downside cyclicality risk.
+**Bullish implication:** Near-term spend levels remain enormous, supporting NVDA, AVGO, ANET and the supply chain.
 
-**Bearish risk:** Contract framing relies on secondary reporting; backlog conversion timing and any HBM oversupply in 2027 remain risks.
-
----
-
-### Qualcomm Enters Data Center With Dragonfly; Microsoft and Meta on Board
-
-| Field | Value |
-|---|---|
-| **Source** | PCMag / TheStreet |
-| **Date** | 2026-06-26 |
-| **Link** | https://www.pcmag.com/news/qualcomm-darts-into-the-data-center-business-with-dragonfly |
-| **Tickers** | QCOM, MSFT, META, NVDA, AMD |
-| **Chokepoint** | ASIC / Custom Silicon |
-| **Importance** | 4/5 |
-| **Confidence** | 80/100 |
-
-**Why it matters:** Qualcomm formally entering AI data center inference with AI250/AI350 accelerators, an Arm-based C1000 CPU, HBC near-memory architecture, and named hyperscaler partners (Microsoft, Meta) signals a credible new challenger in inference silicon.
-
-**First-order effect:** Adds a new accelerator option for hyperscalers seeking NVDA alternatives; HBC near-memory design (claimed 6x bandwidth/watt vs HBM) targets inference efficiency.
-
-**Second-order effect:** Pressures NVDA/AMD inference positioning; potentially reduces HBM dependence for certain workloads if near-memory architecture scales; reinforces Arm's data center push.
-
-**Bullish implication:** QCOM, ARM; diversification of custom silicon supply; hyperscalers gain bargaining leverage.
-
-**Bearish risk:** Early-stage product; named partnerships may be evaluation-only; NVDA's CUDA moat and ecosystem lock-in remain formidable.
-
----
-
-### TSMC Advanced Packaging Becomes Critical AI Choke Point
-
-| Field | Value |
-|---|---|
-| **Source** | The New York Times |
-| **Date** | 2026-06-26 |
-| **Link** | https://nytimes.com/2026/06/26/technology/ai-advanced-chip-packaging-tsmc.html |
-| **Tickers** | TSM, NVDA |
-| **Chokepoint** | Semiconductor Manufacturing |
-| **Importance** | 4/5 |
-| **Confidence** | 82/100 |
-
-**Why it matters:** TSMC packages nearly all cutting-edge AI chips, with key suppliers concentrated in Taiwan — making advanced packaging (CoWoS) a single-point bottleneck and geopolitical risk for the entire AI compute supply chain.
-
-**First-order effect:** Packaging capacity, not just wafer fabrication, gates AI accelerator output; constrains NVDA and others if packaging lags.
-
-**Second-order effect:** Drives investment into packaging capacity and supplier diversification; raises systemic concentration risk tied to Taiwan/China tensions.
-
-**Bullish implication:** TSM moat deepens; packaging equipment and material suppliers benefit from capacity expansion.
-
-**Bearish risk:** Concentration is a downside tail risk (geopolitical disruption); diversification efforts could erode TSM's exclusivity over time.
+**Bearish risk:** Growing investor skepticism on capex returns is the key bearish swing factor for the entire infrastructure complex; a capex digestion phase would compress supplier order growth.
 
 ---
 
@@ -148,82 +124,105 @@
 | **Source** | Business Insider (citing IDC) |
 | **Date** | 2026-06-25 |
 | **Link** | https://www.businessinsider.com/nvidia-leads-in-data-center-ethernet-switch-market-revenue-2026-6 |
-| **Tickers** | NVDA, ANET, CSCO |
+| **Tickers** | NVDA, ANET, CSCO, AVGO |
 | **Chokepoint** | Networking |
 | **Importance** | 3/5 |
-| **Confidence** | 80/100 |
+| **Confidence** | 78/100 |
 
-**Why it matters:** IDC data showing Nvidia leading the data center Ethernet switch market revenue signals NVDA's expansion beyond GPUs into AI networking, intensifying competition with merchant switch vendors.
+**Why it matters:** IDC data showing Nvidia leading the data center Ethernet switch market signals NVDA is converting GPU dominance into networking share, intensifying competition in a chokepoint historically led by Arista and Cisco.
 
-**First-order effect:** NVDA captures AI networking spend via integrated Spectrum/Ethernet offerings, leveraging GPU bundling.
+**First-order effect:** NVDA's Spectrum-X/networking franchise gaining revenue share in AI fabric.
 
-**Second-order effect:** Pressures ANET and CSCO in AI back-end networking; reinforces the strategic value of optical and high-speed interconnect suppliers (CRDO, AAOI, COHR, LITE).
+**Second-order effect:** Competitive pressure on ANET and CSCO; reinforces that AI networking is a high-growth attach to GPU clusters, benefiting optical/connectivity suppliers (CRDO, COHR, LITE, FN).
 
-**Bullish implication:** NVDA's full-stack networking moat; optical/interconnect suppliers tied to AI cluster scale-up.
+**Bullish implication:** Validates AI networking as a major chokepoint; benefits NVDA and broader interconnect supply chain.
 
-**Bearish risk:** Single market-share data point; ANET retains strong hyperscaler relationships and back-end Ethernet positioning.
+**Bearish risk:** Single market-research data point; Ethernet share leadership may reflect GPU-bundling rather than standalone switch competitiveness, limiting read-through to merchant switch vendors.
+
+---
+
+### Qualcomm Plans China-Specific, Export-Compliant Data Center AI Chip
+
+| Field | Value |
+|---|---|
+| **Source** | TrendForce / ZeroHedge |
+| **Date** | 2026-06-25 |
+| **Link** | https://trendforce.com/news/2026/06/25/news-qualcomm-reportedly-plans-china-ai-chip-push-with-export-control-compliant-custom-chips |
+| **Tickers** | QCOM, NVDA |
+| **Chokepoint** | ASIC / Custom Silicon |
+| **Importance** | 3/5 |
+| **Confidence** | 78/100 |
+
+**Why it matters:** Qualcomm reportedly designing export-control-compliant data center accelerators for China signals increased competition in the AI accelerator segment and a structured approach to capturing constrained China AI demand.
+
+**First-order effect:** Adds another credible entrant to the crowded data center accelerator market, particularly in the regulated China channel.
+
+**Second-order effect:** More competition for NVDA's China-compliant SKUs; expands TSMC/packaging and HBM demand from additional accelerator programs.
+
+**Bullish implication:** Reinforces broad-based accelerator demand benefiting foundry (TSM), packaging, and memory suppliers.
+
+**Bearish risk:** Reported/early-stage plan; export-control thresholds and Chinese domestic preference for local chips could limit commercial traction.
 
 ---
 
 ## Infrastructure Implication
 
 ### Most Bullish Signal
-The Micron $100B contracted backlog and Apple's public confirmation that AI-driven memory shortages are raising consumer device prices together form the strongest signal: memory tightness is now structural and bleeding across the entire compute and device ecosystem. This validates the memory oligopoly's pricing power and reduces the historical cyclicality discount applied to MU and its peers, with downstream cost implications for every AI accelerator that requires HBM.
+The memory cycle is the cleanest bullish signal today. The combination of a reported ~$100B Micron contract shift, the claim that AI data centers will absorb 70% of 2026 memory output, and Apple publicly attributing device price hikes to AI-driven memory shortages forms a coherent, multi-source demand picture. This points to a structural — not merely cyclical — tightening in HBM/DRAM, supporting pricing power for MU and SK Hynix and reinforcing accelerator demand visibility for NVDA, AMD, and AVGO platforms that consume high HBM content.
 
 ### Neutral / Watch
-Qualcomm's Dragonfly data center entry with Microsoft and Meta named as partners is a credible but early-stage development. The HBC near-memory architecture and Arm-based CPU could pressure NVDA/AMD inference and even reduce HBM dependence for some workloads, but partner commitments may be evaluation-only and CUDA's ecosystem lock-in remains intact. NVDA's IDC-cited Ethernet switch leadership similarly warrants monitoring as a competitive shift versus ANET/CSCO.
+The Microsoft capex story cuts both ways: ~$190B in planned AI spend confirms massive infrastructure demand, but investor pushback marks the first meaningful scrutiny of hyperscaler ROI. This is the key item to monitor — it does not yet signal a capex cut, but a shift toward demanding monetization could change order pacing across the supply chain. Qualcomm's China accelerator plan and Amazon's India spend are constructive but require confirmation and have long realization timelines.
 
 ### Weakest Signal
-The TSMC advanced packaging choke point article, while important context, is more of a structural/geopolitical narrative than a fresh datapoint with near-term order implications. Amazon's India spend, while a confirmed capex commitment, disburses over multiple years and dilutes the concentrated US cluster demand story in the near term.
+The IDC Ethernet switch leadership item and the Qualcomm China-chip report rely on single market-research or reported sources and warrant confirmation. The NVDA switch data may reflect GPU bundling rather than standalone merchant-switch competitiveness, limiting read-through. Numerous "best stock to buy" and TSM/Intel comparison pieces carried no new infrastructure facts and were excluded.
 
 ---
 
 ## Key Signals Today
 
-- Memory tightness is now structural — Micron's reported $100B backlog plus Apple confirming AI-driven memory shortages raising consumer device prices.
-- Hyperscaler capex is going global — Amazon's $13B India tranche ($48B total); combined ~$57B from AMZN/MSFT/GOOGL in India.
-- New inference silicon entrant — Qualcomm's Dragonfly/AI250/AI350 with Microsoft and Meta named, plus a novel HBC near-memory architecture.
-- Advanced packaging (CoWoS) confirmed as the AI compute bottleneck, with concentration risk centered in Taiwan.
-- Nvidia leads data center Ethernet switch revenue (IDC), extending its moat into AI networking.
+- Memory tightness now corroborated from multiple angles (Micron contracts, 70% data center consumption, Apple price hikes) — structural HBM/DRAM demand thesis strengthening.
+- Hyperscaler capex remains enormous (Microsoft ~$190B, Amazon India to $48B) but investor scrutiny on returns is emerging for the first time.
+- NVDA extending dominance from GPUs into AI networking (Ethernet switch leadership per IDC), pressuring ANET/CSCO.
+- Qualcomm entering China-compliant data center accelerator market, widening the merchant AI silicon competitive field.
+- Advanced chip packaging at TSMC flagged as an emerging AI chokepoint (background/context).
 
 ---
 
 ## Watchlist — Next 3–5 Trading Days
 
-- **MU** — Post-earnings backlog and HBM pricing follow-through; watch for analyst revisions and peer (SK Hynix/Samsung) pricing commentary.
-- **QCOM / ARM** — Dragonfly traction; confirmation of whether Microsoft/Meta partnerships are deployment vs. evaluation.
-- **NVDA / ANET / CSCO** — AI networking share dynamics following IDC Ethernet switch data.
-- **TSM** — Advanced packaging capacity commentary and any Apple supply-chain diversification (Intel/Samsung) signals.
-- **MSFT capex narrative** — Market reaction to $190B AI capex plan amid stock pressure; sentiment proxy for hyperscaler spending discipline.
+- MSFT — capex-return scrutiny is the swing factor for the whole infrastructure complex; watch commentary and any capex pacing signals.
+- MU — memory ASP/contract momentum; follow-through on $100B contract narrative and HBM allocation.
+- NVDA / ANET — networking share dynamics as IDC data circulates; watch competitive positioning in AI fabric.
+- TSM — packaging (CoWoS) bottleneck and reported node price increases; capacity and pricing commentary.
+- QCOM — confirmation/details on China-compliant data center accelerator program.
 
 ---
 
 ## Excluded Noise
 
-- "AI Stocks For Data Center Growth Beyond Nvidia" (Simply Wall St) — generic thematic screener, no new factual signal.
-- "Nvidia CEO sends serious wake up call" (TheStreet) — vague, no infrastructure-specific datapoint.
-- "Top 25+ AI Chip Makers" (aimultiple) — listicle, no news.
-- "Will Nvidia Continue to Dominate" / "Battle of AI Computing Companies" (Yahoo) — opinion/comparison, no new facts.
-- Microsoft "worst month since 2000" pieces (Benzinga, Cryptobriefing) — driven primarily by stock price movement, excluded as primary evidence.
-- TSM analyst price target / "best stock to buy" articles (Yahoo, Motley Fool) — price targets and ratings without new factual content.
-- Intel vs TSM comparison — backward-looking earnings recap, no new signal.
-- ChainCatcher short-seller framework piece — opinion/narrative, no verifiable datapoint.
+- "Best stock to buy" / battle-of-stocks pieces (AMD vs AVGO vs NVDA vs MRVL, Intel vs TSM) — opinion, no new factual signal.
+- Analyst price target changes (TSM, ASML) — no new primary information.
+- Simply Wall St valuation/screener articles — generic, no infrastructure-specific signal.
+- "Nvidia CEO wake-up call" / "this one number" Yahoo pieces — hype without concrete infrastructure data.
+- AI chip maker listicle (aimultiple) — reference content, no event.
 
 ---
 
 ## Sources
 
 1. [Amazon adds new funding, lifting India AI and cloud investment to $48 billion](https://cnbc.com/2026/06/25/amazon-investment-billion-ai-india.html) — CNBC, 2026-06-25
-2. [Apple Just Confirmed Micron's Biggest AI Prediction](https://benzinga.com/trading-ideas/long-ideas/26/06/60108831/apple-just-confirmed-microns-biggest-ai-prediction) — Benzinga, 2026-06-25
-3. [Is Micron Still Cheap Post-Earnings? How $100 Billion In Contracts...](https://www.benzinga.com/markets/earnings/26/06/60091960/is-micron-still-cheap-post-earnings-how-100-billion-in-contracts-is-making-cyclical-skeptics-offsides) — Benzinga, 2026-06-25
-4. [Qualcomm Darts Into the Data Center Business With Dragonfly](https://www.pcmag.com/news/qualcomm-darts-into-the-data-center-business-with-dragonfly) — PCMag, 2026-06-26
-5. [How a Niche Technology Became a Choke Point for A.I.](https://nytimes.com/2026/06/26/technology/ai-advanced-chip-packaging-tsmc.html) — The New York Times, 2026-06-26
-6. [Nvidia quietly rose to the top of a $10 billion market](https://www.businessinsider.com/nvidia-leads-in-data-center-ethernet-switch-market-revenue-2026-6) — Business Insider (IDC), 2026-06-25
+2. [AI Data Centers Will Consume 70% of All Memory Chips in 2026](https://fool.com/investing/2026/06/25/ai-data-centers-will-consume-70-of-all-memory-chip) — The Motley Fool, 2026-06-25
+3. [Is Micron Still Cheap Post-Earnings? $100 Billion In Contracts](https://www.benzinga.com/markets/earnings/26/06/60091960/is-micron-still-cheap-post-earnings-how-100-billion-in-contracts-is-making-cyclical-skeptics-offsides) — Benzinga, 2026-06-25
+4. [Apple Just Confirmed Micron's Biggest AI Prediction](https://benzinga.com/trading-ideas/long-ideas/26/06/60108831/apple-just-confirmed-microns-biggest-ai-prediction) — Benzinga, 2026-06-25
+5. [Microsoft's Worst Month Since 2000: Capex Problem](https://www.benzinga.com/news/26/06/60101481/microsoft-stock-worst-month-since-2000-capex-problem-ai-data-center) — Benzinga, 2026-06-25
+6. [Microsoft stock faces historic June rout amid heavy AI spending](https://cryptobriefing.com/microsoft-stock-historic-june-rout-ai-spending) — Crypto Briefing, 2026-06-25
+7. [Nvidia leads in data center Ethernet switch market](https://www.businessinsider.com/nvidia-leads-in-data-center-ethernet-switch-market-revenue-2026-6) — Business Insider (IDC), 2026-06-25
+8. [Qualcomm Reportedly Plans China AI Chip Push With Export-Control-Compliant Custom Chips](https://trendforce.com/news/2026/06/25/news-qualcomm-reportedly-plans-china-ai-chip-push-with-export-control-compliant-custom-chips) — TrendForce, 2026-06-25
 
 ---
 
 ## Background Context
 
-- **Qualcomm HBC near-memory architecture / AI250 & AI350 details** (Tom's Hardware, 2026-06-25): Provides technical depth on Qualcomm's claimed 6x bandwidth-per-watt vs HBM and 200x capacity vs on-chip SRAM, supporting the Dragonfly development above.
-- **TSMC May 2026 capex, bond issuance, share capital reduction** (TipRanks, 2026-06-25): Confirms continued heavy capacity investment supporting the advanced packaging and AI-capex cycle narrative.
-- **~$57B combined India AI infrastructure spend by AMZN/MSFT/GOOGL** (Moneycontrol, 2026-06-25): Contextualizes the Amazon India tranche within the broader hyperscaler regional buildout.
+- **2026-06-26 — How a Niche Technology Became a Choke Point for A.I. (NYT):** Advanced chip packaging at TSMC is highlighted as a critical AI bottleneck, with key suppliers concentrated in Taiwan. Reinforces CoWoS/packaging capacity as a structural constraint behind accelerator supply (relevant to NVDA, TSM, AVGO).
+- **2026-06-25 — Amazon $13B India investment (TechCrunch) and combined hyperscaler $57B India push (Moneycontrol):** Corroborates the CNBC item on hyperscaler geographic capex expansion.
+- **2026-06-24/25 — Pax Silica alliance / India seeks AI access assurances / export-control coverage:** Geopolitical framing of AI compute supply chains; no immediate company-level catalyst but relevant to export-control risk monitoring.
