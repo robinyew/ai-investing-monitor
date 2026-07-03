@@ -1,8 +1,8 @@
 {
-  "date": "2026-07-02",
-  "html_path": "docs/reports/2026-07-02.html",
-  "markdown_path": "reports/daily/2026-07-02.md",
-  "handoff_path": "reports/chatgpt_handoff/2026-07-02.md",
-  "report_url": "https://robinyew.github.io/ai-investing-monitor/reports/2026-07-02.html",
+  "date": "2026-07-03",
+  "html_path": "docs/reports/2026-07-03.html",
+  "markdown_path": "reports/daily/2026-07-03.md",
+  "handoff_path": "reports/chatgpt_handoff/2026-07-03.md",
+  "report_url": "https://robinyew.github.io/ai-investing-monitor/reports/2026-07-03.html",
   "status_summary": "Pre-market brief generated successfully. Individual data-source gaps, if any, are marked inside the report."
 }
