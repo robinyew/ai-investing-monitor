@@ -13,6 +13,10 @@ on:
         description: "Dry run (print subject/body, do not send email)"
         required: false
         default: "false"
+      engine:
+        description: "Digest engine: rules (official) or fable (preview email)"
+        required: false
+        default: "rules"
 
 permissions:
   contents: read
@@ -40,8 +44,9 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          ARGS=""
+          ARGS="--engine ${{ github.event.inputs.engine || 'rules' }}"
           if [ -n "${{ github.event.inputs.date }}" ]; then
             ARGS="$ARGS --date ${{ github.event.inputs.date }}"
           fi

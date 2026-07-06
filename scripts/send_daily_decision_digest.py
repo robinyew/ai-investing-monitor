@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import html as html_lib
+import json
 import re
 import smtplib
 import sys
@@ -32,6 +33,99 @@ def today_toronto() -> str:
 REPORT_BASE = "https://robinyew.github.io/ai-investing-monitor"
 CORE_SOURCE_KEYS = ["premarket", "news_scan", "hub"]
 SMTP_REQUIRED = ["SMTP_HOST", "SMTP_PORT", "EMAIL_FROM", "EMAIL_TO"]
+
+# ---------------------------------------------------------------------------
+# Fable engine (preview/test only — phase 1 never sends email)
+# ---------------------------------------------------------------------------
+
+FABLE_MODEL_DEFAULT = "claude-fable-5"
+FABLE_MAX_REPORT_CHARS = 10000
+
+ALLOWED_SUGGESTED_ACTIONS = [
+    "Hold current positions. No portfolio change needed.",
+    "Review affected holding before taking action.",
+    "Wait for primary-source confirmation.",
+    "Escalate for human review.",
+]
+
+SEVERITY_TO_SUBJECT = {
+    "none": "No Action Required",
+    "review": "Review Required",
+    "urgent": "Urgent Negative Event",
+}
+
+FABLE_SYSTEM_PROMPT = """You are a conservative investment research triage assistant for an AI-infrastructure portfolio.
+You read three daily reports and output a strict JSON verdict. You are a discipline layer, not an advisor.
+
+Hard rules:
+- Default verdict: action_required "No", severity "none", thesis_status "Intact",
+  suggested_action "Hold current positions. No portfolio change needed."
+- Escalate to "review" or "urgent" ONLY on clear fundamental change: guidance cut,
+  major earnings miss, core customer order cuts, confirmed AI capex slowdown,
+  product roadmap displacement, accounting/regulatory/financing/dilution risk,
+  or the Hub report explicitly showing thesis damage.
+- NEVER escalate because of: ordinary price moves, pre/post-market moves, analyst
+  price-target changes, emotional discussion on X/social media, rumors without
+  primary-source support, or price drops without fundamental evidence.
+- You must NOT output buy/sell/trim/add recommendations, position sizes, or price targets.
+- suggested_action MUST be exactly one of the four allowed strings.
+- Output ONLY a single JSON object. No markdown fences, no commentary."""
+
+FABLE_USER_PROMPT = """Date: {date}
+
+JSON schema (return exactly these keys):
+{{
+  "action_required": "No" | "Yes",
+  "severity": "none" | "review" | "urgent",
+  "thesis_status": "Intact" | "Watch" | "Damaged",
+  "portfolio_impact": "None" | "Low" | "Medium" | "High",
+  "major_negative_events": [
+    {{"ticker": "...", "event": "...", "evidence_source": "...", "why_it_matters": "..."}}
+  ],
+  "what_changed": [
+    {{"topic": "...", "summary": "...", "source_url": "...",
+      "source_type": "primary" | "news" | "report" | "price" | "unverified",
+      "confidence": "Low" | "Medium" | "High"}}
+  ],
+  "suggested_action": one of:
+    "Hold current positions. No portfolio change needed." /
+    "Review affected holding before taking action." /
+    "Wait for primary-source confirmation." /
+    "Escalate for human review.",
+  "confidence": "Low" | "Medium" | "High"
+}}
+
+Consistency rules: severity "none" implies action_required "No"; severity "review" or
+"urgent" implies action_required "Yes". major_negative_events must be [] when severity
+is "none".
+
+what_changed rules: 1-3 items, each with a source_url. Prefer URLs in this order:
+1. company IR / SEC filing / earnings release / transcript (source_type "primary")
+2. original news article URL from the reports (source_type "news")
+3. one of the three full report URLs below (source_type "report")
+For pure price moves: source_type "price", link the Pre-Market Brief, and the summary
+MUST end with "price move only; no confirmed thesis damage."
+For rumors without primary sources: source_type "unverified" and the summary MUST
+state "no primary-source confirmation; no thesis change." Positive demand datapoints
+(e.g. supplier AI-server demand) are "news"/"primary" — never use price-move wording.
+Each summary must be ONE concise sentence.
+If no URL is available at all, set source_url to "" and confidence to "Low".
+Report URLs: Pre-Market Brief {premarket_url} | News Scan {news_url} | Hub {hub_url}
+
+=== PRE-MARKET BRIEF (context only, never thesis-confirming) ===
+{premarket}
+
+=== AI INFRASTRUCTURE NEWS SCAN (Tier 2A) ===
+{news}
+
+=== HUB INTELLIGENCE BRIEF (signal triage) ===
+{hub}
+"""
+
+NOISE_EVIDENCE = re.compile(
+    r"price|analyst|target|x post|twitter|social|rumou?r|premarket|pre-market|after-hours|sentiment|momentum", re.I)
+TIER1_EVIDENCE = re.compile(
+    r"guidance|earnings|filing|sec\b|10-k|10-q|8-k|investor relations|press release|transcript|capex|customer|order|backlog", re.I)
 
 URGENT_NEGATIVE_PATTERNS = [
     r"\baccounting irregularit",
@@ -99,6 +193,8 @@ class Digest:
     suggested_action: str
     sources: dict[str, Source]
     missing_sources: list[str]
+    confidence: str = ""
+    engine_notes: list[str] | None = None
 
 
 def strip_html(html: str) -> str:
@@ -238,6 +334,17 @@ def first_material_changes(text: str, limit: int = 3) -> list[str]:
     return changes
 
 
+PRICE_MOVE_HINT = re.compile(r"price move|price-discipline|moved (up|down)|[+-]\d+(\.\d+)?%", re.I)
+
+
+def annotate_price_move(item: str) -> str:
+    """Pure price-move items must be explicitly labeled as non-thesis events."""
+    if PRICE_MOVE_HINT.search(item):
+        item = re.sub(r"\s*—\s*price-discipline alert, not thesis upgrade\s*$", "", item)
+        return f"{item} — price move only; no confirmed thesis damage."
+    return item
+
+
 def generate_digest_with_rules(sources: dict[str, Source]) -> Digest:
     """Rules engine v1. Conservative default: no action unless fundamentals changed."""
     date = next(iter(sources.values())).path.stem[:10] if sources else today_toronto()
@@ -258,40 +365,37 @@ def generate_digest_with_rules(sources: dict[str, Source]) -> Digest:
     action_required = "No"
     thesis_status = "Intact"
     suggested_action = "Hold current positions. No portfolio change needed."
-    major_negative_events = [
-        "None found in available source files. If a later filing, earnings release, guidance update, customer announcement, or capex disclosure contradicts this, treat that primary source as higher priority than this digest."
-    ]
-    portfolio_impact = (
-        "No confirmed portfolio-level change. The available reports do not show earnings damage, guidance reduction, core customer loss, AI CapEx slowdown, "
-        "product replacement, accounting issue, regulatory issue, financing stress, or dilution event. Treat price movement, analyst commentary, and unverified social discussion as noise unless supported by primary evidence."
-    )
+    major_negative_events: list[str] = []
+    portfolio_impact = "None"
 
     if urgent_matches:
         subject_status = "Urgent Negative Event"
         action_required = "Yes"
         thesis_status = "Watch"
-        major_negative_events = ["Potential urgent fundamental risk detected. Review primary sources before taking any portfolio action."]
-        portfolio_impact = (
-            "Risk review required. Confirm whether the event is supported by SEC filings, company IR, earnings materials, or official guidance. "
-            "Do not treat social posts, price movement, or analyst commentary as sufficient evidence."
-        )
-        suggested_action = "Review the source evidence first. Do not make portfolio changes from headlines or social posts alone."
+        major_negative_events = ["Potential urgent fundamental risk detected. Review primary sources before any portfolio action."]
+        portfolio_impact = "High"
+        suggested_action = "Review the source evidence first. Do not act on headlines or social posts alone."
     elif review_matches or hub_verdict:
         subject_status = "Review Required"
         action_required = "Review"
         thesis_status = "Watch"
         major_negative_events = [hub_verdict or "Potential thesis or risk-review item detected; confirm with primary sources."]
-        portfolio_impact = (
-            "Review required, but no automatic portfolio change. Separate fundamental evidence from market noise, and check whether the signal appears in company materials, "
-            "earnings commentary, guidance, backlog, customer announcements, or capex disclosures."
-        )
+        portfolio_impact = "Medium"
         suggested_action = "Review the flagged evidence. Keep current positions unless primary-source confirmation changes the thesis."
 
+    # Every Notable Context line carries a source link: the report it was parsed
+    # from (rules engine has no per-item URLs, so the full report is the source).
     changes = first_material_changes(sources.get("hub", Source("", "", Path(), "")).text)
+    context_url = sources.get("hub", Source("", "", Path(), "")).url
     if not changes:
         changes = first_material_changes(sources.get("premarket", Source("", "", Path(), "")).text)
+        context_url = sources.get("premarket", Source("", "", Path(), "")).url
     if not changes:
-        changes = ["No material change detected across available reports. The digest stays in discipline mode: preserve the existing thesis unless primary-source evidence says otherwise."]
+        changes = ["No material change detected across available reports."]
+        context_url = sources.get("hub", Source("", "", Path(), "")).url
+    # Display order: fundamentals first, price moves last (rendering only).
+    changes = sorted(changes, key=lambda item: 1 if PRICE_MOVE_HINT.search(item) else 0)
+    changes = [f"{annotate_price_move(item)}\n  Source: {context_url}" for item in changes]
 
     return Digest(
         date=date,
@@ -307,49 +411,233 @@ def generate_digest_with_rules(sources: dict[str, Source]) -> Digest:
     )
 
 
+# ---------------------------------------------------------------------------
+# Fable engine: model call, strict validation, guardrails, fallback
+# ---------------------------------------------------------------------------
+
+def call_fable(sources: dict[str, Source], date: str) -> str:
+    """Return the model's raw text. FABLE_TEST_JSON_FILE overrides for offline tests."""
+    test_file = env("FABLE_TEST_JSON_FILE")
+    if test_file:
+        return Path(test_file).read_text(encoding="utf-8")
+
+    api_key = env("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise RuntimeError("ANTHROPIC_API_KEY is not set.")
+    import anthropic  # lazy import: rules engine must work without the SDK
+
+    def clip(key: str) -> str:
+        text = sources.get(key, Source("", "", Path(), "")).text
+        return text[:FABLE_MAX_REPORT_CHARS] if text else "(missing)"
+
+    client = anthropic.Anthropic(api_key=api_key)
+    response = client.messages.create(
+        model=env("FABLE_MODEL", FABLE_MODEL_DEFAULT),
+        max_tokens=2000,
+        system=FABLE_SYSTEM_PROMPT,
+        messages=[{
+            "role": "user",
+            "content": FABLE_USER_PROMPT.format(
+                date=date, premarket=clip("premarket"), news=clip("news_scan"), hub=clip("hub"),
+                premarket_url=sources["premarket"].url, news_url=sources["news_scan"].url,
+                hub_url=sources["hub"].url),
+        }],
+    )
+    # The model may return thinking / tool_use / redacted_thinking blocks alongside
+    # text. Only type == "text" blocks carry the JSON verdict; skip everything else.
+    text_parts = [
+        getattr(block, "text", None)
+        for block in response.content
+        if getattr(block, "type", None) == "text"
+    ]
+    text_parts = [part for part in text_parts if part]
+    if not text_parts:
+        raise RuntimeError("no text content returned from fable")
+    return "\n".join(text_parts)
+
+
+def parse_and_validate_fable(raw: str) -> dict | None:
+    """Strict schema validation. Returns None on any violation (caller falls back)."""
+    text = raw.strip()
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    try:
+        payload = json.loads(text)
+    except (json.JSONDecodeError, ValueError):
+        return None
+    if not isinstance(payload, dict):
+        return None
+
+    enums = {
+        "action_required": {"No", "Yes"},
+        "severity": {"none", "review", "urgent"},
+        "thesis_status": {"Intact", "Watch", "Damaged"},
+        "portfolio_impact": {"None", "Low", "Medium", "High"},
+        "confidence": {"Low", "Medium", "High"},
+    }
+    required = set(enums) | {"major_negative_events", "what_changed", "suggested_action"}
+    if set(payload) != required:
+        return None
+    for key, allowed in enums.items():
+        if payload[key] not in allowed:
+            return None
+    if payload["suggested_action"] not in ALLOWED_SUGGESTED_ACTIONS:
+        return None
+    events = payload["major_negative_events"]
+    if not isinstance(events, list):
+        return None
+    for event in events:
+        if not isinstance(event, dict) or set(event) != {"ticker", "event", "evidence_source", "why_it_matters"}:
+            return None
+        if not all(isinstance(value, str) for value in event.values()):
+            return None
+    changed = payload["what_changed"]
+    if not isinstance(changed, list):
+        return None
+    context_keys = {"topic", "summary", "source_url", "source_type", "confidence"}
+    for item in changed:
+        if not isinstance(item, dict) or set(item) != context_keys:
+            return None
+        if not all(isinstance(value, str) for value in item.values()):
+            return None
+        if item["source_type"] not in {"primary", "news", "report", "price", "unverified"}:
+            return None
+        if item["confidence"] not in {"Low", "Medium", "High"}:
+            return None
+    # Consistency: severity drives action_required.
+    payload["action_required"] = "No" if payload["severity"] == "none" else "Yes"
+    return payload
+
+
+def apply_fable_guardrails(payload: dict, rules_digest: Digest) -> tuple[dict, list[str]]:
+    """Deterministic guardrails on top of the model verdict (req: noise never escalates)."""
+    notes: list[str] = []
+    if payload["severity"] == "none":
+        return payload, notes
+
+    events = payload["major_negative_events"]
+
+    def is_noise(event: dict) -> bool:
+        blob = f"{event['event']} {event['evidence_source']} {event['why_it_matters']}"
+        return bool(NOISE_EVIDENCE.search(blob)) and not TIER1_EVIDENCE.search(blob)
+
+    def downgrade_to_none(reason: str) -> None:
+        payload.update(severity="none", action_required="No", thesis_status="Intact",
+                       portfolio_impact="None", major_negative_events=[],
+                       suggested_action=ALLOWED_SUGGESTED_ACTIONS[0], confidence="Low")
+        notes.append(f"GUARDRAIL: downgraded to No Action — {reason}")
+
+    if not events:
+        downgrade_to_none("escalation without any major_negative_events evidence")
+    elif all(is_noise(event) for event in events):
+        downgrade_to_none("all cited evidence is price/analyst/social noise (never triggers action)")
+    elif payload["severity"] == "urgent":
+        rules_agrees = rules_digest.subject_status == "Urgent Negative Event"
+        has_tier1 = any(TIER1_EVIDENCE.search(f"{e['event']} {e['evidence_source']}") for e in events)
+        if not rules_agrees and not has_tier1:
+            payload.update(severity="review", confidence="Low")
+            notes.append("GUARDRAIL: urgent downgraded to Review (low confidence) — no Tier-1-style evidence and rules engine did not corroborate")
+    return payload, notes
+
+
+def format_context_items(items: list[dict]) -> list[str]:
+    """Render what_changed objects as Notable Context lines, each with a source link.
+
+    Items without any source_url are demoted to low-confidence notes (never strong context).
+    """
+    # Order: thesis/unconfirmed risk first, business fundamentals second, price/market last.
+    type_order = {"unverified": 0, "primary": 1, "news": 1, "report": 1, "price": 2}
+    items = sorted(items, key=lambda item: type_order.get(item["source_type"], 1))
+    rendered: list[str] = []
+    for item in items[:3]:
+        summary = item["summary"].strip()
+        if len(summary) > 180:
+            summary = summary[:177].rstrip() + "..."
+        if item["source_type"] == "price" and "price move only" not in summary.lower():
+            summary = summary.rstrip(".") + ". price move only; no confirmed thesis damage."
+        if item["source_type"] == "unverified" and "no primary-source confirmation" not in summary.lower():
+            summary = summary.rstrip(".") + ". no primary-source confirmation; no thesis change."
+        prefix = f"{item['topic']}: " if item["topic"] else ""
+        if item["source_url"]:
+            rendered.append(f"{prefix}{summary}\n  Source: {item['source_url']}")
+        else:
+            rendered.append(f"[Low confidence] {prefix}{summary}\n  Source: unavailable — review full reports.")
+    return rendered
+
+
+def digest_from_fable(payload: dict, sources: dict[str, Source], date: str, notes: list[str]) -> Digest:
+    events = [
+        f"{e['ticker']} — {e['event']} (source: {e['evidence_source']}) — {e['why_it_matters']}"
+        for e in payload["major_negative_events"]
+    ]
+    return Digest(
+        date=date,
+        subject_status=SEVERITY_TO_SUBJECT[payload["severity"]],
+        action_required=payload["action_required"],
+        thesis_status=payload["thesis_status"],
+        major_negative_events=events[:3],
+        portfolio_impact=payload["portfolio_impact"],
+        changed_since_yesterday=format_context_items(payload["what_changed"]),
+        suggested_action=payload["suggested_action"],
+        sources=sources,
+        missing_sources=[s.label for s in sources.values() if s.missing],
+        confidence=payload["confidence"],
+        engine_notes=notes,
+    )
+
+
+def generate_digest_with_fable(sources: dict[str, Source], date: str) -> tuple[Digest, dict]:
+    """Returns (digest, debug_info). Any failure falls back to the rules engine.
+
+    debug_info keys: engine, call_success, fallback, fallback_reason, guardrail_notes.
+    Debug info is for dry-run stdout only — it must never appear in a sent email.
+    """
+    rules_digest = generate_digest_with_rules(sources)
+    try:
+        raw = call_fable(sources, date)
+    except Exception as exc:
+        return rules_digest, {"engine": "rules", "call_success": False, "fallback": True,
+                              "fallback_reason": f"fable call failed ({exc})", "guardrail_notes": []}
+    payload = parse_and_validate_fable(raw)
+    if payload is None:
+        return rules_digest, {"engine": "rules", "call_success": True, "fallback": True,
+                              "fallback_reason": "fable output failed strict JSON schema validation",
+                              "guardrail_notes": []}
+    payload, notes = apply_fable_guardrails(payload, rules_digest)
+    digest = digest_from_fable(payload, sources, date, notes)
+    return digest, {"engine": "fable", "call_success": True, "fallback": False,
+                    "fallback_reason": "", "guardrail_notes": notes}
+
+
 def subject_for_digest(digest: Digest) -> str:
     return f"AI Investing Digest — {digest.subject_status} — {digest.date}"
 
 
 def render_email(digest: Digest) -> str:
-    missing_note = "None" if not digest.missing_sources else ", ".join(digest.missing_sources)
-    negative_events = "\n".join(f"- {item}" for item in digest.major_negative_events)
-    changes = "\n".join(f"- {item}" for item in digest.changed_since_yesterday)
+    changes = "\n".join(f"- {item}" for item in digest.changed_since_yesterday[:3])
     links = "\n".join(
         f"- {source.label}: {source.url if not source.missing else 'missing'}"
         for key, source in digest.sources.items()
-        if key in {"premarket", "news_scan", "hub", "premarket_html", "hub_html"}
+        if key in {"premarket", "news_scan", "hub"}
     )
-    body = f"""Action Required
-{digest.action_required}
-The rules engine is conservative by design. It only escalates when the reports contain evidence of a material business change, not when the market is noisy.
-
-Thesis Status
-{digest.thesis_status}
-The default thesis state is intact unless there is primary-source or clearly source-backed evidence that AI infrastructure demand, customer orders, guidance, backlog, margins, or financing risk has changed.
-
-Major Negative Events
-{negative_events}
-
-Portfolio Impact
-{digest.portfolio_impact}
-
-What Changed Since Yesterday
-{changes}
-
-Suggested Action
-{digest.suggested_action}
-This is a research-only discipline note. It is not a trading order, and it should not override the full reports when a deeper review is required.
-
-Links to Full Reports
-{links}
-
-Missing Sources
-{missing_note}
-
-Research-only. No brokerage connection, no trade execution, and no automatic portfolio action.
-"""
-    return body.strip() + "\n"
+    parts = [
+        f"Action Required: {digest.action_required}",
+        f"Thesis Status: {digest.thesis_status}",
+        f"Portfolio Impact: {digest.portfolio_impact}",
+        f"Suggested Action: {digest.suggested_action}",
+    ]
+    if digest.confidence:
+        parts.append(f"Confidence: {digest.confidence}")
+    if digest.major_negative_events:
+        events = "\n".join(f"- {item}" for item in digest.major_negative_events)
+        parts.append(f"\nMajor Negative Events\n{events}")
+    parts.append(f"\nNotable Context\n{changes}")
+    parts.append(f"\nLinks to Full Reports\n{links}")
+    if digest.missing_sources:
+        parts.append(f"\nMissing Sources: {', '.join(digest.missing_sources)}")
+    # Debug info (engine, fallback, guardrail notes) is intentionally NOT rendered
+    # into the email body — it is printed to stdout in dry-run mode only.
+    parts.append("\nResearch-only. No automatic trading action.")
+    return "\n".join(parts).strip() + "\n"
 
 
 def smtp_user() -> str:
@@ -407,9 +695,29 @@ def main() -> int:
         print(f"ERROR: core reports missing for {args.date}: {', '.join(missing_core)}")
         return 2
 
-    if args.engine != "rules":
-        print(f"ERROR: engine '{args.engine}' is reserved for future integration and is not implemented yet.")
-        return 2
+    if args.engine == "fable":
+        # Fable runs as a parallel PREVIEW digest: subject is always marked
+        # "Fable Preview" and the body carries a preview footer, so it can never
+        # be mistaken for the official rules-engine digest.
+        digest, info = generate_digest_with_fable(sources, args.date)
+        digest.date = args.date
+        subject = f"AI Investing Digest — Fable Preview — {digest.subject_status} — {digest.date}"
+        body = render_email(digest).rstrip() + "\n\nPreview only. Official digest remains rules engine.\n"
+        # Debug info goes to stdout (dry-run console / Actions log), never into the email.
+        print("DRY RUN - Daily Decision Digest" if args.dry_run else "Daily Decision Digest (Fable Preview)")
+        print(f"Engine: {info['engine']}")
+        print(f"Fable call success: {'Yes' if info['call_success'] else 'No'}")
+        print(f"Fallback: {'Yes' if info['fallback'] else 'No'}")
+        if info["fallback_reason"]:
+            print(f"Fallback reason: {info['fallback_reason']}")
+        for note in info["guardrail_notes"]:
+            print(note)
+        print(f"Subject: {subject}")
+        if args.dry_run:
+            print("")
+            print(body)
+            return 0
+        return 0 if send_email(subject, body) else 1
 
     digest = generate_digest_with_rules(sources)
     digest.date = args.date
@@ -417,7 +725,7 @@ def main() -> int:
     body = render_email(digest)
 
     if args.dry_run:
-        print("DRY RUN - Daily Decision Digest")
+        print("DRY RUN - Daily Decision Digest (engine: rules)")
         print(f"Subject: {subject}")
         print("")
         print(body)
