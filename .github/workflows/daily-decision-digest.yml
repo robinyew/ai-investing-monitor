@@ -1,0 +1,51 @@
+name: Daily Decision Digest
+
+# Manual trigger only for now. Scheduling will be handled by the local
+# dispatcher (launchd) at 08:45 Toronto time via workflow_dispatch.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Report date (YYYY-MM-DD, Toronto). Defaults to today."
+        required: false
+        default: ""
+      dry_run:
+        description: "Dry run (print subject/body, do not send email)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+
+jobs:
+  decision-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Send Daily Decision Digest
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            ARGS="$ARGS --date ${{ github.event.inputs.date }}"
+          fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          python scripts/send_daily_decision_digest.py $ARGS
