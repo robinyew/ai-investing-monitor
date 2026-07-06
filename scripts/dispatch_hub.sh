@@ -38,3 +38,11 @@ else
   echo "$LOG_TAG FAIL Hub (HTTP $http_code): $body" >&2
   exit 1
 fi
+
+# Wait for GitHub Actions to finish (Pre-Market Brief + News Scan + Hub ~15 min), then pull
+REPO="/Users/leimingyu/Investment/ai-investing-monitor"
+echo "$LOG_TAG Waiting 15 min for GitHub Actions to complete..."
+sleep 900
+echo "$LOG_TAG Pulling today's reports..."
+git -C "$REPO" pull --rebase --autostash origin main 2>&1 | sed "s/^/$LOG_TAG /"
+echo "$LOG_TAG Pull complete."

@@ -44,3 +44,9 @@ dispatch() {
 
 dispatch "Pre-Market Brief" "daily-report.yml" '{"ref":"main"}'
 dispatch "News Scan"        "ai-news-scan.yml" '{"ref":"main"}'
+
+# Pull any previously missing commits (today's reports not ready yet — see dispatch_hub.sh)
+REPO="/Users/leimingyu/Investment/ai-investing-monitor"
+echo "$LOG_TAG Pulling latest commits..."
+git -C "$REPO" pull --rebase --autostash origin main 2>&1 | sed "s/^/$LOG_TAG /"
+echo "$LOG_TAG Pull complete."
