@@ -678,6 +678,17 @@ def render_email(digest: Digest) -> str:
     return "\n".join(parts).strip() + "\n"
 
 
+def save_digest_copy(date: str, engine: str, subject: str, body: str, engine_detail: str = "") -> None:
+    """Persist the exact email content to reports/digest/ for local history/comparison."""
+    path = ROOT / "reports" / "digest" / f"{date}_{engine}.md"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    header = f"Subject: {subject}\n"
+    if engine_detail:
+        header += f"Engine: {engine_detail}\n"
+    path.write_text(header + "\n" + body, encoding="utf-8")
+    print(f"Digest copy saved: {path.relative_to(ROOT)}")
+
+
 def smtp_user() -> str:
     return env("SMTP_USER") or env("SMTP_USERNAME")
 
@@ -755,6 +766,7 @@ def main() -> int:
             print("")
             print(body)
             return 0
+        save_digest_copy(args.date, "fable", subject, body, engine_detail=info["engine"])
         return 0 if send_email(subject, body) else 1
 
     digest = generate_digest_with_rules(sources)
@@ -769,6 +781,7 @@ def main() -> int:
         print(body)
         return 0
 
+    save_digest_copy(args.date, "rules", subject, body, engine_detail="rules")
     return 0 if send_email(subject, body) else 1
 
 

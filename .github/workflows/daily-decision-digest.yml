@@ -19,7 +19,7 @@ on:
         default: "rules"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   decision-digest:
@@ -54,3 +54,13 @@ jobs:
             ARGS="$ARGS --dry-run"
           fi
           python scripts/send_daily_decision_digest.py $ARGS
+
+      - name: Commit digest copy
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/digest/
+          git diff --cached --quiet || git commit -m "Add decision digest copy (${{ github.event.inputs.engine || 'rules' }})"
+          git pull --rebase origin main
+          git push

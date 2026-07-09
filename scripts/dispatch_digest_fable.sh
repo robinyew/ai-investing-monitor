@@ -38,3 +38,12 @@ else
   echo "$LOG_TAG FAIL Fable Preview (HTTP $http_code): $body" >&2
   exit 1
 fi
+
+# Wait for both digest workflows to finish (fable model call ~7 min), then pull
+# the committed digest copies (reports/digest/) to the local repo.
+REPO="/Users/leimingyu/Investment/ai-investing-monitor"
+echo "$LOG_TAG Waiting 10 min for digest workflows to complete..."
+sleep 600
+echo "$LOG_TAG Pulling digest copies..."
+git -C "$REPO" pull --rebase --autostash origin main 2>&1 | sed "s/^/$LOG_TAG /"
+echo "$LOG_TAG Pull complete."
