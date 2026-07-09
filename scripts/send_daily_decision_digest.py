@@ -539,6 +539,44 @@ def apply_fable_guardrails(payload: dict, rules_digest: Digest) -> tuple[dict, l
     return payload, notes
 
 
+PRICE_PHRASE = "price move only; no confirmed thesis damage."
+UNVERIFIED_PHRASE = "no primary-source confirmation; no thesis change."
+
+# Existing (possibly truncated) copies of the required phrases are stripped from the
+# model's summary BEFORE truncation, then re-appended exactly once — this prevents
+# duplicates like "no primary-s. no primary-source confirmation".
+CLEAN_PHRASE_PATTERNS = [
+    re.compile(r"(?i)[\s,;.]*price move only[^.]*\.?"),
+    re.compile(r"(?i)[\s,;.]*no primary-s[^.]*\.?"),
+    re.compile(r"(?i)[\s,;.]*no thesis change\.?"),
+    re.compile(r"(?i)[\s,;.]*unconfirmed[.;]?(?=\s|$)"),
+]
+
+
+def clean_required_phrases(text: str) -> str:
+    for pattern in CLEAN_PHRASE_PATTERNS:
+        text = pattern.sub("", text)
+    return text.strip(" ,;")
+
+
+def truncate_sentence(text: str, limit: int) -> str:
+    """One concise sentence within the limit, cut at the nearest clause boundary
+    (sentence > semicolon > comma), falling back to a word boundary."""
+    text = text.strip()
+    if len(text) > limit:
+        cut = text[:limit]
+        for sep in (". ", "; ", ", "):
+            pos = cut.rfind(sep)
+            if pos >= limit // 3:
+                cut = cut[:pos]
+                break
+        else:
+            if " " in cut:
+                cut = cut[: cut.rfind(" ")]
+        text = cut.rstrip(" ,;:.")
+    return (text.rstrip(".") or "No detail provided") + "."
+
+
 def format_context_items(items: list[dict]) -> list[str]:
     """Render what_changed objects as Notable Context lines, each with a source link.
 
@@ -549,13 +587,13 @@ def format_context_items(items: list[dict]) -> list[str]:
     items = sorted(items, key=lambda item: type_order.get(item["source_type"], 1))
     rendered: list[str] = []
     for item in items[:3]:
-        summary = item["summary"].strip()
-        if len(summary) > 180:
-            summary = summary[:177].rstrip() + "..."
-        if item["source_type"] == "price" and "price move only" not in summary.lower():
-            summary = summary.rstrip(".") + ". price move only; no confirmed thesis damage."
-        if item["source_type"] == "unverified" and "no primary-source confirmation" not in summary.lower():
-            summary = summary.rstrip(".") + ". no primary-source confirmation; no thesis change."
+        summary = clean_required_phrases(item["summary"])
+        if item["source_type"] == "price":
+            summary = f"{truncate_sentence(summary, 150)} {PRICE_PHRASE}"
+        elif item["source_type"] == "unverified":
+            summary = f"{truncate_sentence(summary, 150)} {UNVERIFIED_PHRASE}"
+        else:
+            summary = truncate_sentence(summary, 200)
         prefix = f"{item['topic']}: " if item["topic"] else ""
         if item["source_url"]:
             rendered.append(f"{prefix}{summary}\n  Source: {item['source_url']}")

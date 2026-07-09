@@ -85,3 +85,19 @@ MPWR:
   status: needs_primary_source_verification
   next_review: 2026-09-07
   report_count: 1
+
+ALAB:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/ALAB/2026-06-29.md
+  last_run: 2026-06-29
+  thesis_type: speculation_thesis
+  status: needs_primary_source_verification
+  next_review: 2026-09-29
+  report_count: 1
+
+CCXI:
+  latest_report: investment-intelligence-hub/reports/ljg_invest/CCXI/2026-06-29.md
+  last_run: 2026-06-29
+  thesis_type: speculation_thesis
+  status: needs_primary_source_verification
+  next_review: 2026-09-29
+  report_count: 1

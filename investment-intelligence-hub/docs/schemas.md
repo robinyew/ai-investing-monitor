@@ -1,8 +1,8 @@
 # Investment Intelligence Hub Schemas
 
-Date: 2026-06-07
+Date: 2026-06-17
 
-These schemas are copied from `IMPLEMENTATION_PLAN.md` for Phase 1 documentation only. They are not implemented yet.
+These schemas describe the current Hub Intelligence Brief data contract. They are documentation and implementation guidance; code should be checked against this file before changing ingestion or output behavior.
 
 ## Source Record
 
@@ -10,27 +10,32 @@ Recommended file: `processed/sources/YYYY-MM-DD.jsonl`
 
 ```json
 {
-  "source_id": "src_20260607_daily_001",
-  "source_type": "daily_report",
-  "title": "AI 投资新闻日报 - 2026-06-05",
+  "source_id": "src_2026-06-17_ai_infrastructure_news_scan_001",
+  "source_type": "ai_infrastructure_news_scan",
+  "title": "AI Infrastructure News Scan — 2026-06-17",
   "author_or_origin": "ai-investing-monitor",
-  "url": "docs/reports/2026-06-05.html",
-  "local_path": "ai-investing-monitor/reports/daily/2026-06-05.md",
-  "published_at": "2026-06-05",
-  "ingested_at": "2026-06-07T00:00:00-04:00",
+  "url": "docs/news/2026-06-17.html",
+  "local_path": "investment-intelligence-hub/inbox/news/2026-06-17_ai_infrastructure_news.md",
+  "published_at": "2026-06-17",
+  "ingested_at": "2026-06-17T08:30:00-04:00",
   "source_quality": {
-    "tier": "medium",
-    "score": 0.65,
-    "reason": "Generated from RSS/news metadata and yfinance raw snapshots."
+    "tier": "tier_2a_ai_infrastructure_news_scan",
+    "score": 0.78,
+    "reason": "Independent AI infrastructure news scan used for fresh signal detection and verification queue."
   },
   "content_hash": "sha256:...",
-  "provenance_notes": "Existing pre-market report used as input, not as final truth.",
+  "provenance_notes": "Can trigger source-backed Hub signals, but durable thesis confirmation still requires Tier 1 evidence or explicit human approval.",
   "status": "ingested"
 }
 ```
 
 Allowed `source_type` values:
 
+- `ai_infrastructure_news_scan`
+- `premarket_brief`
+- `serenity_chokepoint_report`
+- `ticker_infocard`
+- `hub_intelligence_brief`
 - `daily_report`
 - `daily_raw_prices`
 - `daily_raw_news`
@@ -49,17 +54,17 @@ Allowed `source_type` values:
 - `public_news`
 - `other`
 
-Bookmark, timeline, and viral-social source categories are intentionally absent from the current Hub source-type list.
+Bookmark, timeline, automatic-following, and viral-social source categories are intentionally absent from the current Hub source-type list.
 
 ## X Posts Folder Logic
 
-The curated Hub X inbox is:
+The curated Hub X inbox is date-folder based:
 
 ```text
-investment-intelligence-hub/inbox/x_posts/
+investment-intelligence-hub/inbox/x_posts/YYYY_MM_DD/
 ```
 
-User-captured X post files should use one of these filename formats:
+File formats:
 
 ```text
 YYYYMMDD_slug.md
@@ -69,31 +74,34 @@ YYYYMMDD_slug.html
 Examples:
 
 ```text
-20260607_hyperliquid.md
-20260607_ai-24.md
-20260606_spacex.md
+investment-intelligence-hub/inbox/x_posts/2026_06_17/20260617_smh-4.md
+investment-intelligence-hub/inbox/x_posts/2026_06_17/20260616_citrini-research-smh-ai.md
 ```
 
-The first 8 characters represent the capture or post date in `YYYYMMDD` format.
+Recommended X source fields:
 
-Archive folders use this format:
-
-```text
-YYYY_MM_DD
+```json
+{
+  "source_id": "src_2026-06-17_x_post_20260616_citrini_research_smh_ai",
+  "source_type": "x_post",
+  "folder_date": "2026-06-17",
+  "source_date": "2026-06-16",
+  "file_path": "investment-intelligence-hub/inbox/x_posts/2026_06_17/20260616_citrini-research-smh-ai.md",
+  "status": "needs_corroboration",
+  "needs_corroboration": true,
+  "context_label": "current_day_folder"
+}
 ```
 
-For run date `YYYY-MM-DD`:
+Rules:
 
-- Daily report default path: `ai-investing-monitor/reports/daily/YYYY-MM-DD.md`
-- Default X folder: `investment-intelligence-hub/inbox/x_posts/YYYY_MM_DD_OF_PREVIOUS_DAY/`
-
-Example:
-
-- Run date: `2026-06-08`
-- Default X folder: `investment-intelligence-hub/inbox/x_posts/2026_06_07/`
-- Preferred files: `20260607_*.md` and `20260607_*.html`
-
-Root-level files under `investment-intelligence-hub/inbox/x_posts/` are considered newly captured current-day files and should not be read by default.
+- `folder_date` comes from the `YYYY_MM_DD` folder name and represents user archive / processing date.
+- `source_date` comes from the first 8 filename characters when present.
+- If `folder_date` and `source_date` differ, do not move the file and do not fail ingestion.
+- Default Hub input is the run-date folder.
+- If the run-date folder is missing or empty, Hub may read the most recent 1-2 folders.
+- Recent-folder fallback must be labeled `recent_context` or `carry_forward`, not fresh signal.
+- Root-level files directly under `investment-intelligence-hub/inbox/x_posts/` are temporary / compatibility inputs only and are not formal default input.
 
 ## Extracted Signal
 
@@ -101,24 +109,26 @@ Recommended file: `processed/signals/YYYY-MM-DD.jsonl`
 
 ```json
 {
-  "signal_id": "sig_20260607_001",
-  "date": "2026-06-07",
-  "claim": "Optical interconnect demand is becoming a bottleneck signal for AI data-center scaling.",
-  "evidence_summary": "Daily report and X article both point to scale-out networking/optical constraints; needs confirmation from company or industry sources.",
-  "source_ids": ["src_20260607_daily_001", "src_20260607_x_001"],
-  "source_type": "daily_report,x_post",
-  "tickers": ["NOK", "CIEN", "COHR", "AAOI", "MRVL", "AVGO"],
-  "themes": ["Optical Interconnect", "Networking", "AI Infrastructure"],
+  "signal_id": "sig_2026-06-17_news_scan_optical_interconnect_001",
+  "date": "2026-06-17",
+  "claim": "Optical interconnect demand showed a new source-backed signal in today's AI infrastructure news scan.",
+  "evidence_summary": "Tier 2A news scan identified a relevant development; still requires company, customer, or Tier 1 confirmation before durable thesis use.",
+  "source_ids": ["src_2026-06-17_ai_infrastructure_news_scan_001"],
+  "source_type": "ai_infrastructure_news_scan",
+  "source_tier": "Tier 2A",
+  "tickers": ["AAOI", "CIEN", "COHR"],
+  "themes": ["Optical Interconnect", "AI Infrastructure"],
   "direction": "constructive",
-  "time_horizon": "medium",
-  "confidence": 0.55,
-  "source_quality_score": 0.45,
-  "evidence_strength_score": 0.50,
-  "thesis_relevance_score": 0.80,
-  "market_impact_score": 0.60,
-  "noise_risk_score": 0.55,
+  "time_horizon": "short",
+  "confidence": 0.70,
+  "source_quality_score": 0.78,
+  "evidence_strength_score": 0.65,
+  "thesis_relevance_score": 0.75,
+  "market_impact_score": 0.55,
+  "noise_risk_score": 0.30,
   "verification_needed": true,
-  "status": "needs_corroboration"
+  "status": "source_backed_needs_primary_confirmation",
+  "research_label": "verify"
 }
 ```
 
@@ -133,6 +143,7 @@ Allowed `direction` values:
 Allowed `status` values:
 
 - `confirmed`
+- `source_backed_needs_primary_confirmation`
 - `needs_corroboration`
 - `watch_only`
 - `noise_candidate`
@@ -144,17 +155,17 @@ Recommended file: `processed/ticker_impacts/YYYY-MM-DD.jsonl`
 
 ```json
 {
-  "ticker": "NOK",
-  "date": "2026-06-07",
-  "signal_ids": ["sig_20260607_001"],
-  "watchlist_group": "key_observation",
-  "thesis_impact": "supports_speculation_thesis",
-  "impact_summary": "Potential relevance to AI scale-out networking narrative, but not yet enough to upgrade durable investment thesis.",
-  "risk_flags": ["source_is_social", "needs_company_confirmation"],
+  "ticker": "MRVL",
+  "date": "2026-06-17",
+  "signal_ids": ["sig_2026-06-17_news_scan_networking_001"],
+  "watchlist_group": "core_or_watchlist",
+  "thesis_impact": "insufficient_evidence",
+  "impact_summary": "Relevant to AI networking thesis, but not enough to update durable thesis without company, customer, or earnings evidence.",
+  "risk_flags": ["needs_primary_source_verification"],
   "research_label": "verify",
   "follow_up_questions": [
-    "Is there company or customer evidence that AI data-center optical demand is material to NOK revenue?",
-    "Is the signal already reflected in recent company guidance?"
+    "Is there company or customer evidence that this signal affects revenue, orders, backlog, margin, or capex exposure?",
+    "Does a Tier 1 source confirm or contradict the media signal?"
   ]
 }
 ```
@@ -168,67 +179,93 @@ Allowed `thesis_impact` values:
 - `no_material_impact`
 - `insufficient_evidence`
 
-## Action Label
+## Research Label
 
 These are research workflow labels only. They are not trading instructions.
 
-```json
-{
-  "label": "thesis_review",
-  "definition": "Signal may change a durable thesis and needs human review.",
-  "allowed_outputs": ["follow-up question", "source verification task", "memory update proposal"],
-  "forbidden_outputs": ["buy", "sell", "trim", "add", "position size change", "price target"]
-}
-```
-
-Allowed action labels:
+Allowed labels:
 
 | Label | Meaning |
 |---|---|
 | `verify` | Needs source confirmation before it can affect a thesis. |
 | `monitor` | Worth tracking but no immediate thesis change. |
-| `thesis_review` | May strengthen or weaken a durable thesis. |
+| `thesis_review` | May strengthen or weaken a durable thesis after evidence review. |
 | `risk_review` | Could indicate elevated business, valuation, dilution, customer, supply-chain, or narrative risk. |
 | `ignore_noise` | Low-quality, repetitive, or unsupported item. |
 | `weekly_review_candidate` | Not urgent daily, but useful for weekly pattern review. |
+| `deep_dive_required` | Requires a separate single-ticker or theme deep dive. |
 
-## Daily Intelligence Brief
+Forbidden outputs:
+
+- `buy`
+- `sell`
+- `trim`
+- `add`
+- `position size change`
+- `price target`
+
+## Hub Intelligence Brief
 
 Recommended file: `reports/daily_intelligence/YYYY-MM-DD.md`
 
 ```markdown
-# Investment Intelligence Brief - YYYY-MM-DD
+# Hub Intelligence Brief — YYYY-MM-DD
 
-## Executive Summary
+## 1. Intelligence Verdict
 
-- Top cross-source change:
-- Most important thesis impact:
-- Highest-quality source:
-- Biggest unresolved verification question:
+- New Signal Level: None / Low / Medium / High
+- Source Quality: Low / Medium / High
+- Verification Need: None / Watch / Required
+- Deep Dive Required: Yes / No
 
-## Cross-Source Signal Table
+One-sentence conclusion.
 
-| Signal | Tickers | Sources | Source Quality | Thesis Impact | Noise Risk | Research Label |
-|---|---|---|---:|---|---:|---|
+## 2. What Changed
 
-## Thesis Impact Map
+Only real new cross-source changes.
 
-| Ticker / Theme | Investment Thesis Impact | Speculation Thesis Impact | Evidence | Follow-up |
+If no material change:
+
+No cross-source material change today.
+
+## 3. Source-Backed Signals
+
+Only signals supported by Tier 1, Tier 2A, or relevant Tier 2B context.
+
+| Signal | Source Tier | Tickers | Impact | Research Label |
 |---|---|---|---|---|
 
-## Holdings / Watchlist Impact
+If none:
 
-| Group | Ticker | Impact | Risk Flag | Research Label |
+No source-backed signal requiring attention.
+
+## 4. Unverified Leads
+
+Only X posts or speculative ideas.
+
+| Lead | Source | Tickers | Why It Matters | Next Verification |
 |---|---|---|---|---|
 
-## Noise / Hype Filter
+If none:
 
-| Item | Why filtered | What would confirm it |
-|---|---|---|
+No unverified lead requiring attention.
 
-## Follow-Up Checklist
+## 5. Chokepoint Intelligence
+
+Only changed chokepoints. Do not repeat long-term rankings without new evidence.
+
+| Chokepoint | Change | Evidence | Related Tickers |
+|---|---|---|---|
+
+If none:
+
+No chokepoint change today.
+
+## 6. Verification Queue
 
 - [ ] Verify:
-- [ ] Read:
-- [ ] Update memory proposal:
+- [ ] Deep dive:
+- [ ] Ignore noise:
 ```
+
+The Hub Intelligence Brief should be concise. It should avoid repeating stock company descriptions, long-term AI infrastructure background, or content already covered in the 8:15 Pre-Market Brief unless it is directly relevant to cross-source triage.
