@@ -209,16 +209,46 @@ def strip_html(html: str) -> str:
     return text
 
 
-def read_text(path: Path) -> tuple[str, bool]:
-    if not path.exists():
-        return "", True
-    text = path.read_text(encoding="utf-8", errors="ignore")
-    if path.suffix.lower() in {".html", ".htm"}:
-        text = strip_html(text)
-    return text, False
+RAW_BASE = "https://raw.githubusercontent.com/robinyew/ai-investing-monitor/main"
 
 
-def collect_sources(date: str) -> dict[str, Source]:
+def fetch_remote(rel_path: str) -> str:
+    """Fetch a report from the repo's main branch when the local copy is missing.
+
+    Covers stale local checkouts (dry-run before pull) and the rare race where an
+    upstream workflow commits after this run's checkout. Fails silently to ""."""
+    import urllib.request
+    url = f"{RAW_BASE}/{rel_path}"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as resp:
+            if resp.status == 200:
+                return resp.read().decode("utf-8", errors="ignore")
+    except Exception:
+        pass
+    return ""
+
+
+def read_text(path: Path, remote_fallback: bool = True) -> tuple[str, bool]:
+    if path.exists():
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        if path.suffix.lower() in {".html", ".htm"}:
+            text = strip_html(text)
+        return text, False
+    if remote_fallback:
+        try:
+            rel = path.relative_to(ROOT).as_posix()
+        except ValueError:
+            return "", True
+        text = fetch_remote(rel)
+        if text:
+            print(f"Local file missing; fetched from remote main: {rel}")
+            if path.suffix.lower() in {".html", ".htm"}:
+                text = strip_html(text)
+            return text, False
+    return "", True
+
+
+def collect_sources(date: str, remote_fallback: bool = True) -> dict[str, Source]:
     """Collect available report inputs without failing on missing optional files."""
     hub_md = ROOT / "investment-intelligence-hub" / "reports" / "daily_intelligence" / f"{date}.md"
     hub_html = ROOT / "docs" / "intelligence" / f"{date}.html"
@@ -232,7 +262,7 @@ def collect_sources(date: str) -> dict[str, Source]:
     ]
     sources: dict[str, Source] = {}
     for key, label, path, url, required in specs:
-        text, missing = read_text(path)
+        text, missing = read_text(path, remote_fallback=remote_fallback)
         sources[key] = Source(key, label, path, url, required, text, missing)
     return sources
 
@@ -733,12 +763,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--date", default=today_toronto())
     parser.add_argument("--engine", default="rules", choices=["rules", "fable"])
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--no-remote-fallback", action="store_true",
+                        help="Do not fetch missing reports from the repo's main branch")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    sources = collect_sources(args.date)
+    sources = collect_sources(args.date, remote_fallback=not args.no_remote_fallback)
     missing_core = [key for key in CORE_SOURCE_KEYS if sources[key].missing]
     if len(missing_core) == len(CORE_SOURCE_KEYS):
         print(f"ERROR: core reports missing for {args.date}: {', '.join(missing_core)}")
