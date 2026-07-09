@@ -57,7 +57,10 @@ SOURCE_QUALITY = {
     },
 }
 
-FORBIDDEN = re.compile(r"\b(buy|sell|trim|add|position size|price target)\b", re.I)
+# Trading-instruction words are forbidden outside the disclaimer, but infinitive
+# business usage quoted from sources ("Meta plans to sell AI compute", "to add
+# capacity") is not an instruction — the "(?<!to )" lookbehind exempts it.
+FORBIDDEN = re.compile(r"\b(?<!to )(buy|sell|trim|add|position size|price target)\b", re.I)
 SENSITIVE_PATTERNS = [
     ("account amount", re.compile(r"\b(account value|account balance|portfolio value)\b", re.I)),
     ("holding quantity", re.compile(r"\b(shares|contracts|units)\s*[:=]?\s*\d+|\b\d+\s+(shares|contracts|units)\b", re.I)),
