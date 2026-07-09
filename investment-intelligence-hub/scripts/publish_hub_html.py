@@ -16,16 +16,18 @@ HUB = ROOT / "investment-intelligence-hub"
 TZ = ZoneInfo("America/New_York")
 
 DISCLAIMER = "Research-only. No trading automation. No buy/sell instructions. Watchlist labels are not confirmed holdings."
+# Pipeline v2 output structure (aligned with run_hub_pipeline.py).
 REQUIRED_SECTIONS = [
-    "1. Executive Summary",
-    "2. Cross-Source Signal Table",
-    "3. Thesis Impact Map",
-    "4. Watchlist Impact",
-    "5. Noise / Hype Filter",
-    "6. Action Labels",
-    "7. Follow-Up Checklist",
+    "1. Intelligence Verdict",
+    "2. What Changed",
+    "3. Source-Backed Signals",
+    "4. Unverified Leads",
+    "5. Chokepoint Intelligence",
+    "6. Verification Queue",
 ]
-FORBIDDEN_TRADING = re.compile(r"\b(buy|sell|trim|add|position size|price target)\b", re.I)
+# "(?<!to )" exempts infinitive business usage quoted from sources
+# ("Meta plans to sell AI compute") — aligned with run_hub_pipeline.py.
+FORBIDDEN_TRADING = re.compile(r"\b(?<!to )(buy|sell|trim|add|position size|price target)\b", re.I)
 SENSITIVE_PATTERNS = [
     ("account amount", re.compile(r"\b(account value|account balance|portfolio value|net liquidation)\b", re.I)),
     ("holding quantity", re.compile(r"\b(shares|contracts|units)\s*[:=]?\s*\d+|\b\d+\s+(shares|contracts|units)\b", re.I)),
@@ -92,15 +94,17 @@ def validate_html(source_html: Path) -> tuple[bool, list[str], list[str]]:
         if section not in text:
             errors.append(f"Missing required section: {section}")
     if not errors:
-        checks.append("Source HTML contains all 7 required sections.")
+        checks.append("Source HTML contains all required sections.")
     if DISCLAIMER not in text:
         errors.append("Missing required public disclaimer.")
     else:
         checks.append("Required public disclaimer is present.")
-    if "Holdings Impact" in text or "4. Watchlist Impact" not in text:
-        errors.append("Report must use Watchlist Impact when holdings are unconfirmed.")
+    # v2 structure has no Watchlist Impact section; keep the invariant that
+    # unconfirmed holdings must never be presented as "Holdings Impact".
+    if "Holdings Impact" in text:
+        errors.append("Report must not use Holdings Impact when holdings are unconfirmed.")
     else:
-        checks.append("Report uses Watchlist Impact.")
+        checks.append("Report does not claim confirmed holdings.")
     for label, pattern in SENSITIVE_PATTERNS:
         if pattern.search(text):
             errors.append(f"Detected forbidden sensitive content: {label}")
