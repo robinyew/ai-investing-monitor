@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content="huashu-md-html · article theme" />
+
+
+
+
+  <title>Weekly Thesis &amp; Chokepoint Brief — 2026-07-18</title>
+
+  <!-- Web fonts: Newsreader (display+body serif) + IBM Plex Sans (UI) + JetBrains Mono (code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="/Users/leimingyu/.agents/skills/huashu-md-html/templates/article/theme.css" />
+
+</head>
+<body>
+  <!-- Reading progress bar -->
+  <div id="reading-progress" aria-hidden="true"></div>
+
+
+  <header class="title-block" role="banner">
+
+    <h1 class="title">Weekly Thesis &amp; Chokepoint Brief —
+2026-07-18</h1>
+
+
+
+  </header>
+
+  <main role="main">
+
+    <article>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">report_type</span><span class="kw">:</span><span class="at"> weekly_thesis_brief</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">week_start</span><span class="kw">:</span><span class="at"> 2026-07-14</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">week_end</span><span class="kw">:</span><span class="at"> 2026-07-18</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">timezone</span><span class="kw">:</span><span class="at"> America/New_York</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">horizon</span><span class="kw">:</span><span class="at"> multi_month_to_multi_year</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">audience</span><span class="kw">:</span><span class="at"> long_term_AI_infra_investor</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">default_posture</span><span class="kw">:</span><span class="at"> Hold thesis unless falsified</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">auto_trade</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">price_targets</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">buy_sell_instructions</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span><span class="kw">:</span><span class="at"> example_filled_from_existing_digests</span></span></code></pre></div>
+<p><strong>Research-only.</strong>
+不连接券商，不生成买卖指令，不设目标价。<br />
+<strong>说明：</strong> 本文件是模板首填示例，汇总本仓库 7/14–7/18
+前后已有 digest / news scan / pre-market
+信息，便于你对照写法。部分条目在 7/20–7/21 有延续（TSMC/电力叙事），在
+§9 carry-forward 标明。</p>
+<p><strong>Inputs used</strong> - <code>reports/digest/2026-07-15</code>
+… <code>2026-07-17</code>（及前后） -
+<code>reports/daily/2026-07-17.md</code>（risk-off 价波动 vs thesis
+intact） - <code>investment-intelligence-hub/inbox/news/</code>（7/17
+窗口）</p>
+<hr />
+<h2 id="executive-strip">0. Executive strip</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>字段</th>
+<th>本周结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overall thesis</strong></td>
+<td><strong>Intact</strong> — AI
+基建需求与卡点叙事未被一级事实推翻；价格 risk-off 单独不改主线</td>
+</tr>
+<tr>
+<td><strong>Posture</strong></td>
+<td><strong>Hold thesis</strong></td>
+</tr>
+<tr>
+<td><strong>Biggest fact this week</strong></td>
+<td>TSMC 上调 capex / 强业绩（一级需求确认，见 7/16–7/17 链路）</td>
+</tr>
+<tr>
+<td><strong>Biggest risk this week</strong></td>
+<td>无一级 capex 下修；主要风险是 <strong>高估值 +
+仓位拥挤下的价格波动</strong> 被误读成逻辑破坏</td>
+</tr>
+<tr>
+<td><strong>Portfolio logic impact</strong></td>
+<td><strong>None</strong> 到 <strong>Selective</strong> —
+逻辑层无需调仓叙事；光学/高 beta 需防「把波动当证伪」</td>
+</tr>
+<tr>
+<td><strong>Next falsifier to watch</strong></td>
+<td>大厂（GOOGL/META/MSFT/AMZN）财报中的 <strong>AI/capex 指引</strong>
+是否软化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句话周记：</strong> 基本面信号（晶圆厂
+capex、存储短缺叙事）偏多，价格层 risk-off；系统正确区分了「thesis
+intact」与「price discipline」。</p>
+<hr />
+<h2 id="thesis-status">1. Thesis status</h2>
+<h3 id="master-thesis">1.1 Master thesis</h3>
+<blockquote>
+<p>全球 hyperscaler / neocloud 持续把 capex 转化为 AI
+集群；约束从「有没有 GPU」扩展到
+<strong>电力、冷却、光互连、网络、HBM</strong>；研究与持有聚焦卡点上的秩序机器，而非主题情绪。</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>维度</th>
+<th>状态</th>
+<th>说明（事实，非股价）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand: hyperscaler / AI capex</td>
+<td><strong>Green</strong></td>
+<td>TSMC 上修 capex 与强需求表述（digest 7/17）；未出现集体砍 capex
+的一级信号</td>
+</tr>
+<tr>
+<td>Supply: accelerators &amp; platforms</td>
+<td><strong>Green</strong></td>
+<td>无本周一级「需求塌陷」信号；竞争叙事存在但未量化份额迁移</td>
+</tr>
+<tr>
+<td>Chokepoints still binding</td>
+<td><strong>Green</strong></td>
+<td>HBM/DRAM 短缺叙事强化（SK Hynix 等链路，digest
+7/17）；电力仍被反复点名为约束</td>
+</tr>
+<tr>
+<td>Competition / substitution risk</td>
+<td><strong>Yellow</strong></td>
+<td>自定义 ASIC / 第二机架平台等叙事持续，但多属二级或未量化</td>
+</tr>
+<tr>
+<td>Financing / macro / geo overlay</td>
+<td><strong>Yellow</strong></td>
+<td>价格层 risk-off 明显；地缘/宏观作波动放大器，未在本周用一级事实改写
+AI 主线</td>
+</tr>
+<tr>
+<td><strong>Overall</strong></td>
+<td><strong>Intact</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>相对上周变化：</strong> <strong>Unchanged</strong>（ intact
+延续；证据略增在需求与存储侧）</p>
+<hr />
+<h2 id="chokepoint-dashboard">2. Chokepoint dashboard</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Chokepoint</th>
+<th>Status</th>
+<th>Δ vs last week</th>
+<th>Evidence (≤2 bullets)</th>
+<th>Core/watch tickers</th>
+<th>What would flip it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power / cooling / grid</td>
+<td><strong>G</strong></td>
+<td>→</td>
+<td>行业仍强调电力为绑定约束；后续 7/21 有
+NVDA–三菱重工电力相关二级报道（记入下周验证）</td>
+<td>VRT, ETN, GEV, FIX, MPWR, NVTS</td>
+<td>一级信号显示电力产能明显过剩、部署不再受电限制</td>
+</tr>
+<tr>
+<td>Optical interconnect / 800G–1.6T</td>
+<td><strong>Y</strong></td>
+<td>→ / ↓ <em>price only</em></td>
+<td>铜→光 / 1.6T
+叙事仍在分析覆盖中；<strong>价格</strong>大幅波动，缺本周一级砍单证据</td>
+<td>AAOI, COHR, CIEN, LITE, CRDO, ALAB</td>
+<td>原厂/客户确认库存积压或大单取消</td>
+</tr>
+<tr>
+<td>AI networking / DSP / Ethernet</td>
+<td><strong>G</strong></td>
+<td>→</td>
+<td>无本周否定 AI 以太网/DSP 需求的一级信号；MRVL 等大跌记为定价</td>
+<td>ANET, AVGO, MRVL</td>
+<td>云厂商公开削减网络 capex 或延迟集群网络升级</td>
+</tr>
+<tr>
+<td>ASIC / custom silicon</td>
+<td><strong>Y</strong></td>
+<td>→</td>
+<td>Meta 等自研芯片叙事续存（二级/长期主题）；未证明 merchant
+需求反转</td>
+<td>AVGO, MRVL, GOOGL, MSFT</td>
+<td>自研 ASIC 出货与 capex 替代被财报量化</td>
+</tr>
+<tr>
+<td>Memory / HBM</td>
+<td><strong>G</strong></td>
+<td>↑</td>
+<td>SK Hynix / 产业链警告短缺延伸至 2027、交期与价格压力（digest
+7/17）</td>
+<td>MU</td>
+<td>原厂指引显示供需快速转松</td>
+</tr>
+<tr>
+<td>AI server / rack / EMS</td>
+<td><strong>G</strong></td>
+<td>→</td>
+<td>无本周一级服务器订单崩塌；DELL 等波动以价格纪律为主（7/17
+brief）</td>
+<td>DELL, SMCI, HPE, CLS, JBL</td>
+<td>ODM/品牌商指引显著下调 AI server</td>
+</tr>
+<tr>
+<td>Cloud platform demand (payer)</td>
+<td><strong>G</strong></td>
+<td>→</td>
+<td>晶圆厂侧需求确认偏多；静待云巨头自己的 capex 口头与数字</td>
+<td>MSFT, GOOGL</td>
+<td>财报指引下修 AI infra 开支</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本周卡点迁移：</strong> 无明显迁移。叙事重心仍在
+<strong>需求确认 + 存储/电力约束</strong>，而非「AI 周期结束」。</p>
+<hr />
+<h2 id="material-facts-this-week5">3. Material facts this
+week（≤5）</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Fact (1 line)</th>
+<th>Source tier</th>
+<th>Chokepoint</th>
+<th>Thesis effect</th>
+<th>Tickers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>~2026-07-16</td>
+<td>TSMC 强季报并上修 2026 capex 区间、强化 AI 相关需求表述</td>
+<td>Primary / Tier-1 via digest 引用 Bloomberg 等</td>
+<td>Cloud demand / foundry</td>
+<td><strong>Reinforce</strong></td>
+<td>全链，间接触及 AVGO/ANET/MU/DELL</td>
+</tr>
+<tr>
+<td>2</td>
+<td>~2026-07-17</td>
+<td>SK Hynix 等链路强调 HBM/DRAM 短缺可能延续、交期与价格压力</td>
+<td>Tier-1 / industry</td>
+<td>Memory / HBM</td>
+<td><strong>Reinforce</strong></td>
+<td>MU</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-07-17</td>
+<td>多只 AI infra 名单日大跌且
+<strong>无对应公司基本面新闻</strong>（系统标为 price discipline）</td>
+<td>Market tape only</td>
+<td>—</td>
+<td><strong>Neutral</strong>（不进 thesis）</td>
+<td>DELL, AAOI, MRVL, AVGO, CIEN, NVTS</td>
+</tr>
+<tr>
+<td>4</td>
+<td>week</td>
+<td>日更 digest 连续 <strong>No Action / Thesis Intact</strong></td>
+<td>Internal process</td>
+<td>—</td>
+<td><strong>Neutral</strong></td>
+<td>portfolio process</td>
+</tr>
+<tr>
+<td>5</td>
+<td>—</td>
+<td>（预留）本周无云巨头 capex 正式下修</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本周有 Material fact？</strong> <strong>Yes</strong>（1–2
+条强化需求/存储；3 为价格噪声显式隔离）</p>
+<hr />
+<h2 id="portfolio-mapping">4. Portfolio mapping</h2>
+<h3 id="core-planned-holdings-lens">4.1 Core planned / holdings
+lens</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role in stack</th>
+<th>Logic this week</th>
+<th>Conviction</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DELL</td>
+<td>Server / rack</td>
+<td><strong>Unchanged</strong></td>
+<td>Med–High</td>
+<td>价格波动；无订单证伪</td>
+</tr>
+<tr>
+<td>VRT</td>
+<td>Power / cooling</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>电力约束叙事仍在</td>
+</tr>
+<tr>
+<td>AAOI</td>
+<td>Optics</td>
+<td><strong>Unchanged</strong> (vol high)</td>
+<td>Med / lower</td>
+<td>高 beta；逻辑≠本周价格</td>
+</tr>
+<tr>
+<td>NVTS</td>
+<td>Power semi</td>
+<td><strong>Unchanged</strong></td>
+<td>Low</td>
+<td>主题/高风险标签保持</td>
+</tr>
+<tr>
+<td>MPWR</td>
+<td>Power mgmt</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>相对质量卡点</td>
+</tr>
+<tr>
+<td>MRVL</td>
+<td>Networking / custom</td>
+<td><strong>Unchanged</strong></td>
+<td>Med</td>
+<td>深跌多为定价；等订单/指引</td>
+</tr>
+<tr>
+<td>ANET</td>
+<td>AI networking</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>浅回撤、卡点清晰</td>
+</tr>
+<tr>
+<td>AVGO</td>
+<td>Networking / ASIC</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>ETN</td>
+<td>Electrical infra</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>慢变量</td>
+</tr>
+<tr>
+<td>MSFT</td>
+<td>Capex payer</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>等自身 capex 更新</td>
+</tr>
+<tr>
+<td>GOOGL</td>
+<td>Capex payer</td>
+<td><strong>Unchanged</strong></td>
+<td>High</td>
+<td>近端财报/指引为关键验证</td>
+</tr>
+</tbody>
+</table>
+<h3 id="observation-only">4.2 Observation-only</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Why mentioned</th>
+<th>Logic impact</th>
+<th>Follow-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MU</td>
+<td>HBM 短缺叙事</td>
+<td>逻辑 <strong>偏强</strong>（主题强化）</td>
+<td>跟踪原厂指引与价格/交期</td>
+</tr>
+<tr>
+<td>CRDO / LITE / COHR</td>
+<td>光互连分析覆盖</td>
+<td>中性偏观察</td>
+<td>要一级订单，不看 PT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classification-changes">4.3 Classification changes</h3>
+<p><code>No classification changes.</code></p>
+<hr />
+<h2 id="falsifiers-verification-queue">5. Falsifiers &amp; verification
+queue</h2>
+<h3 id="active-falsifiers">5.1 Active falsifiers</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>ID</th>
+<th>Falsifier</th>
+<th>Status</th>
+<th>Evidence this week</th>
+<th>Action if triggered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>云巨头集体下修 AI-related capex</td>
+<td><strong>Armed</strong></td>
+<td>未触发</td>
+<td>Reduce conviction / re-underwrite</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>电力/冷却不再绑定</td>
+<td><strong>Armed</strong></td>
+<td>未触发；叙事仍相反</td>
+<td>重审电力权重逻辑</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>光互连需求证伪（库存/砍单）</td>
+<td><strong>Armed</strong></td>
+<td>未触发；仅有价格波动</td>
+<td>Optics → watch/reject</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>ASIC 替代已被财报量化</td>
+<td><strong>Armed</strong></td>
+<td>未触发</td>
+<td>重画 networking/ASIC 地图</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>核心公司商业模式受损</td>
+<td><strong>Armed</strong></td>
+<td>未触发</td>
+<td>单票 deep dive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="next-24-weeks-verification-queue">5.2 Next 2–4 weeks
+verification queue</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>When</th>
+<th>What to verify</th>
+<th>Why it matters</th>
+<th>Primary source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近端财报季</td>
+<td>GOOGL / META / MSFT / AMZN capex 与 AI infra 表述</td>
+<td>需求天花板</td>
+<td>Earnings / 10-Q / call</td>
+</tr>
+<tr>
+<td>持续</td>
+<td>TSMC/存储原厂后续 commentary</td>
+<td>供给与需求斜率</td>
+<td>公司 IR</td>
+</tr>
+<tr>
+<td>持续</td>
+<td>电力相关正式协议/指引（若有）</td>
+<td>卡点是否从叙事落成订单</td>
+<td>公司公告</td>
+</tr>
+<tr>
+<td>过程</td>
+<td>日更 digest 是否仍「不为股价升级」</td>
+<td>纪律</td>
+<td>internal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="price-context附录">6. Price context（附录）</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Benchmark / sleeve</th>
+<th style="text-align: right;">~1w (to 7/17 tape)</th>
+<th style="text-align: right;">~1m</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMH / SOXX</td>
+<td style="text-align: right;">明显回调</td>
+<td style="text-align: right;">回调</td>
+<td><strong>Warrants re-read once</strong> → 已读，无逻辑破坏</td>
+</tr>
+<tr>
+<td>High-beta optics / connectivity</td>
+<td style="text-align: right;">更深回撤</td>
+<td style="text-align: right;">更深</td>
+<td><strong>Pricing noise</strong> unless orders break</td>
+</tr>
+<tr>
+<td>Quality networking (ANET/AVGO 类)</td>
+<td style="text-align: right;">相对抗跌</td>
+<td style="text-align: right;">浅</td>
+<td>更符合「逻辑 intact」</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论：</strong> 本周价格异常
+<strong>触发了重读</strong>，重读结果 = <strong>pricing noise + thesis
+intact</strong>（与 7/17 pre-market brief 一致）。</p>
+<hr />
+<h2 id="research-agenda">7. Research agenda</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>Output</th>
+<th>Done?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>盯云巨头 capex 指引日历与前次指引对比表</td>
+<td>一页 capex tracker</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MU / HBM：收集原厂一手表述摘录（非标题党）</td>
+<td>ticker note</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>光学高 beta：列「什么订单数据才算强化」标准</td>
+<td>falsifier 细化</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>需要时才开 ljg-invest；本周不强制新 deep dive</td>
+<td>—</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>下周五填 <code>2026-07-25.md</code> 周报</td>
+<td>weekly file</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deep dive needed？</strong> <strong>None</strong>（除非 capex
+指引爆雷）</p>
+<hr />
+<h2 id="explicit-noise故意不决策">8. Explicit noise（故意不决策）</h2>
+<ul>
+<li>单日 −5%～−10% 且无公司新闻的「要不要砍逻辑」</li>
+<li>开盘半程回撤 / 死猫跳评分（短线工具）</li>
+<li>分析师 PT 上调/下调</li>
+<li>「NVDA 会不会到 $xxx」类预测稿</li>
+<li>无客户名、无量的二手「部署协议」单独当拐点</li>
+</ul>
+<hr />
+<h2 id="carry-forward-memory">9. Carry-forward memory</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open questions</td>
+<td>云巨头 2026–2027 capex 斜率是加速还是高位平台？</td>
+</tr>
+<tr>
+<td>Pending primary confirms</td>
+<td>电力侧任何正式大单/合资；光学一级订单</td>
+</tr>
+<tr>
+<td>Thesis one-liner for next week</td>
+<td>Intact until hyperscaler capex softens in primary filings</td>
+</tr>
+<tr>
+<td>Do not forget</td>
+<td>7/20–7/21 续：Meta capex 二手传闻、ASML 指引、NVDA 电力相关报道、AMD
+Helios — <strong>全部进下周 §3 用 source tier 过滤</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sign-off">10. Sign-off</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Author</td>
+<td>system + session fill (example)</td>
+</tr>
+<tr>
+<td>Time spent</td>
+<td>~20 min (template bake + fill)</td>
+</tr>
+<tr>
+<td>Sources checked</td>
+<td>digests / daily brief / news scan</td>
+</tr>
+<tr>
+<td>Confidence in this week’s grade</td>
+<td><strong>Med–High</strong>（缺你本人持仓确认，逻辑层仍完整）</td>
+</tr>
+<tr>
+<td>Next brief due</td>
+<td><strong>2026-07-25</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="path">Path</h2>
+<ul>
+<li>Template: <code>templates/weekly_thesis_brief.md</code></li>
+<li>This instance:
+<code>investment-intelligence-hub/memory/weekly_reviews/2026-07-18.md</code></li>
+</ul>
+    </article>
+  </main>
+
+
+  <!-- Reading progress + code copy + smooth scroll -->
+  <script>
+    (function () {
+      // Reading progress bar
+      var bar = document.getElementById('reading-progress');
+      if (bar) {
+        var update = function () {
+          var doc = document.documentElement;
+          var scrollTop = doc.scrollTop || document.body.scrollTop;
+          var height = doc.scrollHeight - doc.clientHeight;
+          var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+          bar.style.width = pct + '%';
+        };
+        document.addEventListener('scroll', update, { passive: true });
+        update();
+      }
+
+      // Code copy button (added on hover-capable devices)
+      var codeBlocks = document.querySelectorAll('pre > code');
+      codeBlocks.forEach(function (code) {
+        var pre = code.parentElement;
+        if (pre.querySelector('.copy-btn')) return;
+        var btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(code.innerText).then(function () {
+            btn.textContent = 'Copied';
+            setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+          }, function () {
+            btn.textContent = 'Failed';
+          });
+        });
+        pre.appendChild(btn);
+      });
+
+      // Smooth scroll for in-page anchors (TOC)
+      document.querySelectorAll('nav#TOC a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var target = document.querySelector(a.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.pushState(null, '', a.getAttribute('href'));
+          }
+        });
+      });
+
+      // Image click-to-expand (lightbox lite)
+      document.querySelectorAll('article img, figure img').forEach(function (img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function () {
+          var overlay = document.createElement('div');
+          overlay.className = 'img-lightbox';
+          var clone = document.createElement('img');
+          clone.src = img.src;
+          overlay.appendChild(clone);
+          overlay.addEventListener('click', function () {
+            overlay.remove();
+            document.body.style.overflow = '';
+          });
+          document.body.style.overflow = 'hidden';
+          document.body.appendChild(overlay);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

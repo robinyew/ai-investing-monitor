@@ -1,0 +1,109 @@
+name: Weekly Thesis Brief
+
+# Friday local launchd can also run; this workflow is for CI/email via GitHub Secrets.
+on:
+  workflow_dispatch:
+    inputs:
+      week_end:
+        description: "Friday week_end (YYYY-MM-DD). Defaults to nearest Friday on/before today (UTC)."
+        required: false
+        default: ""
+      force_regen:
+        description: "Force regenerate markdown even if a filled brief exists"
+        required: false
+        default: "false"
+      dry_run:
+        description: "Build HTML but do not send email"
+        required: false
+        default: "false"
+      html_only:
+        description: "Only render HTML from existing markdown (no md regen)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-thesis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system deps (pandoc)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Install Python deps
+        run: |
+          pip install -r requirements.txt
+          pip install requests
+
+      - name: Install huashu-md-html from vendor/
+        run: |
+          test -f vendor/huashu-md-html/scripts/md_to_html.py
+          mkdir -p "$HOME/.agents/skills/huashu-md-html"
+          cp -R vendor/huashu-md-html/* "$HOME/.agents/skills/huashu-md-html/"
+          test -f "$HOME/.agents/skills/huashu-md-html/scripts/md_to_html.py"
+          echo "huashu-md-html ready (theme=report via pipeline)"
+      - name: Resolve week_end
+        id: week
+        run: |
+          if [ -n "${{ github.event.inputs.week_end }}" ]; then
+            WE="${{ github.event.inputs.week_end }}"
+          else
+            WE=$(python3 - <<'PY'
+          from datetime import datetime, timedelta
+          d = datetime.utcnow().date()
+          delta = (d.weekday() - 4) % 7
+          print((d - timedelta(days=delta)).isoformat())
+          PY
+            )
+          fi
+          echo "week_end=$WE" >> "$GITHUB_OUTPUT"
+          echo "Using week_end=$WE"
+
+      - name: Run weekly thesis pipeline
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REPORT_BASE_URL: ${{ secrets.REPORT_BASE_URL }}
+        run: |
+          ARGS="--week-end ${{ steps.week.outputs.week_end }}"
+          if [ "${{ github.event.inputs.force_regen }}" = "true" ]; then
+            ARGS="$ARGS --force-regen"
+          fi
+          if [ "${{ github.event.inputs.html_only }}" = "true" ]; then
+            ARGS="$ARGS --html-only"
+          fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --no-email"
+          fi
+          python scripts/run_weekly_thesis_brief.py $ARGS
+
+      - name: Commit weekly artifacts
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            investment-intelligence-hub/memory/weekly_reviews/ \
+            docs/weekly/ \
+            reports/weekly/ \
+            reports/digest/*_weekly_thesis.md \
+            || true
+          git diff --cached --quiet || git commit -m "Weekly thesis brief ${{ steps.week.outputs.week_end }}"
+          git pull --rebase origin main || true
+          git push
