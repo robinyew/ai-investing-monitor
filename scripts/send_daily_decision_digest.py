@@ -38,7 +38,10 @@ SMTP_REQUIRED = ["SMTP_HOST", "SMTP_PORT", "EMAIL_FROM", "EMAIL_TO"]
 # Fable engine (preview/test only — phase 1 never sends email)
 # ---------------------------------------------------------------------------
 
-FABLE_MODEL_DEFAULT = "claude-fable-5"
+# LLM digest is now the official digest and runs on Opus 4.8 (was claude-fable-5).
+# The internal engine identifier stays "fable" (= LLM path with rules fallback);
+# only the model, subject, and footer changed. FABLE_MODEL env still overrides.
+FABLE_MODEL_DEFAULT = "claude-opus-4-8"
 FABLE_MAX_REPORT_CHARS = 10000
 
 ALLOWED_SUGGESTED_ACTIONS = [
@@ -777,17 +780,16 @@ def main() -> int:
         return 2
 
     if args.engine == "fable":
-        # Fable runs as a parallel PREVIEW digest: subject is always marked
-        # "Fable Preview" and the body carries a preview footer, so it can never
-        # be mistaken for the official rules-engine digest.
+        # LLM digest (Opus 4.8) is now THE official digest. Standard subject, no
+        # preview label/footer. Falls back to the rules engine on any failure.
         digest, info = generate_digest_with_fable(sources, args.date)
         digest.date = args.date
-        subject = f"AI Investing Digest — Fable Preview — {digest.subject_status} — {digest.date}"
-        body = render_email(digest).rstrip() + "\n\nPreview only. Official digest remains rules engine.\n"
+        subject = subject_for_digest(digest)
+        body = render_email(digest)
         # Debug info goes to stdout (dry-run console / Actions log), never into the email.
-        print("DRY RUN - Daily Decision Digest" if args.dry_run else "Daily Decision Digest (Fable Preview)")
+        print("DRY RUN - Daily Decision Digest" if args.dry_run else "Daily Decision Digest (Opus 4.8)")
         print(f"Engine: {info['engine']}")
-        print(f"Fable call success: {'Yes' if info['call_success'] else 'No'}")
+        print(f"LLM call success: {'Yes' if info['call_success'] else 'No'}")
         print(f"Fallback: {'Yes' if info['fallback'] else 'No'}")
         if info["fallback_reason"]:
             print(f"Fallback reason: {info['fallback_reason']}")
@@ -798,7 +800,7 @@ def main() -> int:
             print("")
             print(body)
             return 0
-        save_digest_copy(args.date, "fable", subject, body, engine_detail=info["engine"])
+        save_digest_copy(args.date, "opus", subject, body, engine_detail=info["engine"])
         return 0 if send_email(subject, body) else 1
 
     digest = generate_digest_with_rules(sources)

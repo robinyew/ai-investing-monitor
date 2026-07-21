@@ -116,7 +116,12 @@ jobs:
           git add docs/intelligence/
           git add investment-intelligence-hub/reports/daily_intelligence/*_publish_notes.md
           git commit -m "Publish intelligence brief ${{ inputs.date }}" || echo "No changes to commit"
-          git push
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            git push && break
+            echo "push attempt $attempt failed (concurrent push); retrying..."
+            sleep $((RANDOM % 5 + 2))
+          done
 
       - name: Send Hub Intelligence email notification
         if: ${{ inputs.publish == 'true' }}

@@ -19,7 +19,8 @@ if [ -z "$PAT" ]; then
 fi
 
 DATE=$(TZ="America/Toronto" date '+%Y-%m-%d')
-PAYLOAD="{\"ref\":\"main\",\"inputs\":{\"date\":\"$DATE\",\"dry_run\":\"false\"}}"
+# Official digest now runs on the LLM path (Opus 4.8, engine=fable = LLM+rules fallback).
+PAYLOAD="{\"ref\":\"main\",\"inputs\":{\"date\":\"$DATE\",\"engine\":\"fable\",\"dry_run\":\"false\"}}"
 
 echo "$LOG_TAG Dispatching Daily Decision Digest for $DATE..."
 response=$(curl -s -w "\n%{http_code}" -X POST \
@@ -38,3 +39,12 @@ else
   echo "$LOG_TAG FAIL Digest (HTTP $http_code): $body" >&2
   exit 1
 fi
+
+# Wait for the digest workflow to finish (Opus call ~1-2 min + commit), then pull
+# the committed digest copy (reports/digest/) to the local repo.
+REPO="/Users/leimingyu/Investment/ai-investing-monitor"
+echo "$LOG_TAG Waiting 10 min for digest workflow to complete..."
+sleep 600
+echo "$LOG_TAG Pulling digest copy..."
+git -C "$REPO" pull --rebase --autostash origin main 2>&1 | sed "s/^/$LOG_TAG /"
+echo "$LOG_TAG Pull complete."

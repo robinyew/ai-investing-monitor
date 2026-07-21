@@ -72,7 +72,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports docs
           git diff --cached --quiet || git commit -m "Add AI investing pre-market brief"
-          git push
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            git push && break
+            echo "push attempt $attempt failed (concurrent push); retrying..."
+            sleep $((RANDOM % 5 + 2))
+          done
 
       - name: Create or update GitHub issue notification
         uses: actions/github-script@v7
