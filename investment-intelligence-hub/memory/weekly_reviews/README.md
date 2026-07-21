@@ -38,3 +38,9 @@ Put them in `.env.local` or `~/.config/ai-investing-monitor/env` for launchd.
 - Price alone never sets Damaged
 - Max 5 material facts
 - No buy/sell, no price targets
+
+## Handoff
+
+Full system recap + ops:
+`reports/chatgpt_handoff/2026-07-21_weekly_thesis_system.md`
+
