@@ -66,6 +66,7 @@
 | 网页本地触发 | `scripts/dispatch_weekly_site_publish.sh` |
 | 网页 launchd | `launchd/com.robin.ai-investing.weekly-site-publish.plist` |
 | Vercel 静态站 | `vercel-weekly-thesis/` |
+| 网页发布专用交接 | `vercel-weekly-thesis/HANDOFF.md` |
 | Huashu | `vendor/huashu-md-html/` |
 | Memory 说明 | `investment-intelligence-hub/memory/weekly_reviews/README.md` |
 
