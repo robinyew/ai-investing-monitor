@@ -189,22 +189,22 @@ hyperscaler capex 砍单；电力不再是约束；光模块需求证伪；ASIC 
 ### 可选 / 未做
 
 - [ ] 本机 `.env.local` 加 SMTP → launchd 也能直接发信
-- [ ] GHA `schedule: cron` 周五 21:00 UTC（≈17:00 ET）作 Mac 关机双保险
-- [ ] launchd → `gh workflow run` 只负责可靠发信
+- [x] GHA 周五 17:00 `America/New_York` 云端生成，作为 Mac 关机双保险
+- [x] 网页 launchd → `gh workflow run`，周五 18:30 主触发
 
 ---
 
-## 7. 下周五怎么操作（例：2026-07-25）
+## 7. 下周五怎么操作（例：2026-07-24）
 
 **推荐（发信可靠）：** 先轻改 MD，再 GHA：
 
 ```bash
 # 可选编辑
-#   investment-intelligence-hub/memory/weekly_reviews/2026-07-25.md
+#   investment-intelligence-hub/memory/weekly_reviews/2026-07-24.md
 
 gh workflow run weekly-thesis-brief.yml \
   -R robinyew/ai-investing-monitor \
-  -f week_end=2026-07-25 \
+  -f week_end=2026-07-24 \
   -f html_only=false \
   -f force_regen=false
 ```
@@ -213,8 +213,8 @@ gh workflow run weekly-thesis-brief.yml \
 
 ```bash
 cd ~/Investment/ai-investing-monitor
-python3 scripts/run_weekly_thesis_brief.py --week-end 2026-07-25 --preview-only
-open docs/weekly/2026-07-25.html
+python3 scripts/run_weekly_thesis_brief.py --week-end 2026-07-24 --preview-only
+open docs/weekly/2026-07-24.html
 ```
 
 **Mac 周五 17:00 开着：** launchd 自动跑（HTML 一定有；邮件看本机 SMTP）。
