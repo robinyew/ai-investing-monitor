@@ -1,0 +1,167 @@
+name: Publish Weekly Thesis Site
+
+on:
+  schedule:
+    # Cloud fallback. The Mac dispatches this workflow at 18:30 when online.
+    - cron: "40 18 * * 5"
+      timezone: "America/New_York"
+  workflow_dispatch:
+    inputs:
+      week_end:
+        description: "Weekly Markdown date (YYYY-MM-DD); defaults to nearest Friday in New York"
+        required: false
+        default: ""
+      force:
+        description: "Republish even when this week already has a success marker"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-thesis-site-production
+  cancel-in-progress: false
+
+env:
+  SITE_BASE_URL: https://vercel-weekly-thesis.vercel.app
+  VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve report date
+        id: week
+        env:
+          REQUESTED_WEEK: ${{ github.event.inputs.week_end }}
+        run: |
+          WE=$(python3 -c 'import os; from datetime import datetime,timedelta; from zoneinfo import ZoneInfo; requested=os.environ.get("REQUESTED_WEEK","").strip(); d=datetime.now(ZoneInfo("America/New_York")).date(); print(requested or (d-timedelta(days=(d.weekday()-4)%7)).isoformat())')
+          echo "week_end=$WE" >> "$GITHUB_OUTPUT"
+          echo "Using week_end=$WE"
+
+      - name: Check idempotency marker
+        id: marker
+        env:
+          WEEK_END: ${{ steps.week.outputs.week_end }}
+          FORCE: ${{ github.event.inputs.force }}
+        run: |
+          if [ -f "vercel-weekly-thesis/.published/$WEEK_END.txt" ] && [ "$FORCE" != "true" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Already published and verified: $WEEK_END"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify canonical Markdown exists
+        if: steps.marker.outputs.skip != 'true'
+        env:
+          WEEK_END: ${{ steps.week.outputs.week_end }}
+        run: |
+          SOURCE="investment-intelligence-hub/memory/weekly_reviews/$WEEK_END.md"
+          test -s "$SOURCE"
+          grep -q '^## 0\.' "$SOURCE"
+          echo "Using source: $SOURCE"
+
+      - name: Build dated site and one-year archive
+        if: steps.marker.outputs.skip != 'true'
+        run: python3 scripts/build_weekly_thesis_site.py --week-end "${{ steps.week.outputs.week_end }}" --retention-days 365
+
+      - name: Validate generated page
+        if: steps.marker.outputs.skip != 'true'
+        env:
+          WEEK_END: ${{ steps.week.outputs.week_end }}
+        run: |
+          PAGE="vercel-weekly-thesis/weekly/$WEEK_END/index.html"
+          test -s "$PAGE"
+          grep -q "$WEEK_END" "$PAGE"
+          grep -q 'Weekly Thesis' "$PAGE"
+          grep -q 'Research-only' "$PAGE"
+
+      - name: Validate Vercel credentials
+        if: steps.marker.outputs.skip != 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          test -n "$VERCEL_TOKEN"
+          test -n "$VERCEL_ORG_ID"
+          test -n "$VERCEL_PROJECT_ID"
+
+      - name: Deploy Vercel production
+        if: steps.marker.outputs.skip != 'true'
+        id: deploy
+        working-directory: vercel-weekly-thesis
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npx --yes vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+          DEPLOY_URL=$(npx --yes vercel@latest deploy --prod --yes --token="$VERCEL_TOKEN")
+          echo "deployment_url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
+          echo "Deployed: $DEPLOY_URL"
+
+      - name: Verify public dated URL
+        if: steps.marker.outputs.skip != 'true'
+        env:
+          WEEK_END: ${{ steps.week.outputs.week_end }}
+        run: |
+          URL="$SITE_BASE_URL/weekly/$WEEK_END/"
+          for attempt in 1 2 3 4 5 6 7 8 9 10; do
+            if curl --fail --silent --show-error --location "$URL" -o /tmp/weekly-page.html && grep -q "$WEEK_END" /tmp/weekly-page.html; then
+              echo "Verified: $URL"
+              exit 0
+            fi
+            echo "Waiting for production alias (attempt $attempt/10)..."
+            sleep 15
+          done
+          echo "Production verification failed: $URL" >&2
+          exit 1
+
+      - name: Record successful publication
+        if: steps.marker.outputs.skip != 'true'
+        env:
+          WEEK_END: ${{ steps.week.outputs.week_end }}
+        run: |
+          mkdir -p vercel-weekly-thesis/.published
+          printf '%s\n' "$SITE_BASE_URL/weekly/$WEEK_END/" > "vercel-weekly-thesis/.published/$WEEK_END.txt"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vercel-weekly-thesis/index.html vercel-weekly-thesis/archive.html vercel-weekly-thesis/latest vercel-weekly-thesis/weekly vercel-weekly-thesis/.published
+          if git diff --cached --quiet; then
+            echo "No site artifacts changed"
+          else
+            git commit -m "Publish weekly thesis site $WEEK_END"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Send verified publication email
+        if: steps.marker.outputs.skip != 'true'
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python3 scripts/send_weekly_site_email.py --week-end "${{ steps.week.outputs.week_end }}" --base-url "$SITE_BASE_URL"
+
+      - name: Publish summary
+        run: |
+          echo "### Weekly Thesis Site" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Week: ${{ steps.week.outputs.week_end }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Already published: ${{ steps.marker.outputs.skip }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- URL: $SITE_BASE_URL/weekly/${{ steps.week.outputs.week_end }}/" >> "$GITHUB_STEP_SUMMARY"

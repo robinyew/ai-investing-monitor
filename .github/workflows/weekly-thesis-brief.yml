@@ -2,6 +2,9 @@ name: Weekly Thesis Brief
 
 # Friday local launchd can also run; this workflow is for CI/email via GitHub Secrets.
 on:
+  schedule:
+    - cron: "0 17 * * 5"
+      timezone: "America/New_York"
   workflow_dispatch:
     inputs:
       week_end:
