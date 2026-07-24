@@ -1,6 +1,7 @@
 name: Weekly Thesis Brief
 
-# Friday local launchd can also run; this workflow is for CI/email via GitHub Secrets.
+# Local launchd prefers Claude Code CLI. This cloud fallback uses Anthropic API
+# because a GitHub runner cannot reuse the Mac's Claude subscription login.
 on:
   schedule:
     - cron: "0 17 * * 5"
@@ -81,6 +82,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          WEEKLY_DISABLE_CLAUDE_CLI: "true"
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           REPORT_BASE_URL: ${{ secrets.REPORT_BASE_URL }}
         run: |

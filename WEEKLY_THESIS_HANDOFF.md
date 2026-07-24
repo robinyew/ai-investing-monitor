@@ -1,7 +1,7 @@
 # HANDOFF — Weekly Thesis Brief（周报专用）
 
 > 写给**完全没有上下文**的新会话。
-> 最后更新：2026-07-22
+> 最后更新：2026-07-24
 > 仓库：`robinyew/ai-investing-monitor`
 > 本地：`/Users/leimingyu/Investment/ai-investing-monitor`
 
@@ -91,6 +91,9 @@ open /Users/leimingyu/Investment/ai-investing-monitor/docs/weekly/2026-07-18.htm
 | 时间 | **周五 17:00**（**系统本地时区**；机子在 ET 即美东） |
 | 命令 | `bash scripts/dispatch_weekly_thesis.sh` |
 | 日志 | `logs/weekly-thesis.log` / `logs/weekly-thesis-error.log` |
+| 内容生成 | **Claude Code CLI 优先**（本机 Claude Pro 登录） |
+| CLI | `~/.local/bin/claude`；可用 `CLAUDE_BIN` 覆盖 |
+| 模型 | CLI 默认 `opus`；可用 `WEEKLY_CLAUDE_MODEL` 覆盖 |
 | 环境 | source `.env.local` 与 `~/.config/ai-investing-monitor/env` |
 
 **关键限制：** 本机 `.env.local` **通常没有 SMTP** → launchd 仍会 **生成 MD+HTML**，但 **邮件会 skip**。
@@ -102,7 +105,8 @@ open /Users/leimingyu/Investment/ai-investing-monitor/docs/weekly/2026-07-18.htm
 |----|-----|
 | Workflow 名 | `Weekly Thesis Brief` |
 | 触发 | `workflow_dispatch`（可选手动；日后可加 cron） |
-| Secrets | `SMTP_*`, `EMAIL_FROM`, `EMAIL_TO`，可选 `ANTHROPIC_API_KEY`, `REPORT_BASE_URL` |
+| 内容生成 | Anthropic API（云端不能复用本机 Claude 登录） |
+| Secrets | `SMTP_*`, `EMAIL_FROM`, `EMAIL_TO`，`ANTHROPIC_API_KEY`，可选 `REPORT_BASE_URL` |
 | 测试 run | `29873496342` — success, Email: sent |
 | 主题 | `Weekly Thesis Brief — {week_end}` |
 
@@ -119,7 +123,7 @@ gh workflow run weekly-thesis-brief.yml \
 ### C) 流水线逻辑（`run_weekly_thesis_brief.py`）
 
 1. `week_end` = 当天或之前最近的 **周五（NY）**
-2. 准备 markdown：优先已填 brief → 有 key 则 LLM → 否则 rules_auto（digest/news）
+2. 准备 markdown：优先已填 brief → 本机 Claude Code CLI → Anthropic API → rules_auto
 3. 渲染 HTML：`huashu --theme report`
 4. 写 `docs/weekly/` + `reports/weekly/` + index
 5. 有 SMTP 才发 HTML multipart
@@ -186,6 +190,7 @@ hyperscaler capex 砍单；电力不再是约束；光模块需求证伪；ASIC 
 - [x] Vercel Production + 日期路径 + latest + 一年归档
 - [x] 网页双触发：本地 18:30 + GitHub 18:40 补跑
 - [x] 网页发布成功后 SMTP 通知
+- [x] 本机生成优先调用 Claude Code CLI；云端保留 Anthropic API 备份
 
 ### 可选 / 未做
 
