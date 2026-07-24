@@ -7,12 +7,24 @@ set -euo pipefail
 
 REPO="/Users/leimingyu/Investment/ai-investing-monitor"
 LOG_TAG="[$(date '+%Y-%m-%d %H:%M:%S')] weekly_thesis"
-PYTHON="${PYTHON:-/usr/bin/python3}"
-# Prefer homebrew python if present
-if [ -x /opt/homebrew/bin/python3 ]; then
-  PYTHON=/opt/homebrew/bin/python3
-elif [ -x "$HOME/.pyenv/shims/python3" ]; then
-  PYTHON="$HOME/.pyenv/shims/python3"
+REQUESTED_PYTHON="${PYTHON:-}"
+PYTHON=""
+for CANDIDATE in \
+  "$REQUESTED_PYTHON" \
+  /Library/Frameworks/Python.framework/Versions/Current/bin/python3 \
+  /opt/homebrew/bin/python3 \
+  "$HOME/.pyenv/shims/python3" \
+  /usr/bin/python3
+do
+  if [ -n "$CANDIDATE" ] && [ -x "$CANDIDATE" ] \
+    && "$CANDIDATE" -c "import yaml" >/dev/null 2>&1; then
+    PYTHON="$CANDIDATE"
+    break
+  fi
+done
+if [ -z "$PYTHON" ]; then
+  echo "$LOG_TAG No Python with PyYAML available" >&2
+  exit 1
 fi
 
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
@@ -41,10 +53,11 @@ if [ -f "$HOME/.config/ai-investing-monitor/env" ]; then
 fi
 
 echo "$LOG_TAG Starting weekly thesis brief pipeline..."
+echo "$LOG_TAG Python enabled: $PYTHON"
 if [ -n "${CLAUDE_BIN:-}" ]; then
   echo "$LOG_TAG Claude Code CLI enabled: $CLAUDE_BIN"
 else
   echo "$LOG_TAG Claude Code CLI unavailable; Anthropic API/rules fallback will be used"
 fi
-"$PYTHON" "$REPO/scripts/run_weekly_thesis_brief.py" 2>&1 | sed "s/^/$LOG_TAG /"
+"$PYTHON" "$REPO/scripts/run_weekly_thesis_brief.py" "$@" 2>&1 | sed "s/^/$LOG_TAG /"
 echo "$LOG_TAG Done."
