@@ -1,0 +1,80 @@
+name: Send Plain Email (SMTP)
+
+# 复用仓库已有 SMTP_* / EMAIL_* Secrets，供本机 launchd 等调用。
+# 触发：workflow_dispatch（gh workflow run）
+on:
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: "Email subject"
+        required: true
+        type: string
+      body_b64:
+        description: "Email body (UTF-8 text, base64-encoded)"
+        required: true
+        type: string
+      to_override:
+        description: "Optional To: address (default EMAIL_TO secret)"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decode body and send via SMTP
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          SUBJECT: ${{ inputs.subject }}
+          BODY_B64: ${{ inputs.body_b64 }}
+          TO_OVERRIDE: ${{ inputs.to_override }}
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import base64, os, smtplib, sys
+          from email.message import EmailMessage
+
+          required = ["SMTP_HOST", "SMTP_PORT", "SMTP_USERNAME", "SMTP_PASSWORD", "EMAIL_FROM", "EMAIL_TO"]
+          missing = [k for k in required if not os.environ.get(k)]
+          if missing:
+              print(f"ERROR missing secrets: {', '.join(missing)}", file=sys.stderr)
+              sys.exit(1)
+
+          body = base64.b64decode(os.environ["BODY_B64"]).decode("utf-8")
+          to_addr = (os.environ.get("TO_OVERRIDE") or "").strip() or os.environ["EMAIL_TO"]
+          subject = os.environ["SUBJECT"]
+
+          msg = EmailMessage()
+          msg["Subject"] = subject
+          msg["From"] = os.environ["EMAIL_FROM"]
+          msg["To"] = to_addr
+          msg.set_content(body)
+
+          host = os.environ["SMTP_HOST"]
+          port = int(os.environ.get("SMTP_PORT", "587"))
+          user = os.environ["SMTP_USERNAME"]
+          password = os.environ["SMTP_PASSWORD"]
+
+          if port == 465:
+              with smtplib.SMTP_SSL(host, port, timeout=60) as smtp:
+                  smtp.login(user, password)
+                  smtp.send_message(msg)
+          else:
+              with smtplib.SMTP(host, port, timeout=60) as smtp:
+                  smtp.ehlo()
+                  smtp.starttls()
+                  smtp.ehlo()
+                  smtp.login(user, password)
+                  smtp.send_message(msg)
+
+          print(f"SMTP SENT_OK to={to_addr} from={os.environ['EMAIL_FROM']} host={host}:{port}")
+          PY
