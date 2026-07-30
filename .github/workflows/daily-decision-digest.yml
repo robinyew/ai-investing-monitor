@@ -14,9 +14,9 @@ on:
         required: false
         default: "false"
       engine:
-        description: "Digest engine: rules (official) or fable (preview email)"
+        description: "Digest engine: rules or opus (official Opus 4.8 digest)"
         required: false
-        default: "rules"
+        default: "opus"
 
 permissions:
   contents: write
@@ -46,7 +46,7 @@ jobs:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          ARGS="--engine ${{ github.event.inputs.engine || 'rules' }}"
+          ARGS="--engine ${{ github.event.inputs.engine || 'opus' }}"
           if [ -n "${{ github.event.inputs.date }}" ]; then
             ARGS="$ARGS --date ${{ github.event.inputs.date }}"
           fi
@@ -61,6 +61,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports/digest/
-          git diff --cached --quiet || git commit -m "Add decision digest copy (${{ github.event.inputs.engine || 'rules' }})"
+          if ! git diff --cached --quiet; then
+            if git diff --cached --diff-filter=A --name-only | grep -q .; then
+              git commit -m "Add decision digest copy (Opus 4.8)"
+            else
+              git commit -m "Refine decision digest copy (Opus 4.8)"
+            fi
+          fi
           git pull --rebase origin main
           git push
