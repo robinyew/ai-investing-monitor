@@ -800,7 +800,7 @@ def main() -> int:
             print("")
             print(body)
             return 0
-        save_digest_copy(args.date, "opus", subject, body, engine_detail=info["engine"])
+        save_digest_copy(args.date, "opus", subject, body,\n                         engine_detail="Opus 4.8" if info["engine"] == "fable" else "Rules fallback")
         return 0 if send_email(subject, body) else 1
 
     digest = generate_digest_with_rules(sources)
