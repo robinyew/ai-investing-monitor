@@ -19,8 +19,8 @@ if [ -z "$PAT" ]; then
 fi
 
 DATE=$(TZ="America/Toronto" date '+%Y-%m-%d')
-# Official digest now runs on the LLM path (Opus 4.8, engine=opus = Opus 4.8 with rules fallback).
-PAYLOAD="{\"ref\":\"main\",\"inputs\":{\"date\":\"$DATE\",\"engine\":\"opus\",\"dry_run\":\"false\"}}"
+# Official digest now runs on the LLM path (Opus 4.8, engine=fable (legacy internal name) = Opus 4.8 with rules fallback).
+PAYLOAD="{\"ref\":\"main\",\"inputs\":{\"date\":\"$DATE\",\"engine\":\"fable\",\"dry_run\":\"false\"}}"
 
 echo "$LOG_TAG Dispatching Daily Decision Digest for $DATE..."
 response=$(curl -s -w "\n%{http_code}" -X POST \
