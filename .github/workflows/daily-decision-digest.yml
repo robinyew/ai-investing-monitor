@@ -14,9 +14,9 @@ on:
         required: false
         default: "false"
       engine:
-        description: "Digest engine: rules or opus (official Opus 4.8 digest)"
+        description: "Digest engine: rules or fable (legacy internal name for official Opus 4.8 digest)"
         required: false
-        default: "opus"
+        default: "fable"
 
 permissions:
   contents: write
@@ -46,7 +46,7 @@ jobs:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          ARGS="--engine ${{ github.event.inputs.engine || 'opus' }}"
+          ARGS="--engine ${{ github.event.inputs.engine || 'fable' }}"
           if [ -n "${{ github.event.inputs.date }}" ]; then
             ARGS="$ARGS --date ${{ github.event.inputs.date }}"
           fi
