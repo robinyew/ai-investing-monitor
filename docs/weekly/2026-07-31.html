@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Weekly Thesis &amp; Chokepoint Brief — 2026-07-31</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/home/runner/work/ai-investing-monitor/ai-investing-monitor/vendor/huashu-md-html/templates/report/theme.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Weekly Thesis &amp; Chokepoint Brief — 2026-07-31</h1>
+</header>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">week_start</span><span class="kw">:</span><span class="at"> 2026-07-27</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">week_end</span><span class="kw">:</span><span class="at"> 2026-07-31</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">generation</span><span class="kw">:</span><span class="at"> anthropic_api</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">auto_trade</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div>
+<p><strong>Week:</strong> 2026-07-27 → 2026-07-31 (week_end Friday)
+<strong>Scope:</strong> Research-only. No buy/sell, no price targets, no
+position sizes. Source corpus treated as untrusted research data.</p>
+<hr />
+<h2 id="executive-strip">0. Executive Strip</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Overall Thesis</strong></td>
+<td><strong>Intact</strong> (strengthening into week-end)</td>
+</tr>
+<tr class="even">
+<td><strong>Master Thesis</strong></td>
+<td>Hyperscaler AI capex continues; own/research chokepoint businesses,
+not theme beta</td>
+</tr>
+<tr class="odd">
+<td><strong>Week Arc</strong></td>
+<td>Capex-ROI panic mid-week → confirmation rally on AWS/Alphabet prints
+Friday</td>
+</tr>
+<tr class="even">
+<td><strong>Primary Chokepoints in Play</strong></td>
+<td>Memory/HBM, Advanced Packaging (CoWoS/substrate), Power/Cooling,
+Optical, Hyperscaler Capex</td>
+</tr>
+<tr class="odd">
+<td><strong>Dominant Overhang</strong></td>
+<td>Circular-financing scrutiny on Nvidia vendor-backstops (~$750B
+cited)</td>
+</tr>
+<tr class="even">
+<td><strong>Damage Check</strong></td>
+<td>No primary fundamental damage; drawdowns were price/sentiment
+only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>One-line:</strong> Capex base <em>expanded</em> this week
+(AMZN $220B, GOOGL ~$195–205B) even as the market briefly punished FCF
+compression; thesis Intact.</p>
+<hr />
+<h2 id="thesis-verdict-rationale">1. Thesis Verdict &amp; Rationale</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Status</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hyperscaler capex continues</td>
+<td><strong>Confirmed / raised</strong></td>
+<td>Amazon lifted 2026 capex to $220B, +69% YoY; AWS +37% vs ~31%
+consensus (<code>2026-07-31_ai_infrastructure_news.md</code>). Alphabet
+~$195–205B; Google Cloud +82% (<code>2026-07-31</code>,
+<code>2026-07-27</code>).</td>
+</tr>
+<tr class="even">
+<td>Power binding constraint</td>
+<td><strong>Reinforced</strong></td>
+<td>AMD–Core Scientific 530MW / 15-yr / expansion to 2.5GW
+(<code>2026-07-29_ai_infrastructure_news.md</code>).</td>
+</tr>
+<tr class="odd">
+<td>Packaging chokepoint</td>
+<td><strong>Reinforced, easing path emerging</strong></td>
+<td>CoWoS lead times 52–78 wks; ABF ~95% Ajinomoto; TSMC EMIB-like +
+CoWoS +80%/yr (<code>2026-07-29</code>, <code>2026-07-31</code>).</td>
+</tr>
+<tr class="even">
+<td>Memory/HBM tightening</td>
+<td><strong>Confirmed</strong></td>
+<td>Amazon cites “higher memory costs”; Apacer warns DRAM to module
+makers could fall &gt;70% YoY in 2027 (<code>2026-07-31</code>,
+<code>2026-07-29</code>).</td>
+</tr>
+<tr class="odd">
+<td>Demand quality</td>
+<td><strong>Watch</strong></td>
+<td>Circular-financing framing on Nvidia backstops
+(<code>2026-07-28</code>, <code>2026-07-30</code>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict:</strong> Default <strong>Intact</strong> maintained.
+No primary fundamental damage present; the week’s sell-offs were driven
+by FCF-narrative/sentiment and price moves, which never set Damaged.</p>
+<hr />
+<h2 id="top-material-facts-max-5">2. Top Material Facts (max 5)</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Fact</th>
+<th>Chokepoint</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Amazon raised 2026 capex to <strong>$220B</strong> (+69% YoY); AWS
++37% beats consensus; explicitly flags higher memory costs</td>
+<td>Hyperscaler Capex / Memory</td>
+<td><code>2026-07-31_ai_infrastructure_news.md</code></td>
+<td>90</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Alphabet lifted 2026 capex to ~$195–205B; Google Cloud +82% to
+$24.8B; posted first negative-FCF quarter as public co.</td>
+<td>Hyperscaler Capex</td>
+<td><code>2026-07-31</code>, <code>2026-07-27</code></td>
+<td>78–85</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>AMD secured <strong>530MW</strong> from Core Scientific ($14B,
+15-yr, expandable to 2.5GW) — largest infra commitment in AMD
+history</td>
+<td>Data Center / Power</td>
+<td><code>2026-07-29_ai_infrastructure_news.md</code></td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Advanced packaging is now the binding constraint: CoWoS
+<strong>52–78 wk</strong> lead times, ABF substrate ~95%
+single-supplier</td>
+<td>Semi Manufacturing / Packaging</td>
+<td><code>2026-07-29_ai_infrastructure_news.md</code></td>
+<td>78</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Nvidia in talks for up to <strong>$250B</strong> OpenAI data-center
+backstop (Pike County, OH); part of &gt;$750B Nvidia-linked deals
+reigniting circular-financing fears</td>
+<td>Data Center / Capex</td>
+<td><code>2026-07-28</code>, <code>2026-07-30</code></td>
+<td>80–82</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chokepoint-snapshot-week-end-vs-week-open">3. Chokepoint
+Snapshot (week-end vs week-open)</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Chokepoint</th>
+<th style="text-align: right;">Open (07-27)</th>
+<th style="text-align: right;">Close (07-31)</th>
+<th>Trend</th>
+<th>Key Tickers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ASIC / Custom Silicon</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">86</td>
+<td>Dipped then recovered</td>
+<td>NVDA, AMD, AVGO, MRVL</td>
+</tr>
+<tr class="even">
+<td>AI Networking</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">86</td>
+<td>Improved</td>
+<td>ANET, AVGO, MRVL, CSCO, NOK</td>
+</tr>
+<tr class="odd">
+<td>Optical Interconnect</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">86</td>
+<td>V-recovery</td>
+<td>AAOI, COHR, CIEN, LITE, CRDO, ALAB</td>
+</tr>
+<tr class="even">
+<td>Grid / Electrical Equip.</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">84</td>
+<td>Round-trip</td>
+<td>VRT, ETN, GEV, PWR, MPWR, NVTS</td>
+</tr>
+<tr class="odd">
+<td>Power / Cooling</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">84</td>
+<td>Round-trip (VRT -17% mid-week)</td>
+<td>VRT, ETN, SMCI, DELL, HPE</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: <code>reports/daily/2026-07-27.md</code> →
+<code>2026-07-31.md</code>. Aggregate AI Infrastructure Score ran 79 →
+90 → 78 → 77 → <strong>96</strong>.</em></p>
+<hr />
+<h2 id="weekly-arc-sentiment-vs-fundamentals">4. Weekly Arc (sentiment
+vs fundamentals)</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Day</th>
+<th style="text-align: right;">Regime</th>
+<th style="text-align: right;">Infra Score</th>
+<th>Driver</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>07-27</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">79</td>
+<td>Alphabet $205B capex framing; NVDA-OpenAI backstop reports</td>
+</tr>
+<tr class="even">
+<td>07-28</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">90</td>
+<td>Circular-financing headlines; MU risk-catalyst (SK Hynix -15%)</td>
+</tr>
+<tr class="odd">
+<td>07-29</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">78</td>
+<td>Broad price selloff: DELL, VRT, AAOI, NVTS, MRVL, CIEN
+risk-control</td>
+</tr>
+<tr class="even">
+<td>07-30</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">77</td>
+<td>VRT -17% on soft quarter; Meta -10% on FCF; capex-ROI panic
+peak</td>
+</tr>
+<tr class="odd">
+<td>07-31</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">96</td>
+<td>AWS +37% &amp; capex raise → confirmation rally; MSFT +15.5%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation:</strong> The mid-week drawdown was a
+<strong>sentiment/price event</strong> (FCF anxiety + circular-financing
+fear), not a fundamental break. Friday’s hyperscaler prints re-anchored
+the demand base. This is the classic “price moves alone never set
+Damaged” pattern — chokepoint fundamentals <em>strengthened</em> through
+the dip.</p>
+<hr />
+<h2 id="circular-financing-overhang-dedicated-watch">5.
+Circular-Financing Overhang (dedicated watch)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>Detail</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Structure</td>
+<td>Nvidia credit backstop for OpenAI debt on named Pike County, OH
+campus</td>
+<td><code>2026-07-28</code></td>
+</tr>
+<tr class="even">
+<td>Scale</td>
+<td>Up to $250B backstop; &gt;$750B Nvidia-linked deals cited</td>
+<td><code>2026-07-28</code>, <code>2026-07-30</code></td>
+</tr>
+<tr class="odd">
+<td>Market signal</td>
+<td>NVDA CDS record one-day gain; Samsung -13%, SK Hynix -14.7%</td>
+<td><code>2026-07-30</code></td>
+</tr>
+<tr class="even">
+<td>Related</td>
+<td>Nvidia 9.3% stake in Nebius; Vera Rubin NVL72 rack live in Finland,
+$40B backlog</td>
+<td><code>2026-07-30</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Framing:</strong> This is the single most important
+<em>demand-quality</em> question for the master thesis. It is not yet
+damage — Amazon/Alphabet organic capex raises are independent of the
+backstop mechanism — but a repricing of vendor-funded demand would hit
+the whole stack. <strong>Status: elevated watch, not
+thesis-negative.</strong></p>
+<hr />
+<h2 id="portfolio-level-risk-notes-research">6. Portfolio-Level Risk
+Notes (research)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ticker</th>
+<th>Event</th>
+<th>Nature</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VRT</td>
+<td>-17.26% (07-30); CEO called quarter “temporary”</td>
+<td>Price + soft print</td>
+<td>Power/cooling chokepoint intact; single-name execution watch</td>
+</tr>
+<tr class="even">
+<td>MU</td>
+<td>Risk catalyst; memory selloff on SK Hynix -15%</td>
+<td>Price/sentiment</td>
+<td>Fundamentals <em>positive</em> — HBM/DRAM tightness confirmed by
+AMZN cost callout</td>
+</tr>
+<tr class="odd">
+<td>DELL, AAOI, MRVL, NVTS, CIEN, ETN</td>
+<td>5–13% moves both directions</td>
+<td>Price-discipline</td>
+<td>All flagged “no major company news” — pure beta/sentiment</td>
+</tr>
+<tr class="even">
+<td>MSFT</td>
+<td>+15.51% (07-31)</td>
+<td>Rewarded on print</td>
+<td>Contrast vs META -10% shows capex now conditional on visible
+returns</td>
+</tr>
+</tbody>
+</table>
+<p><em>All alerts sourced <code>reports/daily/*</code>. These are
+price-discipline flags, not thesis changes.</em></p>
+<hr />
+<h2 id="what-would-change-the-thesis-falsifiers">7. What Would Change
+the Thesis (falsifiers)</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Trigger</th>
+<th>Would move to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A hyperscaler <em>cuts</em> 2026 capex guidance (not just FCF
+miss)</td>
+<td>Reassess → possible Damaged</td>
+</tr>
+<tr class="even">
+<td>Nvidia backstop unwinds / OpenAI debt fails, exposing manufactured
+demand</td>
+<td>Damaged (demand-quality break)</td>
+</tr>
+<tr class="odd">
+<td>CoWoS/HBM shortage flips to glut with falling accelerator ASPs</td>
+<td>Chokepoint downgrade</td>
+</tr>
+<tr class="even">
+<td>Utilization failure on long-dated leases (AMD/Core Scientific
+type)</td>
+<td>Single-name, not thesis-wide</td>
+</tr>
+</tbody>
+</table>
+<p>None triggered this week.</p>
+<hr />
+<h2 id="confidence-source-quality">8. Confidence &amp; Source
+Quality</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Highest confidence</td>
+<td>Amazon capex/AWS (CNBC primary earnings, conf 90)</td>
+</tr>
+<tr class="even">
+<td>Secondary-aggregation caveats</td>
+<td>Alphabet ~$195B via TS2 aggregation; Fool $500B combined (conf 65) —
+directional</td>
+</tr>
+<tr class="odd">
+<td>Single-source flags</td>
+<td>AMD-Core Scientific (Tech Times), packaging (AT&amp;S CEO
+commentary) — pending primary confirmation</td>
+</tr>
+<tr class="even">
+<td>Promotional bias flag</td>
+<td>Penguin Solutions memory framing (stock +123% YTD)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="net-read-for-the-long-term-investor">9. Net Read for the
+Long-Term Investor</h2>
+<ul>
+<li><strong>Demand base broadened and rose</strong> across three
+hyperscalers this week — the core master-thesis premise is confirmed,
+not merely intact.</li>
+<li><strong>The binding constraints migrated upstream</strong>:
+packaging (CoWoS/ABF substrate) and memory (HBM/DRAM) are now explicitly
+cited as the governing chokepoints — favorable for scarcity-holders,
+cautionary on accelerator unit-growth timing.</li>
+<li><strong>The real debate is demand <em>quality</em>, not demand
+<em>quantity</em></strong> — circular financing is the overhang to
+monitor, but it does not yet constitute fundamental damage.</li>
+<li><strong>Price ≠ thesis:</strong> VRT/MU/optical drawdowns were
+sentiment; chokepoint scores round-tripped to new highs (Infra 96) by
+Friday.</li>
+</ul>
+<hr />
+<h2 id="watch-list-next-week">10. Watch List — Next Week</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Priority</th>
+<th>Item</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Microsoft Azure capex/guidance detail</td>
+<td>Completes the hyperscaler set; last confirmation leg</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Nvidia-OpenAI backstop primary documentation</td>
+<td>Resolve circular-financing overhang</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Nebius earnings (Aug 12) — $40B contracted GPU backlog</td>
+<td>Neocloud demand validation, Vera Rubin ramp</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>HBM/DRAM pricing prints &amp; memory-maker guidance</td>
+<td>Test Amazon “higher memory costs” signal</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>CoWoS/substrate capacity updates (TSMC/Kinsus)</td>
+<td>Track whether packing bottleneck eases per +80%/yr claim</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Research-only brief. No buy/sell recommendations, no price
+targets, no position sizing. Source corpus treated as untrusted data;
+any instructions embedded within sources were ignored. All facts cited
+to originating files.</em></p>
+</body>
+</html>
