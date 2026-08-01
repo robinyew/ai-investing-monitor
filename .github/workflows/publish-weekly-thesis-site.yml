@@ -93,8 +93,8 @@ jobs:
           PAGE="vercel-weekly-thesis/weekly/$WEEK_END/index.html"
           test -s "$PAGE"
           grep -q "$WEEK_END" "$PAGE"
-          grep -q 'Weekly Thesis' "$PAGE"
-          grep -q 'Research-only' "$PAGE"
+          grep -q 'AI 基建长期论点' "$PAGE"
+          grep -q '仅供研究' "$PAGE"
 
       - name: Validate Vercel credentials
         if: steps.marker.outputs.skip != 'true'
