@@ -1,7 +1,7 @@
 # HANDOFF — Weekly Thesis Vercel Publisher
 
 > 写给完全没有上下文的新会话。
-> 最后更新：2026-07-22
+> 最后更新：2026-07-31
 > 仓库：`robinyew/ai-investing-monitor`
 > 本地：`/Users/leimingyu/Investment/ai-investing-monitor`
 > 本系统目录：`vercel-weekly-thesis/`
@@ -16,6 +16,8 @@
 - 不改变原来的 Huashu `theme=report` 邮件 HTML。
 - 不接券商，不生成买卖指令，不设目标价。
 - 网页生成使用固定、可重复的 HTML Anything 设计模板；每周不会调用 AI 重新设计页面。
+- 页面布局沿用 `2026-07-18` 第一版，报告内容从 `2026-07-31` 起固定为简体中文。
+- 源 Markdown 必须通过 v1 结构校验；不符合时中止部署，不再用 `N/A` 或空图表凑合发布。
 
 ## 2. 当前正式地址
 
@@ -27,7 +29,7 @@
 | 一年归档 | `https://vercel-weekly-thesis.vercel.app/archive.html` |
 | 已验证样例 | `https://vercel-weekly-thesis.vercel.app/weekly/2026-07-18/` |
 
-`2026-07-18` 是历史样例日期，实际是星期六。未来自动报告必须使用真正的星期五日期，例如 `2026-07-24`。
+`2026-07-18` 是历史样例日期，实际是星期六。未来自动报告必须使用真正的星期五日期。
 
 ## 3. 权威输入与输出
 
@@ -41,7 +43,9 @@ investment-intelligence-hub/memory/weekly_reviews/YYYY-MM-DD.md
 
 - 存在且非空。
 - 长度至少 1200 字符。
-- 包含 `## 0.` Executive strip。
+- 包含且只包含编号 `0–10` 的固定章节。
+- §1 必须是论点状态，§2 必须是卡点表，§3 必须是重大事实，§5 必须从证伪条件表开始。
+- 从 `2026-07-31` 起，正文必须以简体中文为主，关键表头不得残留英文。
 - 不是空白 scaffold。
 
 ### 输出
@@ -209,6 +213,12 @@ curl -I https://vercel-weekly-thesis.vercel.app/weekly/2026-07-24/
 
 ## 10. 故障排查
 
+### 顶部出现 N/A、重大事实为 0、图表为空
+
+原因：源 Markdown 偏离第一版结构。常见情况是把重大事实从 §3 移到 §2、把卡点从 §2 移到 §3，或把证伪条件从 §5 移到其他章节。
+
+当前保护：`run_weekly_thesis_brief.py` 与 `build_weekly_thesis_site.py` 都会校验 v1 契约并阻止发布。不要放宽校验；应使用 `templates/weekly_thesis_brief.md` 重新生成源 Markdown。
+
 ### Missing weekly Markdown
 
 原因：17:00 的源周报 workflow 没有成功提交当周 MD。
@@ -269,6 +279,7 @@ gh auth status
 6. 不要让本地和云端使用两套不同的网页生成逻辑。
 7. 不要把历史样例 `2026-07-18` 当作“星期五日期”模板。
 8. 不要声称邮件送达，除非 SMTP 成功且用户确认；自动化只能确认 SMTP accepted。
+9. 不要改变 v1 章节职责来适配新的模型写作偏好；模型必须适配模板。
 
 ## 12. 新会话开场
 

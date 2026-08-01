@@ -1,7 +1,7 @@
 # HANDOFF — Weekly Thesis Brief（周报专用）
 
 > 写给**完全没有上下文**的新会话。
-> 最后更新：2026-07-24
+> 最后更新：2026-07-31
 > 仓库：`robinyew/ai-investing-monitor`
 > 本地：`/Users/leimingyu/Investment/ai-investing-monitor`
 
@@ -37,6 +37,8 @@
 |------|------|
 | 投资者模式 | **长线 only**（不做短线） |
 | 主产品 | Weekly Thesis Brief（论点 / 卡点 / 证伪条件） |
+| 内容语言 | **简体中文**（公司名、ticker、技术缩写、来源文件名可保留英文） |
+| 内容模板 | **锁定 2026-07-18 第一版的 0–10 章节职责和表格字段** |
 | HTML 主题 | **`report`**（不要用 article/reading 发邮件） |
 | 默认论点 | Intact + Hold |
 | 日更 Digest | 保留作「夜班哨兵」；只有基本面变化才升级 |
@@ -123,10 +125,11 @@ gh workflow run weekly-thesis-brief.yml \
 ### C) 流水线逻辑（`run_weekly_thesis_brief.py`）
 
 1. `week_end` = 当天或之前最近的 **周五（NY）**
-2. 准备 markdown：优先已填 brief → 本机 Claude Code CLI → Anthropic API → rules_auto
-3. 渲染 HTML：`huashu --theme report`
-4. 写 `docs/weekly/` + `reports/weekly/` + index
-5. 有 SMTP 才发 HTML multipart
+2. 准备 markdown：优先通过 v1 中文模板校验的已填 brief → 本机 Claude Code CLI → Anthropic API → rules_auto
+3. 输入同时读取当前 `_opus.md` 与旧 `_fable.md` digest 文件名；不得只收集旧命名
+4. 渲染 HTML：`huashu --theme report`
+5. 写 `docs/weekly/` + `reports/weekly/` + index
+6. 有 SMTP 才发 HTML multipart
 
 常用 flag：
 
@@ -239,6 +242,8 @@ open docs/weekly/2026-07-24.html
 8. 给用户的 shell 命令块：**不要夹中文注释行**（整段粘贴会炸 zsh）。
 9. **不要删除 `.published/` 成功标记**，否则双触发会重复部署和发信。
 10. GitHub schedule 可能因平台负载延迟几分钟；18:30 本地 dispatch 是主触发，18:40 是补跑。
+11. **不要移动固定章节职责**：§1=论点状态、§2=卡点、§3=重大事实、§5=证伪条件。网页 KPI 和图表依赖这套 v1 契约。
+12. 生成器会拒绝英文主报告、缺失关键字段、错位章节和残留占位符；宁可任务失败，也不要发布空图表页面。
 
 ---
 

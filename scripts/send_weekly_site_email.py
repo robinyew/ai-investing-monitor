@@ -25,15 +25,15 @@ def main() -> int:
 
     url = f"{args.base_url.rstrip('/')}/weekly/{args.week_end}/"
     msg = EmailMessage()
-    msg["Subject"] = f"Weekly Thesis webpage published — {args.week_end}"
+    msg["Subject"] = f"AI 基建周报网页已发布 — {args.week_end}"
     msg["From"] = env("EMAIL_FROM")
     msg["To"] = env("EMAIL_TO")
     msg.set_content(
-        f"Weekly Thesis webpage for {args.week_end} was published and verified.\n\n"
-        f"Report:\n{url}\n\n"
-        "Archive:\n"
+        f"{args.week_end} 的 AI 基建长期论点周报已经发布并完成验证。\n\n"
+        f"报告：\n{url}\n\n"
+        "历史归档：\n"
         f"{args.base_url.rstrip('/')}/archive.html\n\n"
-        "Research-only. No buy/sell instructions. No trading automation.\n"
+        "仅供研究。不提供买卖指令，不连接交易系统。\n"
     )
 
     try:

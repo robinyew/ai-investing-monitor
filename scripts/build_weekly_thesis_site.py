@@ -18,6 +18,7 @@ from zoneinfo import ZoneInfo
 
 import markdown
 
+from run_weekly_thesis_brief import validate_weekly_markdown
 from utils import ROOT
 
 NY = ZoneInfo("America/New_York")
@@ -96,11 +97,11 @@ def table_status_counts(markdown_text: str) -> tuple[int, int, int]:
         if dimension.lower() == "overall" or "overall" in dimension.lower():
             continue
         status = first_value(row, ("状态", "status")).lower()
-        if "green" in status or status == "g":
+        if "green" in status or status == "g" or "绿" in status:
             green += 1
-        elif "yellow" in status or status == "y" or "watch" in status:
+        elif "yellow" in status or status == "y" or "watch" in status or "黄" in status:
             yellow += 1
-        elif "damaged" in status or "red" in status:
+        elif "damaged" in status or "red" in status or status == "r" or "红" in status:
             damaged += 1
     return green, yellow, damaged
 
@@ -128,7 +129,7 @@ def remove_header_and_yaml(markdown_text: str) -> str:
 def short_title(markdown_text: str, week_end: str) -> str:
     match = re.search(r"^#\s+(.+)$", markdown_text, re.MULTILINE)
     if not match:
-        return f"Weekly Thesis Brief — {week_end}"
+        return f"AI 基建长期论点与卡点周报 — {week_end}"
     return strip_md(match.group(1))
 
 
@@ -144,6 +145,29 @@ def statement(markdown_text: str) -> str:
     return "长线 AI 基建论点、卡点与证伪条件的每周复核。"
 
 
+def validate_render_inputs(markdown_text: str) -> list[str]:
+    """Catch parser/template drift before an incomplete page reaches production."""
+    errors: list[str] = []
+    values = executive_map(markdown_text)
+    for label, needles in (
+        ("总体论点", ("overall thesis", "总体论点")),
+        ("投资姿态", ("posture", "姿态")),
+        ("本周最大事实", ("biggest fact", "最大事实")),
+        ("下个证伪信号", ("next falsifier", "下个证伪")),
+    ):
+        if executive_value(values, *needles) == "N/A":
+            errors.append(f"missing KPI source field: {label}")
+    green, yellow, damaged = table_status_counts(markdown_text)
+    if green + yellow + damaged == 0:
+        errors.append("section 1 produced no thesis status chart data")
+    labels, coverage = chokepoint_coverage(markdown_text)
+    if not labels or not any(coverage):
+        errors.append("section 2 produced no chokepoint coverage chart data")
+    if len(parse_first_table(section(markdown_text, 5))) < 3:
+        errors.append("section 5 produced fewer than 3 active falsifiers")
+    return errors
+
+
 def render_report(markdown_text: str, week_end: str) -> str:
     values = executive_map(markdown_text)
     overall = executive_value(values, "overall thesis", "总体论点")
@@ -157,7 +181,10 @@ def render_report(markdown_text: str, week_end: str) -> str:
     material_count = sum(
         1
         for row in fact_rows
-        if any(term in " ".join(row.values()).lower() for term in ("reinforce", "weaken", "material"))
+        if any(
+            term in " ".join(row.values()).lower()
+            for term in ("reinforce", "weaken", "material", "强化", "削弱", "重大")
+        )
     )
     green, yellow, damaged = table_status_counts(markdown_text)
     labels, coverage = chokepoint_coverage(markdown_text)
@@ -239,6 +266,14 @@ def build(week_end: str, retention_days: int) -> tuple[Path, list[str]]:
     markdown_text = source.read_text(encoding="utf-8")
     if len(markdown_text) < 1200 or "## 0." not in markdown_text:
         raise SystemExit(f"Weekly Markdown is incomplete or still a scaffold: {source}")
+    require_chinese = report_date >= date(2026, 7, 31)
+    validation_errors = validate_weekly_markdown(markdown_text, require_chinese=require_chinese)
+    validation_errors.extend(validate_render_inputs(markdown_text))
+    if validation_errors:
+        raise SystemExit(
+            "Weekly Markdown does not match the v1 render contract: "
+            + "; ".join(validation_errors)
+        )
 
     report_html = render_report(markdown_text, week_end)
     report_dir = WEEKLY_DIR / week_end
@@ -276,7 +311,7 @@ REPORT_TEMPLATE = r'''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Long-horizon AI infrastructure weekly thesis report.">
+  <meta name="description" content="AI 基建长期论点、卡点与证伪条件周报。">
   <title>@@TITLE@@</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
@@ -288,25 +323,25 @@ REPORT_TEMPLATE = r'''<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="brand"><div class="mark">AI</div><div><strong>Infrastructure Intelligence</strong><span>Weekly thesis monitor</span></div></div><div class="tools"><a href="/archive.html" title="历史归档" aria-label="历史归档"><i data-lucide="archive"></i></a><button title="打印或保存为 PDF" aria-label="打印或保存为 PDF" onclick="window.print()"><i data-lucide="printer"></i></button></div></header>
+  <header class="topbar"><div class="brand"><div class="mark">AI</div><div><strong>AI 基建研究</strong><span>长期论点周报</span></div></div><div class="tools"><a href="/archive.html" title="历史归档" aria-label="历史归档"><i data-lucide="archive"></i></a><button title="打印或保存为 PDF" aria-label="打印或保存为 PDF" onclick="window.print()"><i data-lucide="printer"></i></button></div></header>
   <main class="shell">
-    <section class="head"><div><p class="eyebrow">Weekly Thesis &amp; Chokepoint Brief</p><h1>@@TITLE@@</h1><p class="dek">@@SUMMARY@@</p></div><div class="date"><strong>@@WEEK_END@@</strong><span>Week end · America/New_York</span></div></section>
-    <div class="notice"><i data-lucide="shield-check"></i>Research-only。不连接券商，不生成买卖指令，不设目标价。</div>
+    <section class="head"><div><p class="eyebrow">每周论点与卡点复核</p><h1>@@TITLE@@</h1><p class="dek">@@SUMMARY@@</p></div><div class="date"><strong>@@WEEK_END@@</strong><span>周报日期 · 美东时间</span></div></section>
+    <div class="notice"><i data-lucide="shield-check"></i>仅供研究。不连接券商，不生成买卖指令，不设目标价。</div>
     <section class="kpis">
-      <article class="kpi" style="--accent:var(--green)"><label>Overall thesis</label><b style="color:var(--green)">@@OVERALL@@</b><p>@@OVERALL_DETAIL@@</p></article>
-      <article class="kpi" style="--accent:var(--blue)"><label>Posture</label><b style="color:var(--blue)">@@POSTURE@@</b><p>多月到多年研究视角</p></article>
-      <article class="kpi" style="--accent:var(--coral)"><label>Material facts</label><b>@@MATERIAL_COUNT@@</b><p>@@BIGGEST_FACT@@</p></article>
-      <article class="kpi" style="--accent:var(--red)"><label>Active falsifiers</label><b>@@FALSIFIER_COUNT@@</b><p>@@NEXT_FALSIFIER@@</p></article>
+      <article class="kpi" style="--accent:var(--green)"><label>总体论点</label><b style="color:var(--green)">@@OVERALL@@</b><p>@@OVERALL_DETAIL@@</p></article>
+      <article class="kpi" style="--accent:var(--blue)"><label>投资姿态</label><b style="color:var(--blue)">@@POSTURE@@</b><p>多月到多年研究视角</p></article>
+      <article class="kpi" style="--accent:var(--coral)"><label>重大事实</label><b>@@MATERIAL_COUNT@@</b><p>@@BIGGEST_FACT@@</p></article>
+      <article class="kpi" style="--accent:var(--red)"><label>有效证伪条件</label><b>@@FALSIFIER_COUNT@@</b><p>@@NEXT_FALSIFIER@@</p></article>
     </section>
     <section class="charts"><article class="panel"><h2>论点状态构成</h2><div class="chart"><canvas id="statusChart"></canvas></div></article><article class="panel"><h2>卡点观察覆盖</h2><div class="chart"><canvas id="coverageChart"></canvas></div></article></section>
     <article class="report">@@REPORT_BODY@@</article>
-    <footer class="footer"><span>Weekly Thesis Brief · AI Infrastructure Intelligence</span><span>Generated @@GENERATED_AT@@ · Retained for one year</span></footer>
+    <footer class="footer"><span>AI 基建长期论点周报</span><span>生成于 @@GENERATED_AT@@ · 保存一年</span></footer>
   </main>
   <script>
     if(window.lucide)lucide.createIcons();
     const reportData=@@CHART_DATA@@;
     Chart.defaults.color='#676b63';Chart.defaults.font.family='Inter, SF Pro Text, PingFang SC, system-ui, sans-serif';
-    new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['Green','Yellow','Damaged'],datasets:[{data:reportData.status,backgroundColor:['#217a4b','#c79531','#a33a32'],borderColor:'#fff',borderWidth:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}});
+    new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['稳固','观察','受损'],datasets:[{data:reportData.status,backgroundColor:['#217a4b','#c79531','#a33a32'],borderColor:'#fff',borderWidth:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}});
     new Chart(document.getElementById('coverageChart'),{type:'bar',data:{labels:reportData.coverageLabels,datasets:[{data:reportData.coverage,backgroundColor:['#217a4b','#c79531','#315f9c','#6b5a8e','#c6573f','#3e827f','#53734c'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#e6e8e1'}}}}});
   </script>
 </body>

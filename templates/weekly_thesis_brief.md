@@ -1,4 +1,7 @@
-# Weekly Thesis & Chokepoint Brief — {{WEEK_END}}
+# AI 基建长期论点与卡点周报 — {{WEEK_END}}
+
+<!-- TEMPLATE_VERSION: weekly-v1-zh -->
+<!-- 固定要求：正文使用简体中文；保留 0–10 章节编号、章节职责和首张表字段，不得自由改版。 -->
 
 ```yaml
 report_type: weekly_thesis_brief
@@ -27,24 +30,24 @@ buy_sell_instructions: false
 
 ---
 
-## 0. Executive strip（先看这 6 行）
+## 0. 执行摘要
 
 | 字段 | 本周结论 |
 |---|---|
-| **Overall thesis** | Intact / Watch / Damaged — {{THESIS_ONE_LINER}} |
-| **Posture** | Hold thesis / Deepen research / Reduce conviction / Re-underwrite |
-| **Biggest fact this week** | {{BIGGEST_FACT}} |
-| **Biggest risk this week** | {{BIGGEST_RISK}} |
-| **Portfolio logic impact** | None / Selective / Broad — {{PORTFOLIO_IMPACT}} |
-| **Next falsifier to watch** | {{NEXT_FALSIFIER}} |
+| **总体论点** | Intact / Watch / Damaged — {{THESIS_ONE_LINER}} |
+| **投资姿态** | 保持论点 / 深入研究 / 降低确信度 / 重新评估 |
+| **本周最大事实** | {{BIGGEST_FACT}} |
+| **本周最大风险** | {{BIGGEST_RISK}} |
+| **组合逻辑影响** | 无 / 局部 / 广泛 — {{PORTFOLIO_IMPACT}} |
+| **下个证伪信号** | {{NEXT_FALSIFIER}} |
 
 **一句话周记：** {{WEEK_SUMMARY_1_SENTENCE}}
 
 ---
 
-## 1. Thesis status
+## 1. 论点状态
 
-### 1.1 Master thesis（你在赌什么）
+### 1.1 主论点（你在赌什么）
 
 > 默认主线（可改）：全球 hyperscaler / neocloud **持续把 capex 转化为 AI 集群**；约束从「有没有 GPU」转向 **电力、冷却、光互连、网络、HBM** 等物理卡点；持有/研究的是 **卡点上的秩序机器**，不是主题情绪票。
 
@@ -66,11 +69,11 @@ buy_sell_instructions: false
 
 ---
 
-## 2. Chokepoint dashboard
+## 2. 卡点仪表盘
 
 对每个卡点只评 **逻辑与证据**，不评「这周好不好炒」。
 
-| Chokepoint | Status | Δ vs last week | Evidence (≤2 bullets) | Core/watch tickers | What would flip it |
+| 卡点 | 状态 | 与上周相比 | 证据（最多 2 条） | 核心/观察标的 | 翻转条件 |
 |---|---|---|---|---|---|
 | Power / cooling / grid | G / Y / R | ↑ → ↓ | | VRT, ETN, GEV, PWR, FIX, MPWR, NVTS | |
 | Optical interconnect / 800G–1.6T | G / Y / R | ↑ → ↓ | | AAOI, COHR, CIEN, LITE, CRDO, ALAB | |
@@ -85,11 +88,11 @@ buy_sell_instructions: false
 
 ---
 
-## 3. Material facts this week（最多 5 条）
+## 3. 本周重大事实（最多 5 条）
 
 > 只写 **可能改变 3–12 个月预期** 的事实。股价大跌、分析师调目标价、社媒热帖 → 默认进 §8 噪声。
 
-| # | Date | Fact (1 line) | Source tier | Chokepoint | Thesis effect | Tickers |
+| # | 日期 | 事实（单行） | 来源等级 | 卡点 | 论点影响 | 标的 |
 |---|---|---|---|---|---|---|
 | 1 | | | Primary / Tier-1 / Secondary | | Reinforce / Neutral / Weaken | |
 | 2 | | | | | | |
@@ -107,13 +110,13 @@ buy_sell_instructions: false
 
 ---
 
-## 4. Portfolio mapping（逻辑层，不是交易层）
+## 4. 组合映射（逻辑层，不是交易层）
 
 对照 `config/watchlists.yaml` 核心组 / 观察组。
 
-### 4.1 Core planned / holdings lens
+### 4.1 核心计划 / 持仓视角
 
-| Ticker | Role in stack | Logic this week | Conviction | Note (facts only) |
+| 标的 | 产业链角色 | 本周逻辑 | 确信度 | 说明（仅事实） |
 |---|---|---|---|---|
 | DELL | Server / rack | Stronger / Unchanged / Weaker / Unclear | High / Med / Low | |
 | VRT | Power / cooling | | | |
@@ -127,15 +130,15 @@ buy_sell_instructions: false
 | MSFT | Capex payer / platform | | | |
 | GOOGL | Capex payer / platform | | | |
 
-### 4.2 Observation-only (only if fact touched)
+### 4.2 仅观察（本周事实触及时才填写）
 
-| Ticker | Why mentioned | Logic impact | Follow-up |
+| 标的 | 提及原因 | 逻辑影响 | 后续跟踪 |
 |---|---|---|---|
 | | | | |
 
-### 4.3 Classification changes（本周是否改标签）
+### 4.3 分类变化（本周是否改标签）
 
-| Ticker | From | To | Why (falsifiable) | Next review |
+| 标的 | 原分类 | 新分类 | 原因（可证伪） | 下次复核 |
 |---|---|---|---|---|
 | — | investment_thesis_candidate / speculation_thesis / watch_only / rejected | | | |
 
@@ -143,11 +146,11 @@ buy_sell_instructions: false
 
 ---
 
-## 5. Falsifiers & verification queue
+## 5. 证伪条件与验证队列
 
-### 5.1 Active falsifiers（什么会让你改主意）
+### 5.1 有效证伪条件（什么会让你改主意）
 
-| ID | Falsifier (observable) | Status | Evidence this week | Action if triggered |
+| ID | 证伪条件（可观察） | 状态 | 本周证据 | 触发后的动作 |
 |---|---|---|---|---|
 | F1 | Hyperscaler 集体下修 AI-related capex 或明确放缓部署 | Armed / Triggered / Retired | | Reduce conviction / re-underwrite |
 | F2 | 电力/冷却不再是绑定约束（产能明显过剩信号） | Armed / Triggered / Retired | | Revisit power overweight logic |
@@ -157,9 +160,9 @@ buy_sell_instructions: false
 
 可增删，但必须 **可观察**，禁止「可能好也可能坏」。
 
-### 5.2 Next 2–4 weeks verification queue
+### 5.2 未来 2–4 周验证队列
 
-| When | What to verify | Why it matters | Primary source to prefer |
+| 时间 | 待验证事项 | 重要性 | 优先一手来源 |
 |---|---|---|---|
 | | e.g. GOOGL/META/MSFT/AMZN earnings + capex guide | Demand ceiling | Earnings release / 10-Q / call |
 | | | | |
@@ -167,11 +170,11 @@ buy_sell_instructions: false
 
 ---
 
-## 6. Price context（附录 · 可选 · 非决策主轴）
+## 6. 价格背景（附录 · 可选 · 非决策主轴）
 
 > 仅用于判断「要不要重读基本面」，**不得**单独改变 thesis。
 
-| Benchmark / sleeve | ~1w | ~1m | Read |
+| 基准 / 组合 | 约 1 周 | 约 1 月 | 解读 |
 |---|---:|---:|---|
 | SMH | | | Volatility only / Warrants re-read / Ignore |
 | Core equal-weight (qualitative) | | | |
@@ -182,11 +185,11 @@ buy_sell_instructions: false
 
 ---
 
-## 7. Research agenda（下周真正要做的事）
+## 7. 下周研究任务
 
 最多 5 项。每项必须可完成。
 
-| # | Task | Output | Done? |
+| # | 任务 | 产出 | 完成？ |
 |---|---|---|---|
 | 1 | | e.g. 更新 GOOGL capex note | ☐ |
 | 2 | | | ☐ |
@@ -199,7 +202,7 @@ buy_sell_instructions: false
 
 ---
 
-## 8. Explicit noise（本周故意不决策）
+## 8. 明确忽略的噪声
 
 列出本周看到但 **明确忽略** 的东西，防止注意力泄漏：
 
@@ -211,9 +214,9 @@ buy_sell_instructions: false
 
 ---
 
-## 9. Carry-forward memory（给下一周的自己）
+## 9. 下周延续记忆
 
-| Item | Content |
+| 项目 | 内容 |
 |---|---|
 | Open questions | |
 | Pending primary confirms | |
@@ -222,9 +225,9 @@ buy_sell_instructions: false
 
 ---
 
-## 10. Sign-off
+## 10. 签署
 
-| Field | Value |
+| 字段 | 内容 |
 |---|---|
 | Author | |
 | Time spent | ~___ min |
