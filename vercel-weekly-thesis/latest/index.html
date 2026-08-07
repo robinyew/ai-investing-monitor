@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="AI 基建长期论点、卡点与证伪条件周报。">
-  <title>AI 基建长期论点与卡点周报 — 2026-07-31</title>
+  <title>AI 基建长期论点与卡点周报 — 2026-08-07</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <style>
@@ -17,39 +17,16 @@
 <body>
   <header class="topbar"><div class="brand"><div class="mark">AI</div><div><strong>AI 基建研究</strong><span>长期论点周报</span></div></div><div class="tools"><a href="/archive.html" title="历史归档" aria-label="历史归档"><i data-lucide="archive"></i></a><button title="打印或保存为 PDF" aria-label="打印或保存为 PDF" onclick="window.print()"><i data-lucide="printer"></i></button></div></header>
   <main class="shell">
-    <section class="head"><div><p class="eyebrow">每周论点与卡点复核</p><h1>AI 基建长期论点与卡点周报 — 2026-07-31</h1><p class="dek">本周市场先用价格惩罚了 capex，再用 Amazon/Alphabet 的实际指引把 capex 抬得更高，论点的分歧点已经从「还买不买」转成「谁在出钱、钱从哪来」。</p></div><div class="date"><strong>2026-07-31</strong><span>周报日期 · 美东时间</span></div></section>
+    <section class="head"><div><p class="eyebrow">每周论点与卡点复核</p><h1>AI 基建长期论点与卡点周报 — 2026-08-07</h1><p class="dek">需求端（AMZN/META/AMD）与卡点端（HBM 售罄、封装扩产、电力波动）本周同时给出一手确认，主线更结实，唯一新增张力是内存供给天花板与融资约束。</p></div><div class="date"><strong>2026-08-07</strong><span>周报日期 · 美东时间</span></div></section>
     <div class="notice"><i data-lucide="shield-check"></i>仅供研究。不连接券商，不生成买卖指令，不设目标价。</div>
     <section class="kpis">
-      <article class="kpi" style="--accent:var(--green)"><label>总体论点</label><b style="color:var(--green)">Intact</b><p>Amazon 与 Alphabet 本周均上修 2026 年 AI 支出，物理卡点（封装、HBM、电力长约）反而更紧；Microsoft 与 Meta 的一手口径仍待补齐，没有一手事实削弱主线</p></article>
-      <article class="kpi" style="--accent:var(--blue)"><label>投资姿态</label><b style="color:var(--blue)">保持论点 + 对单一标的（VRT）深入研究</b><p>多月到多年研究视角</p></article>
-      <article class="kpi" style="--accent:var(--coral)"><label>重大事实</label><b>4</b><p>Amazon 将 2026 年 capex 上调至 $220B（同比 +69%），AWS 收入增速 37% 超预期，并明确点名「更高的存储器成本」为支出驱动之一</p></article>
-      <article class="kpi" style="--accent:var(--red)"><label>有效证伪条件</label><b>7</b><p>Microsoft 与 Meta 的 capex 指引一手文件（10-Q / IR），以及 VRT 季报原文中的订单、backlog 与毛利结构</p></article>
+      <article class="kpi" style="--accent:var(--green)"><label>总体论点</label><b style="color:var(--green)">Intact</b><p>hyperscaler AI capex 继续扩张，物理卡点（内存、电力、封装）绑定性增强，主线未被削弱</p></article>
+      <article class="kpi" style="--accent:var(--blue)"><label>投资姿态</label><b style="color:var(--blue)">保持论点</b><p>多月到多年研究视角</p></article>
+      <article class="kpi" style="--accent:var(--coral)"><label>重大事实</label><b>5</b><p>Amazon 上调年度 capex 约 10% 至 $220B、AWS 增速 37%；Meta 上调 2026 capex 至最高 $145B，两大 payer 一手指引确认加速</p></article>
+      <article class="kpi" style="--accent:var(--red)"><label>有效证伪条件</label><b>5</b><p>NVDA 财报与 capex guide；观察 hyperscaler 是否因 FCF/融资约束首次出现 capex 措辞转软</p></article>
     </section>
     <section class="charts"><article class="panel"><h2>论点状态构成</h2><div class="chart"><canvas id="statusChart"></canvas></div></article><article class="panel"><h2>卡点观察覆盖</h2><div class="chart"><canvas id="coverageChart"></canvas></div></article></section>
-    <article class="report"><!-- TEMPLATE_VERSION: weekly-v1-zh -->
-
-<pre><code class="language-yaml">report_type: weekly_thesis_brief
-week_start: 2026-07-27
-week_end: 2026-07-31
-timezone: America/New_York
-horizon: multi_month_to_multi_year
-audience: long_term_AI_infra_investor
-default_posture: Hold thesis unless falsified
-auto_trade: false
-price_targets: false
-buy_sell_instructions: false
-</code></pre>
-<p><strong>Research-only.</strong> 不连接券商，不生成买卖指令，不设目标价。
-<strong>用途：</strong> 用 10–15 分钟更新「主线还在不在 / 逻辑有没有被证伪 / 下阶段盯什么」。
-<strong>不是：</strong> 下周涨跌预测、开盘策略、短线观察清单。</p>
-<p><strong>Inputs（本周实际引用）</strong>
-- Daily digests: <code>reports/digest/2026-07-27_opus.md</code> … <code>2026-07-30_opus.md</code>
-- News scans: <code>investment-intelligence-hub/inbox/news/2026-07-27</code> … <code>2026-07-31_ai_infrastructure_news.md</code>
-- Pre-market briefs: <code>reports/daily/2026-07-27.md</code> … <code>2026-07-31.md</code>
-- Hub intelligence: 2026-07-29 / 2026-07-30 两日缺失（Missing Sources）
-- Prior weekly: <code>investment-intelligence-hub/memory/weekly_reviews/</code></p>
-<hr />
-<h2 id="0">0. 执行摘要</h2>
+    <article class="report"><h2 id="0">0. 执行摘要</h2>
 <table>
 <thead>
 <tr>
@@ -60,37 +37,33 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td><strong>总体论点</strong></td>
-<td>Intact — Amazon 与 Alphabet 本周均上修 2026 年 AI 支出，物理卡点（封装、HBM、电力长约）反而更紧；Microsoft 与 Meta 的一手口径仍待补齐，没有一手事实削弱主线</td>
+<td>Intact — hyperscaler AI capex 继续扩张，物理卡点（内存、电力、封装）绑定性增强，主线未被削弱</td>
 </tr>
 <tr>
 <td><strong>投资姿态</strong></td>
-<td>保持论点 + 对单一标的（VRT）深入研究</td>
+<td>保持论点</td>
 </tr>
 <tr>
 <td><strong>本周最大事实</strong></td>
-<td>Amazon 将 2026 年 capex 上调至 $220B（同比 +69%），AWS 收入增速 37% 超预期，并明确点名「更高的存储器成本」为支出驱动之一</td>
+<td>Amazon 上调年度 capex 约 10% 至 $220B、AWS 增速 37%；Meta 上调 2026 capex 至最高 $145B，两大 payer 一手指引确认加速</td>
 </tr>
 <tr>
 <td><strong>本周最大风险</strong></td>
-<td>Nvidia 对 OpenAI 数据中心的约 $250B 背书（相关交易被报道合计 &gt;$750B）引发循环融资质疑，NVDA CDS 创单日最大升幅，需求质量而非需求数量成为争议核心</td>
+<td>内存（HBM/DRAM）成为 18+ 个月的绑定约束，2027 产能据报已售罄，可能给部署 racks 设上限；同时 hyperscaler FCF 转负引发 capex 可持续性质疑</td>
 </tr>
 <tr>
 <td><strong>组合逻辑影响</strong></td>
-<td>局部 — 仅 VRT 因「令人失望的季度」需要重新核对一手财报；其余持仓逻辑未变，周内剧烈涨跌属价格层面</td>
+<td>局部 — 内存卡点绑定性上升利好 MU；ASIC/封装读通利好 AVGO/MRVL；光互连出现政策与需求双重看点</td>
 </tr>
 <tr>
 <td><strong>下个证伪信号</strong></td>
-<td>Microsoft 与 Meta 的 capex 指引一手文件（10-Q / IR），以及 VRT 季报原文中的订单、backlog 与毛利结构</td>
+<td>NVDA 财报与 capex guide；观察 hyperscaler 是否因 FCF/融资约束首次出现 capex 措辞转软</td>
 </tr>
 </tbody>
 </table>
-<p><strong>一句话周记：</strong> 本周市场先用价格惩罚了 capex，再用 Amazon/Alphabet 的实际指引把 capex 抬得更高，论点的分歧点已经从「还买不买」转成「谁在出钱、钱从哪来」。</p>
+<p><strong>一句话周记：</strong> 需求端（AMZN/META/AMD）与卡点端（HBM 售罄、封装扩产、电力波动）本周同时给出一手确认，主线更结实，唯一新增张力是内存供给天花板与融资约束。</p>
 <hr />
 <h2 id="1">1. 论点状态</h2>
-<h3 id="11">1.1 主论点（你在赌什么）</h3>
-<blockquote>
-<p>默认主线：全球 hyperscaler / neocloud <strong>持续把 capex 转化为 AI 集群</strong>；约束从「有没有 GPU」转向 <strong>电力、冷却、光互连、网络、HBM、先进封装</strong> 等物理卡点；持有/研究的是 <strong>卡点上的秩序机器</strong>，不是主题情绪票。</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -103,43 +76,38 @@ buy_sell_instructions: false
 <tr>
 <td>Demand: hyperscaler / AI capex</td>
 <td>Green</td>
-<td>Amazon 2026 capex 上调至 $220B（+69% YoY），AWS +37%；Alphabet 上调 2026 AI capex（07-26 口径 $205B，07-30 二手口径约 $195B，需一手核对）；Google Cloud 收入 +82% 至 $24.8B</td>
+<td>AMZN capex 升至 $220B、AWS +37%；META 升至最高 $145B；AMD 数据中心 +107% 且指引 2027 翻倍以上</td>
 </tr>
 <tr>
 <td>Supply: accelerators &amp; platforms</td>
 <td>Green</td>
-<td>Nebius 在芬兰完成首台 Nvidia Vera Rubin NVL72 机架现场部署并披露 $40B 已签约 GPU 收入；AMD 以 $14B 锁定 530MW、15 年数据中心容量，形成第二供给源</td>
+<td>AMD Helios 首套 rack-scale 系统本季出货给 Meta/OpenAI/Oracle；NVDA 数据中心占比 92%</td>
 </tr>
 <tr>
 <td>Chokepoints still binding</td>
 <td>Green</td>
-<td>CoWoS 交期 52–78 周、ABF 基板膜约 95% 由 Ajinomoto 供应；Amazon 在财报中直接点名存储器成本上升；Apacer CEO 预计 2027 年模组厂 DRAM 供给同比降幅可能 &gt;70%</td>
+<td>内存据报 2027 售罄、NVDA 传下调 Rubin Ultra HBM 规格、FERC 令加速电力接入、封装 CoWoS 仍紧张</td>
 </tr>
 <tr>
 <td>Competition / substitution risk</td>
 <td>Yellow</td>
-<td>AMD 拿到 530MW 专属容量并保留扩至 2.5GW 的权利；TSMC 与 Kinsus 开发 EMIB-like 封装对标 Intel，CoWoS 产能年扩张 &gt;80% —— 长期可能缓解封装稀缺并改变份额格局</td>
+<td>自研 ASIC 达规模（AWS $25B run rate、GUC turnkey &gt;80%）、AMD 收购 Taalas 切入定制推理硅，替代压力在 merchant GPU</td>
 </tr>
 <tr>
 <td>Financing / macro / geo overlay</td>
 <td>Yellow</td>
-<td>Nvidia 对 OpenAI 俄亥俄 Pike County 园区约 $250B 债务背书；NVDA CDS 单日创纪录上行；Alphabet 出现上市以来首个自由现金流为负的季度，Meta 因 FCF 被 capex 吞噬单日 -10%</td>
+<td>NVDA 指出融资而非芯片成为新约束；hyperscaler FCF 转负；对华光模块禁令为草案</td>
 </tr>
 <tr>
 <td><strong>Overall</strong></td>
 <td><strong>Intact</strong></td>
-<td>需求上修由付款方自身指引确认；本周唯一的一手负面是 VRT 单季度经营表现，属公司层面而非卡点层面</td>
+<td>无一级事实削弱主线，需求与卡点同步获一手/Tier-1 确认</td>
 </tr>
 </tbody>
 </table>
-<p><strong>状态定义</strong>
-- <strong>Intact：</strong> 无一级事实削弱主线；价格波动单独不构成 Damaged。
-- <strong>Watch：</strong> 出现需验证的软信号（二手 capex 传言、竞争叙事升温、指引措辞变软）。
-- <strong>Damaged：</strong> 一级来源确认 capex 下修、关键客户砍单、卡点被替代且份额/利润结构破坏，或核心公司商业模式受损。</p>
-<p><strong>相对上周变化：</strong> Improved — 从「等待 Amazon/Microsoft 验证」变成「付款方已用自身指引上修支出」，同时融资结构风险从背景升为显性议题。</p>
+<p><strong>相对上周变化：</strong> Improved — 需求端与卡点端本周均有新增一手确认，内存绑定性明显上升。</p>
 <hr />
 <h2 id="2">2. 卡点仪表盘</h2>
-<p>对每个卡点只评 <strong>逻辑与证据</strong>，不评「这周好不好炒」。</p>
 <table>
 <thead>
 <tr>
@@ -155,76 +123,65 @@ buy_sell_instructions: false
 <tr>
 <td>Power / cooling / grid</td>
 <td>G</td>
-<td>→</td>
-<td>① AMD 与 Core Scientific 签 $14B、529–530MW、15 年租约，可扩至 2.5GW；② SK Telecom 分拆 AI 基建公司，目标 15GW 数据中心容量</td>
+<td>↑</td>
+<td>FERC 令六家电网运营商 60 天内加速 AI 数据中心接电；Bloomberg 报道 AI 波动功率损坏机房设备</td>
 <td>VRT, ETN, GEV, PWR, FIX, MPWR, NVTS</td>
-<td>出现电力/冷却交期缩短、产能明显过剩，或 VRT 一手财报显示订单与 backlog 同步走弱</td>
+<td>出现电力/冷却明显产能过剩信号</td>
 </tr>
 <tr>
 <td>Optical interconnect / 800G–1.6T</td>
 <td>G</td>
 <td>→</td>
-<td>① Nebius NVL72 现场部署带动机架级光互连拉动；② 07-29 光模块普跌的触发点是 Corning 指引「符合预期」，无任何砍单或价格崩塌的一手证据</td>
+<td>美方（FCC）拟禁中国产光模块（Innolight ~27% 份额）；NVDA 数据中心需求读通光互连</td>
 <td>AAOI, COHR, CIEN, LITE, CRDO, ALAB</td>
-<td>出现光模块客户明确砍单、库存天数跳升或长期价格战证据</td>
+<td>需求证伪：库存/砍单/价格非短期下跌</td>
 </tr>
 <tr>
 <td>AI networking / DSP / Ethernet</td>
 <td>G</td>
-<td>↑</td>
-<td>① Amazon 与 Alphabet 上修 capex，机架级部署直接带动网络端口需求；② 日更卡点评分 07-31 由 85 升至 86（improved）</td>
+<td>→</td>
+<td>AMD Helios 整合网络硅进入 rack-scale；hyperscaler 集群规模扩大</td>
 <td>ANET, AVGO, MRVL, NOK</td>
-<td>云厂商披露网络架构自研替代并体现在供应商订单下滑</td>
+<td>以太网/DSP 需求出现结构性回落</td>
 </tr>
 <tr>
 <td>ASIC / custom silicon</td>
 <td>G</td>
-<td>→</td>
-<td>① Alphabet 上修 capex，TPU 路线由 AVGO 承接；② Amazon capex 上修中包含 Trainium 体系投入</td>
+<td>↑</td>
+<td>GUC 7 月创纪录、turnkey 定制 AI 芯片 &gt;80% 营收；AWS 自研硅达 $25B run rate；AMD 收购 Taalas</td>
 <td>AVGO, MRVL, MSFT, GOOGL</td>
-<td>自研 ASIC 出货份额与利润结构同时验证对 merchant GPU 的实质替代</td>
+<td>替代已体现在份额与利润且损害核心公司结构</td>
 </tr>
 <tr>
 <td>Memory / HBM</td>
 <td>G</td>
 <td>↑</td>
-<td>① Amazon 财报明确将「更高的存储器成本」列为 capex 上升原因；② Apacer CEO 称 2027 年流向模组厂的 DRAM 供给同比可能下降 70%+</td>
+<td>三大内存商据报 2027 产能售罄；NVDA 传下调 Rubin Ultra HBM 规格以缓解瓶颈；Samsung 发布 zHBM</td>
 <td>MU</td>
-<td>HBM/DRAM 价格与交期同时松动，或云厂商指引存储器成本回落</td>
+<td>激进扩产导致明显过剩、价格非短期崩塌</td>
 </tr>
 <tr>
 <td>AI server / rack / EMS</td>
 <td>G</td>
 <td>→</td>
-<td>① Nebius 完成首台 Vera Rubin NVL72 现场验证，平台从路线图进入部署；② $40B 已签约 GPU 收入指向机架级持续出货</td>
+<td>AMD Helios 首套系统本季出货给 Meta/OpenAI/Oracle，扩大单部署含量</td>
 <td>DELL, SMCI, HPE, CLS, JBL</td>
-<td>机架集成商披露订单推迟或 NVL72 量产节奏落后</td>
+<td>服务器/机架需求出现砍单</td>
 </tr>
 <tr>
-<td>Cloud platform demand（付款方）</td>
+<td>Cloud platform demand (payer)</td>
 <td>G</td>
 <td>↑</td>
-<td>① AWS 收入 +37%，高于约 31% 的一致预期；② Google Cloud 收入 +82% 至 $24.8B</td>
-<td>MSFT, GOOGL, (AMZN if tracked)</td>
-<td>任一大型云在一手文件中下修 capex 或明确表述部署放缓</td>
-</tr>
-<tr>
-<td>Advanced packaging / CoWoS / 基板</td>
-<td>G</td>
-<td>↑</td>
-<td>① AT&amp;S CEO 称瓶颈已从晶圆制造上移到先进封装，CoWoS 交期 52–78 周，ABF 膜约 95% 集中于 Ajinomoto；② TSMC 与 Kinsus 开发 EMIB-like 桥接封装，CoWoS 产能年扩张 &gt;80%</td>
-<td>TSM, NVDA, AVGO（观察）</td>
-<td>CoWoS 交期回落至 26 周以内，或基板供给多元化后加速器出货不再受封装限制</td>
+<td>AMZN capex $220B、AWS +37%；META capex 最高 $145B</td>
+<td>MSFT, GOOGL, (AMZN)</td>
+<td>payer 集体下修 capex 或明确放缓部署</td>
 </tr>
 </tbody>
 </table>
 <p><strong>本周卡点迁移（若有）：</strong>
-从 <code>GPU 可得性 / 加速器供给</code> 转向 <code>先进封装 + HBM/DRAM + 长周期电力合约</code>，因为：本周三条独立证据（CoWoS 52–78 周交期、Amazon 点名存储器成本、AMD 15 年 530MW 租约）都指向「芯片之外的物理与合约约束」才是决定出货节奏的变量。</p>
+从 <code>GPU/compute 是否可得</code> 转向 <code>Memory (HBM) 分配与融资能力</code>，因为：内存据报 2027 售罄且 NVDA 主动下调 HBM 规格，内存分配（而非算力）正设定 hyperscaler capex 转化为部署 racks 的上限；NVDA 同时点出融资成为新约束。</p>
 <hr />
 <h2 id="3-5">3. 本周重大事实（最多 5 条）</h2>
-<blockquote>
-<p>只写 <strong>可能改变 3–12 个月预期</strong> 的事实。股价大跌、分析师调目标价、社媒热帖 → 默认进 §8 噪声。</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -240,59 +197,54 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td>1</td>
-<td>2026-07-30</td>
-<td>Amazon 将 2026 年 capex 上调至 $220B（同比 +69%），AWS 收入 +37% 超一致预期，并点名存储器成本上升</td>
-<td>Tier-1（CNBC 转述财报）</td>
-<td>Hyperscaler capex / Memory</td>
+<td>2026-08-03</td>
+<td>Amazon 上调年度 capex 约 10% 至 $220B，AWS 营收 +37% 至 $42.2B（18 季度最快）</td>
+<td>Primary</td>
+<td>Cloud platform demand</td>
 <td>Reinforce</td>
-<td>AMZN, MU, NVDA, AVGO</td>
+<td>AMZN</td>
 </tr>
 <tr>
 <td>2</td>
-<td>2026-07-26</td>
-<td>Alphabet 上调 2026 年 AI 资本支出（07-26 报道口径 $205B），同时出现上市以来首个自由现金流为负的季度；07-30 另有约 $195B 的二手口径，Google Cloud 收入 +82% 至 $24.8B</td>
-<td>Tier-1（口径待一手核对）</td>
-<td>Hyperscaler capex / ASIC</td>
+<td>2026-08-02</td>
+<td>Meta 将 2026 AI 基础设施支出指引上调至最高 $145B</td>
+<td>Secondary</td>
+<td>Cloud platform demand</td>
 <td>Reinforce</td>
-<td>GOOGL, AVGO, ANET</td>
+<td>META</td>
 </tr>
 <tr>
 <td>3</td>
-<td>2026-07-29</td>
-<td>Vertiv CEO 公开回应 17% 股价下跌与「令人失望的季度」，称其为暂时性</td>
-<td>Tier-1（CEO 表态，季报原文待核）</td>
-<td>Power / cooling</td>
-<td>Weaken（公司层面）</td>
-<td>VRT</td>
+<td>2026-08-06</td>
+<td>三大 DRAM/HBM 供应商据报 2027 产能全部售罄，内存成为部署绑定约束</td>
+<td>Secondary</td>
+<td>Memory / HBM</td>
+<td>Reinforce</td>
+<td>MU, NVDA, TSM</td>
 </tr>
 <tr>
 <td>4</td>
-<td>2026-07-27 → 07-29</td>
-<td>Nvidia 与 OpenAI 就俄亥俄 Pike County 园区最高约 $250B 债务背书洽谈（相关交易被报道合计 &gt;$750B），NVDA CDS 创单日最大升幅</td>
-<td>Tier-1（Bloomberg / CNBC / LAT，均引述转述）</td>
-<td>Data center / 融资结构</td>
-<td>Neutral（需求量增加，需求质量存疑）</td>
-<td>NVDA, MU, TSM</td>
+<td>2026-08-05</td>
+<td>AMD Q2 数据中心营收 +107% 至 $6.7B，CEO 指引 2027 数据中心营收翻倍以上，Helios 进入量产</td>
+<td>Tier-1</td>
+<td>Compute / GPU</td>
+<td>Reinforce</td>
+<td>AMD, TSM</td>
 </tr>
 <tr>
 <td>5</td>
-<td>2026-07-28 → 07-30</td>
-<td>先进封装成为绑定约束：CoWoS 交期 52–78 周、ABF 膜约 95% 由 Ajinomoto 供应；同期 TSMC 与 Kinsus 开发 EMIB-like 封装，CoWoS 产能年扩张 &gt;80%</td>
-<td>Tier-1 / Secondary（高管口径 + The Information）</td>
-<td>Advanced packaging</td>
-<td>Reinforce（近端），长期为翻转候选</td>
-<td>TSM, NVDA, AVGO</td>
+<td>2026-08-05</td>
+<td>GUC 7 月营收创纪录、hyperscaler 定制 AI 芯片 turnkey 超 80% 营收，ASIC 进入高量产</td>
+<td>Secondary</td>
+<td>ASIC / custom silicon</td>
+<td>Reinforce</td>
+<td>TSM, AVGO, MRVL</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Source tier</strong>
-- <strong>Primary：</strong> 公司 IR/SEC/官方博客、监管文件、交易所公告
-- <strong>Tier-1：</strong> 高质量一手转述仍待核对（主流社/供应链调研需标注）
-- <strong>Secondary：</strong> 媒体综合、分析师意见 — 不得单独把 thesis 打成 Damaged</p>
 <p><strong>本周无 Material fact？</strong> No</p>
 <hr />
-<h2 id="4">4. 组合映射（逻辑层，不是交易层）</h2>
-<p>本周所有映射均为逻辑层判断，不含任何仓位、买卖或价格建议。</p>
+<h2 id="4">4. 组合映射</h2>
 <h3 id="41">4.1 核心计划 / 持仓视角</h3>
 <table>
 <thead>
@@ -308,79 +260,79 @@ buy_sell_instructions: false
 <tr>
 <td>DELL</td>
 <td>Server / rack</td>
-<td>Stronger</td>
-<td>High</td>
-<td>Vera Rubin NVL72 进入现场部署，机架级集成需求被确认；周内无公司特定新闻</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>AMD Helios rack-scale 出货扩大机架整合需求；无公司级一手新闻</td>
 </tr>
 <tr>
 <td>VRT</td>
 <td>Power / cooling</td>
-<td>Weaker</td>
-<td>Med</td>
-<td>唯一出现公司层面负面一手线索：CEO 承认季度表现令人失望；需读季报原文中的订单/backlog/毛利</td>
+<td>Stronger</td>
+<td>High</td>
+<td>Bloomberg 报道波动功率损坏设备，FERC 加速接电，利好电力/冷却需求</td>
 </tr>
 <tr>
 <td>AAOI</td>
 <td>Optics</td>
-<td>Unchanged</td>
+<td>Stronger</td>
 <td>Med</td>
-<td>周内暴跌的直接触发是 Corning 指引符合预期与 capex 情绪，非自身订单事件</td>
+<td>美方拟禁中国产光模块，AAOI 列为潜在受益方；提案仍为草案</td>
 </tr>
 <tr>
 <td>NVTS</td>
 <td>Power semi (higher risk)</td>
 <td>Unchanged</td>
 <td>Low</td>
-<td>无公司特定事实；周内价格双向剧烈波动，仍属高风险观察类</td>
+<td>仅价格波动，无基本面一手事实</td>
 </tr>
 <tr>
 <td>MPWR</td>
 <td>Power mgmt</td>
 <td>Unchanged</td>
 <td>Med</td>
-<td>无新增一手事实；受益逻辑仍绑定机架供电密度上升</td>
+<td>电力波动/波动功率主题读通电源管理；无公司级新闻</td>
 </tr>
 <tr>
 <td>MRVL</td>
 <td>Networking / custom</td>
-<td>Unchanged</td>
+<td>Stronger</td>
 <td>Med</td>
-<td>Amazon 与 Alphabet 的 capex 上修间接支持定制硅与互连，但无公司层面新披露</td>
+<td>GUC turnkey ASIC &gt;80%、AWS 自研硅规模读通定制硅 leader</td>
 </tr>
 <tr>
 <td>ANET</td>
 <td>AI networking</td>
-<td>Stronger</td>
-<td>High</td>
-<td>AWS/GCP 增速与 capex 同步上修，直接对应以太网集群端口需求</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>集群规模扩大与 Helios 网络化利好，无公司级一手新闻</td>
 </tr>
 <tr>
 <td>AVGO</td>
 <td>Networking / ASIC</td>
 <td>Stronger</td>
 <td>High</td>
-<td>Alphabet TPU 与 Amazon Trainium 两条自研线同时受 capex 上修支撑</td>
+<td>定制硅进入高量产、AWS/hyperscaler ASIC 达规模读通 merchant 定制 leader</td>
 </tr>
 <tr>
 <td>ETN</td>
 <td>Electrical infra</td>
-<td>Unchanged</td>
-<td>Med</td>
-<td>无公司特定事实；AMD 530MW 长约与 SKT 15GW 计划支持中期电力设备需求</td>
+<td>Stronger</td>
+<td>High</td>
+<td>FERC 加速接电、波动功率损坏设备利好电气基础设施</td>
 </tr>
 <tr>
 <td>MSFT</td>
 <td>Capex payer / platform</td>
-<td>Unclear</td>
-<td>High</td>
-<td>语料中仅有「与 Amazon 合计约 $400B」的预期与二手提及，未见其自身 capex 指引原文，待一手确认</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>本周无公司级 capex 一手更新；日更列为风险复核项待验证</td>
 </tr>
 <tr>
 <td>GOOGL</td>
 <td>Capex payer / platform</td>
-<td>Stronger</td>
-<td>High</td>
-<td>capex 上修 + Google Cloud +82%，但首个负 FCF 季度是需要持续跟踪的结构性变量</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>本周无公司级 capex 一手更新</td>
 </tr>
 </tbody>
 </table>
@@ -397,33 +349,21 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td>AMD</td>
-<td>$14B / 530MW / 15 年 Core Scientific 容量长约</td>
-<td>强化「电力是绑定约束」的论点，同时抬升加速器端竞争强度</td>
-<td>等待 AMD 一手文件确认租约条款与容量爬坡节奏</td>
-</tr>
-<tr>
-<td>NBIS</td>
-<td>首台 Vera Rubin NVL72 现场投产，$40B 已签约 GPU 收入</td>
-<td>验证机架级平台从路线图进入部署阶段</td>
-<td>跟踪 8/12 财报中的交付与 backlog 口径</td>
+<td>数据中心 +107%、Helios 量产、2027 翻倍指引、收购 Taalas</td>
+<td>第二算力向量与定制推理硅加强需求侧</td>
+<td>跟踪 MI455X/Helios Q4 ramp 执行</td>
 </tr>
 <tr>
 <td>MU</td>
-<td>Amazon 点名存储器成本；2027 年模组端 DRAM 供给或降 70%+</td>
-<td>支持 HBM/DRAM 紧缺的结构性判断</td>
-<td>用后续价格与产能公告核对，而非亚洲同业股价</td>
+<td>内存 2027 售罄、NVDA 下调 HBM 规格、Samsung zHBM</td>
+<td>HBM 绑定性上升，定价杠杆增强</td>
+<td>跟踪长约/预付款与产能扩张进度</td>
 </tr>
 <tr>
 <td>TSM</td>
-<td>CoWoS 年扩产 &gt;80%，EMIB-like 封装立项</td>
-<td>近端封装仍紧，中期可能松动</td>
-<td>跟踪 CoWoS 交期是否从 52–78 周回落</td>
-</tr>
-<tr>
-<td>META</td>
-<td>FCF 被 capex 吞噬，管理层暗示云业务</td>
-<td>付款方支出未减，但投资者容忍度成为新变量</td>
-<td>核对其 capex 指引一手文件</td>
+<td>CoWoS 仍为卡点、GUC turnkey、MediaTek 双源封装</td>
+<td>封装为 merchant 与定制硅共同瓶颈</td>
+<td>跟踪 CoWoS 分配与 EMIB-T 分流</td>
 </tr>
 </tbody>
 </table>
@@ -440,18 +380,16 @@ buy_sell_instructions: false
 </thead>
 <tbody>
 <tr>
-<td>VRT</td>
-<td>investment_thesis_candidate</td>
-<td>investment_thesis_candidate（pending review）</td>
-<td>仅凭 CEO 口头「暂时性」不足以下调；若季报原文显示订单与 backlog 同时走弱则下调至 watch_only</td>
-<td>2026-08-07</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>No classification changes.</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<p>其余：<code>No classification changes.</code></p>
 <hr />
 <h2 id="5">5. 证伪条件与验证队列</h2>
-<h3 id="51">5.1 有效证伪条件（什么会让你改主意）</h3>
 <table>
 <thead>
 <tr>
@@ -467,50 +405,36 @@ buy_sell_instructions: false
 <td>F1</td>
 <td>Hyperscaler 集体下修 AI-related capex 或明确放缓部署</td>
 <td>Armed</td>
-<td>反向证据：Amazon 上调至 $220B（+69% YoY），Alphabet 上调 2026 capex，AWS +37%、GCP +82%</td>
+<td>反向证据：AMZN 升至 $220B、META 升至 $145B</td>
 <td>Reduce conviction / re-underwrite</td>
 </tr>
 <tr>
 <td>F2</td>
 <td>电力/冷却不再是绑定约束（产能明显过剩信号）</td>
 <td>Armed</td>
-<td>反向证据：AMD 签 530MW / 15 年长约并保留扩至 2.5GW 权利；SKT 目标 15GW</td>
+<td>反向证据：FERC 加速接电、波动功率损坏设备</td>
 <td>Revisit power overweight logic</td>
 </tr>
 <tr>
 <td>F3</td>
 <td>光互连需求证伪（库存/砍单/价格崩且非短期）</td>
 <td>Armed</td>
-<td>本周下跌由 Corning 符合预期指引与情绪驱动，无砍单或库存一手证据</td>
+<td>无证伪证据；对华禁令草案反而或提振国内需求</td>
 <td>Optics from candidate → watch/reject</td>
 </tr>
 <tr>
 <td>F4</td>
-<td>ASIC 替代 merchant GPU <strong>已体现在</strong> 份额与利润（非口头）</td>
+<td>ASIC 替代 merchant GPU 已体现在份额与利润（非口头）</td>
 <td>Armed</td>
-<td>无份额/利润数据；TPU 与 Trainium 目前与 GPU 采购并行扩张</td>
+<td>部分升温：GUC turnkey &gt;80%、AWS $25B run rate、AMD 收购 Taalas，但尚未见 merchant GPU 份额/利润被侵蚀</td>
 <td>Rebalance networking/ASIC map</td>
 </tr>
 <tr>
 <td>F5</td>
 <td>核心公司商业模式受损（客户、毛利、产品路线）</td>
 <td>Armed</td>
-<td>VRT 出现单季度经营不及预期的 CEO 表态，尚无客户流失或毛利结构破坏的一手证据</td>
+<td>无一级事实触发</td>
 <td>Ticker-level deep dive</td>
-</tr>
-<tr>
-<td>F6</td>
-<td>先进封装不再是绑定约束（CoWoS 交期显著回落 / 基板供给多元化）</td>
-<td>Armed</td>
-<td>CoWoS 交期仍为 52–78 周；但 TSMC 年扩产 &gt;80% 与 EMIB-like 路线为潜在松动来源</td>
-<td>下调封装稀缺溢价假设，重估加速器出货上限</td>
-</tr>
-<tr>
-<td>F7</td>
-<td>供应商融资（vendor financing）结构收缩，导致已宣布的数据中心承诺被撤回或缩量</td>
-<td>Armed</td>
-<td>Nvidia 约 $250B 背书仍在洽谈中；NVDA CDS 单日创纪录升幅为早期预警</td>
-<td>对 neocloud/OpenAI 关联需求做折价，重算需求基数</td>
 </tr>
 </tbody>
 </table>
@@ -526,42 +450,27 @@ buy_sell_instructions: false
 </thead>
 <tbody>
 <tr>
-<td>2026-08-03 起一周内</td>
-<td>MSFT 与 META 的 2026 capex 指引与云增速原文</td>
-<td>本周唯一未用一手材料验证的两个付款方，决定需求上限判断</td>
-<td>Earnings release / 10-Q / call transcript</td>
+<td>未来 2–3 周</td>
+<td>NVDA 财报与 capex/HBM 供给评论</td>
+<td>Demand ceiling / Memory</td>
+<td>Earnings release / call</td>
 </tr>
 <tr>
-<td>2026-08-03 起一周内</td>
-<td>VRT 季报原文：订单、backlog、毛利率、指引口径</td>
-<td>判定 F5 是公司执行问题还是电力/冷却卡点松动</td>
-<td>公司 IR / 8-K</td>
+<td>未来 2 周</td>
+<td>AVGO / MRVL 定制硅份额与利润是否印证 GUC 读通</td>
+<td>ASIC 替代验证</td>
+<td>Earnings / 10-Q</td>
 </tr>
 <tr>
-<td>2026-08-07 前</td>
-<td>Alphabet capex 数字的一手口径（$205B vs 约 $195B）</td>
-<td>两个媒体口径不一致，直接影响需求规模测算</td>
-<td>Alphabet IR / 10-Q</td>
-</tr>
-<tr>
-<td>2026-08-12</td>
-<td>Nebius 财报：Vera Rubin 交付节奏与 $40B 签约收入结构</td>
-<td>验证机架级平台是否从单机验证进入量产部署</td>
-<td>公司公告 / 财报</td>
-</tr>
-<tr>
-<td>未来 2–4 周</td>
-<td>Nvidia–OpenAI 背书是否落地为正式文件，以及 CDS 走向</td>
-<td>决定 F7 是否从 Armed 转向 Triggered</td>
-<td>8-K / 债务发行文件 / 公司公告</td>
+<td>未来 4 周</td>
+<td>内存 2027「售罄」是否获一手长约/预付款确认</td>
+<td>Memory 绑定性</td>
+<td>供应链一手 / MU IR</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="6">6. 价格背景（附录 · 可选 · 非决策主轴）</h2>
-<blockquote>
-<p>仅用于判断「要不要重读基本面」，<strong>不得</strong>单独改变 thesis。</p>
-</blockquote>
+<h2 id="6">6. 价格背景（附录）</h2>
 <table>
 <thead>
 <tr>
@@ -574,27 +483,26 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td>SMH</td>
-<td style="text-align: right;">n/a（本周语料未提供指数报价）</td>
-<td style="text-align: right;">n/a（本周语料未提供指数报价）</td>
+<td style="text-align: right;">数据未提供</td>
+<td style="text-align: right;">数据未提供</td>
 <td>Volatility only</td>
 </tr>
 <tr>
 <td>Core equal-weight (qualitative)</td>
-<td style="text-align: right;">周中显著回撤后于 07-31 大幅反弹（DELL 单日 +9.51%，MSFT +15.51%）</td>
-<td style="text-align: right;">定性：区间震荡加剧</td>
-<td>Volatility only</td>
+<td style="text-align: right;">偏强（VRT、ETN、DELL、MRVL 多日 &gt;5% 上行）</td>
+<td style="text-align: right;">数据未提供</td>
+<td>Warrants re-read → 已核对，无被忽略一手事实</td>
 </tr>
 <tr>
 <td>High-beta optics sleeve</td>
-<td style="text-align: right;">07-29/30 AAOI 连续 -9.90%、-13.18%，07-31 +17.76%；CIEN -7.09%、MRVL -7.77%/-6.34% 后 +12.18%</td>
-<td style="text-align: right;">定性：波动放大，方向未定</td>
-<td>Warrants re-read（已完成，见 §3/§4，无一手事实缺口）</td>
+<td style="text-align: right;">强（AAOI +16.85%/+19.44%，CIEN +5.21%）</td>
+<td style="text-align: right;">数据未提供</td>
+<td>Ignore（AAOI 无公司级一手新闻，属政策投机与 pricing noise）</td>
 </tr>
 </tbody>
 </table>
 <p><strong>异常波动触发规则：</strong>
-单票或 sleeve 大幅偏离基准 → 打开 §3/§4 重查是否有被忽略的一手事实；若无 → 记为 <strong>pricing noise</strong>。
-本周执行结果：VRT -17.26% 对应真实公司事实（季度不及预期），已升入 §3；DELL / AAOI / NVTS / MRVL / CIEN / ETN / ANET 的双位数波动均无公司特定新闻，记为 <strong>pricing noise</strong>。</p>
+AAOI 单周连续大涨且日更标注「无公司级新闻」→ 已回查 §3/§4，涨幅由对华光模块禁令草案（未确认）驱动 → 记为 <strong>pricing noise</strong>，不改 thesis。</p>
 <hr />
 <h2 id="7">7. 下周研究任务</h2>
 <table>
@@ -609,48 +517,44 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td>1</td>
-<td>读 MSFT 与 META 财报原文，抽取 2026 capex 指引与云增速</td>
-<td>更新 capex 付款方汇总表（四家口径统一）</td>
+<td>跟踪 NVDA 财报的 capex/HBM 供给与融资约束表述</td>
+<td>NVDA capex/memory note</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>2</td>
-<td>读 VRT 季报原文，拆解订单、backlog、毛利率与指引措辞</td>
-<td>VRT 单票判定备忘：执行问题 vs 需求问题</td>
+<td>核对内存 2027「售罄」是否有一手长约/预付款证据</td>
+<td>Memory 绑定性备忘</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>3</td>
-<td>用 Alphabet IR 文件核对 2026 capex 是 $205B 还是约 $195B</td>
-<td>修正需求规模测算并标注来源等级</td>
+<td>复核 AVGO/MRVL 定制硅份额与利润是否印证 GUC 读通</td>
+<td>ASIC 替代进度更新</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>4</td>
-<td>建立先进封装跟踪表：CoWoS 交期、ABF 基板供给、EMIB-like 进展</td>
-<td>封装卡点跟踪表 v1</td>
+<td>跟进对华光模块禁令草案进展及对 COHR/LITE/AAOI 需求影响</td>
+<td>Optics 政策跟踪</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>5</td>
-<td>梳理 vendor financing 敞口清单（NVDA–OpenAI、NVDA–NBIS 持股、AMD–Core Scientific）</td>
-<td>需求质量折价框架草稿</td>
+<td>核对 META/AMZN 官方 IR capex 数字（当前含二手来源）</td>
+<td>Payer capex 校验</td>
 <td>☐</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Deep dive needed？</strong> Ticker list: VRT
-若需要 → 走 <code>ljg-invest</code> 规则：<code>investment-intelligence-hub/docs/ljg_invest_report_rules.md</code></p>
+<p><strong>Deep dive needed？</strong> None</p>
 <hr />
 <h2 id="8">8. 明确忽略的噪声</h2>
 <ul>
-<li>VRT -17.26%、AAOI -13.18%/+17.76%、NVTS -12.27%/+13.10%、MRVL、DELL、CIEN、ETN、ANET 的单日双位数波动本身（除 VRT 外均无公司特定新闻）。</li>
-<li>MSFT 单日 +15.51% 的价格记录——在拿到其 capex 指引原文之前不作为基本面结论。</li>
-<li>SK Hynix -14.7%、Samsung -13% 的亚洲存储器抛售：情绪与估值传导，非订单或产能事实。</li>
-<li>07-31 pre-market brief 中把 Sprouts Farmers Market、Banc of California、General Dynamics、Hayward、IDEX、Littelfuse 等财报映射到 MSFT/NOK 的条目：ticker 匹配噪声，不构成任何信息。</li>
-<li>Pre-market brief 中反复出现的 GOOGL/MSFT 产品与开发者博客条目（BigQuery IAM 标签、llm-d 时间片、Foundry 可用性等）：产品公告，不改变 3–12 个月预期。</li>
-<li>「Marvell vs Nvidia」「值得买的顶级股票」类无新增事实的媒体聚合文章；Penguin Solutions 自述「内存才是瓶颈」的公司口径（YTD +123%，存在推广偏差，仅作方向参考）。</li>
-<li>分析师目标价、日线支撑阻力、开盘清单。</li>
+<li>AAOI 连续两日 +16.85%/+19.44% 大涨——日更明确标注无公司级新闻，属政策投机与 pricing noise。</li>
+<li>VRT、DELL、MPWR、ETN、MRVL、AVGO、CIEN 等单日 &gt;5% 价格波动与 20 日新高告警——价格纪律信号，非 thesis 升级。</li>
+<li>AMD 财报后股价跌约 7–9%——基本面为 beat 且指引 2027 翻倍，跌幅系预期落差而非基本面损害。</li>
+<li>日更中 MSFT/AAOI「风险 catalyst」实为 A10 Networks 等无关公司财报电话摘要误关联，非核心公司一手事实。</li>
 </ul>
 <hr />
 <h2 id="9">9. 下周延续记忆</h2>
@@ -664,19 +568,19 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td>Open questions</td>
-<td>① Alphabet 2026 capex 究竟是 $205B 还是约 $195B？② Nvidia 对 OpenAI 的背书是否会落成正式债务文件？③ VRT 的差季度是执行问题还是订单问题？④ 在大型云厂商 FCF 承压后，capex 上修还能持续几个季度？</td>
+<td>内存 2027「售罄」是否为真实产能耗尽还是激进 booking？融资约束是否会转化为 capex 措辞转软？</td>
 </tr>
 <tr>
 <td>Pending primary confirms</td>
-<td>MSFT capex 指引、META capex 指引、Alphabet 10-Q capex 口径、VRT 季报原文、AMD–Core Scientific 租约条款；另需补齐 07-29 与 07-30 缺失的 Hub Intelligence Brief</td>
+<td>META/AMZN 官方 IR capex 数字；内存长约/预付款一手证据；NVDA capex 与 HBM 评论</td>
 </tr>
 <tr>
 <td>Thesis one-liner for next week</td>
-<td>需求端已由付款方自身指引确认上修，主线争议点转移到「融资结构的可持续性」与「封装/存储器的物理上限」，不在股价波动上。</td>
+<td>hyperscaler capex 继续扩张，约束从算力转向内存/电力/融资，研究卡点上的秩序机器</td>
 </tr>
 <tr>
 <td>Do not forget</td>
-<td>07-31 的普涨与 07-29/30 的普跌是同一批标的、同一批缺乏公司新闻的价格事件；不要把任何一端当成论点变化。VRT 是本周唯一需要一手复核的持仓级事实。</td>
+<td>AAOI 涨幅为政策草案投机，禁令仍可能被软化或放弃；ASIC 替代尚未体现在 merchant GPU 份额/利润</td>
 </tr>
 </tbody>
 </table>
@@ -692,31 +596,31 @@ buy_sell_instructions: false
 <tbody>
 <tr>
 <td>Author</td>
-<td>AI 基建研究助理（Claude Agent，research-only）</td>
+<td>AI 基建研究组</td>
 </tr>
 <tr>
 <td>Time spent</td>
-<td>~50 min</td>
+<td>~15 min</td>
 </tr>
 <tr>
 <td>Sources checked</td>
-<td>digests（4 份）/ news scans（5 份）/ pre-market briefs（5 份）；Hub intelligence 2 日缺失</td>
+<td>digests / news / primary / other</td>
 </tr>
 <tr>
 <td>Confidence in this week’s grade</td>
-<td>Med（需求端高置信，VRT 与 MSFT 口径待一手确认）</td>
+<td>High</td>
 </tr>
 <tr>
 <td>Next brief due</td>
-<td>2026-08-07</td>
+<td>2026-08-14</td>
 </tr>
 </tbody>
 </table></article>
-    <footer class="footer"><span>AI 基建长期论点周报</span><span>生成于 2026-07-31 20:25 EDT · 保存一年</span></footer>
+    <footer class="footer"><span>AI 基建长期论点周报</span><span>生成于 2026-08-07 18:30 EDT · 保存一年</span></footer>
   </main>
   <script>
     if(window.lucide)lucide.createIcons();
-    const reportData={"status": [3, 2, 0], "coverageLabels": ["Power", "Optical interconnect", "AI networking", "ASIC", "Memory", "AI server", "Cloud platform demand（", "Advanced packaging"], "coverage": [7, 6, 4, 4, 1, 5, 3, 3]};
+    const reportData={"status": [3, 2, 0], "coverageLabels": ["Power", "Optical interconnect", "AI networking", "ASIC", "Memory", "AI server", "Cloud platform demand "], "coverage": [7, 6, 4, 4, 1, 5, 3]};
     Chart.defaults.color='#676b63';Chart.defaults.font.family='Inter, SF Pro Text, PingFang SC, system-ui, sans-serif';
     new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['稳固','观察','受损'],datasets:[{data:reportData.status,backgroundColor:['#217a4b','#c79531','#a33a32'],borderColor:'#fff',borderWidth:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}});
     new Chart(document.getElementById('coverageChart'),{type:'bar',data:{labels:reportData.coverageLabels,datasets:[{data:reportData.coverage,backgroundColor:['#217a4b','#c79531','#315f9c','#6b5a8e','#c6573f','#3e827f','#53734c'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#e6e8e1'}}}}});
