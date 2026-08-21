@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="AI 基建长期论点、卡点与证伪条件周报。">
-  <title>AI 基建长期论点与卡点周报 — 2026-08-14</title>
+  <title>AI 基建长期论点与卡点周报 — 2026-08-21</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <style>
@@ -17,13 +17,13 @@
 <body>
   <header class="topbar"><div class="brand"><div class="mark">AI</div><div><strong>AI 基建研究</strong><span>长期论点周报</span></div></div><div class="tools"><a href="/archive.html" title="历史归档" aria-label="历史归档"><i data-lucide="archive"></i></a><button title="打印或保存为 PDF" aria-label="打印或保存为 PDF" onclick="window.print()"><i data-lucide="printer"></i></button></div></header>
   <main class="shell">
-    <section class="head"><div><p class="eyebrow">每周论点与卡点复核</p><h1>AI 基建长期论点与卡点周报 — 2026-08-14</h1><p class="dek">本周需求侧与制造侧的一手数据（TSMC 资本开支、ANET/CSCO 网络订单、光互连财报）多点确认卡点仍绑定，论点保持 Intact，主要新变量是融资结构化带来的循环性尾部风险。</p></div><div class="date"><strong>2026-08-14</strong><span>周报日期 · 美东时间</span></div></section>
+    <section class="head"><div><p class="eyebrow">每周论点与卡点复核</p><h1>AI 基建长期论点与卡点周报 — 2026-08-21</h1><p class="dek">供给侧卡点（封装、光模块、HBM）证据整周继续加固，唯一需盯的软信号是 headline 承诺下修带来的 vendor-financing 质疑，需等 NVDA 财报一手确认。</p></div><div class="date"><strong>2026-08-21</strong><span>周报日期 · 美东时间</span></div></section>
     <div class="notice"><i data-lucide="shield-check"></i>仅供研究。不连接券商，不生成买卖指令，不设目标价。</div>
     <section class="kpis">
-      <article class="kpi" style="--accent:var(--green)"><label>总体论点</label><b style="color:var(--green)">Intact</b><p>hyperscaler AI capex 延续，约束仍集中在电力、光互连、网络、HBM 等物理卡点</p></article>
+      <article class="kpi" style="--accent:var(--green)"><label>总体论点</label><b style="color:var(--green)">Intact</b><p>hyperscaler AI capex 延续，物理卡点（先进封装、光互连、HBM、电力）仍是绑定约束</p></article>
       <article class="kpi" style="--accent:var(--blue)"><label>投资姿态</label><b style="color:var(--blue)">保持论点</b><p>多月到多年研究视角</p></article>
-      <article class="kpi" style="--accent:var(--coral)"><label>重大事实</label><b>5</b><p>TSMC 7 月营收同比 +44.7%（约 145 亿美元），2026 年资本开支上调至创纪录的 600–640 亿美元（一手数据级）</p></article>
-      <article class="kpi" style="--accent:var(--red)"><label>有效证伪条件</label><b>5</b><p>Hyperscaler（GOOGL/MSFT/AMZN/META）下一轮财报 capex 指引是否集体下修</p></article>
+      <article class="kpi" style="--accent:var(--coral)"><label>重大事实</label><b>5</b><p>TSMC 将部分 CoWoS 先进封装后端工作外包给 Intel，印证封装产能仍是加速器出货的绑定瓶颈</p></article>
+      <article class="kpi" style="--accent:var(--red)"><label>有效证伪条件</label><b>5</b><p>2026-08-26 NVDA Q2 财报及 Rubin ramp / 需求结构披露</p></article>
     </section>
     <section class="charts"><article class="panel"><h2>论点状态构成</h2><div class="chart"><canvas id="statusChart"></canvas></div></article><article class="panel"><h2>卡点观察覆盖</h2><div class="chart"><canvas id="coverageChart"></canvas></div></article></section>
     <article class="report"><h2 id="0">0. 执行摘要</h2>
@@ -37,7 +37,7 @@
 <tbody>
 <tr>
 <td><strong>总体论点</strong></td>
-<td>Intact — hyperscaler AI capex 延续，约束仍集中在电力、光互连、网络、HBM 等物理卡点</td>
+<td>Intact — hyperscaler AI capex 延续，物理卡点（先进封装、光互连、HBM、电力）仍是绑定约束</td>
 </tr>
 <tr>
 <td><strong>投资姿态</strong></td>
@@ -45,23 +45,23 @@
 </tr>
 <tr>
 <td><strong>本周最大事实</strong></td>
-<td>TSMC 7 月营收同比 +44.7%（约 145 亿美元），2026 年资本开支上调至创纪录的 600–640 亿美元（一手数据级）</td>
+<td>TSMC 将部分 CoWoS 先进封装后端工作外包给 Intel，印证封装产能仍是加速器出货的绑定瓶颈</td>
 </tr>
 <tr>
 <td><strong>本周最大风险</strong></td>
-<td>NVDA 主导的 5000 亿美元第三方融资平台引发「循环融资」担忧：若 AI 工厂利用率/ROI 不及预期，信贷化承销可能放大下行</td>
+<td>OpenAI–Nvidia 数据中心承诺被下修约 1450 亿美元，重燃 vendor-financing / 「人造需求」质疑</td>
 </tr>
 <tr>
 <td><strong>组合逻辑影响</strong></td>
-<td>局部 — 光互连、网络卡点获多份财报确认，但市场对现金流/毛利质量的区分度上升，属逻辑校验而非损害</td>
+<td>局部 — 光互连与 ASIC/自研硅内部相对强弱有轮动，但整体卡点秩序未破坏</td>
 </tr>
 <tr>
 <td><strong>下个证伪信号</strong></td>
-<td>Hyperscaler（GOOGL/MSFT/AMZN/META）下一轮财报 capex 指引是否集体下修</td>
+<td>2026-08-26 NVDA Q2 财报及 Rubin ramp / 需求结构披露</td>
 </tr>
 </tbody>
 </table>
-<p><strong>一句话周记：</strong> 本周需求侧与制造侧的一手数据（TSMC 资本开支、ANET/CSCO 网络订单、光互连财报）多点确认卡点仍绑定，论点保持 Intact，主要新变量是融资结构化带来的循环性尾部风险。</p>
+<p><strong>一句话周记：</strong> 供给侧卡点（封装、光模块、HBM）证据整周继续加固，唯一需盯的软信号是 headline 承诺下修带来的 vendor-financing 质疑，需等 NVDA 财报一手确认。</p>
 <hr />
 <h2 id="1">1. 论点状态</h2>
 <table>
@@ -76,32 +76,32 @@
 <tr>
 <td>Demand: hyperscaler / AI capex</td>
 <td>Green</td>
-<td>Nebius Q2 云业务近 6 倍增长、400 亿美元客户承诺；CSCO 全年 AI hyperscaler 订单近 93 亿美元并给出约 15% 增长指引；有基金测算 2027 年 AI capex 或达 1.6 万亿美元</td>
+<td>AMZN/GOOGL/MSFT 合计约 6000 亿美元 capex 图景延续；数据中心 capex 2030 前预测破 3 万亿美元（均为二手/预测口径）</td>
 </tr>
 <tr>
 <td>Supply: accelerators &amp; platforms</td>
-<td>Green</td>
-<td>TSMC 7 月营收 +44.7%，2026 capex 上调至 600–640 亿美元；L&amp;T 在钦奈部署 1 万颗 NVDA B300 统一集群</td>
+<td>Yellow</td>
+<td>Samsung 先进制程选择性提价至多 15%；NVDA 通过结构化融资撑客户购买力，说明供给紧但需求融资化</td>
 </tr>
 <tr>
 <td>Chokepoints still binding</td>
 <td>Green</td>
-<td>电力被 NVDA（Lancium 投资、800 VDC 架构）、变压器 4 年交期、光互连财报共同确认为绑定约束；HBM/DRAM 紧张影响 Rubin 规格设计</td>
+<td>TSMC 外包 CoWoS 后端给 Intel；Lumentum 称光模块短缺持续扩大；Samsung 锁定五家大客户 HBM4 多年供货</td>
 </tr>
 <tr>
 <td>Competition / substitution risk</td>
 <td>Yellow</td>
-<td>white-box / 共封装光学与 hyperscaler 自研仍是长期份额风险；ASIC 替代尚未在份额与利润上体现</td>
+<td>Marvell 互连业务 FY27 指引 &gt;70% YoY，超过自研硅 20%+，卡点内部相对权重迁移</td>
 </tr>
 <tr>
 <td>Financing / macro / geo overlay</td>
 <td>Yellow</td>
-<td>5000 亿美元 NVDA 融资平台带来循环融资担忧；FCC 拟禁中国光模块方向性利好但未成规则</td>
+<td>OpenAI–Nvidia 承诺下修 ~1450 亿美元；中国互联网 AI 设备支出 +81.8% 但 Tencent 现 2005 年以来首次负 FCF</td>
 </tr>
 <tr>
 <td><strong>Overall</strong></td>
 <td><strong>Intact</strong></td>
-<td>无一级事实削弱主线，多项一手数据强化需求与卡点绑定</td>
+<td>无一级事实削弱主线；下修与融资质疑为待验证软信号，非确认损害</td>
 </tr>
 </tbody>
 </table>
@@ -109,7 +109,7 @@
 - <strong>Intact：</strong> 无一级事实削弱主线；价格波动单独不构成 Damaged。
 - <strong>Watch：</strong> 出现需验证的软信号。
 - <strong>Damaged：</strong> 一级来源确认 capex 下修、关键客户砍单、卡点被替代且份额/利润结构破坏。</p>
-<p><strong>相对上周变化：</strong> Improved — TSMC 资本开支与多份网络/光互连财报提供了一手需求确认。</p>
+<p><strong>相对上周变化：</strong> Unchanged — 供给侧证据加固与融资软信号相互抵消，总体维持 Intact。</p>
 <hr />
 <h2 id="2">2. 卡点仪表盘</h2>
 <table>
@@ -128,62 +128,62 @@
 <td>Power / cooling / grid</td>
 <td>G</td>
 <td>→</td>
-<td>NVDA 发布 800 VDC AI 工厂供电架构；变压器 4 年交期 + HV 工程师稀缺被指为绑定约束</td>
+<td>Coherent 300mm 高导热 SiC 衬底客户送样，指向密度/热管理路线推进</td>
 <td>VRT, ETN, GEV, PWR, FIX, MPWR, NVTS</td>
-<td>电力/冷却产能明显过剩、交期大幅缩短</td>
+<td>电力/冷却产能明显过剩、订单延迟信号</td>
 </tr>
 <tr>
 <td>Optical interconnect / 800G–1.6T</td>
 <td>G</td>
 <td>↑</td>
-<td>LITE 单季营收 +13.6%、调整后毛利 50.4%；COHR 财报超预期，需求跨多供应商稳健</td>
+<td>Lumentum 称光模块短缺持续扩大、需求超产能；Marvell 互连 FY27 指引 &gt;70% YoY</td>
 <td>AAOI, COHR, CIEN, LITE, CRDO, ALAB</td>
-<td>库存/砍单/价格非短期崩塌</td>
+<td>库存积压/砍单/价格非短期崩塌</td>
 </tr>
 <tr>
 <td>AI networking / DSP / Ethernet</td>
 <td>G</td>
-<td>↑</td>
-<td>ANET Q2 营收 30.4 亿美元、上调全年指引 + 多年采购承诺；CSCO AI 订单近 93 亿美元、约 15% 增长指引</td>
+<td>→</td>
+<td>102.4T 以太网硅（Cisco/Broadcom/Nvidia）推进，带动高基数交换硅与互连需求</td>
 <td>ANET, AVGO, MRVL, NOK</td>
-<td>以太网 AI 需求证伪或订单下滑</td>
+<td>交换硅订单确认性转弱</td>
 </tr>
 <tr>
 <td>ASIC / custom silicon</td>
 <td>Y</td>
 <td>→</td>
-<td>ASIC / Custom Silicon 卡点评分周内维持高位（88→84），无份额/利润级替代证据</td>
+<td>Marvell 自研硅增速 20%+，明显慢于互连业务，卡点内部权重迁移</td>
 <td>AVGO, MRVL, MSFT, GOOGL</td>
-<td>ASIC 替代在份额与利润上被证实</td>
+<td>自研硅在份额与利润层面实质替代 merchant GPU</td>
 </tr>
 <tr>
 <td>Memory / HBM</td>
 <td>G</td>
 <td>↑</td>
-<td>内存占 Vera Rubin 成本约 62%、SOCAMM2 约 2 万美元/Superchip；NVDA 测试低至 192GB 的 Rubin Ultra 配置反映 HBM 供应紧张</td>
+<td>Samsung 完成五家大客户 HBM4 多年供货协议；Micron 100 亿美元 Boise 实验室投资</td>
 <td>MU</td>
-<td>HBM 供应转向过剩、价格趋势性走弱</td>
+<td>HBM 需求可见度下降或价格转弱</td>
 </tr>
 <tr>
 <td>AI server / rack / EMS</td>
 <td>G</td>
 <td>→</td>
-<td>Zhen Ding 关注 Rubin PCB 供应进度；per-rack DRAM 成本升 2.5x 压缩系统 BOM</td>
+<td>数据中心 capex 破 3 万亿美元预测强化机架/集成商下游拉动</td>
 <td>DELL, SMCI, HPE, CLS, JBL</td>
-<td>关键客户砍单、机架部署放缓</td>
+<td>hyperscaler capex 削减传导至整机订单</td>
 </tr>
 <tr>
 <td>Cloud platform demand (payer)</td>
 <td>G</td>
 <td>→</td>
-<td>Nebius 400 亿美元客户承诺；基金测算 2027 AI capex 或达 1.6 万亿美元</td>
-<td>MSFT, GOOGL, (AMZN if tracked)</td>
-<td>hyperscaler 集体下修 capex</td>
+<td>GitHub 月 29 亿 commit、AI 负载致 8 小时中断并向 Azure 迁移，验证真实工作负载</td>
+<td>MSFT, GOOGL</td>
+<td>payer capex 指引明确转软</td>
 </tr>
 </tbody>
 </table>
 <p><strong>本周卡点迁移（若有）：</strong>
-从 <code>无明显迁移</code> 转向 <code>无明显迁移</code>，因为：需求、光互连、网络、电力多点同时被确认，卡点秩序未发生结构性转移。</p>
+从 <code>ASIC / custom silicon</code> 相对权重转向 <code>optical interconnect</code>，因为：Marvell 管理层指引显示互连增速（&gt;70%）显著超过自研硅（20%+），叠加 Lumentum 光模块短缺扩大，光互连本周证据链最强。</p>
 <hr />
 <h2 id="3-5">3. 本周重大事实（最多 5 条）</h2>
 <table>
@@ -201,48 +201,48 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>2026-08-12</td>
-<td>TSMC 7 月营收 +44.7%（约 145 亿美元），2026 capex 上调至创纪录 600–640 亿美元</td>
-<td>Tier-1</td>
-<td>Semiconductor manufacturing</td>
+<td>2026-08-20</td>
+<td>TSMC 将部分 CoWoS 先进封装后端外包给 Intel 以缓解产能紧张</td>
+<td>Secondary</td>
+<td>ASIC / 制造</td>
 <td>Reinforce</td>
 <td>TSM, NVDA, AVGO</td>
 </tr>
 <tr>
 <td>2</td>
-<td>2026-08-11</td>
-<td>NVDA 与 Apollo、BlackRock、Blackstone、Brookfield、Goldman、KKR 签 MOU，拟动员超 5000 亿美元 AI 计算融资</td>
-<td>Primary（NVIDIA Blog）</td>
-<td>Hyperscaler capex</td>
-<td>Reinforce</td>
-<td>NVDA, MSFT, GOOGL, AMZN, ORCL</td>
-</tr>
-<tr>
-<td>3</td>
-<td>2026-08-13</td>
-<td>Nebius Q2 云业务近 6 倍增长、400 亿美元客户承诺、4 份十亿美元级合同</td>
+<td>2026-08-18</td>
+<td>OpenAI–Nvidia 数据中心承诺被下修约 1450 亿美元，引发 vendor-financing 质疑</td>
 <td>Tier-1</td>
-<td>Data center</td>
-<td>Reinforce</td>
+<td>Hyperscaler Capex</td>
+<td>Weaken</td>
 <td>NVDA</td>
 </tr>
 <tr>
-<td>4</td>
-<td>2026-08-12</td>
-<td>ANET Q2 营收 30.4 亿美元、上调全年指引并披露多年采购承诺</td>
-<td>Tier-1</td>
-<td>Networking</td>
+<td>3</td>
+<td>2026-08-17/18</td>
+<td>Marvell 指引互连业务 FY27 &gt;70% YoY，超过自研硅 20%+ 增速</td>
+<td>Secondary</td>
+<td>Optical / ASIC</td>
 <td>Reinforce</td>
-<td>ANET, AVGO, MRVL</td>
+<td>MRVL, COHR, LITE, CRDO</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026-08-20</td>
+<td>Samsung 与五家大客户完成 HBM4 多年供货协议</td>
+<td>Secondary</td>
+<td>Memory / HBM</td>
+<td>Reinforce</td>
+<td>MU, NVDA, AVGO</td>
 </tr>
 <tr>
 <td>5</td>
-<td>2026-08-11</td>
-<td>内存占 Vera Rubin 成本约 62%，NVDA 测试低至 192GB 的 Rubin Ultra 配置显示 HBM 供应紧张</td>
-<td>Tier-1</td>
-<td>Memory</td>
+<td>2026-08-19</td>
+<td>Samsung 先进制程选择性提价至多 15%，反映产能全面紧张</td>
+<td>Secondary</td>
+<td>制造</td>
 <td>Reinforce</td>
-<td>MU, NVDA</td>
+<td>TSM, NVDA, AVGO</td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +252,7 @@
 - <strong>Secondary：</strong> 媒体综合、分析师意见 — 不得单独把 thesis 打成 Damaged</p>
 <p><strong>本周无 Material fact？</strong> No</p>
 <hr />
-<h2 id="4">4. 组合映射（逻辑层，不是交易层）</h2>
+<h2 id="4">4. 组合映射</h2>
 <h3 id="41">4.1 核心计划 / 持仓视角</h3>
 <table>
 <thead>
@@ -270,81 +270,81 @@
 <td>Server / rack</td>
 <td>Unchanged</td>
 <td>Med</td>
-<td>Rubin PCB 供应与 per-rack DRAM 成本升 2.5x 影响系统 BOM，机架需求侧未见砍单</td>
+<td>3 万亿数据中心 capex 预测支撑下游机架拉动，无公司层面一手事实</td>
 </tr>
 <tr>
 <td>VRT</td>
 <td>Power / cooling</td>
-<td>Stronger</td>
-<td>High</td>
-<td>800 VDC 架构、变压器交期、AI 功率波动损耗电气设备，均强化电力/冷却需求</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>电力/冷却卡点证据稳定，本周仅价格波动</td>
 </tr>
 <tr>
 <td>AAOI</td>
 <td>Optics</td>
-<td>Unchanged</td>
+<td>Stronger</td>
 <td>Med</td>
-<td>光互连需求跨供应商确认；本周为 Coherent 财报相关关注标的</td>
+<td>光模块短缺扩大、102.4T 以太网推进为需求端支撑</td>
 </tr>
 <tr>
 <td>NVTS</td>
 <td>Power semi (higher risk)</td>
 <td>Unclear</td>
 <td>Low</td>
-<td>属电力半导体高风险观察项，本周无一手基本面新数据，价格波动不计入逻辑</td>
+<td>本周无公司层面基本面事实，仅价格波动</td>
 </tr>
 <tr>
 <td>MPWR</td>
 <td>Power mgmt</td>
-<td>Stronger</td>
+<td>Unchanged</td>
 <td>Med</td>
-<td>NVDA 800 VDC 架构驱动机架内电源转换重设计，利好电源管理供应商</td>
+<td>无一手事实，属电力管理卡点常规敞口</td>
 </tr>
 <tr>
 <td>MRVL</td>
 <td>Networking / custom</td>
 <td>Stronger</td>
-<td>Med</td>
-<td>ANET/CSCO 网络需求读透至商用交换芯片与 DSP/retimer</td>
+<td>High</td>
+<td>互连业务 FY27 指引 &gt;70% YoY，重定位为主要增长驱动</td>
 </tr>
 <tr>
 <td>ANET</td>
 <td>AI networking</td>
 <td>Stronger</td>
-<td>High</td>
-<td>Q2 营收 30.4 亿美元、上调指引、多年采购承诺确认以太网 AI 需求</td>
+<td>Med</td>
+<td>102.4T 以太网硅推进支撑高基数交换需求</td>
 </tr>
 <tr>
 <td>AVGO</td>
 <td>Networking / ASIC</td>
-<td>Stronger</td>
+<td>Unchanged</td>
 <td>Med</td>
-<td>网络订单读透至商用交换芯片；ASIC 卡点维持高位无替代损害</td>
+<td>交换/ASIC 双敞口；制程提价、封装外包为供给侧读数</td>
 </tr>
 <tr>
 <td>ETN</td>
 <td>Electrical infra</td>
-<td>Stronger</td>
+<td>Unchanged</td>
 <td>Med</td>
-<td>电力/电网被反复确认为绑定约束，电气基础设施需求延续</td>
+<td>电力基建卡点稳定，无一手事实</td>
 </tr>
 <tr>
 <td>MSFT</td>
 <td>Capex payer / platform</td>
-<td>Unchanged</td>
+<td>Stronger</td>
 <td>Med</td>
-<td>5000 亿美元融资平台扩大需求资金池；本周财报噪声为无关小盘公司误挂</td>
+<td>GitHub 向 Azure 迁移验证真实 AI 工作负载利用率</td>
 </tr>
 <tr>
 <td>GOOGL</td>
 <td>Capex payer / platform</td>
 <td>Unchanged</td>
 <td>Med</td>
-<td>capex payer 逻辑不变；本周风险提示来自无关公司标签误挂</td>
+<td>合计 capex 图景延续，无新一手指引</td>
 </tr>
 </tbody>
 </table>
-<h3 id="42">4.2 仅观察（本周事实触及时才填写）</h3>
+<h3 id="42">4.2 仅观察</h3>
 <table>
 <thead>
 <tr>
@@ -356,56 +356,42 @@
 </thead>
 <tbody>
 <tr>
-<td>NBIS</td>
-<td>Q2 云业务近 6 倍增长、400 亿美元承诺，佐证 neocloud 需求</td>
-<td>强化数据中心需求侧读透</td>
-<td>核对 400 亿美元承诺对应的一手文件</td>
-</tr>
-<tr>
-<td>CSCO</td>
-<td>全年 AI 订单近 93 亿美元、约 15% 增长指引</td>
-<td>强化网络卡点，需求非炒作</td>
-<td>关注 FY2027 sequential 是否减速</td>
-</tr>
-<tr>
-<td>LITE</td>
-<td>Q2 营收 +13.6%、毛利 50.4%</td>
-<td>确认光互连需求与定价改善</td>
-<td>跟踪光学库存与 FCC 规则进展</td>
+<td>NVDA</td>
+<td>OpenAI 承诺下修 + vendor-financing 质疑</td>
+<td>需求质量待验证</td>
+<td>8/26 Q2 财报及需求结构披露</td>
 </tr>
 <tr>
 <td>TSM</td>
-<td>7 月营收 +44.7%，capex 上调至 600–640 亿美元</td>
-<td>制造侧一手确认 AI 芯片需求</td>
-<td>核对月度营收与 capex 官方披露</td>
+<td>CoWoS 外包 Intel、制程提价</td>
+<td>封装卡点仍绑定</td>
+<td>官方对外包比例/产能确认</td>
+</tr>
+<tr>
+<td>COHR</td>
+<td>光模块短缺、SiC 衬底送样</td>
+<td>光互连+热管理双敞口</td>
+<td>SiC 送样转量产进度</td>
+</tr>
+<tr>
+<td>LITE</td>
+<td>Lumentum 报告光模块短缺扩大</td>
+<td>光互连需求可见度</td>
+<td>产能扩张 vs 需求平衡</td>
+</tr>
+<tr>
+<td>MU</td>
+<td>HBM4 竞争 + Boise 100 亿投资</td>
+<td>HBM 卡点资本强度</td>
+<td>HBM4 offtake 与产能锁定</td>
 </tr>
 </tbody>
 </table>
-<h3 id="43">4.3 分类变化（本周是否改标签）</h3>
-<table>
-<thead>
-<tr>
-<th>标的</th>
-<th>原分类</th>
-<th>新分类</th>
-<th>原因（可证伪）</th>
-<th>下次复核</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>—</td>
-<td>investment_thesis_candidate</td>
-<td>—</td>
-<td>No classification changes.</td>
-<td>下周</td>
-</tr>
-</tbody>
-</table>
-<p>无变更则写：<code>No classification changes.</code></p>
+<h3 id="43">4.3 分类变化</h3>
+<p><code>No classification changes.</code></p>
 <hr />
 <h2 id="5">5. 证伪条件与验证队列</h2>
-<h3 id="51">5.1 有效证伪条件（什么会让你改主意）</h3>
+<h3 id="51">5.1 有效证伪条件</h3>
 <table>
 <thead>
 <tr>
@@ -421,35 +407,35 @@
 <td>F1</td>
 <td>Hyperscaler 集体下修 AI-related capex 或明确放缓部署</td>
 <td>Armed</td>
-<td>反向证据：Nebius 需求超建设、CSCO 约 15% 增长指引、TSMC 上调 capex</td>
+<td>合计约 6000 亿 capex 图景延续；仅 OpenAI–Nvidia 单项承诺下修</td>
 <td>Reduce conviction / re-underwrite</td>
 </tr>
 <tr>
 <td>F2</td>
 <td>电力/冷却不再是绑定约束（产能明显过剩信号）</td>
 <td>Armed</td>
-<td>反向证据：800 VDC 架构、变压器 4 年交期、AI 功率波动损耗设备</td>
+<td>无过剩信号；SiC 热管理路线继续推进</td>
 <td>Revisit power overweight logic</td>
 </tr>
 <tr>
 <td>F3</td>
 <td>光互连需求证伪（库存/砍单/价格崩且非短期）</td>
 <td>Armed</td>
-<td>反向证据：LITE 毛利 50.4%、COHR 超预期、需求跨多供应商稳健</td>
+<td>Lumentum 称短缺扩大，与证伪方向相反</td>
 <td>Optics from candidate → watch/reject</td>
 </tr>
 <tr>
 <td>F4</td>
 <td>ASIC 替代 merchant GPU 已体现在份额与利润（非口头）</td>
 <td>Armed</td>
-<td>无触发证据；ASIC 卡点维持高位无份额/利润级替代</td>
+<td>Marvell 自研硅增速慢于互连，仍属口头/结构层</td>
 <td>Rebalance networking/ASIC map</td>
 </tr>
 <tr>
 <td>F5</td>
 <td>核心公司商业模式受损（客户、毛利、产品路线）</td>
 <td>Armed</td>
-<td>无触发证据；COHR/CSCO 股价下跌为估值消化而非基本面损害</td>
+<td>无一手证据；NVDA vendor-financing 为待验证质疑</td>
 <td>Ticker-level deep dive</td>
 </tr>
 </tbody>
@@ -466,27 +452,27 @@
 </thead>
 <tbody>
 <tr>
-<td>未来 2–4 周</td>
-<td>GOOGL/MSFT/AMZN/META 后续 capex 指引与部署节奏</td>
+<td>2026-08-26</td>
+<td>NVDA Q2 财报、Rubin ramp、需求结构与 vendor-financing 澄清</td>
 <td>Demand ceiling</td>
-<td>Earnings release / 10-Q / call</td>
+<td>Earnings release / call</td>
 </tr>
 <tr>
-<td>未来 2 周</td>
-<td>Nebius 400 亿美元客户承诺的合同/文件核对</td>
-<td>Demand quality</td>
-<td>公司公告 / 财报</td>
+<td>2026-08-27</td>
+<td>MRVL 财报，验证互连 &gt;70% YoY 指引与自研硅增速</td>
+<td>Chokepoint mix</td>
+<td>Earnings release / call</td>
 </tr>
 <tr>
 <td>未来 2–4 周</td>
-<td>FCC 中国光模块禁令是否成规则</td>
-<td>Optical supply shift</td>
-<td>FCC 官方规则文本</td>
+<td>TSMC 对 CoWoS 外包 Intel 的官方确认与规模</td>
+<td>Packaging bottleneck</td>
+<td>TSMC IR / 官方声明</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="6">6. 价格背景（附录 · 可选 · 非决策主轴）</h2>
+<h2 id="6">6. 价格背景（附录）</h2>
 <table>
 <thead>
 <tr>
@@ -501,24 +487,24 @@
 <td>SMH</td>
 <td style="text-align: right;">未提供</td>
 <td style="text-align: right;">未提供</td>
-<td>Volatility only — 语料无指数级数据，仅供背景</td>
+<td>Volatility only</td>
 </tr>
 <tr>
 <td>Core equal-weight (qualitative)</td>
-<td style="text-align: right;">混合</td>
+<td style="text-align: right;">周内多标的 &gt;5% 波动</td>
 <td style="text-align: right;">未提供</td>
-<td>DELL +9.87%、CIEN +11.49% 为催化剂/情绪；COHR 周内大幅波动为估值消化</td>
+<td>Volatility only — VRT/DELL/MRVL/AAOI/COHR/NVTS 单日大幅波动，无一手基本面损害</td>
 </tr>
 <tr>
 <td>High-beta optics sleeve</td>
-<td style="text-align: right;">高波动</td>
+<td style="text-align: right;">AAOI 周内 +15.5% 后 -15%/-7% 反复</td>
 <td style="text-align: right;">未提供</td>
-<td>COHR 周内 -14.24% 后回升再 -7.99%，AAOI/NVTS 单日 &gt;5% 波动，均记为定价噪声</td>
+<td>Warrants re-read — 已复查，光互连一手证据仍支持，记为 pricing noise</td>
 </tr>
 </tbody>
 </table>
 <p><strong>异常波动触发规则：</strong>
-单票或 sleeve 大幅偏离基准 → 打开 §3/§4 重查是否有被忽略的一手事实；本周复查后 COHR/CSCO 下跌均对应「beat 后估值消化」，无被忽略的一手损害 → 记为 pricing noise。</p>
+AAOI/COHR 等光模块 sleeve 周内剧烈双向波动 → 已打开 §3/§4 复查，未发现被忽略的一手损害事实（Lumentum 短缺报告反而为正向），故记为 <strong>pricing noise</strong>。</p>
 <hr />
 <h2 id="7">7. 下周研究任务</h2>
 <table>
@@ -533,32 +519,32 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>核对 Nebius 400 亿美元客户承诺对应文件</td>
-<td>NBIS 需求质量 note</td>
+<td>精读 NVDA 8/26 Q2 财报，重点看需求结构与 vendor-financing 敞口</td>
+<td>NVDA capex/需求质量 note</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>2</td>
-<td>更新 TSMC 月度营收与 2026 capex 追踪</td>
-<td>制造侧需求确认 note</td>
+<td>跟踪 MRVL 8/27 财报，核对互连 &gt;70% YoY 指引</td>
+<td>MRVL 互连 vs 自研硅 note</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>3</td>
-<td>跟踪 FCC 光模块禁令规则进展</td>
-<td>光互连供应链影响 note</td>
+<td>求证 TSMC 对 Intel CoWoS 外包的官方口径与规模</td>
+<td>封装卡点更新</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>4</td>
-<td>评估 NVDA 5000 亿美元融资平台的循环融资尾部风险</td>
-<td>融资结构风险 note</td>
+<td>汇总 HBM4 多年供货动态（Samsung/MU/SK hynix）</td>
+<td>HBM 供给格局 note</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>5</td>
-<td>复核 HBM/SOCAMM 内存成本对系统 BOM 与 MU 定价的影响</td>
-<td>内存卡点 note</td>
+<td>复核光模块短缺 vs 产能扩张平衡（LITE/COHR/AAOI）</td>
+<td>光互连供需 note</td>
 <td>☐</td>
 </tr>
 </tbody>
@@ -567,11 +553,11 @@
 <hr />
 <h2 id="8">8. 明确忽略的噪声</h2>
 <ul>
-<li>COHR 周内 -14.24%、-7.99% 及回升的单日价格波动（beat 后估值消化，非基本面损害）</li>
-<li>DELL +9.87%、CIEN +11.49%、AAOI/NVTS 单日 &gt;5% 的价格提示（chase-control 警报，非论点升级）</li>
-<li>每日 digest 中 MMYT、B&amp;G Foods、LTC Properties、LifeMD 等无关公司财报被误挂 MSFT/SMCI/GOOGL 标签的「潜在负面线索」</li>
-<li>Bernstein 关于 NVDA 中国份额 40%→8% 的分析师建模（已知出口管制动态，非新一手数据）</li>
-<li>13F 持仓、ARK 交易、分析师目标价重设，无卡点级信号</li>
+<li>AAOI 周内 +15.5%/-15%/-7% 的单日大幅波动 — 无公司一手事实，纯价格纪律信号。</li>
+<li>VRT/DELL/MPWR/NVTS/COHR/ETN 单日 &gt;5%/&gt;6% 波动 — 均标注为 price-discipline alert，非论点变化。</li>
+<li>NVDA Q2 收入 ~93B 的 memeburn/Goldman「门槛太高」预览与分析师定位 — 预览估计，非确认数据。</li>
+<li>8/21 pre-market brief 中一批与 AI 基建无关的财报条目（STAAR、Accuray、Beam Global、Bill.com、Lumexa、Omeros）被错误映射到 MSFT — 忽略。</li>
+<li>Portfolio Action Score 100/100「action allowed」— 属评分机制信号，不构成基本面升级。</li>
 </ul>
 <hr />
 <h2 id="9">9. 下周延续记忆</h2>
@@ -585,19 +571,19 @@
 <tbody>
 <tr>
 <td>Open questions</td>
-<td>NVDA 5000 亿美元融资平台的循环性是否影响端需求质量？HBM 供应紧张是否持续压低 Rubin 内存配置？</td>
+<td>OpenAI–Nvidia 承诺下修是报告口径问题还是端需求早期裂缝？TSMC 外包 CoWoS 的实际规模多大？</td>
 </tr>
 <tr>
 <td>Pending primary confirms</td>
-<td>Nebius 400 亿美元承诺文件；TSMC capex 官方披露；FCC 规则文本</td>
+<td>NVDA 8/26 财报需求结构；MRVL 8/27 互连指引；TSMC 对封装外包的官方确认</td>
 </tr>
 <tr>
 <td>Thesis one-liner for next week</td>
-<td>hyperscaler capex 延续、卡点仍绑定，主线 Intact，重点盯融资循环性与内存供应</td>
+<td>供给侧卡点持续绑定，需求质量待 NVDA 财报一手验证，总体 Intact</td>
 </tr>
 <tr>
 <td>Do not forget</td>
-<td>光互连财报强但市场按现金流/毛利区分供应商，逻辑校验≠损害</td>
+<td>vendor-financing / 「人造需求」是本轮周期最关键的证伪线，紧盯一手披露而非价格</td>
 </tr>
 </tbody>
 </table>
@@ -613,7 +599,7 @@
 <tbody>
 <tr>
 <td>Author</td>
-<td>AI 基建研究组</td>
+<td>AI 基建研究台</td>
 </tr>
 <tr>
 <td>Time spent</td>
@@ -625,19 +611,19 @@
 </tr>
 <tr>
 <td>Confidence in this week’s grade</td>
-<td>High</td>
+<td>Med</td>
 </tr>
 <tr>
 <td>Next brief due</td>
-<td>2026-08-21</td>
+<td>2026-08-28</td>
 </tr>
 </tbody>
 </table></article>
-    <footer class="footer"><span>AI 基建长期论点周报</span><span>生成于 2026-08-14 18:30 EDT · 保存一年</span></footer>
+    <footer class="footer"><span>AI 基建长期论点周报</span><span>生成于 2026-08-21 18:30 EDT · 保存一年</span></footer>
   </main>
   <script>
     if(window.lucide)lucide.createIcons();
-    const reportData={"status": [3, 2, 0], "coverageLabels": ["Power", "Optical interconnect", "AI networking", "ASIC", "Memory", "AI server", "Cloud platform demand "], "coverage": [7, 6, 4, 4, 1, 5, 3]};
+    const reportData={"status": [2, 3, 0], "coverageLabels": ["Power", "Optical interconnect", "AI networking", "ASIC", "Memory", "AI server", "Cloud platform demand "], "coverage": [7, 6, 4, 4, 1, 5, 2]};
     Chart.defaults.color='#676b63';Chart.defaults.font.family='Inter, SF Pro Text, PingFang SC, system-ui, sans-serif';
     new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['稳固','观察','受损'],datasets:[{data:reportData.status,backgroundColor:['#217a4b','#c79531','#a33a32'],borderColor:'#fff',borderWidth:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}});
     new Chart(document.getElementById('coverageChart'),{type:'bar',data:{labels:reportData.coverageLabels,datasets:[{data:reportData.coverage,backgroundColor:['#217a4b','#c79531','#315f9c','#6b5a8e','#c6573f','#3e827f','#53734c'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#e6e8e1'}}}}});
