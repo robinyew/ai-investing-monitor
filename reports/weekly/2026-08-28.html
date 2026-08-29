@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AI 基建长期论点与卡点周报 — 2026-08-28</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/home/runner/work/ai-investing-monitor/ai-investing-monitor/vendor/huashu-md-html/templates/report/theme.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AI 基建长期论点与卡点周报 — 2026-08-28</h1>
+</header>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">week_start</span><span class="kw">:</span><span class="at"> 2026-08-24</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">week_end</span><span class="kw">:</span><span class="at"> 2026-08-28</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">generation</span><span class="kw">:</span><span class="at"> anthropic_api</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">auto_trade</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div>
+<h2 id="执行摘要">0. 执行摘要</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>字段</th>
+<th>本周结论</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>总体论点</strong></td>
+<td>Intact — hyperscaler AI capex
+仍在加速，约束从「有没有芯片」全面转向内存/HBM、封装与电力等物理卡点</td>
+</tr>
+<tr class="even">
+<td><strong>投资姿态</strong></td>
+<td>保持论点</td>
+</tr>
+<tr class="odd">
+<td><strong>本周最大事实</strong></td>
+<td>NVDA Q2 FY27 营收 96.2B（数据中心 89B），指引下季约 108B、FY2028 约
+70% 增长；管理层明确称增长被内存供给而非需求所限，长期采购承诺环比从
+119B 跳升至 279B</td>
+</tr>
+<tr class="even">
+<td><strong>本周最大风险</strong></td>
+<td>增长高度集中于少数
+hyperscaler，叠加复杂的供应商融资结构；「供给受限」叙事未来可能被重新定义为需求正常化</td>
+</tr>
+<tr class="odd">
+<td><strong>组合逻辑影响</strong></td>
+<td>局部 —
+HBM/内存与封装卡点确信度上升，光互连本周为价格轮动而非新基本面</td>
+</tr>
+<tr class="even">
+<td><strong>下个证伪信号</strong></td>
+<td>Hyperscaler 集体下修 AI capex，或 HBM
+产能扩张快于预期把紧供给翻成过剩</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句话周记：</strong>
+本周多条一手/近一手事实（NVDA、AMD、AWS、AMZN capex）共同确认 capex
+周期仍在加速且受供给约束，主线 Intact，内存成为最明确的绑定卡点。</p>
+<hr />
+<h2 id="论点状态">1. 论点状态</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>维度</th>
+<th>状态</th>
+<th>说明（事实，非股价）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Demand: hyperscaler / AI capex</td>
+<td>Green</td>
+<td>AMZN 将 2026 AI capex 目标上调至 220B；AWS 在不到五个月内耗尽 1M GPU
+承诺并追加 2M（约达 3M）。</td>
+</tr>
+<tr class="even">
+<td>Supply: accelerators &amp; platforms</td>
+<td>Green</td>
+<td>AMD Q2 数据中心 +107% 至 6.7B（占比 58%），Q3 指引 13B；NVDA
+数据中心 89B（占比 93%）。</td>
+</tr>
+<tr class="odd">
+<td>Chokepoints still binding</td>
+<td>Green</td>
+<td>NVDA 明确 HBM/内存为增长约束，持续至 2028 年初；内存承诺约
+160B。</td>
+</tr>
+<tr class="even">
+<td>Competition / substitution risk</td>
+<td>Yellow</td>
+<td>Anthropic 组建内部硅团队；ASIC 出货量预计 2027 超越 GPU；Trainium4
+与 NVLink Fusion 同机架共存，替代呈渐进而非份额/利润破坏。</td>
+</tr>
+<tr class="odd">
+<td>Financing / macro / geo overlay</td>
+<td>Yellow</td>
+<td>增长集中于少数客户并涉及复杂供应商融资；先进封装多年上线，无近期供给缓解。</td>
+</tr>
+<tr class="even">
+<td><strong>Overall</strong></td>
+<td><strong>Intact</strong></td>
+<td>无一级事实削弱主线；股价波动单独不构成 Damaged。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>相对上周变化：</strong> Improved — NVDA/AMD 财报与 AWS/AMZN
+capex 提供本周多条一手需求证据。</p>
+<hr />
+<h2 id="卡点仪表盘">2. 卡点仪表盘</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>卡点</th>
+<th>状态</th>
+<th>与上周相比</th>
+<th>证据（最多 2 条）</th>
+<th>核心/观察标的</th>
+<th>翻转条件</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Power / cooling / grid</td>
+<td>Y</td>
+<td>→</td>
+<td>Cadence 指出功率/热升级压缩设计周期、提前采购冷却与供电；日更
+Grid/Power 分数 78→80</td>
+<td>VRT, ETN, GEV, PWR, FIX, MPWR, NVTS</td>
+<td>出现电力/冷却明显产能过剩信号</td>
+</tr>
+<tr class="even">
+<td>Optical interconnect / 800G–1.6T</td>
+<td>Y</td>
+<td>→</td>
+<td>LITE 光学需求延续、COHR 将于 9/21 ECOC 发布 PhotonLink；LITE
+涨势被明确描述为「无新催化剂」的价格轮动</td>
+<td>AAOI, COHR, CIEN, LITE, CRDO, ALAB</td>
+<td>出现库存/砍单/非短期价格崩塌</td>
+</tr>
+<tr class="odd">
+<td>AI networking / DSP / Ethernet</td>
+<td>G</td>
+<td>↑</td>
+<td>NVDA 数据中心 89B 拉动网络需求；日更 AI Networking 分数升至 87</td>
+<td>ANET, AVGO, MRVL, NOK</td>
+<td>网络内容/单机架价值证伪</td>
+</tr>
+<tr class="even">
+<td>ASIC / custom silicon</td>
+<td>G</td>
+<td>→</td>
+<td>Anthropic 自研硅；ASIC 出货量预计 2027 超越 merchant GPU、130M+
+加速器转向先进封装片上内存</td>
+<td>AVGO, MRVL, MSFT, GOOGL</td>
+<td>ASIC 替代已体现在份额与利润（非口头）</td>
+</tr>
+<tr class="odd">
+<td>Memory / HBM</td>
+<td>G</td>
+<td>↑</td>
+<td>NVDA 称内存为增长绑定约束至 2028 年初、承诺约
+160B；供应商承诺环比翻倍至 279B；NVHBM 定制 HBM（+30% 带宽 / -15%
+功耗）</td>
+<td>MU</td>
+<td>HBM 产能扩张快于预期，紧供给翻转为过剩</td>
+</tr>
+<tr class="even">
+<td>AI server / rack / EMS</td>
+<td>G</td>
+<td>→</td>
+<td>NVDA &gt;15% 服务器涨价（Vera Rubin / Grace Blackwell）流入
+ASP；Helios 机架级在 Anthropic/Microsoft 部署</td>
+<td>DELL, SMCI, HPE, CLS, JBL</td>
+<td>高价触发需求弹性、刷新周期延后</td>
+</tr>
+<tr class="odd">
+<td>Cloud platform demand (payer)</td>
+<td>G</td>
+<td>↑</td>
+<td>AMZN capex 目标升至 220B；AWS GPU 追加 2M</td>
+<td>MSFT, GOOGL, (AMZN if tracked)</td>
+<td>Hyperscaler 集体下修 capex 或明确放缓部署</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本周卡点迁移（若有）：</strong> 从
+<code>Compute / GPU 有没有芯片</code> 转向
+<code>Memory / HBM 与先进封装</code>，因为：NVDA 明确将内存/HBM
+列为增长的绑定约束，且供应商承诺环比翻倍。</p>
+<hr />
+<h2 id="本周重大事实最多-5-条">3. 本周重大事实（最多 5 条）</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>日期</th>
+<th>事实（单行）</th>
+<th>来源等级</th>
+<th>卡点</th>
+<th>论点影响</th>
+<th>标的</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2026-08-27</td>
+<td>NVDA Q2 FY27 营收 96.2B、数据中心 89B，指引下季约 108B、FY2028 约
+70%，明确内存为增长约束</td>
+<td>Primary</td>
+<td>Memory / Compute</td>
+<td>Reinforce</td>
+<td>NVDA, MU, TSM, AVGO</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>2026-08-27</td>
+<td>NVDA 长期采购承诺环比 119B→279B，内存承诺约 160B，瓶颈延续至 2028
+年初</td>
+<td>Primary</td>
+<td>Memory</td>
+<td>Reinforce</td>
+<td>NVDA, MU</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>2026-08-24</td>
+<td>AMZN 将 2026 AI capex 目标上调至 220B；AWS 追加 2M GPU（约达
+3M）</td>
+<td>Tier-1</td>
+<td>Hyperscaler Capex</td>
+<td>Reinforce</td>
+<td>AMZN, NVDA, AVGO, MRVL</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>2026-08-26</td>
+<td>AMD Q2 数据中心 +107% 至 6.7B（占比 58%），Q3 指引 13B，Helios 在
+Anthropic/Microsoft 部署</td>
+<td>Tier-1</td>
+<td>Compute / GPU</td>
+<td>Reinforce</td>
+<td>AMD, MU, TSM</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>2026-08-23</td>
+<td>AMD 承诺 &gt;10B 与 TSMC
+合作先进封装，验证封装为加速器供给绑定约束</td>
+<td>Secondary</td>
+<td>Semiconductor Mfg</td>
+<td>Reinforce</td>
+<td>AMD, TSM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source tier</strong> - <strong>Primary：</strong> 公司
+IR/SEC/官方博客、监管文件、交易所公告 - <strong>Tier-1：</strong>
+高质量一手转述仍待核对 - <strong>Secondary：</strong>
+媒体综合、分析师意见 — 不得单独把 thesis 打成 Damaged</p>
+<p><strong>本周无 Material fact？</strong> No</p>
+<hr />
+<h2 id="组合映射逻辑层不是交易层">4. 组合映射（逻辑层，不是交易层）</h2>
+<h3 id="核心计划-持仓视角">4.1 核心计划 / 持仓视角</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>标的</th>
+<th>产业链角色</th>
+<th>本周逻辑</th>
+<th>确信度</th>
+<th>说明（仅事实）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DELL</td>
+<td>Server / rack</td>
+<td>Stronger</td>
+<td>Med</td>
+<td>服务器 ASP &gt;15% 上行、机架级部署放量拉动整机内容。</td>
+</tr>
+<tr class="even">
+<td>VRT</td>
+<td>Power / cooling</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>Cadence 指出功率/热提前进入设施规划；无新增一手需求数据。</td>
+</tr>
+<tr class="odd">
+<td>AAOI</td>
+<td>Optics</td>
+<td>Unclear</td>
+<td>Low</td>
+<td>LITE 光学涨势被明确定性为价格轮动、无新催化剂。</td>
+</tr>
+<tr class="even">
+<td>NVTS</td>
+<td>Power semi (higher risk)</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>本周仅价格波动（8/25 -5.71%），无公司基本面事件。</td>
+</tr>
+<tr class="odd">
+<td>MPWR</td>
+<td>Power mgmt</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>NVDA 二阶拉动点名 MPWR（供电）；无独立一手事实。</td>
+</tr>
+<tr class="even">
+<td>MRVL</td>
+<td>Networking / custom</td>
+<td>Stronger</td>
+<td>Med</td>
+<td>ASIC 2027 超越 GPU 及 Anthropic 自研利好定制硅设计伙伴。</td>
+</tr>
+<tr class="odd">
+<td>ANET</td>
+<td>AI networking</td>
+<td>Stronger</td>
+<td>Med</td>
+<td>NVDA 数据中心 89B 拉动网络；日更网络分数升至 87。</td>
+</tr>
+<tr class="even">
+<td>AVGO</td>
+<td>Networking / ASIC</td>
+<td>Stronger</td>
+<td>Med</td>
+<td>ASIC 结构性利好；作为定制硅设计伙伴受益于自研浪潮。</td>
+</tr>
+<tr class="odd">
+<td>ETN</td>
+<td>Electrical infra</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>电力为绑定约束逻辑延续；本周无公司级一手事实。</td>
+</tr>
+<tr class="even">
+<td>MSFT</td>
+<td>Capex payer / platform</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>Helios 机架级部署点名 Microsoft；无 capex 新指引。</td>
+</tr>
+<tr class="odd">
+<td>GOOGL</td>
+<td>Capex payer / platform</td>
+<td>Unchanged</td>
+<td>Med</td>
+<td>日更提及 FinOps 计费/成本控制新品；属核心监控项，非 capex
+变动。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="仅观察本周事实触及时才填写">4.2
+仅观察（本周事实触及时才填写）</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>标的</th>
+<th>提及原因</th>
+<th>逻辑影响</th>
+<th>后续跟踪</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AMD</td>
+<td>Q2 数据中心 +107%、Q3 指引 13B</td>
+<td>验证第二 merchant GPU 通道，强化共享供应链</td>
+<td>对照 AMD IR 核实数据</td>
+</tr>
+<tr class="even">
+<td>MU</td>
+<td>HBM 为绑定约束、承诺翻倍、NVHBM</td>
+<td>HBM 供应商多年定价杠杆</td>
+<td>跟踪 HBM 产能扩张节奏</td>
+</tr>
+<tr class="odd">
+<td>TSM</td>
+<td>先进封装为绑定约束、AMD &gt;10B 承诺</td>
+<td>封装为跨路线结构赢家</td>
+<td>跟踪 CoWoS 产能与利用率</td>
+</tr>
+<tr class="even">
+<td>COHR</td>
+<td>9/21 ECOC 发布 PhotonLink</td>
+<td>产品节奏延续，暂无规格/设计赢单</td>
+<td>关注 9/21 发布细节</td>
+</tr>
+</tbody>
+</table>
+<h3 id="分类变化本周是否改标签">4.3 分类变化（本周是否改标签）</h3>
+<table>
+<thead>
+<tr class="header">
+<th>标的</th>
+<th>原分类</th>
+<th>新分类</th>
+<th>原因（可证伪）</th>
+<th>下次复核</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>No classification changes.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="证伪条件与验证队列">5. 证伪条件与验证队列</h2>
+<h3 id="有效证伪条件什么会让你改主意">5.1
+有效证伪条件（什么会让你改主意）</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>证伪条件（可观察）</th>
+<th>状态</th>
+<th>本周证据</th>
+<th>触发后的动作</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F1</td>
+<td>Hyperscaler 集体下修 AI-related capex 或明确放缓部署</td>
+<td>Armed</td>
+<td>反向：AMZN 上调至 220B、AWS 追加 2M GPU</td>
+<td>Reduce conviction / re-underwrite</td>
+</tr>
+<tr class="even">
+<td>F2</td>
+<td>电力/冷却不再是绑定约束（产能明显过剩信号）</td>
+<td>Armed</td>
+<td>无过剩信号；Cadence 指向提前采购</td>
+<td>Revisit power overweight logic</td>
+</tr>
+<tr class="odd">
+<td>F3</td>
+<td>光互连需求证伪（库存/砍单/价格崩且非短期）</td>
+<td>Armed</td>
+<td>无证伪；LITE 涨势为价格轮动、非砍单</td>
+<td>Optics from candidate → watch/reject</td>
+</tr>
+<tr class="even">
+<td>F4</td>
+<td>ASIC 替代 merchant GPU 已体现在份额与利润（非口头）</td>
+<td>Armed</td>
+<td>仅口头/预测（2027 出货量超越）；机架内 Trainium/NVDA 共存</td>
+<td>Rebalance networking/ASIC map</td>
+</tr>
+<tr class="odd">
+<td>F5</td>
+<td>核心公司商业模式受损（客户、毛利、产品路线）</td>
+<td>Armed</td>
+<td>无一手损害证据</td>
+<td>Ticker-level deep dive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="未来-24-周验证队列">5.2 未来 2–4 周验证队列</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>时间</th>
+<th>待验证事项</th>
+<th>重要性</th>
+<th>优先一手来源</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>9/21</td>
+<td>COHR PhotonLink 规格/设计赢单细节</td>
+<td>Optics demand 验证</td>
+<td>ECOC 发布 / COHR IR</td>
+</tr>
+<tr class="even">
+<td>未来 2–4 周</td>
+<td>AMD Q2 财报数据对照 IR 核实</td>
+<td>Supply / 第二通道确认</td>
+<td>AMD earnings release / 10-Q</td>
+</tr>
+<tr class="odd">
+<td>未来 2–4 周</td>
+<td>AWS/AMZN GPU 追加与 capex 目标一手确认</td>
+<td>Demand ceiling</td>
+<td>AMZN IR / 10-Q</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="价格背景附录-可选-非决策主轴">6. 价格背景（附录 · 可选 ·
+非决策主轴）</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>基准 / 组合</th>
+<th style="text-align: right;">约 1 周</th>
+<th style="text-align: right;">约 1 月</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SMH</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">n/a</td>
+<td>Ignore — 无本周指数数值，仅有日更分数</td>
+</tr>
+<tr class="even">
+<td>Core equal-weight (qualitative)</td>
+<td style="text-align: right;">略偏强</td>
+<td style="text-align: right;">n/a</td>
+<td>Volatility only — AI 基建分数由 79 升至 90</td>
+</tr>
+<tr class="odd">
+<td>High-beta optics sleeve</td>
+<td style="text-align: right;">高波动</td>
+<td style="text-align: right;">n/a</td>
+<td>Volatility only — AAOI 8/25 -13.77%、8/26
++5.13%，被定性价格轮动</td>
+</tr>
+</tbody>
+</table>
+<p><strong>异常波动触发规则：</strong> AAOI/NVTS/CIEN/MU
+单日大幅波动已核查，均无一手基本面事件 → 记为 pricing noise。</p>
+<hr />
+<h2 id="下周研究任务">7. 下周研究任务</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>任务</th>
+<th>产出</th>
+<th>完成？</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>用 AMD IR 核实 Q2 数据中心 6.7B/+107% 与 Q3 13B 指引</td>
+<td>AMD capex/供给 note</td>
+<td>☐</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>跟踪 HBM 产能扩张时间线，评估紧→松翻转风险</td>
+<td>MU/HBM 供需 note</td>
+<td>☐</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>拆解 NVHBM 定制 HBM 对内存供应商谈判地位的影响</td>
+<td>内存卡点更新</td>
+<td>☐</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>准备 9/21 COHR PhotonLink 观察清单</td>
+<td>光互连验证清单</td>
+<td>☐</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>核实 AWS 3M GPU 与 AMZN 220B capex 一手来源</td>
+<td>Hyperscaler capex note</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deep dive needed？</strong> None</p>
+<hr />
+<h2 id="明确忽略的噪声">8. 明确忽略的噪声</h2>
+<ul>
+<li>MRVL 8/24 下跌 -5.57%、ANET 8/27 上涨 +5.92% —
+仅价格波动，无公司基本面事件。</li>
+<li>AAOI 单日 -13.77% 与 +5.13%、NVTS/CIEN/MU 单日大跌 — 日更明确标注为
+price-discipline，非论点变化。</li>
+<li>LITE 光学涨第二日，来源明确称「无新催化剂」，属价格轮动。</li>
+<li>NVDA 财报后股价下跌反映「AI spending
+concerns」情绪，股价波动单独不改论点。</li>
+<li>各类二级聚合来源（TradingKey、ZeroHedge、PC
+Gamer）的价格/涨价评论未经 IR 核实。</li>
+</ul>
+<hr />
+<h2 id="下周延续记忆">9. 下周延续记忆</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Open questions</td>
+<td>HBM 紧供给会持续到 2028 还是被产能扩张提前缓解？ASIC 出货量超越 GPU
+是否会转成份额/利润？</td>
+</tr>
+<tr class="even">
+<td>Pending primary confirms</td>
+<td>AMD Q2 数字对 IR；AWS 3M GPU 与 AMZN 220B capex 一手确认</td>
+</tr>
+<tr class="odd">
+<td>Thesis one-liner for next week</td>
+<td>capex 周期供给受限、内存为最明确绑定卡点，主线 Intact</td>
+</tr>
+<tr class="even">
+<td>Do not forget</td>
+<td>9/21 COHR PhotonLink 发布；NVDA 承诺 279B
+的客户集中与融资结构风险</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="签署">10. 签署</h2>
+<table>
+<thead>
+<tr class="header">
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Author</td>
+<td>AI 基建研究组</td>
+</tr>
+<tr class="even">
+<td>Time spent</td>
+<td>~15 min</td>
+</tr>
+<tr class="odd">
+<td>Sources checked</td>
+<td>digests / news / primary / other</td>
+</tr>
+<tr class="even">
+<td>Confidence in this week’s grade</td>
+<td>High</td>
+</tr>
+<tr class="odd">
+<td>Next brief due</td>
+<td>2026-09-04</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
