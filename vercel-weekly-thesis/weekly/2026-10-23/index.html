@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI 基建长期论点、卡点与证伪条件周报。">
+  <title>AI 基建长期论点与卡点周报 — 2026-10-23</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root{--ink:#161814;--muted:#676b63;--faint:#8b8f86;--line:#dfe2da;--paper:#f4f5f1;--surface:#fff;--soft:#eceee8;--green:#217a4b;--green-soft:#dceee3;--yellow:#9a6a12;--red:#a33a32;--blue:#315f9c;--coral:#c6573f;--purple:#6b5a8e}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"SF Pro Text","PingFang SC","Noto Sans SC",system-ui,sans-serif;font-size:14px;line-height:1.65;letter-spacing:0;-webkit-font-smoothing:antialiased}a{color:inherit}.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:8px 28px;border-bottom:1px solid var(--line);background:rgba(244,245,241,.94);backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;width:30px;height:30px;border-radius:6px;background:var(--ink);color:#fff;font-size:11px;font-weight:800}.brand strong{display:block;font-size:13px}.brand span{display:block;color:var(--muted);font-size:11px}.tools{display:flex;align-items:center;gap:8px}.tools a,.tools button{display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid #c8ccc2;border-radius:6px;background:#fff;cursor:pointer}.tools svg{width:16px;height:16px}.shell{width:min(1180px,100%);margin:auto;padding:32px 28px 64px}.head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding-bottom:24px;border-bottom:1px solid #c8ccc2}.eyebrow{margin:0 0 8px;color:var(--coral);font-size:11px;font-weight:800;text-transform:uppercase}.head h1{max-width:850px;margin:0;font-family:Georgia,"Songti SC",serif;font-size:38px;line-height:1.14}.dek{max-width:850px;margin:12px 0 0;color:var(--muted)}.date{text-align:right}.date strong{display:block;font:700 17px ui-monospace,SFMono-Regular,Menlo,monospace}.date span{color:var(--muted);font-size:11px}.notice{display:flex;gap:8px;align-items:center;margin-top:16px;padding:10px 12px;border:1px solid #ddd4b9;border-radius:6px;background:#faf3df;color:#71531b;font-size:11px}.notice svg{width:15px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:24px 0}.kpi{min-height:138px;padding:16px;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:8px;background:var(--surface);box-shadow:0 8px 24px rgba(22,24,20,.06)}.kpi label{color:var(--muted);font-size:10px;font-weight:750;text-transform:uppercase}.kpi b{display:block;margin-top:9px;font-size:22px;line-height:1.15}.kpi p{margin:9px 0 0;color:var(--muted);font-size:10px}.charts{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;margin-bottom:28px}.panel{padding:17px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}.panel h2{margin:0 0 12px;font-size:13px}.chart{position:relative;height:250px}.report{padding:28px clamp(18px,4vw,52px);border:1px solid var(--line);border-radius:8px;background:var(--surface)}.report h2{scroll-margin-top:80px;margin:42px 0 14px;padding-top:10px;border-top:1px solid var(--line);font-size:22px}.report h2:first-of-type{margin-top:8px}.report h3{margin:26px 0 10px;font-size:16px}.report h4{font-size:14px}.report p,.report li{max-width:900px}.report blockquote{margin:16px 0;padding:4px 16px;border-left:3px solid var(--blue);background:#f3f6fa;color:#3f4f61}.report table{display:block;width:100%;overflow-x:auto;border-collapse:collapse;font-size:11px}.report th{padding:9px 10px;background:var(--soft);color:var(--muted);font-size:9px;text-align:left;text-transform:uppercase;white-space:nowrap}.report td{min-width:90px;padding:10px;border-top:1px solid var(--line);vertical-align:top}.report tbody tr:nth-child(even){background:#fafbf8}.report code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em}.report pre{overflow:auto;padding:14px;border-radius:6px;background:#1d201c;color:#eef2eb}.report hr{border:0;border-top:1px solid var(--line);margin:28px 0}.footer{display:flex;justify-content:space-between;gap:18px;padding-top:24px;color:var(--muted);font-size:10px}
+    @media(max-width:760px){.topbar{padding:8px 16px}.shell{padding:20px 16px 48px}.head{grid-template-columns:1fr}.head h1{font-size:30px}.date{text-align:left}.kpis,.charts{grid-template-columns:1fr}.kpi{min-height:0}.report{padding:18px 14px}.report h2{font-size:19px}.footer{flex-direction:column;gap:4px}}
+    @media print{.topbar{display:none}body{background:#fff}.shell{padding:0}.kpi,.panel,.report{box-shadow:none}.report{border:0}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><div class="mark">AI</div><div><strong>AI 基建研究</strong><span>长期论点周报</span></div></div><div class="tools"><a href="/archive.html" title="历史归档" aria-label="历史归档"><i data-lucide="archive"></i></a><button title="打印或保存为 PDF" aria-label="打印或保存为 PDF" onclick="window.print()"><i data-lucide="printer"></i></button></div></header>
+  <main class="shell">
+    <section class="head"><div><p class="eyebrow">每周论点与卡点复核</p><h1>AI 基建长期论点与卡点周报 — 2026-10-23</h1><p class="dek">本期由 rulesauto 生成；主线维持 Intact，但当前重点是修复/核对上游数据采集，而不是做新的基本面升级。</p></div><div class="date"><strong>2026-10-23</strong><span>周报日期 · 美东时间</span></div></section>
+    <div class="notice"><i data-lucide="shield-check"></i>仅供研究。不连接券商，不生成买卖指令，不设目标价。</div>
+    <section class="kpis">
+      <article class="kpi" style="--accent:var(--green)"><label>总体论点</label><b style="color:var(--green)">Intact</b><p>本周未发现可确认的一级证伪事实；若源文件缺失，则结论仅为 carry-forward</p></article>
+      <article class="kpi" style="--accent:var(--blue)"><label>投资姿态</label><b style="color:var(--blue)">保持论点；优先恢复数据采集后再更新确信度</b><p>多月到多年研究视角</p></article>
+      <article class="kpi" style="--accent:var(--coral)"><label>重大事实</label><b>0</b><p>本周没有可用于生成正式基本面判断的合格源文件；需要先恢复日更/新闻扫描输入。</p></article>
+      <article class="kpi" style="--accent:var(--red)"><label>有效证伪条件</label><b>5</b><p>Hyperscaler 在一手财报/10-Q/电话会中集体下修 AI capex 或明确放缓部署</p></article>
+    </section>
+    <section class="charts"><article class="panel"><h2>论点状态构成</h2><div class="chart"><canvas id="statusChart"></canvas></div></article><article class="panel"><h2>卡点观察覆盖</h2><div class="chart"><canvas id="coverageChart"></canvas></div></article></section>
+    <article class="report"><p><strong>Research-only.</strong> 不连接券商，不生成买卖指令，不设目标价。<br />
+<strong>用途：</strong> 用 10-15 分钟更新「主线还在不在 / 逻辑有没有被证伪 / 下阶段盯什么」。<br />
+<strong>本期说明：</strong> 这是 rules_auto 兜底版；若上游源文件缺失，本报告只反映数据采集状态，不应被当成完整基本面复盘。</p>
+<hr />
+<h2 id="0">0. 执行摘要</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>本周结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>总体论点</strong></td>
+<td>Intact — 本周未发现可确认的一级证伪事实；若源文件缺失，则结论仅为 carry-forward</td>
+</tr>
+<tr>
+<td><strong>投资姿态</strong></td>
+<td>保持论点；优先恢复数据采集后再更新确信度</td>
+</tr>
+<tr>
+<td><strong>本周最大事实</strong></td>
+<td>本周没有可用于生成正式基本面判断的合格源文件；需要先恢复日更/新闻扫描输入。</td>
+</tr>
+<tr>
+<td><strong>本周最大风险</strong></td>
+<td>自动化源文件缺失会造成错误的“无变化”印象，需先核对日更、新闻扫描和 digest 是否正常产出</td>
+</tr>
+<tr>
+<td><strong>组合逻辑影响</strong></td>
+<td>无 — 没有足够新事实支持调整组合逻辑</td>
+</tr>
+<tr>
+<td><strong>下个证伪信号</strong></td>
+<td>Hyperscaler 在一手财报/10-Q/电话会中集体下修 AI capex 或明确放缓部署</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句话周记：</strong> 本期由 rules_auto 生成；主线维持 Intact，但当前重点是修复/核对上游数据采集，而不是做新的基本面升级。</p>
+<hr />
+<h2 id="1">1. 论点状态</h2>
+<h3 id="11">1.1 主论点（你在赌什么）</h3>
+<blockquote>
+<p>默认主线：全球 hyperscaler / neocloud 持续把 capex 转化为 AI 集群；约束从「有没有 GPU」转向电力、冷却、光互连、网络、HBM 等物理卡点；研究对象是卡点企业的长期秩序，不是短线主题情绪。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>状态</th>
+<th>说明（事实，非股价）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Demand: hyperscaler / AI capex</td>
+<td>Yellow</td>
+<td>本周没有足够合格源文件支持新的需求判断；沿用上一期主线。</td>
+</tr>
+<tr>
+<td>Supply: accelerators &amp; platforms</td>
+<td>Yellow</td>
+<td>需要恢复日更或一级来源核对后再更新。</td>
+</tr>
+<tr>
+<td>Chokepoints still binding</td>
+<td>Yellow</td>
+<td>电力、光互连、网络、HBM 等卡点逻辑未被证伪，但本期证据不足。</td>
+</tr>
+<tr>
+<td>Competition / substitution risk</td>
+<td>Yellow</td>
+<td>ASIC/自研芯片风险维持观察；没有新的一手份额/利润破坏证据。</td>
+</tr>
+<tr>
+<td>Financing / macro / geo overlay</td>
+<td>Yellow</td>
+<td>宏观、融资和地缘风险继续作为覆盖层观察。</td>
+</tr>
+<tr>
+<td><strong>Overall</strong></td>
+<td><strong>Intact</strong></td>
+<td>无一级事实削弱主线；数据缺口本身不等于 thesis Damaged。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2">2. 卡点仪表盘</h2>
+<p>对每个卡点只评逻辑与证据，不评「这周好不好炒」。</p>
+<table>
+<thead>
+<tr>
+<th>卡点</th>
+<th>状态</th>
+<th>与上周相比</th>
+<th>证据（最多 2 条）</th>
+<th>核心/观察标的</th>
+<th>翻转条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power / cooling / grid</td>
+<td>Y</td>
+<td>→</td>
+<td>本期没有新增合格源文件；沿用长期电力/冷却约束观察。</td>
+<td>VRT, ETN, GEV, PWR, FIX, MPWR, NVTS</td>
+<td>出现电力/冷却明显产能过剩或需求放缓的一手证据</td>
+</tr>
+<tr>
+<td>Optical interconnect / 800G-1.6T</td>
+<td>Y</td>
+<td>→</td>
+<td>需要恢复新闻扫描后核对订单、库存和价格信号。</td>
+<td>AAOI, COHR, CIEN, LITE, CRDO, ALAB</td>
+<td>出现库存/砍单/非短期价格崩塌</td>
+</tr>
+<tr>
+<td>AI networking / DSP / Ethernet</td>
+<td>Y</td>
+<td>→</td>
+<td>无新增一手事实；维持网络作为 AI 集群扩展卡点的观察。</td>
+<td>ANET, AVGO, MRVL, NOK</td>
+<td>网络内容价值或订单被一手数据证伪</td>
+</tr>
+<tr>
+<td>ASIC / custom silicon</td>
+<td>Y</td>
+<td>→</td>
+<td>自研/ASIC 风险继续观察，但不能用传言替代份额和利润数据。</td>
+<td>AVGO, MRVL, MSFT, GOOGL</td>
+<td>ASIC 替代已体现在份额与利润，而非口头叙事</td>
+</tr>
+<tr>
+<td>Memory / HBM</td>
+<td>Y</td>
+<td>→</td>
+<td>HBM 仍是长期卡点之一；本期缺少新源文件确认。</td>
+<td>MU</td>
+<td>HBM 产能扩张快于预期并转为过剩</td>
+</tr>
+<tr>
+<td>AI server / rack / EMS</td>
+<td>Y</td>
+<td>→</td>
+<td>需要恢复日更输入后核对机架级订单和交付节奏。</td>
+<td>DELL, SMCI, HPE, CLS, JBL</td>
+<td>服务器/机架订单取消或客户部署明显放缓</td>
+</tr>
+<tr>
+<td>Cloud platform demand (payer)</td>
+<td>Y</td>
+<td>→</td>
+<td>需要跟踪 MSFT/GOOGL/AMZN 等 capex guide 的一手更新。</td>
+<td>MSFT, GOOGL, AMZN</td>
+<td>Hyperscaler 集体下修 AI capex 或明确放缓部署</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本周卡点迁移（若有）：</strong><br />
+无新增可验证迁移；本期优先事项是恢复输入数据。</p>
+<hr />
+<h2 id="3-5">3. 本周重大事实（最多 5 条）</h2>
+<blockquote>
+<p>只写可能改变 3-12 个月预期的事实。股价大跌、分析师调目标价、社媒热帖默认进 §8 噪声。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>日期</th>
+<th>事实（单行）</th>
+<th>来源等级</th>
+<th>卡点</th>
+<th>论点影响</th>
+<th>标的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2026-10-23</td>
+<td>本周自动化没有收集到合格的日更、新闻扫描或 digest 源文件；这是一条数据完整性缺口，不是一条基本面证伪事实。</td>
+<td>内部系统状态</td>
+<td>数据采集</td>
+<td>Neutral</td>
+<td>全部观察池</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source tier</strong>
+- <strong>Primary：</strong> 公司 IR/SEC/官方博客、监管文件、交易所公告
+- <strong>Tier-1：</strong> 高质量一手转述仍待核对
+- <strong>Secondary：</strong> 媒体综合、分析师意见 — 不得单独把 thesis 打成 Damaged</p>
+<p><strong>本周无 Material fact？</strong> Yes — 本期无合格基本面事实；仅记录数据完整性缺口。</p>
+<hr />
+<h2 id="4">4. 组合映射（逻辑层，不是交易层）</h2>
+<h3 id="41">4.1 核心计划 / 持仓视角</h3>
+<table>
+<thead>
+<tr>
+<th>标的</th>
+<th>产业链角色</th>
+<th>本周逻辑</th>
+<th>确信度</th>
+<th>说明（仅事实）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DELL</td>
+<td>Server / rack</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>本期缺少新源文件，不调整逻辑。</td>
+</tr>
+<tr>
+<td>VRT</td>
+<td>Power / cooling</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>电力/冷却长期逻辑延续，但本期无新增证据。</td>
+</tr>
+<tr>
+<td>AAOI</td>
+<td>Optics</td>
+<td>Unclear</td>
+<td>Low</td>
+<td>光互连需等待订单/库存/客户证据。</td>
+</tr>
+<tr>
+<td>NVTS</td>
+<td>Power semi (higher risk)</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>无新增公司事实。</td>
+</tr>
+<tr>
+<td>MPWR</td>
+<td>Power mgmt</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>无新增公司事实。</td>
+</tr>
+<tr>
+<td>MRVL</td>
+<td>Networking / custom</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>ASIC/网络逻辑继续观察。</td>
+</tr>
+<tr>
+<td>ANET</td>
+<td>AI networking</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>无新增一手事实。</td>
+</tr>
+<tr>
+<td>AVGO</td>
+<td>Networking / ASIC</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>无新增一手事实。</td>
+</tr>
+<tr>
+<td>ETN</td>
+<td>Electrical infra</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>电力基础设施逻辑延续。</td>
+</tr>
+<tr>
+<td>MSFT</td>
+<td>Capex payer / platform</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>需核对 capex guide。</td>
+</tr>
+<tr>
+<td>GOOGL</td>
+<td>Capex payer / platform</td>
+<td>Unchanged</td>
+<td>Low</td>
+<td>需核对 capex guide。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42">4.2 仅观察（本周事实触及时才填写）</h3>
+<table>
+<thead>
+<tr>
+<th>标的</th>
+<th>提及原因</th>
+<th>逻辑影响</th>
+<th>后续跟踪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>本期缺少合格源文件</td>
+<td>不调整</td>
+<td>恢复日更、新闻扫描和 digest 输入</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43">4.3 分类变化（本周是否改标签）</h3>
+<table>
+<thead>
+<tr>
+<th>标的</th>
+<th>原分类</th>
+<th>新分类</th>
+<th>原因（可证伪）</th>
+<th>下次复核</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>No classification changes.</td>
+<td>2026-10-30</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">5. 证伪条件与验证队列</h2>
+<h3 id="51">5.1 有效证伪条件（什么会让你改主意）</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>证伪条件（可观察）</th>
+<th>状态</th>
+<th>本周证据</th>
+<th>触发后的动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Hyperscaler 集体下修 AI-related capex 或明确放缓部署</td>
+<td>Armed</td>
+<td>本期无合格新证据</td>
+<td>Reduce conviction / re-underwrite</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>电力/冷却不再是绑定约束（产能明显过剩信号）</td>
+<td>Armed</td>
+<td>本期无合格新证据</td>
+<td>Revisit power overweight logic</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>光互连需求证伪（库存/砍单/价格崩且非短期）</td>
+<td>Armed</td>
+<td>本期无合格新证据</td>
+<td>Optics from candidate to watch/reject</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>ASIC 替代 merchant GPU 已体现在份额与利润（非口头）</td>
+<td>Armed</td>
+<td>本期无合格新证据</td>
+<td>Rebalance networking/ASIC map</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>核心公司商业模式受损（客户、毛利、产品路线）</td>
+<td>Armed</td>
+<td>本期无合格新证据</td>
+<td>Ticker-level deep dive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-2-4">5.2 未来 2-4 周验证队列</h3>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>待验证事项</th>
+<th>重要性</th>
+<th>优先一手来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>立即</td>
+<td>恢复并核对日更、新闻扫描、digest 是否继续产出</td>
+<td>数据完整性</td>
+<td>GitHub Actions / 本地 launchd 日志</td>
+</tr>
+<tr>
+<td>下周</td>
+<td>核对 hyperscaler capex guide 是否有一手变化</td>
+<td>Demand ceiling</td>
+<td>Earnings release / 10-Q / call</td>
+</tr>
+<tr>
+<td>下周</td>
+<td>核对 HBM、光互连、机架级订单是否有一手更新</td>
+<td>Chokepoint status</td>
+<td>公司 IR / SEC / 官方博客</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 价格背景（附录 · 可选 · 非决策主轴）</h2>
+<blockquote>
+<p>仅用于判断「要不要重读基本面」，不得单独改变 thesis。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>基准 / 组合</th>
+<th style="text-align: right;">约 1 周</th>
+<th style="text-align: right;">约 1 月</th>
+<th>解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMH</td>
+<td style="text-align: right;">未采集</td>
+<td style="text-align: right;">未采集</td>
+<td>本期 rules_auto 未拉取行情；不作判断。</td>
+</tr>
+<tr>
+<td>Core equal-weight (qualitative)</td>
+<td style="text-align: right;">未采集</td>
+<td style="text-align: right;">未采集</td>
+<td>价格不改变本期结论。</td>
+</tr>
+<tr>
+<td>High-beta optics sleeve</td>
+<td style="text-align: right;">未采集</td>
+<td style="text-align: right;">未采集</td>
+<td>需恢复行情/新闻输入后再看。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>异常波动触发规则：</strong><br />
+单票或 sleeve 大幅偏离基准时，先重读 §3/§4 是否有被忽略的一手事实；若无，记为 pricing noise。</p>
+<hr />
+<h2 id="7">7. 下周研究任务</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>任务</th>
+<th>产出</th>
+<th>完成？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>检查为什么 9 月日更/新闻扫描源文件没有进入仓库</td>
+<td>自动化修复清单</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>补跑必要的日更或新闻扫描，再生成正式周报</td>
+<td>合格源文件与正式周报</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>核对 GitHub Actions secrets 与本地 launchd dispatch 是否仍正常</td>
+<td>运行状态记录</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>复查本期页面是否应替换为正式人工/模型版</td>
+<td>发布决定</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>下周继续跟踪 hyperscaler capex 和 HBM/光互连证据</td>
+<td>下期输入清单</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deep dive needed？</strong> None — 先恢复数据源。</p>
+<hr />
+<h2 id="8">8. 明确忽略的噪声</h2>
+<ul>
+<li>单日股价波动和开盘清单。</li>
+<li>没有一手来源的社媒线程。</li>
+<li>分析师目标价或短线技术位。</li>
+<li>本期自动化缺源导致的“无变化”假象；它是流程问题，不是投资结论。</li>
+</ul>
+<hr />
+<h2 id="9">9. 下周延续记忆</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open questions</td>
+<td>9 月上游数据为什么停止进入周报输入；是否需要补跑 2026-09-04、2026-09-11、2026-09-18。</td>
+</tr>
+<tr>
+<td>Pending primary confirms</td>
+<td>Hyperscaler capex guide；HBM/内存供需；光互连订单与库存。</td>
+</tr>
+<tr>
+<td>Thesis one-liner for next week</td>
+<td>主线暂维持 Intact，但先修复源文件采集，避免把数据缺口误读成基本面平静。</td>
+</tr>
+<tr>
+<td>Do not forget</td>
+<td>数据缺口不等于证伪；正式判断必须回到一手或近一手事实。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10">10. 签署</h2>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Author</td>
+<td>rules_auto</td>
+</tr>
+<tr>
+<td>Time spent</td>
+<td>~5 min</td>
+</tr>
+<tr>
+<td>Sources checked</td>
+<td>none - upstream data gap</td>
+</tr>
+<tr>
+<td>Confidence in this week’s grade</td>
+<td>Low — 数据源缺口，需补核</td>
+</tr>
+<tr>
+<td>Next brief due</td>
+<td>2026-10-30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本期源文件扫描：</strong>
+- 本周窗口内未找到 <code>reports/digest/</code>、<code>investment-intelligence-hub/inbox/news/</code> 或 <code>reports/daily/</code> 源文件。</p>
+<p><em>Template: <code>templates/weekly_thesis_brief.md</code> · Skill HTML: huashu-md-html theme=report</em></p></article>
+    <footer class="footer"><span>AI 基建长期论点周报</span><span>生成于 2026-10-23 21:01 EDT · 保存一年</span></footer>
+  </main>
+  <script>
+    if(window.lucide)lucide.createIcons();
+    const reportData={"status": [0, 5, 0], "coverageLabels": ["Power", "Optical interconnect", "AI networking", "ASIC", "Memory", "AI server", "Cloud platform demand "], "coverage": [7, 6, 4, 4, 1, 5, 3]};
+    Chart.defaults.color='#676b63';Chart.defaults.font.family='Inter, SF Pro Text, PingFang SC, system-ui, sans-serif';
+    new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['稳固','观察','受损'],datasets:[{data:reportData.status,backgroundColor:['#217a4b','#c79531','#a33a32'],borderColor:'#fff',borderWidth:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}});
+    new Chart(document.getElementById('coverageChart'),{type:'bar',data:{labels:reportData.coverageLabels,datasets:[{data:reportData.coverage,backgroundColor:['#217a4b','#c79531','#315f9c','#6b5a8e','#c6573f','#3e827f','#53734c'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#e6e8e1'}}}}});
+  </script>
+</body>
+</html>
